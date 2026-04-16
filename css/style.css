@@ -30,8 +30,8 @@ nav.scrolled .nav-logo img{height:40px}
 
 /* ── HERO ─────────────────────────────────────────── */
 .hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#111}
-.hero-logo{margin:0 auto 32px;display:block;width:160px;height:auto;filter:brightness(0) invert(1)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,246,240,.15) 0%,rgba(249,246,240,.4) 100%)}
+.hero-logo{margin:0 auto 32px;display:block;width:160px;height:auto}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45)}.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45)}
 .hero-content{position:relative;text-align:center;color:var(--text);padding:0 24px;max-width:860px}
 .hero-logo{margin:0 auto 32px;display:block;width:160px;height:auto}
 .hero-tag{font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#f5a623;margin-bottom:18px;display:block}
@@ -144,7 +144,7 @@ section{padding:88px 48px}
 /* ── FOOTER ───────────────────────────────────────── */
 footer{background:#050505;padding:40px 48px;border-top:1px solid rgba(255,255,255,.05)}
 .footer-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.06)}
-.footer-logo img{height:44px;width:auto;filter:brightness(0) invert(1);opacity:.85}
+.footer-logo img{height:44px;width:auto}
 .footer-links{display:flex;gap:24px;flex-wrap:wrap}
 .footer-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
 .footer-links a:hover{color:#f5a623}
