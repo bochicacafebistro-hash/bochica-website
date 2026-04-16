@@ -3,10 +3,357 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bochica — Restaurant Colombien</title>
+  <title>Bochica — Restaurant Colombien | Québec</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#0a0a0a;--white:#ffffff;--grey:#f5f5f5;--grey2:#e8e8e8;
+      --text:#1a1a1a;--text2:#666666;--text3:#999999;
+      --accent:#c8a96e;--accent2:#a8893e;
+      --font:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,padding .3s}
+    nav.scrolled{background:rgba(10,10,10,.95);padding:14px 48px}
+    .nav-logo{font-size:22px;font-weight:800;letter-spacing:4px;color:var(--white);text-decoration:none}
+    .nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;align-items:center;gap:32px}
+    .nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .2s}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-lang{display:flex;gap:8px}
+    .lang-btn{background:none;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.6);padding:4px 10px;border-radius:4px;font-size:11px;cursor:pointer;letter-spacing:1px;transition:.2s}
+    .lang-btn:hover,.lang-btn.active{border-color:var(--accent);color:var(--accent)}
+    .nav-reserve{background:var(--accent);color:var(--black);border:none;padding:10px 22px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s}
+    .nav-reserve:hover{background:var(--accent2)}
+    .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+    .nav-mobile-btn span{display:block;width:24px;height:2px;background:var(--white);transition:.3s}
+
+    /* HERO */
+    .hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:#1a1a1a}
+    .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,rgba(0,0,0,.5) 100%)}
+    .hero-content{position:relative;text-align:center;color:var(--white);padding:0 24px;max-width:800px}
+    .hero-tag{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block}
+    .hero-title{font-size:clamp(48px,8vw,96px);font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:24px}
+    .hero-title em{font-style:italic;font-weight:300;color:rgba(255,255,255,.85)}
+    .hero-sub{font-size:16px;color:rgba(255,255,255,.7);letter-spacing:1px;margin-bottom:40px;line-height:1.7}
+    .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .btn-primary{background:var(--accent);color:var(--black);border:none;padding:16px 36px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:.2s;text-decoration:none;display:inline-block}
+    .btn-primary:hover{background:var(--accent2)}
+    .btn-outline{background:none;color:var(--white);border:1px solid rgba(255,255,255,.5);padding:16px 36px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:.2s;text-decoration:none;display:inline-block}
+    .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+    .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+    .hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollline 1.5s ease-in-out infinite}
+    @keyframes scrollline{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.8)}}
+
+    /* BAND */
+    .band{background:var(--black);padding:20px 48px;display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+    .band-item{color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+    .band-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+    /* SECTION */
+    section{padding:96px 48px}
+    .section-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+    .section-title{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+    .section-sub{font-size:15px;color:var(--text2);line-height:1.8;max-width:540px}
+    .section-center{text-align:center}
+    .section-center .section-sub{margin:0 auto}
+
+    /* ABOUT */
+    .about{background:var(--white)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto}
+    .about-img-wrap{position:relative}
+    .about-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+    .about-img-placeholder{width:100%;aspect-ratio:4/5;background:#e8e8e8;border-radius:2px;display:flex;align-items:center;justify-content:center;color:#999;font-size:13px;letter-spacing:1px}
+    .about-accent{position:absolute;bottom:-20px;right:-20px;width:60%;aspect-ratio:4/3;background:var(--accent);opacity:.15;border-radius:2px;z-index:-1}
+    .about-stats{display:flex;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid var(--grey2)}
+    .stat-item{text-align:center}
+    .stat-num{font-size:36px;font-weight:800;color:var(--accent);line-height:1}
+    .stat-lbl{font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+    /* MENU PREVIEW */
+    .menu-preview{background:var(--grey)}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;margin:48px 0;max-width:1100px;margin-left:auto;margin-right:auto}
+    .menu-card{background:var(--white);padding:32px;border-radius:2px;transition:transform .2s}
+    .menu-card:hover{transform:translateY(-4px)}
+    .menu-card-cat{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+    .menu-card-name{font-size:18px;font-weight:700;margin-bottom:8px}
+    .menu-card-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px}
+    .menu-card-price{font-size:16px;font-weight:700;color:var(--accent)}
+    .menu-center{text-align:center;margin-top:16px}
+
+    /* GALERIE */
+    .gallery{background:var(--black);padding:96px 0}
+    .gallery-header{padding:0 48px;margin-bottom:48px}
+    .gallery-header .section-title{color:var(--white)}
+    .gallery-header .section-tag{color:var(--accent)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:3px}
+    .gallery-item{overflow:hidden;cursor:pointer}
+    .gallery-item:first-child{grid-column:span 2;grid-row:span 2}
+    .gallery-img{width:100%;height:100%;object-fit:cover;transition:transform .4s;display:block}
+    .gallery-img:hover{transform:scale(1.04)}
+    .gallery-placeholder{width:100%;background:#2a2a2a;aspect-ratio:1;display:flex;align-items:center;justify-content:center;color:#444;font-size:11px;letter-spacing:1px}
+    .gallery-item:first-child .gallery-placeholder{aspect-ratio:auto;height:100%;min-height:300px}
+
+    /* HORAIRES */
+    .horaires{background:var(--white);max-width:1100px;margin:0 auto}
+    .horaires-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:48px}
+    .hours-table{width:100%}
+    .hours-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--grey2)}
+    .hours-row:last-child{border-bottom:none}
+    .hours-day{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+    .hours-time{font-size:13px;color:var(--text2)}
+    .hours-closed{color:var(--text3);font-style:italic}
+    .contact-info{display:flex;flex-direction:column;gap:24px}
+    .contact-item{display:flex;gap:16px;align-items:flex-start}
+    .contact-icon{width:40px;height:40px;background:var(--grey);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+    .contact-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+    .contact-value{font-size:14px;color:var(--text);line-height:1.5}
+
+    /* RESERVATION */
+    .reservation{background:var(--black);text-align:center;padding:96px 48px}
+    .reservation .section-title{color:var(--white)}
+    .reservation .section-sub{color:rgba(255,255,255,.5);margin:0 auto 40px}
+    .reservation-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:700px;margin:0 auto}
+    .res-input{padding:14px 18px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:var(--white);font-size:13px;border-radius:2px;flex:1;min-width:160px;outline:none}
+    .res-input:focus{border-color:var(--accent)}
+    .res-input::placeholder{color:rgba(255,255,255,.3)}
+
+    /* FOOTER */
+    footer{background:#050505;padding:48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;border-top:1px solid rgba(255,255,255,.06)}
+    .footer-logo{font-size:18px;font-weight:800;letter-spacing:4px;color:var(--white)}
+    .footer-logo span{color:var(--accent)}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;letter-spacing:1px;transition:color .2s}
+    .footer-links a:hover{color:var(--accent)}
+    .footer-copy{font-size:11px;color:rgba(255,255,255,.25);letter-spacing:1px}
+
+    /* MOBILE */
+    @media(max-width:768px){
+      nav{padding:16px 20px}
+      nav.scrolled{padding:12px 20px}
+      .nav-links{display:none}
+      .nav-mobile-btn{display:flex}
+      .nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.98);align-items:center;justify-content:center;gap:32px;z-index:99}
+      .nav-links.open a{font-size:20px}
+      section{padding:64px 20px}
+      .about-grid{grid-template-columns:1fr;gap:40px}
+      .horaires-grid{grid-template-columns:1fr;gap:48px}
+      .gallery-grid{grid-template-columns:1fr 1fr}
+      .gallery-item:first-child{grid-column:span 2}
+      .band{padding:16px 20px;gap:24px}
+      footer{padding:32px 20px;flex-direction:column;text-align:center}
+    }
+  </style>
 </head>
 <body>
-  <h1>Bochica</h1>
-  <p>Restaurant Colombien — En construction</p>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">BOCHI<span>CA</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="#about" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</a>
+    <a href="#menu" data-fr="Menu" data-en="Menu" data-es="Menú">Menu</a>
+    <a href="#horaires" data-fr="Horaires" data-en="Hours" data-es="Horarios">Horaires</a>
+    <a href="#reservation" data-fr="Réservation" data-en="Reservation" data-es="Reservación">Réservation</a>
+    <div class="nav-lang">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="nav-reserve" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})" data-fr="Réserver" data-en="Reserve" data-es="Reservar">Réserver</button>
+  </div>
+  <button class="nav-mobile-btn" id="mobile-btn" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img class="hero-img" src="hero.jpg" alt="Bochica Restaurant" onerror="this.style.display='none'"/>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag" data-fr="Restaurant Colombien — Québec" data-en="Colombian Restaurant — Québec" data-es="Restaurante Colombiano — Québec">Restaurant Colombien — Québec</span>
+    <h1 class="hero-title">BOCHI<em>CA</em></h1>
+    <p class="hero-sub" data-fr="Une cuisine colombienne authentique au cœur de Québec.<br>Saveurs, chaleur et partage." data-en="Authentic Colombian cuisine in the heart of Québec.<br>Flavors, warmth and sharing." data-es="Cocina colombiana auténtica en el corazón de Québec.<br>Sabores, calidez y convivencia.">Une cuisine colombienne authentique au cœur de Québec.<br>Saveurs, chaleur et partage.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary" data-fr="Voir le menu" data-en="See the menu" data-es="Ver el menú">Voir le menu</a>
+      <a href="#reservation" class="btn-outline" data-fr="Réserver une table" data-en="Book a table" data-es="Reservar una mesa">Réserver une table</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- BAND -->
+<div class="band">
+  <div class="band-item"><div class="band-dot"></div><span data-fr="Dîner & Souper" data-en="Lunch & Dinner" data-es="Almuerzo & Cena">Dîner & Souper</span></div>
+  <div class="band-item"><div class="band-dot"></div><span data-fr="Cuisine Colombienne" data-en="Colombian Cuisine" data-es="Cocina Colombiana">Cuisine Colombienne</span></div>
+  <div class="band-item"><div class="band-dot"></div><span data-fr="Québec, QC" data-en="Québec, QC" data-es="Québec, QC">Québec, QC</span></div>
+  <div class="band-item"><div class="band-dot"></div><span data-fr="Réservations disponibles" data-en="Reservations available" data-es="Reservaciones disponibles">Réservations disponibles</span></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img class="about-img" src="about.jpg" alt="Bochica" onerror="this.outerHTML='<div class=about-img-placeholder>📷 Photo du restaurant</div>'"/>
+      <div class="about-accent"></div>
+    </div>
+    <div>
+      <span class="section-tag" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</span>
+      <h2 class="section-title" data-fr="Une cuisine qui raconte<br>la Colombie" data-en="A cuisine that tells<br>the story of Colombia" data-es="Una cocina que cuenta<br>la historia de Colombia">Une cuisine qui raconte<br>la Colombie</h2>
+      <p class="section-sub" data-fr="Chez Bochica, chaque plat est une invitation au voyage. Nous vous proposons une expérience culinaire authentique, inspirée des saveurs et traditions colombiennes, préparée avec des ingrédients frais et locaux." data-en="At Bochica, every dish is an invitation to travel. We offer you an authentic culinary experience, inspired by Colombian flavors and traditions, prepared with fresh local ingredients." data-es="En Bochica, cada plato es una invitación a viajar. Te ofrecemos una experiencia culinaria auténtica, inspirada en los sabores y tradiciones colombianas, preparada con ingredientes frescos y locales.">Chez Bochica, chaque plat est une invitation au voyage. Nous vous proposons une expérience culinaire authentique, inspirée des saveurs et traditions colombiennes, préparée avec des ingrédients frais et locaux.</p>
+      <div class="about-stats">
+        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-lbl" data-fr="Authentique" data-en="Authentic" data-es="Auténtico">Authentique</div></div>
+        <div class="stat-item"><div class="stat-num">🇨🇴</div><div class="stat-lbl" data-fr="Colombien" data-en="Colombian" data-es="Colombiano">Colombien</div></div>
+        <div class="stat-item"><div class="stat-num">❤️</div><div class="stat-lbl" data-fr="Fait avec amour" data-en="Made with love" data-es="Hecho con amor">Fait avec amour</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU PREVIEW -->
+<section class="menu-preview" id="menu">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-center">
+      <span class="section-tag" data-fr="Ce que nous offrons" data-en="What we offer" data-es="Lo que ofrecemos">Ce que nous offrons</span>
+      <h2 class="section-title" data-fr="Notre menu" data-en="Our menu" data-es="Nuestro menú">Notre menu</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-cat" data-fr="Entrées" data-en="Starters" data-es="Entradas">Entrées</div>
+        <div class="menu-card-name">Empanadas</div>
+        <div class="menu-card-desc" data-fr="Chaussons farcis à la viande ou aux légumes, dorés à la perfection." data-en="Stuffed pastries with meat or vegetables, golden to perfection." data-es="Empanadas rellenas de carne o verduras, doradas a la perfección.">Chaussons farcis à la viande ou aux légumes, dorés à la perfection.</div>
+        <div class="menu-card-price">À partir de 8 $</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat" data-fr="Plat principal" data-en="Main course" data-es="Plato principal">Plat principal</div>
+        <div class="menu-card-name">Bandeja Paisa</div>
+        <div class="menu-card-desc" data-fr="Le plat emblématique colombien — haricots, riz, chicharrón, chorizo et plus." data-en="The iconic Colombian dish — beans, rice, chicharrón, chorizo and more." data-es="El plato emblemático colombiano — frijoles, arroz, chicharrón, chorizo y más.">Le plat emblématique colombien — haricots, riz, chicharrón, chorizo et plus.</div>
+        <div class="menu-card-price">28 $</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat" data-fr="Boissons" data-en="Drinks" data-es="Bebidas">Boissons</div>
+        <div class="menu-card-name">Limonada de Coco</div>
+        <div class="menu-card-desc" data-fr="Limonade crémeuse à la noix de coco, fraîche et désaltérante." data-en="Creamy coconut lemonade, fresh and refreshing." data-es="Limonada cremosa de coco, fresca y refrescante.">Limonade crémeuse à la noix de coco, fraîche et désaltérante.</div>
+        <div class="menu-card-price">7 $</div>
+      </div>
+    </div>
+    <div class="menu-center">
+      <a href="#" class="btn-primary" data-fr="Voir le menu complet" data-en="See full menu" data-es="Ver menú completo">Voir le menu complet</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <span class="section-tag" data-fr="Ambiance & Cuisine" data-en="Ambiance & Food" data-es="Ambiente & Cocina">Ambiance & Cuisine</span>
+    <h2 class="section-title" data-fr="Bienvenue chez nous" data-en="Welcome to our home" data-es="Bienvenidos a nuestra casa">Bienvenue chez nous</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img class="gallery-img" src="gallery1.jpg" alt="" onerror="this.outerHTML='<div class=gallery-placeholder style=min-height:400px>📷</div>'"/></div>
+    <div class="gallery-item"><img class="gallery-img" src="gallery2.jpg" alt="" onerror="this.outerHTML='<div class=gallery-placeholder>📷</div>'"/></div>
+    <div class="gallery-item"><img class="gallery-img" src="gallery3.jpg" alt="" onerror="this.outerHTML='<div class=gallery-placeholder>📷</div>'"/></div>
+    <div class="gallery-item"><img class="gallery-img" src="gallery4.jpg" alt="" onerror="this.outerHTML='<div class=gallery-placeholder>📷</div>'"/></div>
+    <div class="gallery-item"><img class="gallery-img" src="gallery5.jpg" alt="" onerror="this.outerHTML='<div class=gallery-placeholder>📷</div>'"/></div>
+  </div>
+</section>
+
+<!-- HORAIRES -->
+<section id="horaires">
+  <div class="horaires">
+    <span class="section-tag" data-fr="Venez nous voir" data-en="Come see us" data-es="Visítanos">Venez nous voir</span>
+    <h2 class="section-title" data-fr="Horaires & Contact" data-en="Hours & Contact" data-es="Horarios & Contacto">Horaires & Contact</h2>
+    <div class="horaires-grid">
+      <div>
+        <div class="hours-table">
+          <div class="hours-row"><span class="hours-day" data-fr="Lundi" data-en="Monday" data-es="Lunes">Lundi</span><span class="hours-closed" data-fr="Fermé" data-en="Closed" data-es="Cerrado">Fermé</span></div>
+          <div class="hours-row"><span class="hours-day" data-fr="Mardi — Vendredi" data-en="Tuesday — Friday" data-es="Martes — Viernes">Mardi — Vendredi</span><span class="hours-time">11h30 — 21h00</span></div>
+          <div class="hours-row"><span class="hours-day" data-fr="Samedi" data-en="Saturday" data-es="Sábado">Samedi</span><span class="hours-time">10h00 — 22h00</span></div>
+          <div class="hours-row"><span class="hours-day" data-fr="Dimanche" data-en="Sunday" data-es="Domingo">Dimanche</span><span class="hours-time">10h00 — 20h00</span></div>
+        </div>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-label" data-fr="Adresse" data-en="Address" data-es="Dirección">Adresse</div><div class="contact-value">Québec, QC</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><div class="contact-label" data-fr="Téléphone" data-en="Phone" data-es="Teléfono">Téléphone</div><div class="contact-value">À venir</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div><div class="contact-label" data-fr="Courriel" data-en="Email" data-es="Correo">Courriel</div><div class="contact-value">info@bochica.ca</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div><div class="contact-label" data-fr="Réseaux sociaux" data-en="Social media" data-es="Redes sociales">Réseaux sociaux</div><div class="contact-value">@bochicaQC</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reservation" id="reservation">
+  <span class="section-tag" data-fr="Réservez votre table" data-en="Book your table" data-es="Reserve su mesa">Réservez votre table</span>
+  <h2 class="section-title" data-fr="Rejoignez-nous" data-en="Join us" data-es="Únase a nosotros">Rejoignez-nous</h2>
+  <p class="section-sub" data-fr="Pour une occasion spéciale ou simplement pour le plaisir de bien manger, réservez votre table dès maintenant." data-en="For a special occasion or simply for the pleasure of good food, book your table now." data-es="Para una ocasión especial o simplemente por el placer de comer bien, reserve su mesa ahora.">Pour une occasion spéciale ou simplement pour le plaisir de bien manger, réservez votre table dès maintenant.</p>
+  <div class="reservation-form">
+    <input class="res-input" type="text" placeholder="Nom / Name" />
+    <input class="res-input" type="date" />
+    <input class="res-input" type="number" min="1" max="20" placeholder="Personnes / People" />
+    <button class="btn-primary" data-fr="Envoyer" data-en="Send" data-es="Enviar">Envoyer</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">BOCHI<span>CA</span></div>
+  <div class="footer-links">
+    <a href="#about" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</a>
+    <a href="#menu">Menu</a>
+    <a href="#horaires" data-fr="Horaires" data-en="Hours" data-es="Horarios">Horaires</a>
+    <a href="#reservation" data-fr="Réservation" data-en="Reservation" data-es="Reservación">Réservation</a>
+  </div>
+  <div class="footer-copy">© 2026 Bochica — Restaurant Colombien</div>
+</footer>
+
+<script>
+let currentLang = 'fr';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if (btn.textContent.toLowerCase() === lang) btn.classList.add('active');
+  });
+}
+
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+function toggleMenu() {
+  const links = document.getElementById('nav-links');
+  links.classList.toggle('open');
+}
+</script>
 </body>
 </html>
