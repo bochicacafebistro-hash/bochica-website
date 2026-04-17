@@ -95,6 +95,11 @@ section{padding:88px 48px}
 .menu-card-name{font-size:17px;font-weight:700;margin-bottom:8px;color:#1a1a1a}
 .menu-card-desc{font-size:13px;color:#666;line-height:1.6;margin-bottom:14px}
 .menu-card-price{font-size:15px;font-weight:700;color:#f5a623}
+.menu-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:32px 0 24px}
+.menu-tab{background:none;border:1px solid #dddddd;color:#666;padding:8px 20px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:.2s}
+.menu-tab:hover{border-color:#f5a623;color:#f5a623}
+.menu-tab.active{background:#f5a623;border-color:#f5a623;color:#1a1a1a}
+.menu-section{display:block}
 
 /* ── GALLERY ──────────────────────────────────────── */
 .gallery{background:#1a1a1a;padding:88px 0}
