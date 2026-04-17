@@ -21,8 +21,20 @@ function restoreLang() {
 
 // ── Nav scroll ────────────────────────────────────────
 function initNav() {
+  const fab = document.getElementById('fab-reserve');
+  const reservationSec = document.getElementById('reservation');
   window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+    const y = window.scrollY;
+    document.getElementById('nav').classList.toggle('scrolled', y > 60);
+    // Afficher le FAB après 400px et le cacher quand on approche de la section réservation
+    if (fab) {
+      let show = y > 400;
+      if (show && reservationSec) {
+        const rect = reservationSec.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) show = false;
+      }
+      fab.classList.toggle('visible', show);
+    }
   });
 }
 

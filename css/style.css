@@ -86,6 +86,17 @@ section{padding:96px 48px}
 .section-center{text-align:center}
 .section-center .section-sub{margin:0 auto}
 
+/* ── ORNEMENT DÉCORATIF ENTRE SECTIONS ───────────── */
+.ornament{display:flex;align-items:center;justify-content:center;gap:14px;max-width:260px;margin:0 auto 18px;padding:0}
+.ornament::before,.ornament::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(26,16,16,.2),transparent)}
+.ornament-dots{display:flex;gap:6px;align-items:center}
+.ornament-dots span{width:4px;height:4px;border-radius:50%;display:block;transform:rotate(45deg)}
+.ornament-dots span:nth-child(1){background:var(--yellow)}
+.ornament-dots span:nth-child(2){background:var(--blue)}
+.ornament-dots span:nth-child(3){background:var(--red)}
+/* Variante pour fonds foncés */
+.ornament-dark::before,.ornament-dark::after{background:linear-gradient(90deg,transparent,rgba(250,246,240,.22),transparent)}
+
 /* ── ABOUT ────────────────────────────────────────── */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto}
 .about-img-wrap{position:relative}
@@ -126,6 +137,11 @@ section{padding:96px 48px}
 .menu-card-price{font-family:var(--font-heading);font-size:17px;font-weight:700;color:var(--accent);margin-top:auto;font-style:italic}
 .menu-card.has-photo .menu-card-price{position:absolute;bottom:16px;right:20px}
 .menu-card.has-photo .menu-card-body{padding-right:60px;padding-bottom:4px}
+/* Points de suspension style bistro classique (cartes sans photo uniquement) */
+.menu-card:not(.has-photo){position:relative;padding-top:22px}
+.menu-card:not(.has-photo) .menu-card-name{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding-right:70px;margin-bottom:8px}
+.menu-card:not(.has-photo) .menu-card-name::after{content:"";flex:1;min-width:24px;border-bottom:2px dotted rgba(26,16,16,.22);transform:translateY(-5px)}
+.menu-card:not(.has-photo) > .menu-card-price{position:absolute;top:22px;right:22px;margin:0;font-style:italic}
 
 /* Badges */
 .menu-card-badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
@@ -334,11 +350,20 @@ footer{background:var(--black);padding:44px 48px;border-top:1px solid rgba(250,2
 .form-status.success{display:block;background:#e8f5e9;color:#2e7d32;border:1px solid #c5e1c8}
 .form-status.error{display:block;background:#fde4e0;color:#8b2424;border:1px solid #f0b9b0}
 
+/* ── FAB RÉSERVER (mobile uniquement) ─────────────── */
+.fab-reserve{display:none;position:fixed;bottom:20px;right:20px;z-index:80;background:var(--accent);color:var(--accent-text);padding:14px 24px;border-radius:40px;box-shadow:0 8px 24px rgba(107,26,31,.38),0 2px 6px rgba(14,14,14,.15);font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;text-decoration:none;align-items:center;gap:8px;transform:translateY(120px);opacity:0;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s ease,background .2s ease}
+.fab-reserve.visible{transform:translateY(0);opacity:1}
+.fab-reserve:hover{background:var(--accent-hover)}
+.fab-reserve::before{content:"🍽️";font-size:14px}
+
 /* ── REVEAL ───────────────────────────────────────── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ── MOBILE ───────────────────────────────────────── */
+/* Afficher le FAB seulement sur mobile */
+@media(max-width:768px){.fab-reserve{display:inline-flex}}
+
 @media(max-width:768px){
   nav{padding:12px 20px}
   nav.scrolled{padding:10px 20px}
