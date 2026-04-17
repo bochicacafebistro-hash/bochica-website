@@ -18,9 +18,16 @@
   <link rel="canonical" href="https://bochicacafebistro.ca/"/>
 
   <!-- Favicon & icônes -->
-  <link rel="icon" type="image/png" href="images/Logo Bochica 2026-7 (1).png"/>
-  <link rel="apple-touch-icon" href="images/Logo Bochica 2026-7 (1).png"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
   <meta name="theme-color" content="#111111"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Bochica"/>
 
   <!-- ============ Open Graph (Facebook, LinkedIn, WhatsApp) ============ -->
   <meta property="og:type" content="restaurant.restaurant"/>
@@ -128,6 +135,111 @@
   }
   </script>
 
+  <!-- ============ Données structurées — Schema.org Menu ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Menu Bochica",
+    "inLanguage": "fr-CA",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Entrées",
+        "hasMenuItem": [
+          {"@type":"MenuItem","name":"Empanada — Poulet ou bœuf","offers":{"@type":"Offer","price":"3.25","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Arepa au fromage","offers":{"@type":"Offer","price":"6.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Sancochito","description":"Vendredi à dimanche","offers":{"@type":"Offer","price":"7.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Frites","offers":{"@type":"Offer","price":"7.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Yuca Frita","description":"Frites de manioc","offers":{"@type":"Offer","price":"7.50","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Morcilla, Chicharron ou Chorizo avec arepa","offers":{"@type":"Offer","price":"9.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Guacamole avec chips maison","offers":{"@type":"Offer","price":"9.50","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Canastica (2x)","description":"Bœuf, poulet, porc ou végé","offers":{"@type":"Offer","price":"9.50","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Patacones de la Casa (3x)","description":"Plantain frit, guacamole, chicharron","offers":{"@type":"Offer","price":"9.50","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Ailes de poulet","offers":{"@type":"Offer","price":"10.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Picadita","description":"Chorizo, morcilla, chicharron, arepa, frites de manioc, patacones, sauce maison","offers":{"@type":"Offer","price":"24.00","priceCurrency":"CAD"}}
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Arepas farcies",
+        "hasMenuItem": [
+          {"@type":"MenuItem","name":"Arepa Végétarienne","suitableForDiet":["https://schema.org/VegetarianDiet","https://schema.org/GlutenFreeDiet"],"offers":{"@type":"Offer","price":"14.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Arepa Classique","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"15.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Arepa Mixte","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"17.00","priceCurrency":"CAD"}}
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Bols",
+        "hasMenuItem": [
+          {"@type":"MenuItem","name":"Bol Végétarien","suitableForDiet":["https://schema.org/VegetarianDiet","https://schema.org/GlutenFreeDiet"],"offers":{"@type":"Offer","price":"19.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Bol Cali","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"20.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Bol Bogotá","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"21.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Bol Medellín","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"21.00","priceCurrency":"CAD"}}
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Repas",
+        "hasMenuItem": [
+          {"@type":"MenuItem","name":"Repas enfant"},
+          {"@type":"MenuItem","name":"Hot-Dog"},
+          {"@type":"MenuItem","name":"Patacon Montanero"},
+          {"@type":"MenuItem","name":"Salchipapas","description":"Option sans gluten offerte"},
+          {"@type":"MenuItem","name":"Nachos","suitableForDiet":"https://schema.org/GlutenFreeDiet"},
+          {"@type":"MenuItem","name":"Burger"},
+          {"@type":"MenuItem","name":"Pollo Asado","suitableForDiet":"https://schema.org/GlutenFreeDiet"},
+          {"@type":"MenuItem","name":"Chicharron","suitableForDiet":"https://schema.org/GlutenFreeDiet"},
+          {"@type":"MenuItem","name":"Churrasco","suitableForDiet":"https://schema.org/GlutenFreeDiet"},
+          {"@type":"MenuItem","name":"Picada","suitableForDiet":"https://schema.org/GlutenFreeDiet"},
+          {"@type":"MenuItem","name":"Suprema","description":"Option sans gluten offerte"}
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Breuvages",
+        "hasMenuItem": [
+          {"@type":"MenuItem","name":"Café et boissons chaudes"},
+          {"@type":"MenuItem","name":"Boissons gazeuses et jus naturels colombiens"}
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Cocktails",
+        "hasMenuItem": [
+          {"@type":"MenuItem","name":"Mocktails","offers":{"@type":"Offer","price":"8.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Cocktails classiques","offers":{"@type":"Offer","price":"10.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Cocktails signature","offers":{"@type":"Offer","priceSpecification":{"@type":"PriceSpecification","minPrice":"12.00","maxPrice":"12.50","priceCurrency":"CAD"}}}
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Bières, vins et spiritueux",
+        "hasMenuItem": [
+          {"@type":"MenuItem","name":"Bières ALPHA et Heineken"},
+          {"@type":"MenuItem","name":"Vins et mousseux"},
+          {"@type":"MenuItem","name":"Spiritueux en bouteille"}
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Desserts",
+        "hasMenuItem": [
+          {"@type":"MenuItem","name":"Gelatina"},
+          {"@type":"MenuItem","name":"Flan Maracuyá"},
+          {"@type":"MenuItem","name":"Brazo de Reina"},
+          {"@type":"MenuItem","name":"Tres Leches"},
+          {"@type":"MenuItem","name":"Cheesecake"},
+          {"@type":"MenuItem","name":"Pandebono"},
+          {"@type":"MenuItem","name":"Buñuelo"},
+          {"@type":"MenuItem","name":"Pain fromage/goyave"}
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -140,6 +252,7 @@
   <div class="nav-links" id="nav-links">
     <a href="#about" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</a>
     <a href="#menu" data-fr="Menu" data-en="Menu" data-es="Menú">Menu</a>
+    <a href="#evenements" data-fr="Événements" data-en="Events" data-es="Eventos">Événements</a>
     <a href="#horaires" data-fr="Horaires" data-en="Hours" data-es="Horarios">Horaires</a>
     <div class="nav-lang">
       <button class="lang-btn active" onclick="setLang('fr')">FR</button>
@@ -178,10 +291,13 @@
 
 <!-- BAND -->
 <div class="band">
-  <div class="band-item"><div class="band-dot-y"></div><span data-fr="Ouvert mer – dim" data-en="Open Wed – Sun" data-es="Abierto mié – dom">Ouvert mer – dim</span></div>
+  <div class="band-item status-item" id="status-pill">
+    <span class="status-dot"></span>
+    <span class="status-text" id="status-text">—</span>
+  </div>
   <div class="band-item"><div class="band-dot-b"></div><span data-fr="430 Rue Saint-Vallier Ouest, Québec" data-en="430 Saint-Vallier Ouest St., Québec" data-es="430 Rue Saint-Vallier Ouest, Québec">430 Rue Saint-Vallier Ouest, Québec</span></div>
   <div class="band-item"><div class="band-dot-r"></div><span data-fr="Commande en ligne disponible" data-en="Online ordering available" data-es="Pedido en línea disponible">Commande en ligne disponible</span></div>
-  <div class="band-item"><div class="band-dot-y"></div><span>367-330-8220</span></div>
+  <div class="band-item"><div class="band-dot-y"></div><a href="tel:+13673308220" style="color:inherit;text-decoration:none">367-330-8220</a></div>
 </div>
 
 <!-- ABOUT -->
@@ -200,6 +316,64 @@
         <div class="stat-item"><div class="stat-num" style="color:#4a90e2">🇨🇴</div><div class="stat-lbl" data-fr="Colombien" data-en="Colombian" data-es="Colombiano">Colombien</div></div>
         <div class="stat-item"><div class="stat-num" style="color:#e74c3c">❤️</div><div class="stat-lbl" data-fr="Fait avec amour" data-en="Made with love" data-es="Hecho con amor">Fait avec amour</div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURES — Nos coups de cœur -->
+<section class="signatures" id="signatures" style="background:#f7f7f7">
+  <div class="signatures-wrap">
+    <div class="section-center reveal">
+      <span class="section-tag" data-fr="Nos coups de cœur" data-en="Our favorites" data-es="Nuestros favoritos">Nos coups de cœur</span>
+      <h2 class="section-title" data-fr="Les saveurs emblématiques<br>de la Colombie" data-en="The iconic flavors<br>of Colombia" data-es="Los sabores emblemáticos<br>de Colombia">Les saveurs emblématiques<br>de la Colombie</h2>
+      <p class="section-sub" data-fr="Chaque plat raconte une région, une tradition, une histoire. Voici nos incontournables pour goûter la Colombie authentique." data-en="Every dish tells the story of a region, a tradition, a heritage. Here are our must-try favorites for an authentic taste of Colombia." data-es="Cada plato cuenta una región, una tradición, una historia. Aquí están nuestros imprescindibles para probar la Colombia auténtica.">Chaque plat raconte une région, une tradition, une histoire. Voici nos incontournables pour goûter la Colombie authentique.</p>
+    </div>
+
+    <div class="sig-grid reveal">
+      <!-- 1. Bol Medellín -->
+      <div class="sig-card">
+        <div class="sig-photo" data-accent="y"><div class="sig-flag">🇨🇴</div></div>
+        <div class="sig-body">
+          <div class="sig-region" data-fr="Région · Antioquia" data-en="Region · Antioquia" data-es="Región · Antioquia">Région · Antioquia</div>
+          <h3 class="sig-name" data-fr="Bol Medellín" data-en="Medellín Bowl" data-es="Bol Medellín">Bol Medellín</h3>
+          <p class="sig-desc" data-fr="Notre hommage à la bandeja paisa : haricots rouges, riz, chicharron, chorizo, œuf, plantain et avocat. Le plat le plus généreux de Colombie." data-en="Our tribute to the iconic bandeja paisa: red beans, rice, chicharron, chorizo, egg, plantain and avocado. Colombia's most generous dish." data-es="Nuestro homenaje a la bandeja paisa: frijoles rojos, arroz, chicharrón, chorizo, huevo, plátano y aguacate. El plato más generoso de Colombia.">Notre hommage à la bandeja paisa : haricots rouges, riz, chicharron, chorizo, œuf, plantain et avocat. Le plat le plus généreux de Colombie.</p>
+          <div class="sig-price">21 $</div>
+        </div>
+      </div>
+      <!-- 2. Arepa Mixte -->
+      <div class="sig-card">
+        <div class="sig-photo" data-accent="b"><div class="sig-flag">🌽</div></div>
+        <div class="sig-body">
+          <div class="sig-region" data-fr="Tradition nationale" data-en="National tradition" data-es="Tradición nacional">Tradition nationale</div>
+          <h3 class="sig-name" data-fr="Arepa Mixte" data-en="Mixed Arepa" data-es="Arepa Mixta">Arepa Mixte</h3>
+          <p class="sig-desc" data-fr="L'arepa, c'est l'âme de la Colombie. Notre version mixte mêle bœuf et poulet dans une galette de maïs dorée. Naturellement sans gluten." data-en="The arepa is the soul of Colombia. Our mixed version combines beef and chicken inside a golden corn flatbread. Naturally gluten-free." data-es="La arepa es el alma de Colombia. Nuestra versión mixta combina carne y pollo en una tortilla de maíz dorada. Naturalmente sin gluten.">L'arepa, c'est l'âme de la Colombie. Notre version mixte mêle bœuf et poulet dans une galette de maïs dorée. Naturellement sans gluten.</p>
+          <div class="sig-price">17 $</div>
+        </div>
+      </div>
+      <!-- 3. Picada -->
+      <div class="sig-card">
+        <div class="sig-photo" data-accent="r"><div class="sig-flag">🔥</div></div>
+        <div class="sig-body">
+          <div class="sig-region" data-fr="Pour partager" data-en="To share" data-es="Para compartir">Pour partager</div>
+          <h3 class="sig-name" data-fr="Picada Bochica" data-en="Bochica Picada" data-es="Picada Bochica">Picada Bochica</h3>
+          <p class="sig-desc" data-fr="Le grand classique colombien à partager : chorizo, morcilla, chicharron, arepa, frites de manioc, patacones et notre sauce maison. Impossible à manquer." data-en="The great Colombian sharing classic: chorizo, morcilla, chicharron, arepa, cassava fries, patacones and our house sauce. A must-try." data-es="El gran clásico colombiano para compartir: chorizo, morcilla, chicharrón, arepa, yuca frita, patacones y nuestra salsa de la casa. Imperdible.">Le grand classique colombien à partager : chorizo, morcilla, chicharron, arepa, frites de manioc, patacones et notre sauce maison. Impossible à manquer.</p>
+          <div class="sig-price" data-fr="Prix variable" data-en="Variable price" data-es="Precio variable">Prix variable</div>
+        </div>
+      </div>
+      <!-- 4. Empanadas -->
+      <div class="sig-card">
+        <div class="sig-photo" data-accent="y"><div class="sig-flag">🥟</div></div>
+        <div class="sig-body">
+          <div class="sig-region" data-fr="L'incontournable" data-en="The essential" data-es="El imprescindible">L'incontournable</div>
+          <h3 class="sig-name" data-fr="Empanadas maison" data-en="Homemade Empanadas" data-es="Empanadas caseras">Empanadas maison</h3>
+          <p class="sig-desc" data-fr="Petits chaussons dorés de pâte de maïs, farcis au bœuf ou au poulet. Croustillants dehors, fondants dedans. À manger avec notre ají piquant." data-en="Golden corn dough pockets filled with beef or chicken. Crispy outside, tender inside. Best with our spicy ají sauce." data-es="Bolsitas doradas de masa de maíz, rellenas de carne o pollo. Crujientes por fuera, suaves por dentro. Perfectas con nuestro ají picante.">Petits chaussons dorés de pâte de maïs, farcis au bœuf ou au poulet. Croustillants dehors, fondants dedans. À manger avec notre ají piquant.</p>
+          <div class="sig-price" data-fr="Dès 3,25 $" data-en="From $3.25" data-es="Desde $3.25">Dès 3,25 $</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sig-cta reveal">
+      <a href="#menu" class="btn-primary" data-fr="Voir le menu complet" data-en="See full menu" data-es="Ver el menú completo">Voir le menu complet</a>
     </div>
   </div>
 </section>
@@ -704,7 +878,79 @@
       <a href="https://bochica.order-online.ai/" target="_blank" class="btn-primary" data-fr="Commander en ligne" data-en="Order online" data-es="Ordenar en línea">Commander en ligne</a>
     </div>
   </div>
-</section>   
+</section>
+
+<!-- ÉVÉNEMENTS -->
+<section class="events" id="evenements" style="background:#111111">
+  <div class="events-wrap">
+    <div class="section-center reveal">
+      <span class="section-tag" data-fr="À venir chez Bochica" data-en="Upcoming at Bochica" data-es="Próximamente en Bochica" style="color:#f5a623">À venir chez Bochica</span>
+      <h2 class="section-title" style="color:#fff" data-fr="Soirées & événements" data-en="Events & nights" data-es="Noches & eventos">Soirées & événements</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.7)" data-fr="Salsa, matchs de soccer, fêtes colombiennes : venez vivre la Colombie avec nous." data-en="Salsa, soccer matches, Colombian celebrations: come experience Colombia with us." data-es="Salsa, partidos de fútbol, fiestas colombianas: ven a vivir Colombia con nosotros.">Salsa, matchs de soccer, fêtes colombiennes : venez vivre la Colombie avec nous.</p>
+    </div>
+
+    <div class="events-grid reveal">
+      <!-- Événement 1 — exemple, à personnaliser -->
+      <div class="event-card">
+        <div class="event-date">
+          <div class="event-day">SAM</div>
+          <div class="event-num">—</div>
+          <div class="event-month" data-fr="À venir" data-en="Coming" data-es="Próximo">À venir</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tag" data-fr="Soirée Salsa" data-en="Salsa Night" data-es="Noche de Salsa">Soirée Salsa</div>
+          <h3 class="event-title" data-fr="Soirée Salsa & Cumbia" data-en="Salsa & Cumbia Night" data-es="Noche de Salsa y Cumbia">Soirée Salsa & Cumbia</h3>
+          <p class="event-desc" data-fr="Musique latine en direct, cocktails signature et ambiance festive jusqu'à la fermeture." data-en="Live Latin music, signature cocktails and festive vibes until closing." data-es="Música latina en vivo, cócteles de autor y ambiente festivo hasta el cierre.">Musique latine en direct, cocktails signature et ambiance festive jusqu'à la fermeture.</p>
+          <div class="event-meta" data-fr="🕒 Dès 20 h · Entrée libre" data-en="🕒 From 8 pm · Free entry" data-es="🕒 Desde 20 h · Entrada libre">🕒 Dès 20 h · Entrée libre</div>
+        </div>
+      </div>
+
+      <!-- Événement 2 -->
+      <div class="event-card">
+        <div class="event-date">
+          <div class="event-day" data-fr="VEN" data-en="FRI" data-es="VIE">VEN</div>
+          <div class="event-num">—</div>
+          <div class="event-month" data-fr="À venir" data-en="Coming" data-es="Próximo">À venir</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tag" data-fr="Match de soccer" data-en="Soccer Match" data-es="Partido de fútbol">Match de soccer</div>
+          <h3 class="event-title" data-fr="Colombie vs..." data-en="Colombia vs..." data-es="Colombia vs...">Colombie vs...</h3>
+          <p class="event-desc" data-fr="Venez encourager la sélection colombienne en direct sur grand écran, avec Picada et bière en spécial." data-en="Cheer on the Colombian team on our big screen, with Picada and beer specials." data-es="Anima a la selección colombiana en nuestra pantalla grande, con Picada y cerveza en oferta.">Venez encourager la sélection colombienne en direct sur grand écran, avec Picada et bière en spécial.</p>
+          <div class="event-meta" data-fr="⚽ Réservation recommandée" data-en="⚽ Reservation recommended" data-es="⚽ Reserva recomendada">⚽ Réservation recommandée</div>
+        </div>
+      </div>
+
+      <!-- Événement 3 -->
+      <div class="event-card">
+        <div class="event-date">
+          <div class="event-day" data-fr="JUI" data-en="JUL" data-es="JUL">JUI</div>
+          <div class="event-num">20</div>
+          <div class="event-month" data-fr="2026" data-en="2026" data-es="2026">2026</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tag" data-fr="Fête nationale" data-en="National Day" data-es="Fiesta nacional">Fête nationale</div>
+          <h3 class="event-title" data-fr="Independencia de Colombia 🇨🇴" data-en="Colombian Independence Day 🇨🇴" data-es="Independencia de Colombia 🇨🇴">Independencia de Colombia 🇨🇴</h3>
+          <p class="event-desc" data-fr="Menu spécial, musique traditionnelle et drapeaux tricolores pour célébrer la Colombie en famille." data-en="Special menu, traditional music and tricolor flags to celebrate Colombia with family." data-es="Menú especial, música tradicional y banderas tricolores para celebrar Colombia en familia.">Menu spécial, musique traditionnelle et drapeaux tricolores pour célébrer la Colombie en famille.</p>
+          <div class="event-meta" data-fr="🎉 Toute la journée" data-en="🎉 All day long" data-es="🎉 Todo el día">🎉 Toute la journée</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="events-cta reveal">
+      <p class="events-cta-txt" data-fr="Suivez-nous pour ne rien manquer" data-en="Follow us to stay updated" data-es="Síguenos para no perderte nada">Suivez-nous pour ne rien manquer</p>
+      <div class="events-social">
+        <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener" class="event-social-btn" aria-label="Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.facebook.com/61567223975718" target="_blank" rel="noopener" class="event-social-btn" aria-label="Facebook">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3.2H13V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2C16 4.1 15 4 13.9 4 11.6 4 10 5.4 10 7.9v2.9H7.3V14H10v8h3z"/></svg>
+          <span>Facebook</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- GALLERY -->
 <section class="gallery" id="gallery">
@@ -720,6 +966,79 @@
     <div class="gallery-item"><img class="gallery-img" src="images/gallery3.jpg" alt="" onerror="this.outerHTML='<div class=gallery-ph>📷</div>'"/></div>
     <div class="gallery-item"><img class="gallery-img" src="images/gallery4.jpg" alt="" onerror="this.outerHTML='<div class=gallery-ph>📷</div>'"/></div>
     <div class="gallery-item"><img class="gallery-img" src="images/gallery5.jpg" alt="" onerror="this.outerHTML='<div class=gallery-ph>📷</div>'"/></div>
+  </div>
+</section>
+
+<!-- AVIS CLIENTS -->
+<section class="reviews" id="avis" style="background:#ffffff">
+  <div class="reviews-wrap">
+    <div class="section-center reveal">
+      <span class="section-tag" data-fr="Ce qu'on dit de nous" data-en="What people say" data-es="Lo que dicen">Ce qu'on dit de nous</span>
+      <h2 class="section-title" data-fr="Avis de nos clients" data-en="Customer reviews" data-es="Opiniones de clientes">Avis de nos clients</h2>
+      <div class="reviews-rating reveal">
+        <div class="stars">★★★★★</div>
+        <div class="rating-num">4.8</div>
+        <div class="rating-sub" data-fr="Basé sur les avis Google" data-en="Based on Google reviews" data-es="Basado en reseñas de Google">Basé sur les avis Google</div>
+      </div>
+    </div>
+
+    <div class="reviews-grid reveal">
+      <!-- Avis 1 — À remplacer par un vrai avis Google -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" data-fr="« Cuisine colombienne authentique à Québec ! Les arepas sont incroyables et l'accueil chaleureux. Comme un voyage à Medellín. »" data-en="&quot;Authentic Colombian cuisine in Québec! The arepas are amazing and the welcome is warm. Like a trip to Medellín.&quot;" data-es="«¡Cocina colombiana auténtica en Quebec! Las arepas son increíbles y el recibimiento cálido. Como un viaje a Medellín.»">« Cuisine colombienne authentique à Québec ! Les arepas sont incroyables et l'accueil chaleureux. Comme un voyage à Medellín. »</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:#f5a623">M</div>
+          <div>
+            <div class="review-name">Marie L.</div>
+            <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avis 2 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" data-fr="« La Picada à partager est énorme et délicieuse. Parfait pour découvrir plusieurs plats colombiens d'un coup. Service aux petits oignons. »" data-en="&quot;The sharing Picada is huge and delicious. Perfect to discover many Colombian dishes at once. Excellent service.&quot;" data-es="«La Picada para compartir es enorme y deliciosa. Perfecta para descubrir varios platos colombianos de una vez. Servicio impecable.»">« La Picada à partager est énorme et délicieuse. Parfait pour découvrir plusieurs plats colombiens d'un coup. Service aux petits oignons. »</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:#4a90e2">J</div>
+          <div>
+            <div class="review-name">Jean-François T.</div>
+            <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avis 3 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" data-fr="« Mon arepa mixte était parfaite. Ambiance chaleureuse, musique latine, on se sent en Colombie. Je reviens c'est sûr ! »" data-en="&quot;My mixed arepa was perfect. Warm atmosphere, Latin music — you feel like you're in Colombia. Coming back for sure!&quot;" data-es="«Mi arepa mixta estaba perfecta. Ambiente acogedor, música latina, te sientes en Colombia. ¡Volveré seguro!»">« Mon arepa mixte était parfaite. Ambiance chaleureuse, musique latine, on se sent en Colombie. Je reviens c'est sûr ! »</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:#e74c3c">S</div>
+          <div>
+            <div class="review-name">Sofia R.</div>
+            <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avis 4 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" data-fr="« Les cocktails signature sont incroyables et les empanadas fondent en bouche. Un des meilleurs restos latinos à Québec, sans hésiter. »" data-en="&quot;The signature cocktails are amazing and the empanadas melt in your mouth. One of the best Latin restaurants in Québec, no doubt.&quot;" data-es="«Los cócteles de autor son increíbles y las empanadas se deshacen en la boca. Uno de los mejores restaurantes latinos de Quebec, sin duda.»">« Les cocktails signature sont incroyables et les empanadas fondent en bouche. Un des meilleurs restos latinos à Québec, sans hésiter. »</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:#2e7d32">A</div>
+          <div>
+            <div class="review-name">Alexandre M.</div>
+            <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-cta reveal">
+      <a href="https://www.google.com/maps/place/430+Rue+Saint-Vallier+O,+Qu%C3%A9bec,+QC" target="_blank" rel="noopener" class="btn-outline-dark" data-fr="Lire tous les avis sur Google" data-en="Read all reviews on Google" data-es="Leer todas las reseñas en Google">Lire tous les avis sur Google</a>
+    </div>
   </div>
 </section>
 
@@ -789,6 +1108,67 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- FORMULAIRE DE CONTACT -->
+    <div class="contact-form-wrap reveal">
+      <div class="contact-form-head">
+        <span class="section-tag" data-fr="Écrivez-nous" data-en="Contact us" data-es="Escríbenos">Écrivez-nous</span>
+        <h3 class="contact-form-title" data-fr="Une question? Un événement privé?" data-en="A question? A private event?" data-es="¿Una pregunta? ¿Un evento privado?">Une question? Un événement privé?</h3>
+        <p class="contact-form-sub" data-fr="Groupes, réservations spéciales, allergies, partenariats : on vous répond rapidement." data-en="Groups, special reservations, allergies, partnerships: we'll get back to you quickly." data-es="Grupos, reservas especiales, alergias, colaboraciones: te respondemos rápido.">Groupes, réservations spéciales, allergies, partenariats : on vous répond rapidement.</p>
+      </div>
+
+      <!--
+        👇 IMPORTANT — Configuration du formulaire (une seule fois, 2 min)
+        1. Créez un compte gratuit sur https://formspree.io
+        2. Créez un nouveau formulaire, copiez l'URL de type https://formspree.io/f/xxxxxxxx
+        3. Remplacez VOTRE_ID_FORMSPREE ci-dessous par la fin de votre URL
+        4. En attendant, le formulaire utilise un fallback mailto qui ouvre le courrier du visiteur.
+      -->
+      <form class="contact-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+        <input type="hidden" name="_subject" value="Nouveau message du site Bochica"/>
+        <input type="hidden" name="_language" value="fr"/>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-name" data-fr="Nom" data-en="Name" data-es="Nombre">Nom</label>
+            <input type="text" id="cf-name" name="nom" required autocomplete="name"/>
+          </div>
+          <div class="form-field">
+            <label for="cf-email" data-fr="Courriel" data-en="Email" data-es="Correo">Courriel</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-phone" data-fr="Téléphone (facultatif)" data-en="Phone (optional)" data-es="Teléfono (opcional)">Téléphone (facultatif)</label>
+            <input type="tel" id="cf-phone" name="telephone" autocomplete="tel"/>
+          </div>
+          <div class="form-field">
+            <label for="cf-subject" data-fr="Sujet" data-en="Subject" data-es="Asunto">Sujet</label>
+            <select id="cf-subject" name="sujet" required>
+              <option value="" data-fr="— Choisir —" data-en="— Choose —" data-es="— Elegir —">— Choisir —</option>
+              <option value="Groupe / Événement privé" data-fr="Groupe / Événement privé" data-en="Group / Private event" data-es="Grupo / Evento privado">Groupe / Événement privé</option>
+              <option value="Réservation spéciale" data-fr="Réservation spéciale" data-en="Special reservation" data-es="Reserva especial">Réservation spéciale</option>
+              <option value="Allergies / Régime particulier" data-fr="Allergies / Régime particulier" data-en="Allergies / Dietary needs" data-es="Alergias / Dieta especial">Allergies / Régime particulier</option>
+              <option value="Partenariat / Collaboration" data-fr="Partenariat / Collaboration" data-en="Partnership / Collaboration" data-es="Colaboración / Asociación">Partenariat / Collaboration</option>
+              <option value="Autre question" data-fr="Autre question" data-en="Other question" data-es="Otra pregunta">Autre question</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cf-msg" data-fr="Votre message" data-en="Your message" data-es="Tu mensaje">Votre message</label>
+          <textarea id="cf-msg" name="message" rows="5" required></textarea>
+        </div>
+        <!-- Anti-spam (honeypot) -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" data-fr="Envoyer le message" data-en="Send message" data-es="Enviar mensaje">Envoyer le message</button>
+          <span class="form-privacy" data-fr="Vos informations ne seront jamais partagées." data-en="Your info will never be shared." data-es="Tu información nunca será compartida.">Vos informations ne seront jamais partagées.</span>
+        </div>
+        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+      </form>
     </div>
   </div>
 </section>

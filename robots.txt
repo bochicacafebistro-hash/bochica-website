@@ -1,0 +1,17 @@
+# robots.txt — Bochica Café Bistro
+# https://bochicacafebistro.ca/
+
+User-agent: *
+Allow: /
+Disallow: /test/
+
+# Autoriser l'indexation des images et ressources
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Bloquer l'exploration inutile
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://bochicacafebistro.ca/sitemap.xml

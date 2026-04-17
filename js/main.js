@@ -10,6 +10,8 @@ function setLang(lang) {
     btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
   });
   localStorage.setItem('bochica-lang', lang);
+  // Mettre à jour le badge de statut dans la bonne langue
+  if (typeof renderStatus === 'function') renderStatus();
 }
 
 function restoreLang() {
@@ -300,6 +302,174 @@ function copyLangAttrs(src, dst) {
   });
 }
 
+// ── Statut Ouvert / Fermé ─────────────────────────────
+// Horaires : dimanche=0, lundi=1, ..., samedi=6
+// [heureOuverture, heureFermeture] en heures décimales (17.5 = 17h30). null = fermé.
+const SCHEDULE = {
+  0: [13, 21],   // dimanche
+  1: null,       // lundi
+  2: null,       // mardi
+  3: [17, 21],   // mercredi
+  4: [17, 21],   // jeudi
+  5: [12, 22],   // vendredi
+  6: [13, 23]    // samedi
+};
+const DAY_NAMES = {
+  fr: ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'],
+  en: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+  es: ['domingo','lunes','martes','miércoles','jueves','viernes','sábado']
+};
+function formatHour(h, lang) {
+  const hh = Math.floor(h);
+  const mm = Math.round((h - hh) * 60);
+  if (lang === 'en') {
+    const period = hh >= 12 ? 'pm' : 'am';
+    const h12 = hh > 12 ? hh - 12 : (hh === 0 ? 12 : hh);
+    return mm ? `${h12}:${String(mm).padStart(2,'0')}${period}` : `${h12}${period}`;
+  }
+  return mm ? `${hh}h${String(mm).padStart(2,'0')}` : `${hh}h`;
+}
+function getQuebecDate() {
+  // Forcer le fuseau Montréal/Québec pour ne pas dépendre du fuseau du visiteur
+  const now = new Date();
+  const qStr = now.toLocaleString('en-US', { timeZone: 'America/Toronto' });
+  return new Date(qStr);
+}
+function computeStatus() {
+  const now = getQuebecDate();
+  const day = now.getDay();
+  const hourNow = now.getHours() + now.getMinutes() / 60;
+  const today = SCHEDULE[day];
+
+  if (today) {
+    const [open, close] = today;
+    if (hourNow >= open && hourNow < close) {
+      return { open: true, nextChange: close, nextDay: day };
+    }
+    if (hourNow < open) {
+      return { open: false, nextChange: open, nextDay: day, todayOpens: true };
+    }
+  }
+  // Trouver la prochaine ouverture
+  for (let i = 1; i <= 7; i++) {
+    const d = (day + i) % 7;
+    if (SCHEDULE[d]) {
+      return { open: false, nextChange: SCHEDULE[d][0], nextDay: d, daysAhead: i };
+    }
+  }
+  return { open: false };
+}
+function renderStatus() {
+  const pill = document.getElementById('status-pill');
+  const txt = document.getElementById('status-text');
+  if (!pill || !txt) return;
+  const lang = currentLang || 'fr';
+  const s = computeStatus();
+  const days = DAY_NAMES[lang];
+
+  pill.classList.remove('open', 'closed');
+  let fr, en, es;
+
+  if (s.open) {
+    pill.classList.add('open');
+    const hF = formatHour(s.nextChange, 'fr');
+    const hE = formatHour(s.nextChange, 'en');
+    const hS = formatHour(s.nextChange, 'es');
+    fr = `Ouvert · ferme à ${hF}`;
+    en = `Open · closes at ${hE}`;
+    es = `Abierto · cierra a las ${hS}`;
+  } else {
+    pill.classList.add('closed');
+    if (s.todayOpens) {
+      const hF = formatHour(s.nextChange, 'fr');
+      const hE = formatHour(s.nextChange, 'en');
+      const hS = formatHour(s.nextChange, 'es');
+      fr = `Fermé · ouvre à ${hF}`;
+      en = `Closed · opens at ${hE}`;
+      es = `Cerrado · abre a las ${hS}`;
+    } else if (s.nextDay !== undefined) {
+      const hF = formatHour(s.nextChange, 'fr');
+      const hE = formatHour(s.nextChange, 'en');
+      const hS = formatHour(s.nextChange, 'es');
+      fr = `Fermé · ouvre ${DAY_NAMES.fr[s.nextDay]} ${hF}`;
+      en = `Closed · opens ${DAY_NAMES.en[s.nextDay]} ${hE}`;
+      es = `Cerrado · abre ${DAY_NAMES.es[s.nextDay]} ${hS}`;
+    } else {
+      fr = 'Fermé'; en = 'Closed'; es = 'Cerrado';
+    }
+  }
+
+  txt.setAttribute('data-fr', fr);
+  txt.setAttribute('data-en', en);
+  txt.setAttribute('data-es', es);
+  txt.textContent = ({ fr, en, es })[lang] || fr;
+}
+
+// ── Formulaire de contact ─────────────────────────────
+function initContactForm() {
+  const form = document.querySelector('.contact-form');
+  if (!form) return;
+  const status = document.getElementById('form-status');
+  const msg = {
+    fr: {
+      sending: 'Envoi en cours…',
+      success: '✅ Merci ! Votre message a bien été envoyé. Nous répondons dans les 24-48 h.',
+      error: 'Une erreur est survenue. Écrivez-nous directement à info@bochicacafebistro.ca',
+      notconfigured: 'Le formulaire n\'est pas encore configuré. Écrivez-nous à info@bochicacafebistro.ca'
+    },
+    en: {
+      sending: 'Sending…',
+      success: '✅ Thank you! Your message has been sent. We reply within 24-48 h.',
+      error: 'Something went wrong. Please write us at info@bochicacafebistro.ca',
+      notconfigured: 'The form is not yet configured. Please write us at info@bochicacafebistro.ca'
+    },
+    es: {
+      sending: 'Enviando…',
+      success: '✅ ¡Gracias! Tu mensaje ha sido enviado. Respondemos en 24-48 h.',
+      error: 'Ocurrió un error. Escríbenos a info@bochicacafebistro.ca',
+      notconfigured: 'El formulario aún no está configurado. Escríbenos a info@bochicacafebistro.ca'
+    }
+  };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const lang = currentLang || 'fr';
+    const t = msg[lang];
+
+    // Si Formspree n'est pas configuré, basculer vers mailto
+    if (form.action.includes('VOTRE_ID_FORMSPREE')) {
+      const data = new FormData(form);
+      const body = `Nom: ${data.get('nom')}%0D%0ACourriel: ${data.get('email')}%0D%0ATéléphone: ${data.get('telephone')||'—'}%0D%0ASujet: ${data.get('sujet')}%0D%0A%0D%0A${data.get('message')}`;
+      window.location.href = `mailto:info@bochicacafebistro.ca?subject=${encodeURIComponent(data.get('sujet')||'Message du site')}&body=${body}`;
+      status.className = 'form-status success';
+      status.textContent = t.notconfigured;
+      return;
+    }
+
+    status.className = 'form-status';
+    status.textContent = t.sending;
+    status.style.display = 'block';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.className = 'form-status success';
+        status.textContent = t.success;
+        form.reset();
+      } else {
+        status.className = 'form-status error';
+        status.textContent = t.error;
+      }
+    } catch {
+      status.className = 'form-status error';
+      status.textContent = t.error;
+    }
+  });
+}
+
 // ── Init ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initDishCards();
@@ -308,6 +478,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initScrollReveal();
   initYear();
+  renderStatus();
+  initContactForm();
+  // Rafraîchir toutes les minutes
+  setInterval(renderStatus, 60000);
 });
 
 // Fermer la modale avec Échap
