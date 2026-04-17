@@ -92,163 +92,282 @@
 
     <!-- Onglets -->
     <div class="menu-tabs reveal">
-      <button class="menu-tab active" onclick="setMenuTab('entrees')" data-fr="Entrées" data-en="Starters" data-es="Entradas">Entrées</button>
-      <button class="menu-tab" onclick="setMenuTab('arepas')" data-fr="Arepas" data-en="Arepas" data-es="Arepas">Arepas</button>
-      <button class="menu-tab" onclick="setMenuTab('bols')" data-fr="Bols" data-en="Bowls" data-es="Boles">Bols</button>
-      <button class="menu-tab" onclick="setMenuTab('repas')" data-fr="Repas" data-en="Meals" data-es="Comidas">Repas</button>
-      <button class="menu-tab" onclick="setMenuTab('breuvages')" data-fr="Breuvages" data-en="Beverages" data-es="Bebidas">Breuvages</button>
-      <button class="menu-tab" onclick="setMenuTab('cocktails')" data-fr="Cocktails" data-en="Cocktails" data-es="Cócteles">Cocktails</button>
-      <button class="menu-tab" onclick="setMenuTab('bieres')" data-fr="Bières" data-en="Beers" data-es="Cervezas">Bières</button>
+      <button class="menu-tab active" onclick="setMenuTab('entrees', this)" data-fr="Entrées" data-en="Appetizers" data-es="Entradas">Entrées</button>
+      <button class="menu-tab" onclick="setMenuTab('arepas', this)" data-fr="Arepas farcies" data-en="Stuffed Arepas" data-es="Arepas Rellenas">Arepas farcies</button>
+      <button class="menu-tab" onclick="setMenuTab('bols', this)" data-fr="Bols" data-en="Bowls" data-es="Boles">Bols</button>
+      <button class="menu-tab" onclick="setMenuTab('repas', this)" data-fr="Repas" data-en="Mains" data-es="Comidas">Repas</button>
+      <button class="menu-tab" onclick="setMenuTab('breuvages', this)" data-fr="Breuvages" data-en="Beverages" data-es="Bebidas">Breuvages</button>
+      <button class="menu-tab" onclick="setMenuTab('cocktails', this)" data-fr="Cocktails" data-en="Cocktails" data-es="Cócteles">Cocktails</button>
+      <button class="menu-tab" onclick="setMenuTab('bieres', this)" data-fr="Bières" data-en="Beers" data-es="Cervezas">Bières</button>
     </div>
 
-    <!-- Entrées -->
+    <!-- ENTRÉES -->
     <div class="menu-section" id="tab-entrees">
       <div class="menu-grid">
+
         <div class="menu-card reveal">
-          <div class="menu-card-name">Empanadas (3)</div>
-          <div class="menu-card-desc" data-fr="Chaussons croustillants farcis à la viande ou aux légumes, dorés à la perfection." data-en="Crispy stuffed pastries with meat or vegetables, golden to perfection." data-es="Empanadas crujientes rellenas de carne o verduras.">Chaussons croustillants farcis à la viande ou aux légumes, dorés à la perfection.</div>
-          <div class="menu-card-price">8 $</div>
+          <div class="menu-card-name" data-fr="Empanada — Poulet ou bœuf" data-en="Empanada — Chicken or Beef" data-es="Empanada — Pollo o Carne">Empanada — Poulet ou bœuf</div>
+          <div class="menu-card-desc" data-fr="4 pour 12 $ · 10 pour 28 $" data-en="4 for $12 · 10 for $28" data-es="4 x $12 · 10 x $28">4 pour 12 $ · 10 pour 28 $</div>
+          <div class="menu-card-price">3.25 $</div>
         </div>
+
         <div class="menu-card reveal">
-          <div class="menu-card-name">Patacones</div>
-          <div class="menu-card-desc" data-fr="Tranches de banane plantain frites deux fois, croustillantes et dorées." data-en="Twice-fried plantain slices, crispy and golden." data-es="Rodajas de plátano frito dos veces, crujientes y doradas.">Tranches de banane plantain frites deux fois, croustillantes et dorées.</div>
+          <div class="menu-card-name" data-fr="Arepa au fromage" data-en="Cheese Arepa" data-es="Arepa con Queso">Arepa au fromage</div>
+          <div class="menu-card-price">6 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Sancochito" data-en="Sancochito" data-es="Sancochito">Sancochito</div>
+          <div class="menu-card-desc" data-fr="Vendredi à dimanche" data-en="Friday to Sunday" data-es="Viernes a domingo">Vendredi à dimanche</div>
+          <div class="menu-card-price">7 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Frites" data-en="Fries" data-es="Papas Fritas">Frites</div>
+          <div class="menu-card-price">7 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Yuca Frita — Frites de manioc" data-en="Yuca Frita — Cassava fries" data-es="Yuca Frita">Yuca Frita — Frites de manioc</div>
+          <div class="menu-card-price">7.5 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Morcilla ou Chicharron ou Chorizo avec arepa" data-en="Morcilla, Chicharron or Chorizo with arepa" data-es="Morcilla, Chicharrón o Chorizo con arepa">Morcilla ou Chicharron ou Chorizo avec arepa</div>
           <div class="menu-card-price">9 $</div>
         </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Chicharrón</div>
-          <div class="menu-card-desc" data-fr="Porc croustillant frit à la colombienne, servi avec ají maison." data-en="Colombian crispy fried pork, served with homemade ají." data-es="Cerdo crujiente frito al estilo colombiano, servido con ají casero.">Porc croustillant frit à la colombienne, servi avec ají maison.</div>
-          <div class="menu-card-price">12 $</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Arepas -->
-    <div class="menu-section" id="tab-arepas" style="display:none">
-      <div class="menu-grid">
         <div class="menu-card reveal">
-          <div class="menu-card-name">Arepa con Queso</div>
-          <div class="menu-card-desc" data-fr="Arepa grillée garnie de fromage colombien fondu." data-en="Grilled arepa topped with melted Colombian cheese." data-es="Arepa a la parrilla con queso colombiano derretido.">Arepa grillée garnie de fromage colombien fondu.</div>
+          <div class="menu-card-name" data-fr="Guacamole avec chips maison" data-en="Guacamole with house chips" data-es="Guacamole con chips caseros">Guacamole avec chips maison</div>
+          <div class="menu-card-price">9.5 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Canastica (2x) — Bœuf, poulet, porc, végé" data-en="Canastica (2x) — Beef, chicken, pork, veg" data-es="Canastica (2x) — Carne, pollo, cerdo, végé">Canastica (2x)</div>
+          <div class="menu-card-desc" data-fr="Bœuf, poulet, porc ou végé" data-en="Beef, chicken, pork or veg" data-es="Carne, pollo, cerdo o végé">Bœuf, poulet, porc ou végé</div>
+          <div class="menu-card-price">9.5 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Patacones de la Casa (3x)" data-en="Patacones de la Casa (3x)" data-es="Patacones de la Casa (3x)">Patacones de la Casa (3x)</div>
+          <div class="menu-card-desc" data-fr="Plantain frit, guacamole, chicharron" data-en="Fried plantain, guacamole, chicharron" data-es="Patacones, guacamole, chicharrón">Plantain frit, guacamole, chicharron</div>
+          <div class="menu-card-price">9.5 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Ailes de poulet" data-en="Chicken Wings" data-es="Alitas de Pollo">Ailes de poulet</div>
+          <div class="menu-card-desc" data-fr="6 pour 10 $ · 12 pour 18 $" data-en="6 for $10 · 12 for $18" data-es="6 x $10 · 12 x $18">6 pour 10 $ · 12 pour 18 $</div>
           <div class="menu-card-price">10 $</div>
         </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Arepa con Hogao</div>
-          <div class="menu-card-desc" data-fr="Arepa garnie de hogao, sauce tomate et oignon caramélisé." data-en="Arepa topped with hogao, a caramelized tomato and onion sauce." data-es="Arepa con hogao, salsa de tomate y cebolla caramelizada.">Arepa garnie de hogao, sauce tomate et oignon caramélisé.</div>
-          <div class="menu-card-price">11 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Arepa de Choclo</div>
-          <div class="menu-card-desc" data-fr="Arepa sucrée au maïs frais, garnie de fromage et de crème." data-en="Sweet fresh corn arepa, topped with cheese and cream." data-es="Arepa dulce de maíz fresco con queso y crema.">Arepa sucrée au maïs frais, garnie de fromage et de crème.</div>
-          <div class="menu-card-price">11 $</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Bols -->
-    <div class="menu-section" id="tab-bols" style="display:none">
-      <div class="menu-grid">
         <div class="menu-card reveal">
-          <div class="menu-card-name">Bol Colombien</div>
-          <div class="menu-card-desc" data-fr="Riz, haricots rouges, poulet grillé, avocat et plantain frit." data-en="Rice, red beans, grilled chicken, avocado and fried plantain." data-es="Arroz, frijoles rojos, pollo a la parrilla, aguacate y plátano frito.">Riz, haricots rouges, poulet grillé, avocat et plantain frit.</div>
-          <div class="menu-card-price">18 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Bol Végétarien</div>
-          <div class="menu-card-desc" data-fr="Riz, lentilles, légumes grillés, avocat, patacones et sauce ají." data-en="Rice, lentils, grilled vegetables, avocado, patacones and ají sauce." data-es="Arroz, lentejas, verduras a la parrilla, aguacate y ají.">Riz, lentilles, légumes grillés, avocat, patacones et sauce ají.</div>
-          <div class="menu-card-price">16 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Bol Bochica</div>
-          <div class="menu-card-desc" data-fr="Notre bol signature — riz, haricots noirs, bœuf effiloché, fromage et hogao." data-en="Our signature bowl — rice, black beans, shredded beef, cheese and hogao." data-es="Nuestro bol especial — arroz, frijoles negros, carne desmechada y hogao.">Notre bol signature — riz, haricots noirs, bœuf effiloché, fromage et hogao.</div>
-          <div class="menu-card-price">20 $</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Repas -->
-    <div class="menu-section" id="tab-repas" style="display:none">
-      <div class="menu-grid">
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Bandeja Paisa</div>
-          <div class="menu-card-desc" data-fr="Le plat emblématique colombien — haricots rouges, riz, chicharrón, chorizo, œuf et avocat." data-en="The iconic Colombian dish — red beans, rice, chicharrón, chorizo, egg and avocado." data-es="El plato emblemático colombiano — frijoles rojos, arroz, chicharrón y chorizo.">Le plat emblématique colombien — haricots rouges, riz, chicharrón, chorizo, œuf et avocat.</div>
-          <div class="menu-card-price">28 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Sancocho</div>
-          <div class="menu-card-desc" data-fr="Soupe traditionnelle colombienne au poulet, manioc, maïs et plantain." data-en="Traditional Colombian chicken soup with cassava, corn and plantain." data-es="Sopa tradicional colombiana de pollo con yuca, maíz y plátano.">Soupe traditionnelle colombienne au poulet, manioc, maïs et plantain.</div>
-          <div class="menu-card-price">22 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Pabellón Criollo</div>
-          <div class="menu-card-desc" data-fr="Bœuf effiloché, haricots noirs, riz blanc, fromage et plantain doux." data-en="Shredded beef, black beans, white rice, cheese and sweet plantain." data-es="Carne desmechada, caraotas negras, arroz blanco y plátano maduro.">Bœuf effiloché, haricots noirs, riz blanc, fromage et plantain doux.</div>
+          <div class="menu-card-name" data-fr="Picadita" data-en="Picadita" data-es="Picadita">Picadita</div>
+          <div class="menu-card-desc" data-fr="Chorizo, morcilla, chicharron, arepa, frites de manioc, patacones, sauce maison" data-en="Chorizo, morcilla, chicharron, arepa, cassava fries, fried plantain, house sauce" data-es="Chorizo, morcilla, chicharrón, arepa, yuca frita, patacones, salsa de la casa">Chorizo, morcilla, chicharron, arepa, frites de manioc, patacones, sauce maison</div>
           <div class="menu-card-price">24 $</div>
         </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name menu-card-extras" data-fr="— Extras —" data-en="— Extras —" data-es="— Extras —">— Extras —</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Patacona (2)" data-en="Fried Plantain (2)" data-es="Patacona (2)">Patacona (2)</div>
+          <div class="menu-card-price">2 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Arepa ou Riz" data-en="Arepa or Rice" data-es="Arepa / Arroz">Arepa ou Riz</div>
+          <div class="menu-card-price">2.5 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Haricots ou Lentilles" data-en="Beans or Lentils" data-es="Frijoles o Lentejas">Haricots ou Lentilles</div>
+          <div class="menu-card-price">2.5 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Guacamole" data-en="Guacamole" data-es="Guacamole">Guacamole</div>
+          <div class="menu-card-price">3 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Chorizo" data-en="Chorizo" data-es="Chorizo">Chorizo</div>
+          <div class="menu-card-price">4 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Chicharron (80g)" data-en="Chicharron (80g)" data-es="Chicharrón (80g)">Chicharron (80g)</div>
+          <div class="menu-card-price">4 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Morcilla" data-en="Morcilla" data-es="Morcilla">Morcilla</div>
+          <div class="menu-card-price">4.25 $</div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Breuvages -->
+    <!-- AREPAS FARCIES -->
+    <div class="menu-section" id="tab-arepas" style="display:none">
+      <div class="menu-grid">
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Végétarienne" data-en="Vegetarian" data-es="Vegetariana">Végétarienne</div>
+          <div class="menu-card-desc" data-fr="Protéine à base de soja, fromage, guacamole" data-en="Soy-based meat, cheese, guacamole" data-es="Proteína a base de soya, queso, guacamole">Protéine à base de soja, fromage, guacamole</div>
+          <div class="menu-card-price">14 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Classique" data-en="Classic" data-es="Clásica">Classique</div>
+          <div class="menu-card-desc" data-fr="1 protéine au choix (poulet, porc ou bœuf +1), fromage, guacamole" data-en="Choice of 1 protein (chicken, pork or beef +1), cheese, guacamole" data-es="1 proteína a elegir (pollo, cerdo o res +1), queso, guacamole">1 protéine au choix (poulet, porc ou bœuf +1), fromage, guacamole</div>
+          <div class="menu-card-price">15 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Mixte" data-en="Combination" data-es="Mixta">Mixte</div>
+          <div class="menu-card-desc" data-fr="2 protéines au choix (poulet, porc, bœuf +1, chorizo ou chicharron), fromage, guacamole" data-en="Choice of 2 proteins (chicken, pork, beef +1, chorizo or chicharron), cheese, guacamole" data-es="2 proteínas a elegir (pollo, cerdo, res +1, chorizo o chicharrón), queso, guacamole">2 protéines au choix (poulet, porc, bœuf +1, chorizo ou chicharron), fromage, guacamole</div>
+          <div class="menu-card-price">17 $</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOLS -->
+    <div class="menu-section" id="tab-bols" style="display:none">
+      <div class="menu-grid">
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Cali</div>
+          <div class="menu-card-desc" data-fr="Riz, poulet grillé effiloché, champignons, maïs, oignons caramélisés, frites de manioc, guacamole, œuf frit" data-en="Rice, shredded grilled chicken, mushrooms, corn, caramelized onions, cassava fries, guacamole, fried egg" data-es="Arroz, pollo desmenuzado, champiñones, maíz, cebolla caramelizada, yuca frita, guacamole, huevo frito">Riz, poulet grillé effiloché, champignons, maïs, oignons caramélisés, frites de manioc, guacamole, œuf frit</div>
+          <div class="menu-card-price">20 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Bogotá</div>
+          <div class="menu-card-desc" data-fr="Riz, porc BBQ effiloché, chorizo, lentilles, patates, guacamole, œuf frit" data-en="Rice, BBQ pulled pork, chorizo, lentils, fries, guacamole, fried egg" data-es="Arroz, cerdo desmenuzado, chorizo, lentejas, papas fritas, guacamole, huevo frito">Riz, porc BBQ effiloché, chorizo, lentilles, patates, guacamole, œuf frit</div>
+          <div class="menu-card-price">21 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Medellín</div>
+          <div class="menu-card-desc" data-fr="Riz, bœuf braisé, chicharron, haricots, plantain, salsa, guacamole, œuf frit" data-en="Rice, shredded braised beef, sauce, chicharron, beans, fried plantain, guacamole, fried egg" data-es="Arroz, carne desmechada, hogao, chicharrón, frijoles, patacón, guacamole, huevo frito">Riz, bœuf braisé, chicharron, haricots, plantain, salsa, guacamole, œuf frit</div>
+          <div class="menu-card-price">21 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Option végétarienne" data-en="Vegetarian Option" data-es="Opción Vegetariana">Option végétarienne</div>
+          <div class="menu-card-desc" data-fr="Tous les bols sont disponibles avec une protéine à base de soja" data-en="Every bowl can be made vegetarian with soy-based meat" data-es="Todos los bols se pueden hacer con carne a base de soya">Tous les bols sont disponibles avec une protéine à base de soja</div>
+          <div class="menu-card-price">19 $</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- REPAS -->
+    <div class="menu-section" id="tab-repas" style="display:none">
+      <div class="menu-grid">
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Repas enfant" data-en="Kids' Meals" data-es="Menú Infantil">Repas enfant</div>
+          <div class="menu-card-desc" data-fr="Option 1 : Frites, croquettes de poulet, saucisse, ketchup · Option 2 : Riz au poulet et saucisses avec frites" data-en="Option 1: Fries, chicken nuggets, sausages, ketchup · Option 2: Chicken, sausage and rice with fries" data-es="Opción 1: Papas fritas, nuggets de pollo, salchicha · Opción 2: Arroz con pollo con papas fritas">Option 1 : Frites, croquettes de poulet, saucisse · Option 2 : Riz au poulet et saucisses</div>
+          <div class="menu-card-price">10 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Hot-Dog Colombien" data-en="Colombian Hot-Dog" data-es="Perro Caliente">Hot-Dog Colombien</div>
+          <div class="menu-card-desc" data-fr="Pain brioché, saucisse, fromage gratiné, croustilles, frites. Sauces : ananas, rosé et tartare" data-en="Brioche bun, sausage, cheese, crispy topping, fries. Sauces: pineapple, tartar and pink sauce" data-es="Pan brioche, salchicha, queso, papas ripio, papas fritas. Salsas: piña, tártara y rosada">Pain brioché, saucisse, fromage gratiné, croustilles, frites. Sauces : ananas, rosé et tartare</div>
+          <div class="menu-card-price">15 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Nachos" data-en="Nachos" data-es="Nachos">Nachos</div>
+          <div class="menu-card-desc" data-fr="Chips maison, poulet, porc ou bœuf (+1), salsa maison, guacamole, jalapeños, fromage" data-en="House chips, chicken, pork or beef (+1), house sauce, guacamole, jalapeños, cheese" data-es="Chips caseros, pollo, cerdo o res +1, salsa de la casa, guacamole, jalapeños, queso">Chips maison, poulet, porc ou bœuf (+1), salsa maison, guacamole, jalapeños, fromage</div>
+          <div class="menu-card-price">22 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Patacon Montanero" data-en="Patacon Montanero" data-es="Patacón Montanero">Patacon Montanero</div>
+          <div class="menu-card-desc" data-fr="Patacon, bœuf braisé, salsa, fromage. Extra chicharron +4 $" data-en="Fried plantain, shredded braised beef, sauce, cheese. Extra chicharron +$4" data-es="Patacón, carne desmechada, hogao, queso. Extra chicharrón +$4">Patacon, bœuf braisé, salsa, fromage. Extra chicharron +4 $</div>
+          <div class="menu-card-price">15.5 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Salchipapas — Poutine colombienne" data-en="Salchipapas — Colombian poutine" data-es="Salchipapas — Poutine colombiana">Salchipapas — Poutine colombienne</div>
+          <div class="menu-card-desc" data-fr="Frites, saucisses, champignons, oignons caramélisés, maïs, fromage, sauces maison. Extra viande +4 $" data-en="Fries, sausages, mushrooms, caramelized onions, corn, cheese, house sauce. Extra meat +$4" data-es="Papas fritas, salchichas, champiñones, cebollas caramelizadas, maíz, queso. Extra carne +$4">Frites, saucisses, champignons, oignons caramélisés, maïs, fromage, sauces maison. Extra viande +4 $</div>
+          <div class="menu-card-price">16 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Bochica Burger" data-en="Bochica Burger" data-es="Bochica Burger">Bochica Burger</div>
+          <div class="menu-card-desc" data-fr="Pain brioché, bœuf, chicharron, ananas, sauce tartare, frites" data-en="Brioche bun, grilled beef patty, chicharron, pineapple, tartar sauce, fries" data-es="Pan brioche, carne de res, chicharrón, piña, salsa tártara, papas fritas">Pain brioché, bœuf, chicharron, ananas, sauce tartare, frites</div>
+          <div class="menu-card-price">21 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Pollo Asado" data-en="Pollo Asado" data-es="Pollo Asado">Pollo Asado</div>
+          <div class="menu-card-desc" data-fr="Poulet grillé, riz, frites, patacona, salade maison" data-en="Grilled chicken, rice, fries, fried plantain, house salad" data-es="Pollo asado, arroz, papas fritas, patacón, ensalada de la casa">Poulet grillé, riz, frites, patacona, salade maison</div>
+          <div class="menu-card-price">21 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Le Chicharron (Flan de porc)" data-en="El Chicharron" data-es="El Chicharrón">Le Chicharron</div>
+          <div class="menu-card-desc" data-fr="Chicharron, patate, sauce et salade maison" data-en="Chicharron, potatoes, sauce and house salad" data-es="Chicharrón, papitas, salsa y ensalada de la casa">Chicharron, patate, sauce et salade maison</div>
+          <div class="menu-card-price">27 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Churrasco" data-en="Churrasco" data-es="Churrasco">Churrasco</div>
+          <div class="menu-card-desc" data-fr="Contre-filet de bœuf 8oz, riz, frites, patacona, chimichurri, salade maison" data-en="8oz Striploin steak, rice, fries, fried plantain, house salad" data-es="Contra-filete de res 8oz, arroz, papas fritas, patacón, ensalada de la casa">Contre-filet de bœuf 8oz, riz, frites, patacona, chimichurri, salade maison</div>
+          <div class="menu-card-price">31 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Picada" data-en="Picada" data-es="Picada">Picada</div>
+          <div class="menu-card-desc" data-fr="Chorizo, morcilla, chicharron, ailes de poulet, arepa, frites de manioc, patacones, frites, guacamole" data-en="Chorizo, morcilla, chicharron, chicken wings, arepa, cassava fries, fried plantain, guacamole" data-es="Chorizo, morcilla, chicharrón, alitas de pollo, arepa, papas fritas, yuca frita, patacones, guacamole">Chorizo, morcilla, chicharron, ailes de poulet, arepa, frites de manioc, patacones, frites, guacamole</div>
+          <div class="menu-card-price">36 $</div>
+        </div>
+
+        <div class="menu-card reveal">
+          <div class="menu-card-name" data-fr="Suprema" data-en="Suprema" data-es="Suprema">Suprema</div>
+          <div class="menu-card-desc" data-fr="Chorizo, morcilla, chicharron, ailes de poulet, lanières de bœuf, croquettes de poulet, saucisses, arepa, manioc, patacones, frites, guacamole, chimichurri, sauces maison" data-en="Chorizo, morcilla, chicharron, chicken wings, beef strips, chicken nuggets, sausages, arepa, fries, cassava fries, fried plantain, guacamole, chimichurri, house sauces" data-es="Chorizo, morcilla, chicharrón, alitas, tiras de carne, nuggets, salchichas, arepa, papas, yuca, patacones, guacamole, chimichurri">Chorizo, morcilla, chicharron, ailes de poulet, lanières de bœuf, croquettes, saucisses, arepa, manioc, patacones, frites, guacamole, chimichurri</div>
+          <div class="menu-card-price">69 $</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BREUVAGES -->
     <div class="menu-section" id="tab-breuvages" style="display:none">
       <div class="menu-grid">
         <div class="menu-card reveal">
-          <div class="menu-card-name">Limonada de Coco</div>
-          <div class="menu-card-desc" data-fr="Notre limonade signature crémeuse à la noix de coco." data-en="Our signature creamy coconut lemonade." data-es="Nuestra limonada cremosa de coco.">Notre limonade signature crémeuse à la noix de coco.</div>
-          <div class="menu-card-price">7 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Agua de Panela</div>
-          <div class="menu-card-desc" data-fr="Boisson traditionnelle colombienne à base de canne à sucre, chaude ou froide." data-en="Traditional Colombian sugar cane drink, hot or cold." data-es="Bebida tradicional colombiana de caña de azúcar, caliente o fría.">Boisson traditionnelle à base de canne à sucre, chaude ou froide.</div>
-          <div class="menu-card-price">5 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Jugo Natural</div>
-          <div class="menu-card-desc" data-fr="Jus de fruits frais au choix — maracuyá, mango, guanábana ou fraise." data-en="Fresh fruit juice — passion fruit, mango, soursop or strawberry." data-es="Jugo de frutas frescas — maracuyá, mango, guanábana o fresa.">Jus de fruits frais — maracuyá, mango, guanábana ou fraise.</div>
-          <div class="menu-card-price">6 $</div>
+          <div class="menu-card-name" data-fr="À venir" data-en="Coming soon" data-es="Próximamente">À venir</div>
+          <div class="menu-card-desc" data-fr="Notre carte des breuvages sera disponible bientôt." data-en="Our beverage menu will be available soon." data-es="Nuestra carta de bebidas estará disponible pronto.">Notre carte des breuvages sera disponible bientôt.</div>
         </div>
       </div>
     </div>
 
-    <!-- Cocktails -->
+    <!-- COCKTAILS -->
     <div class="menu-section" id="tab-cocktails" style="display:none">
       <div class="menu-grid">
         <div class="menu-card reveal">
-          <div class="menu-card-name">Mojito Colombien</div>
-          <div class="menu-card-desc" data-fr="Rhum blanc, citron vert, menthe fraîche, sucre de canne et eau gazeuse." data-en="White rum, lime, fresh mint, cane sugar and sparkling water." data-es="Ron blanco, limón, menta fresca, azúcar de caña y agua con gas.">Rhum blanc, citron vert, menthe fraîche, sucre de canne et eau gazeuse.</div>
-          <div class="menu-card-price">13 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Cóctel de Maracuyá</div>
-          <div class="menu-card-desc" data-fr="Vodka, maracuyá frais, jus de citron et sirop de canne." data-en="Vodka, fresh passion fruit, lemon juice and cane syrup." data-es="Vodka, maracuyá fresco, jugo de limón y sirope de caña.">Vodka, maracuyá frais, jus de citron et sirop de canne.</div>
-          <div class="menu-card-price">14 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Aguardiente Sour</div>
-          <div class="menu-card-desc" data-fr="Aguardiente colombien, citron vert, blanc d'œuf et angostura." data-en="Colombian aguardiente, lime, egg white and angostura." data-es="Aguardiente colombiano, limón, clara de huevo y angostura.">Aguardiente colombien, citron vert, blanc d'œuf et angostura.</div>
-          <div class="menu-card-price">14 $</div>
+          <div class="menu-card-name" data-fr="À venir" data-en="Coming soon" data-es="Próximamente">À venir</div>
+          <div class="menu-card-desc" data-fr="Notre carte des cocktails sera disponible bientôt." data-en="Our cocktail menu will be available soon." data-es="Nuestra carta de cócteles estará disponible pronto.">Notre carte des cocktails sera disponible bientôt.</div>
         </div>
       </div>
     </div>
 
-    <!-- Bières -->
+    <!-- BIÈRES -->
     <div class="menu-section" id="tab-bieres" style="display:none">
       <div class="menu-grid">
         <div class="menu-card reveal">
-          <div class="menu-card-name">Club Colombia</div>
-          <div class="menu-card-desc" data-fr="Bière blonde colombienne légère et rafraîchissante." data-en="Light and refreshing Colombian blonde beer." data-es="Cerveza rubia colombiana ligera y refrescante.">Bière blonde colombienne légère et rafraîchissante.</div>
-          <div class="menu-card-price">8 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Águila</div>
-          <div class="menu-card-desc" data-fr="La bière nationale de Colombie, légère et facile à boire." data-en="Colombia's national beer, light and easy-drinking." data-es="La cerveza nacional de Colombia, ligera y fácil de tomar.">La bière nationale de Colombie, légère et facile à boire.</div>
-          <div class="menu-card-price">8 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name">Bière locale du Québec</div>
-          <div class="menu-card-desc" data-fr="Sélection de bières locales québécoises en rotation." data-en="Rotating selection of local Quebec craft beers." data-es="Selección rotativa de cervezas artesanales locales de Quebec.">Sélection de bières locales québécoises en rotation.</div>
-          <div class="menu-card-price">9 $</div>
+          <div class="menu-card-name" data-fr="À venir" data-en="Coming soon" data-es="Próximamente">À venir</div>
+          <div class="menu-card-desc" data-fr="Notre carte des bières sera disponible bientôt." data-en="Our beer menu will be available soon." data-es="Nuestra carta de cervezas estará disponible pronto.">Notre carte des bières sera disponible bientôt.</div>
         </div>
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:8px">
+    <div style="text-align:center;margin-top:32px">
       <a href="https://bochica.order-online.ai/" target="_blank" class="btn-primary" data-fr="Commander en ligne" data-en="Order online" data-es="Ordenar en línea">Commander en ligne</a>
     </div>
   </div>
