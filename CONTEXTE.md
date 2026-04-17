@@ -28,79 +28,94 @@ Exportable vers **GoDaddy** (hébergement final) — fichiers statiques HTML/CSS
   - Jaune : `#f5a623` — couleur accent principale
   - Bleu : `#4a90e2` — accent secondaire
   - Rouge : `#e74c3c` — accent tertiaire
-  - Noir : `#0a0a0a` — fond dark (hero, band, réservation, footer)
-  - Blanc : `#ffffff` — fond sections claires
+  - Noir : `#111111` — hero, nav, band, réservation
+  - Blanc : `#ffffff` — sections claires
+  - Gris : `#f7f7f7` — fond menu
 - **Tricolore** jaune/bleu/rouge utilisé comme barre décorative partout
 - **Typographie** : Helvetica Neue, sans-serif
 
 ## 🖼️ Logos & Images
 Tous les fichiers sont dans le dossier `images/` :
-- `images/Logo Bochica 2026-7.png` — logo utilisé partout (nav, hero, footer)
-- `images/Logo Bochica 2026-8.png` — logo rond doré (non utilisé pour l'instant)
-- `images/Logo Bochica 2026-6 (1).png` — logo texte (non utilisé pour l'instant)
+- `images/Logo Bochica 2026-3.png` — logo hero (PNG transparent)
+- `images/Logo Bochica 2026-7 (1).png` — logo nav + footer
 - `images/hero.jpg` — photo fond hero (à uploader)
 - `images/about.jpg` — photo section Notre histoire (à uploader)
 - `images/gallery1.jpg` à `images/gallery5.jpg` — galerie (à uploader)
 
 ## 🗂️ Structure des fichiers
 bochica-website/
-├── index.html          ← HTML uniquement, sans CSS ni JS inline
+├── index.html          ← HTML complet
 ├── CONTEXTE.md         ← ce fichier
 ├── css/
 │   └── style.css       ← tout le CSS
 ├── js/
 │   └── main.js         ← tout le JavaScript
 └── images/
-├── Logo Bochica 2026-7.png
-├── Logo Bochica 2026-8.png
-├── Logo Bochica 2026-6 (1).png
-├── hero.jpg
-├── about.jpg
-└── gallery1-5.jpg
+├── Logo Bochica 2026-3.png
+├── Logo Bochica 2026-7 (1).png
+└── (photos à uploader)
 
 ## 📄 Sections du site (dans index.html)
-1. **Nav** — logo + liens + sélecteur FR/EN/ES + boutons Commander/Réserver
-2. **Hero** — fond noir, logo blanc filtré, phrase d'accroche, 2 boutons CTA
+1. **Nav** — texte BOCHICA + liens + FR/EN/ES + boutons Commander/Réserver
+2. **Hero** — fond noir `#111111`, logo centré, phrase d'accroche, 2 boutons CTA
 3. **Band** — barre noire avec infos rapides (horaires, adresse, téléphone)
 4. **About** — Notre histoire, photo + décoration tricolore + stats
-5. **Menu Preview** — 3 cartes (Empanadas, Bandeja Paisa, Limonada de Coco)
+5. **Menu** — onglets + sous-sections + items complets
 6. **Gallery** — grille 4 colonnes sur fond noir
-7. **Horaires & Contact** — tableau horaires + infos contact avec icônes colorées
-8. **Réservation** — CTA final fond noir, boutons réserver + appeler
-9. **Footer** — logo + liens + copyright + barre tricolore
+7. **Horaires & Contact** — tableau horaires + infos contact
+8. **Réservation** — CTA final fond noir
+9. **Footer** — texte BOCHICA + liens + copyright + barre tricolore
+
+## 🍽️ Menu — Structure des onglets
+- **Entrées** — Empanadas, Arepa, Sancochito, Frites, Yuca, Guacamole, Canastica, Patacones, Ailes, Picadita + Extras
+- **Arepas farcies** — Végétarienne (14$), Classique (15$), Mixte (17$)
+- **Bols** — Cali (20$), Bogotá (21$), Medellín (21$), Végétarien (19$)
+- **Repas** — Repas enfant, Hot-Dog, Patacon Montanero, Salchipapas, Nachos, Burger, Pollo Asado, Chicharron, Churrasco, Picada, Suprema
+- **Breuvages** — Boissons chaudes (café, cappuccino, chocolat) · Boissons froides (Coke, Jarritos, Colombiana, Red Bull) · Jus naturels (Mora, Guayaba, Mango, Lulo, Piña, Tamarindo, Maracuyá, Guanábana)
+- **Cocktails** — Mocktails (8$) · Classics (10$) · Cocktails signature (12-12.5$) · Cafés alcoolisés
+- **Bières** — Bières ALPHA + Heineken · Vins & Mousseux (35$) · Spiritueux bouteille (79-99$)
+- **Desserts** — Gelatina, Flan Maracuyá, Brazo de Reina, Tres Leches, Cheesecake · Pains (Pandebono, Buñuelo, Pain fromage/goyave)
 
 ## 🌐 Multilingue
-- Système via attributs HTML `data-fr`, `data-en`, `data-es`
-- Fonction JS `setLang(lang)` dans `js/main.js`
+- Attributs HTML `data-fr`, `data-en`, `data-es` sur chaque élément
+- Fonction JS `setLang(lang)` dans `main.js`
 - Langue sauvegardée dans `localStorage`
 - Boutons FR / EN / ES dans la nav
 
 ## ✨ Fonctionnalités JS (main.js)
 - `setLang(lang)` — changement de langue
 - `restoreLang()` — restaure la langue depuis localStorage
-- `initNav()` — nav qui devient sombre au scroll
-- `toggleMenu()` — menu hamburger mobile
+- `initNav()` — nav qui change au scroll (déjà sombre, juste shadow)
+- `toggleMenu()` — menu hamburger mobile avec animation X
+- `closeMenu()` — ferme le menu mobile
+- `setMenuTab(tab, el)` — navigation entre les onglets du menu
 - `initScrollReveal()` — animation apparition au scroll (classe `.reveal`)
 - `initYear()` — année copyright automatique
 
+## 🎨 Classes CSS importantes
+- `.menu-tabs` / `.menu-tab` / `.menu-tab.active` — onglets du menu
+- `.menu-section` — section de chaque onglet
+- `.menu-subsection-title` — titre de sous-catégorie (pleine largeur, avec couleur .y/.b/.r)
+- `.menu-card` — fiche d'un item
+- `.reveal` / `.reveal.visible` — animation scroll
+- `.hero-btns a` — min-width 220px, gap 20px
+
 ## 🚀 Workflow
-1. Modifier fichiers sur **GitHub.com** directement
+1. Modifier sur **GitHub.com**
 2. **Vercel** redéploie automatiquement
 3. Tester sur Vercel
-4. Quand prêt → télécharger tous les fichiers → uploader sur **GoDaddy File Manager**
+4. Quand prêt → télécharger fichiers → uploader sur **GoDaddy File Manager**
 
-## 🚧 Contraintes
-- Aucune installation locale — tout via GitHub.com + Vercel
-- Vanilla HTML/CSS/JS — pas de framework
-- Fichiers séparés : `css/style.css` + `js/main.js` + `index.html`
-- Images toujours dans `images/` avec chemins `src="images/nom-fichier.ext"`
-- Vercel redéploie automatiquement à chaque commit GitHub
+## ⚠️ Règles importantes
+- Pour changements dans **NAV ou HERO** → donner la section CSS complète
+- Pour autres changements → donner juste les lignes à modifier
+- Pour changements majeurs → donner le fichier complet
+- Images toujours dans `images/` avec chemin `src="images/nom-fichier"`
+- Un seul bouton Commander en ligne à la fin de la section menu
 
 ## 📝 Fonctionnalités à ajouter (liste évolutive)
-- [ ] Photos réelles du restaurant (hero, about, galerie)
-- [ ] Menu complet (page séparée ou PDF)
+- [ ] Photos réelles (hero, about, galerie)
 - [ ] Section témoignages / avis Google
-- [ ] Intégration Google Maps
-- [ ] Section événements spéciaux
+- [ ] Google Maps intégré
 - [ ] SEO optimisé (meta tags, Open Graph, sitemap)
 - [ ] Formulaire de contact fonctionnel
