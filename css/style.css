@@ -162,6 +162,20 @@ footer{background:#0a0a0a;padding:40px 48px;border-top:1px solid rgba(255,255,25
 .footer-bar div:nth-child(2){flex:1;background:#4a90e2}
 .footer-bar div:nth-child(3){flex:1;background:#e74c3c}
 
+/* ── FOOTER SOCIAL ────────────────────────────────── */
+.footer-social{display:flex;align-items:center;gap:12px}
+.footer-social-label{color:rgba(255,255,255,.4);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-right:4px}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);text-decoration:none;transition:background .25s ease,color .25s ease,transform .25s ease}
+.social-icon:hover{transform:translateY(-2px);color:#ffffff}
+.social-icon.social-ig:hover{background:linear-gradient(45deg,#f5a623,#e74c3c,#4a90e2)}
+.social-icon.social-fb:hover{background:#4a90e2}
+
+/* ── CONTACT SOCIAL LINKS ─────────────────────────── */
+.contact-social{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.contact-social a{color:#111111;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(0,0,0,.15);transition:color .2s,border-color .2s}
+.contact-social a:hover{color:#f5a623;border-bottom-color:#f5a623}
+.contact-social-sep{color:rgba(0,0,0,.3)}
+
 /* ── REVEAL ───────────────────────────────────────── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}

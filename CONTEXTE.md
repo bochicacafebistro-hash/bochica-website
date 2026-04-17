@@ -19,8 +19,18 @@ Exportable vers **GoDaddy** (hébergement final) — fichiers statiques HTML/CSS
 - **Courriel** : info@bochicacafebistro.ca
 - **Réseaux sociaux** : @bochicaQC
 - **Phrase d'accroche** : "Voyagez en Colombie… sans quitter le Québec!"
-- **Services** : Souper seulement
-- **Horaires** : Lundi fermé · Mardi–Dimanche 17h00–21h00
+- **Services** : Souper (avec midi ven/sam/dim)
+- **Horaires** :
+  - Lundi : Fermé
+  - Mardi : Fermé
+  - Mercredi : 17h00 – 21h00
+  - Jeudi : 17h00 – 21h00
+  - Vendredi : 12h00 – 22h00
+  - Samedi : 13h00 – 23h00
+  - Dimanche : 13h00 – 21h00
+- **Réseaux sociaux** :
+  - Instagram : https://www.instagram.com/bochica_restaurantcol/
+  - Facebook : https://www.facebook.com/61567223975718
 
 ## 🎨 Design
 - **Style** : Moderne et minimaliste — hero fond noir, sections blanches/grises
