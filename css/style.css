@@ -275,6 +275,8 @@ footer{background:#0a0a0a;padding:40px 48px;border-top:1px solid rgba(255,255,25
   .dish-modal{padding:0;align-items:flex-end}
   .dish-modal-content{max-width:100%;max-height:95vh;border-radius:16px 16px 0 0}
   .dish-modal-name{font-size:20px}
-  .dish-modal-body{padding:20px 20px 24px}
+  .dish-modal-body{padding:20px 20px 96px}
   .dish-modal-photo{aspect-ratio:4/3}
+  .dish-modal-close{position:fixed;top:auto;bottom:20px;right:20px;width:56px;height:56px;font-size:30px;background:#111111;color:#ffffff;box-shadow:0 4px 16px rgba(0,0,0,.45);z-index:1001}
+  .dish-modal-close:hover{background:#000000;transform:scale(1.05)}
 }
