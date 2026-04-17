@@ -110,6 +110,9 @@ section{padding:88px 48px}
 .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.5px;padding:3px 9px;border-radius:12px;text-transform:none}
 .badge-gf{background:#e8f5e9;color:#2e7d32}
 .badge-gf-opt{background:#fff6de;color:#8a6800}
+.badge-veg{background:#dcedc8;color:#33691e}
+.badge-veg-opt{background:#f1f8e9;color:#558b2f}
+.badge-veg::before,.badge-veg-opt::before{content:"\1F331";margin-right:4px;font-size:11px}
 .menu-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:32px 0 24px}
 .menu-tab{background:none;border:1px solid #333;color:#666;padding:8px 20px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:.2s}
 .menu-tab:hover{border-color:#f5a623;color:#f5a623}

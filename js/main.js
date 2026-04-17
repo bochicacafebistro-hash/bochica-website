@@ -82,20 +82,30 @@ function setMenuTab(tab, el) {
 }
 
 // ── Fiches de plats : photos + badges + modale ────────
-// Sections qui ont photo + modale clickable
-const DISH_SECTIONS_WITH_MODAL = ['tab-arepas', 'tab-bols', 'tab-repas'];
+// Sections qui ont photo + modale clickable (toutes sauf les extras, qui ne sont plus dans le menu)
+const DISH_SECTIONS_WITH_MODAL = [
+  'tab-entrees', 'tab-arepas', 'tab-bols', 'tab-repas',
+  'tab-breuvages', 'tab-cocktails', 'tab-bieres', 'tab-desserts'
+];
+// Sections dont la modale affiche la liste des extras disponibles
+const EXTRAS_SECTIONS = ['tab-arepas', 'tab-bols', 'tab-repas'];
 // Sections qui reçoivent la mention Sans gluten
 const GF_SECTIONS = ['tab-entrees', 'tab-arepas', 'tab-bols', 'tab-repas'];
 // Plats qui contiennent du gluten (pas de mention)
 const NO_GF_KEYWORDS = ['hot-dog', 'hot dog', 'hotdog', 'burger'];
 // Plats avec option sans gluten offerte
 const OPTIONAL_GF_KEYWORDS = ['picada suprema', 'salchipapas', 'suprema'];
+// Sections qui reçoivent la mention Option végé / Végé
+const VEG_SECTIONS = ['tab-arepas', 'tab-bols'];
+// Plats déjà 100 % végétariens (mention Végé au lieu d'Option végé)
+const FULL_VEG_KEYWORDS = ['végétarien', 'vegetarien', 'vegetarian', 'vegetariano'];
 
 function initDishCards() {
   document.querySelectorAll('.menu-section').forEach(section => {
     const sectionId = section.id;
     const addModal = DISH_SECTIONS_WITH_MODAL.includes(sectionId);
     const addGF = GF_SECTIONS.includes(sectionId);
+    const addVeg = VEG_SECTIONS.includes(sectionId);
 
     section.querySelectorAll('.menu-card').forEach(card => {
       const nameEl = card.querySelector('.menu-card-name');
@@ -122,12 +132,22 @@ function initDishCards() {
         if (priceInBody) card.appendChild(priceInBody);
       }
 
-      // Ajouter le badge Sans gluten / Option sans gluten
-      if (addGF && !card.querySelector('.menu-card-badges')) {
-        const badge = computeGFBadge(rawName);
-        if (badge) {
-          const badgesEl = document.createElement('div');
-          badgesEl.className = 'menu-card-badges';
+      // Collecter les badges à afficher
+      const badges = [];
+      if (addGF) {
+        const gf = computeGFBadge(rawName);
+        if (gf) badges.push(gf);
+      }
+      if (addVeg) {
+        const veg = computeVegBadge(rawName);
+        if (veg) badges.push(veg);
+      }
+
+      // Ajouter les badges
+      if (badges.length > 0 && !card.querySelector('.menu-card-badges')) {
+        const badgesEl = document.createElement('div');
+        badgesEl.className = 'menu-card-badges';
+        badges.forEach(badge => {
           const span = document.createElement('span');
           span.className = 'badge ' + badge.cls;
           span.setAttribute('data-fr', badge.fr);
@@ -135,15 +155,15 @@ function initDishCards() {
           span.setAttribute('data-es', badge.es);
           span.textContent = badge.fr;
           badgesEl.appendChild(span);
+        });
 
-          // Insérer après le nom (dans body si has-photo, sinon directement)
-          const target = card.querySelector('.menu-card-body') || card;
-          const nameInTarget = target.querySelector('.menu-card-name');
-          if (nameInTarget && nameInTarget.nextSibling) {
-            target.insertBefore(badgesEl, nameInTarget.nextSibling);
-          } else {
-            target.appendChild(badgesEl);
-          }
+        // Insérer après le nom (dans body si has-photo, sinon directement)
+        const target = card.querySelector('.menu-card-body') || card;
+        const nameInTarget = target.querySelector('.menu-card-name');
+        if (nameInTarget && nameInTarget.nextSibling) {
+          target.insertBefore(badgesEl, nameInTarget.nextSibling);
+        } else {
+          target.appendChild(badgesEl);
         }
       }
 
@@ -176,6 +196,25 @@ function computeGFBadge(name) {
   };
 }
 
+function computeVegBadge(name) {
+  // Plat déjà 100 % végétarien → badge Végé
+  if (FULL_VEG_KEYWORDS.some(k => name.includes(k))) {
+    return {
+      cls: 'badge-veg',
+      fr: 'Végé',
+      en: 'Veggie',
+      es: 'Vegetariano'
+    };
+  }
+  // Option végé disponible pour tous les autres bols et arepas
+  return {
+    cls: 'badge-veg-opt',
+    fr: 'Option végé',
+    en: 'Veggie option',
+    es: 'Opción vegetariana'
+  };
+}
+
 // ── Modale fiche de plat ──────────────────────────────
 function openDish(card) {
   const modal = document.getElementById('dish-modal');
@@ -192,6 +231,14 @@ function openDish(card) {
   const mBadges = document.getElementById('dish-modal-badges');
   const mImg = document.getElementById('dish-modal-img');
   const mPh = modal.querySelector('.dish-modal-photo-ph');
+  const mExtras = document.getElementById('dish-modal-extras');
+
+  // Afficher la section Extras seulement pour les arepas, bols et repas
+  if (mExtras) {
+    const parentSection = card.closest('.menu-section');
+    const showExtras = parentSection && EXTRAS_SECTIONS.includes(parentSection.id);
+    mExtras.style.display = showExtras ? '' : 'none';
+  }
 
   // Nom (copie des attributs data-*)
   if (nameEl) {
