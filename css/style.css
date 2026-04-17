@@ -101,6 +101,7 @@ section{padding:88px 48px}
 .menu-tab.active{background:#f5a623;border-color:#f5a623;color:#111111}
 .menu-section{display:block}
 .menu-card-extras{color:var(--text3);font-size:12px;letter-spacing:2px;text-align:center;padding:8px 0}
+.menu-card-header{background:var(--grey);border:none !important;padding:16px 28px 8px}
 
 
 /* ── GALLERY ──────────────────────────────────────── */
