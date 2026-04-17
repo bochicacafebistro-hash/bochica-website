@@ -76,6 +76,12 @@ function initYear() {
 }
 
 // ── Init ──────────────────────────────────────────────
+function setMenuTab(tab) {
+  document.querySelectorAll('.menu-section').forEach(s => s.style.display = 'none');
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).style.display = 'block';
+  event.target.classList.add('active');
+}
 document.addEventListener('DOMContentLoaded', () => {
   restoreLang();
   initNav();
