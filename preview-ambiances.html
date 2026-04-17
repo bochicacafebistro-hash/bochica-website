@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bochica — Prévisualisation d'ambiances</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,800;1,300&family=Inter:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    /* Valeurs par défaut (Espresso) */
+    --bg-dark:#2b1d17;
+    --bg-dark-2:#3a2820;
+    --bg-dark-3:#1f140f;
+    --text-on-dark:#faf7f2;
+    --text-on-dark-mute:rgba(250,247,242,.65);
+    --surface:#faf7f2;
+    --surface-2:#f3eee6;
+    --text:#1a1a1a;
+    --text-mute:#5f5f5f;
+    --yellow:#f5a623;
+    --blue:#4a90e2;
+    --red:#e74c3c;
+    --accent:#f5a623;
+    --accent-hover:#e09400;
+    --accent-text:#111;
+    --font-heading:'Inter',Helvetica,Arial,sans-serif;
+    --font-body:'Inter',Helvetica,Arial,sans-serif;
+  }
+  html,body{min-height:100%}
+  body{font-family:var(--font-body);background:#e9e5dd;color:var(--text);padding:0 0 60px}
+
+  /* ── BARRE DE CONTRÔLE ──────────────────────── */
+  .controls{position:sticky;top:0;z-index:1000;background:#111;color:#fff;padding:14px 20px;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+  .controls-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  .controls h1{font-size:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#f5a623}
+  .ctrl-group{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .ctrl-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-right:6px}
+  .swatch{cursor:pointer;border:2px solid transparent;border-radius:8px;padding:6px 10px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;background:rgba(255,255,255,.04);transition:.15s;min-width:72px}
+  .swatch:hover{background:rgba(255,255,255,.08)}
+  .swatch.active{border-color:#f5a623;background:rgba(245,166,35,.12)}
+  .swatch-colors{display:flex;gap:2px}
+  .swatch-colors span{width:14px;height:14px;border-radius:3px;border:1px solid rgba(255,255,255,.15)}
+  .swatch-name{font-size:10px;font-weight:700;letter-spacing:.5px;color:#fff;text-align:center}
+  .font-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 14px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:.15s}
+  .font-btn:hover{background:rgba(255,255,255,.14)}
+  .font-btn.active{background:#f5a623;color:#111;border-color:#f5a623}
+
+  /* ── VIEWPORT DE PRÉVISUALISATION ──────────── */
+  .preview{max-width:1200px;margin:30px auto;background:var(--surface);border-radius:16px;overflow:hidden;box-shadow:0 10px 50px rgba(0,0,0,.12)}
+
+  /* Nav */
+  .p-nav{background:var(--bg-dark);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06)}
+  .p-logo{font-family:var(--font-heading);font-size:18px;font-weight:900;letter-spacing:3px;color:var(--text-on-dark)}
+  .p-logo span{color:var(--accent)}
+  .p-nav-links{display:flex;gap:24px}
+  .p-nav-links a{color:var(--text-on-dark-mute);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none}
+  .p-nav-btn{background:var(--accent);color:var(--accent-text);padding:9px 18px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;text-decoration:none}
+
+  /* Hero */
+  .p-hero{background:var(--bg-dark);padding:72px 32px 84px;text-align:center;color:var(--text-on-dark);position:relative}
+  .p-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--accent) 0 33.33%,var(--blue) 33.33% 66.66%,var(--red) 66.66%)}
+  .p-hero h2{font-family:var(--font-heading);font-size:42px;font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:18px}
+  .p-hero h2 em{font-style:italic;font-weight:300;color:var(--text-on-dark-mute);display:block;margin-top:4px}
+  .p-hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+  .p-btn-primary{background:var(--accent);color:var(--accent-text);padding:13px 28px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border-radius:2px;text-decoration:none}
+  .p-btn-outline{background:transparent;color:var(--text-on-dark);border:1px solid rgba(255,255,255,.3);padding:12px 28px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-radius:2px;text-decoration:none}
+
+  /* Band */
+  .p-band{background:var(--bg-dark-2);padding:16px 32px;display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
+  .p-band-item{color:var(--text-on-dark-mute);font-size:11px;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .p-dot{width:6px;height:6px;border-radius:50%}
+
+  /* Section claire : menu */
+  .p-section{padding:56px 32px;background:var(--surface)}
+  .p-section-tag{font-family:var(--font-body);font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px}
+  .p-section-title{font-family:var(--font-heading);font-size:30px;font-weight:800;letter-spacing:-0.5px;line-height:1.1;margin-bottom:12px;color:var(--text)}
+  .p-section-sub{font-size:14px;color:var(--text-mute);line-height:1.7;max-width:520px;margin:0 auto 28px}
+  .p-section-center{text-align:center}
+  .p-menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:900px;margin:0 auto}
+  .p-menu-card{background:#fff;border-radius:10px;padding:16px;display:flex;gap:14px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  .p-menu-photo{flex-shrink:0;width:72px;height:72px;border-radius:8px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:28px}
+  .p-menu-body{flex:1;min-width:0;position:relative}
+  .p-menu-name{font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .p-menu-desc{font-size:12px;color:var(--text-mute);line-height:1.5}
+  .p-menu-price{font-size:14px;font-weight:800;color:var(--accent);margin-top:6px}
+
+  /* Section "coup de cœur" */
+  .p-sig{background:var(--surface-2);padding:56px 32px}
+  .p-sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:24px auto 0}
+  .p-sig-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .p-sig-photo{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:44px}
+  .p-sig-photo[data-a="y"]{background:linear-gradient(135deg,var(--yellow),#f7b744)}
+  .p-sig-photo[data-a="b"]{background:linear-gradient(135deg,var(--blue),#5ba3f0)}
+  .p-sig-photo[data-a="r"]{background:linear-gradient(135deg,var(--red),#ef6352)}
+  .p-sig-body{padding:16px 18px 18px}
+  .p-sig-region{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .p-sig-name{font-family:var(--font-heading);font-size:17px;font-weight:800;margin-bottom:6px;color:var(--text)}
+  .p-sig-desc{font-size:12.5px;color:var(--text-mute);line-height:1.55}
+
+  /* Section events (dark) */
+  .p-events{background:var(--bg-dark-3);padding:56px 32px;color:var(--text-on-dark)}
+  .p-events h3{font-family:var(--font-heading);font-size:26px;font-weight:800;margin-bottom:6px;text-align:center}
+  .p-events p.sub{color:var(--text-on-dark-mute);font-size:13px;text-align:center;margin-bottom:28px}
+  .p-event-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:900px;margin:0 auto}
+  .p-event-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:18px;display:flex;gap:14px}
+  .p-event-date{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px;width:60px;text-align:center;flex-shrink:0}
+  .p-event-day{font-size:9px;font-weight:800;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase}
+  .p-event-num{font-size:22px;font-weight:800;margin:3px 0}
+  .p-event-body{flex:1;min-width:0}
+  .p-event-title{font-family:var(--font-heading);font-size:15px;font-weight:800;margin-bottom:4px}
+  .p-event-desc{font-size:12px;color:var(--text-on-dark-mute);line-height:1.5}
+
+  /* Footer */
+  .p-footer{background:var(--bg-dark-3);color:var(--text-on-dark);padding:28px 32px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .p-footer-copy{font-size:11px;color:var(--text-on-dark-mute);letter-spacing:.5px}
+  .p-footer-links{display:flex;gap:18px}
+  .p-footer-links a{color:var(--text-on-dark-mute);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none}
+
+  /* Info badge */
+  .palette-info{max-width:1200px;margin:0 auto 20px;padding:14px 20px;background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  .palette-info .n{font-size:13px;font-weight:800}
+  .palette-info .m{font-size:12px;color:#666}
+  .palette-info code{font-family:'Menlo',monospace;font-size:11px;background:#f0f0f0;padding:2px 6px;border-radius:4px;color:#333;margin-left:4px}
+
+  @media(max-width:720px){
+    .p-nav-links{display:none}
+    .p-sig-grid,.p-menu-grid,.p-event-grid{grid-template-columns:1fr}
+    .p-hero h2{font-size:30px}
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <div class="controls-inner">
+    <h1>🎨 Bochica · Essai d'ambiances</h1>
+    <div class="ctrl-group" id="palette-ctrl">
+      <span class="ctrl-lbl">Palette</span>
+      <!-- injecté par JS -->
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-lbl">Typo</span>
+      <button class="font-btn active" data-font="inter">Inter (actuel)</button>
+      <button class="font-btn" data-font="fraunces">Fraunces + Inter</button>
+      <button class="font-btn" data-font="playfair">Playfair + Manrope</button>
+    </div>
+  </div>
+</div>
+
+<div class="palette-info" id="palette-info"></div>
+
+<div class="preview">
+  <!-- Nav -->
+  <div class="p-nav">
+    <div class="p-logo">BOCHI<span>CA</span></div>
+    <div class="p-nav-links">
+      <a href="#">Notre histoire</a>
+      <a href="#">Menu</a>
+      <a href="#">Événements</a>
+      <a href="#">Horaires</a>
+    </div>
+    <a href="#" class="p-nav-btn">Réserver</a>
+  </div>
+
+  <!-- Hero -->
+  <div class="p-hero">
+    <h2>Voyagez en Colombie…<br><em>sans quitter le Québec</em></h2>
+    <div class="p-hero-btns">
+      <a href="#" class="p-btn-primary">Commander en ligne</a>
+      <a href="#" class="p-btn-outline">Réserver une table</a>
+    </div>
+  </div>
+
+  <!-- Band -->
+  <div class="p-band">
+    <div class="p-band-item"><span class="p-dot" style="background:#4caf50"></span>Ouvert · Ferme à 22 h</div>
+    <div class="p-band-item"><span class="p-dot" style="background:var(--blue)"></span>430 Rue Saint-Vallier Ouest</div>
+    <div class="p-band-item"><span class="p-dot" style="background:var(--yellow)"></span>367-330-8220</div>
+  </div>
+
+  <!-- Menu section (light) -->
+  <div class="p-section">
+    <div class="p-section-center">
+      <span class="p-section-tag">Ce que nous offrons</span>
+      <h3 class="p-section-title">Notre menu</h3>
+      <p class="p-section-sub">Des saveurs authentiques de Colombie, préparées chaque jour avec amour.</p>
+    </div>
+    <div class="p-menu-grid">
+      <div class="p-menu-card">
+        <div class="p-menu-photo">🥟</div>
+        <div class="p-menu-body">
+          <div class="p-menu-name">Empanada — Poulet</div>
+          <div class="p-menu-desc">4 pour 12 $ · 10 pour 28 $</div>
+          <div class="p-menu-price">3,25 $</div>
+        </div>
+      </div>
+      <div class="p-menu-card">
+        <div class="p-menu-photo">🌽</div>
+        <div class="p-menu-body">
+          <div class="p-menu-name">Arepa Mixte</div>
+          <div class="p-menu-desc">Bœuf, poulet, fromage, guacamole</div>
+          <div class="p-menu-price">17 $</div>
+        </div>
+      </div>
+      <div class="p-menu-card">
+        <div class="p-menu-photo">🍗</div>
+        <div class="p-menu-body">
+          <div class="p-menu-name">Pollo Asado</div>
+          <div class="p-menu-desc">Poulet grillé, riz, frites, patacona</div>
+          <div class="p-menu-price">21 $</div>
+        </div>
+      </div>
+      <div class="p-menu-card">
+        <div class="p-menu-photo">🔥</div>
+        <div class="p-menu-body">
+          <div class="p-menu-name">Picada Bochica</div>
+          <div class="p-menu-desc">À partager · chorizo, morcilla, arepa…</div>
+          <div class="p-menu-price">36 $</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signatures -->
+  <div class="p-sig">
+    <div class="p-section-center">
+      <span class="p-section-tag">Nos coups de cœur</span>
+      <h3 class="p-section-title">Les saveurs emblématiques</h3>
+    </div>
+    <div class="p-sig-grid">
+      <div class="p-sig-card">
+        <div class="p-sig-photo" data-a="y">🇨🇴</div>
+        <div class="p-sig-body">
+          <div class="p-sig-region">Antioquia</div>
+          <div class="p-sig-name">Bol Medellín</div>
+          <div class="p-sig-desc">Notre bandeja paisa : haricots, riz, chicharron, chorizo, œuf…</div>
+        </div>
+      </div>
+      <div class="p-sig-card">
+        <div class="p-sig-photo" data-a="b">🌽</div>
+        <div class="p-sig-body">
+          <div class="p-sig-region">Tradition nationale</div>
+          <div class="p-sig-name">Arepa Mixte</div>
+          <div class="p-sig-desc">L'âme de la Colombie, dans une galette dorée.</div>
+        </div>
+      </div>
+      <div class="p-sig-card">
+        <div class="p-sig-photo" data-a="r">🔥</div>
+        <div class="p-sig-body">
+          <div class="p-sig-region">Pour partager</div>
+          <div class="p-sig-name">Picada Bochica</div>
+          <div class="p-sig-desc">Le grand classique à partager, impossible à manquer.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Events -->
+  <div class="p-events">
+    <h3>Soirées & événements</h3>
+    <p class="sub">Salsa, matchs, fêtes colombiennes.</p>
+    <div class="p-event-grid">
+      <div class="p-event-card">
+        <div class="p-event-date">
+          <div class="p-event-day">SAM</div>
+          <div class="p-event-num">—</div>
+        </div>
+        <div class="p-event-body">
+          <div class="p-event-title">Soirée Salsa & Cumbia</div>
+          <div class="p-event-desc">Musique latine en direct, cocktails signature.</div>
+        </div>
+      </div>
+      <div class="p-event-card">
+        <div class="p-event-date">
+          <div class="p-event-day">JUI</div>
+          <div class="p-event-num">20</div>
+        </div>
+        <div class="p-event-body">
+          <div class="p-event-title">Independencia 🇨🇴</div>
+          <div class="p-event-desc">Menu spécial, musique traditionnelle.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="p-footer">
+    <div class="p-footer-copy">© 2026 Bochica · 430 Rue Saint-Vallier Ouest, Québec</div>
+    <div class="p-footer-links">
+      <a href="#">Menu</a>
+      <a href="#">Horaires</a>
+      <a href="#">Réserver</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const PALETTES = [
+  // ─── Ta palette : 3 façons de l'appliquer ───
+  {id:'bistro-bordeaux',name:'⭐ Bistro Bordeaux',mood:'Ta palette · bordeaux comme signature, noir pour nav/footer',
+   bg1:'#6b1a1f',bg2:'#4a1015',bg3:'#0e0e0e',surface:'#faf6f0',surface2:'#e8dcc8',
+   textDark:'#faf6f0',muteDark:'rgba(250,246,240,.75)',text:'#1a1010',textMute:'#5a4a45',
+   accent:'#6b1a1f'},
+  {id:'bistro-noir',name:'⭐ Bistro Noir',mood:'Ta palette · noir principal, bordeaux en accent, beige en surface chaude',
+   bg1:'#0e0e0e',bg2:'#6b1a1f',bg3:'#000000',surface:'#faf6f0',surface2:'#e8dcc8',
+   textDark:'#faf6f0',muteDark:'rgba(250,246,240,.7)',text:'#1a1010',textMute:'#5a4a45',
+   accent:'#6b1a1f'},
+  {id:'bistro-creme',name:'⭐ Bistro Crème',mood:'Ta palette · site clair beige, bordeaux et noir en accents',
+   bg1:'#0e0e0e',bg2:'#e8dcc8',bg3:'#0e0e0e',surface:'#faf6f0',surface2:'#e8dcc8',
+   textDark:'#faf6f0',muteDark:'rgba(250,246,240,.7)',text:'#1a1010',textMute:'#6b5e56',
+   accent:'#6b1a1f',lightHero:true},
+  // ─── Autres options ───
+  {id:'espresso',name:'Espresso',mood:'Chaud, terrien, « café bistro »',
+   bg1:'#2b1d17',bg2:'#3a2820',bg3:'#1f140f',surface:'#faf7f2',surface2:'#f3eee6',
+   textDark:'#faf7f2',muteDark:'rgba(250,247,242,.65)',text:'#1a1a1a',textMute:'#5f5f5f'},
+  {id:'andes',name:'Vert Andes',mood:'Profond, sophistiqué, montagnes colombiennes',
+   bg1:'#1f2e25',bg2:'#263d2f',bg3:'#15201a',surface:'#f7f6f1',surface2:'#eceae1',
+   textDark:'#f4f4ef',muteDark:'rgba(244,244,239,.7)',text:'#1c241e',textMute:'#5a6359'},
+  {id:'terracotta',name:'Terra cotta',mood:'Chaud, latino, toits colombiens',
+   bg1:'#3d2420',bg2:'#4a2c26',bg3:'#2a1714',surface:'#faf4ee',surface2:'#f1e7db',
+   textDark:'#fbf3ec',muteDark:'rgba(251,243,236,.7)',text:'#2a1e1a',textMute:'#6a5a53'},
+  {id:'nuit',name:'Bleu nuit',mood:'Chic, gastronomique, clin d\'œil au drapeau',
+   bg1:'#0e1b2c',bg2:'#1a2844',bg3:'#081122',surface:'#f6f8fb',surface2:'#e9eef5',
+   textDark:'#eef3fb',muteDark:'rgba(238,243,251,.7)',text:'#121a26',textMute:'#566074'},
+  {id:'charbon',name:'Charbon chaud',mood:'Quasi-noir doux, compromis minimal',
+   bg1:'#2a2524',bg2:'#34302e',bg3:'#1b1817',surface:'#faf8f6',surface2:'#efebe7',
+   textDark:'#f7f4f1',muteDark:'rgba(247,244,241,.65)',text:'#1a1817',textMute:'#5d5754'},
+  {id:'prune',name:'Prune',mood:'Raffiné, « fine dining » sans pompe',
+   bg1:'#2d1b2c',bg2:'#3a2535',bg3:'#1e1220',surface:'#faf6f8',surface2:'#eee5ea',
+   textDark:'#f8f0f6',muteDark:'rgba(248,240,246,.7)',text:'#22161f',textMute:'#655560'},
+  {id:'creme',name:'Inversion crème',mood:'Changement radical — site lumineux, accents vibrants',
+   bg1:'#2b1d17',bg2:'#f3eee6',bg3:'#2b1d17',surface:'#faf7f2',surface2:'#efe8dc',
+   textDark:'#faf7f2',muteDark:'rgba(250,247,242,.65)',text:'#2b1d17',textMute:'#6b5e56',
+   lightHero:true},
+];
+
+const FONTS = {
+  inter:{heading:"'Inter',Helvetica,Arial,sans-serif",body:"'Inter',Helvetica,Arial,sans-serif"},
+  fraunces:{heading:"'Fraunces',Georgia,serif",body:"'Inter',Helvetica,Arial,sans-serif"},
+  playfair:{heading:"'Playfair Display',Georgia,serif",body:"'Manrope',Helvetica,Arial,sans-serif"},
+};
+
+const ctrl=document.getElementById('palette-ctrl');
+PALETTES.forEach((p,i)=>{
+  const b=document.createElement('button');
+  b.className='swatch'+(i===0?' active':'');
+  b.dataset.id=p.id;
+  b.innerHTML=`<div class="swatch-colors"><span style="background:${p.bg1}"></span><span style="background:${p.bg2}"></span><span style="background:${p.surface}"></span></div><div class="swatch-name">${p.name}</div>`;
+  b.onclick=()=>applyPalette(p,b);
+  ctrl.appendChild(b);
+});
+
+function applyPalette(p,btn){
+  const r=document.documentElement.style;
+  r.setProperty('--bg-dark',p.bg1);
+  r.setProperty('--bg-dark-2',p.bg2);
+  r.setProperty('--bg-dark-3',p.bg3);
+  r.setProperty('--surface',p.surface);
+  r.setProperty('--surface-2',p.surface2);
+  r.setProperty('--text-on-dark',p.textDark);
+  r.setProperty('--text-on-dark-mute',p.muteDark);
+  r.setProperty('--text',p.text);
+  r.setProperty('--text-mute',p.textMute);
+  // Accent : bordeaux pour les bistros, jaune par défaut pour les autres
+  if(p.accent){
+    r.setProperty('--accent',p.accent);
+    r.setProperty('--accent-hover','#4a1015');
+    r.setProperty('--accent-text','#faf6f0');
+  }else{
+    r.setProperty('--accent','#f5a623');
+    r.setProperty('--accent-hover','#e09400');
+    r.setProperty('--accent-text','#111');
+  }
+  // Option crème : le hero devient clair
+  const hero=document.querySelector('.p-hero');
+  if(p.lightHero){
+    hero.style.background=p.surface;
+    hero.style.color=p.text;
+    hero.querySelectorAll('em')[0].style.color=p.textMute;
+    document.querySelectorAll('.p-btn-outline').forEach(a=>{a.style.color=p.text;a.style.borderColor='rgba(0,0,0,.25)'});
+  }else{
+    hero.style.background='';
+    hero.style.color='';
+    hero.querySelectorAll('em')[0].style.color='';
+    document.querySelectorAll('.p-btn-outline').forEach(a=>{a.style.color='';a.style.borderColor=''});
+  }
+  document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  updateInfo(p);
+}
+
+function updateInfo(p){
+  document.getElementById('palette-info').innerHTML=
+    `<div><span class="n">${p.name}</span> · <span class="m">${p.mood}</span></div>
+     <div class="m">Sombre <code>${p.bg1}</code> · Sombre 2 <code>${p.bg2}</code> · Clair <code>${p.surface}</code></div>`;
+}
+updateInfo(PALETTES[0]);
+
+document.querySelectorAll('.font-btn').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.font-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const f=FONTS[b.dataset.font];
+    document.documentElement.style.setProperty('--font-heading',f.heading);
+    document.documentElement.style.setProperty('--font-body',f.body);
+  };
+});
+</script>
+</body>
+</html>
