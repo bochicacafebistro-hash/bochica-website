@@ -192,12 +192,14 @@ section{padding:96px 48px}
 .hours-day{font-size:14px;font-weight:600;color:var(--text)}
 .hours-time{font-family:var(--font-heading);font-size:15px;color:var(--text2);font-weight:500}
 .hours-closed{color:var(--text3);font-style:italic;font-size:13px;font-family:var(--font-heading)}
-.contact-items{display:flex;flex-direction:column;gap:22px}
-.contact-item{display:flex;gap:14px;align-items:flex-start}
-.contact-icon{width:44px;height:44px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
-.ci-y{background:rgba(245,166,35,.12)}
-.ci-b{background:rgba(74,144,226,.1)}
-.ci-r{background:rgba(107,26,31,.08)}
+.contact-items{display:flex;flex-direction:column;gap:24px}
+.contact-item{display:flex;gap:16px;align-items:flex-start}
+.contact-icon{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s ease,background .25s ease}
+.contact-icon svg{width:22px;height:22px;display:block}
+.contact-item:hover .contact-icon{transform:translateY(-2px)}
+.ci-y{background:rgba(245,166,35,.14);color:#c98600}
+.ci-b{background:rgba(74,144,226,.12);color:#2c6fb8}
+.ci-r{background:rgba(107,26,31,.1);color:var(--accent)}
 .contact-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
 .contact-value{font-size:14.5px;color:var(--text);line-height:1.55}
 .contact-value a{color:var(--text);text-decoration:none;transition:color .2s}

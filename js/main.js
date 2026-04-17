@@ -426,20 +426,20 @@ function initContactForm() {
     fr: {
       sending: 'Envoi en cours…',
       success: '✅ Merci ! Votre message a bien été envoyé. Nous répondons dans les 24-48 h.',
-      error: 'Une erreur est survenue. Écrivez-nous directement à info@bochicacafebistro.ca',
-      notconfigured: 'Le formulaire n\'est pas encore configuré. Écrivez-nous à info@bochicacafebistro.ca'
+      error: 'Une erreur est survenue. Écrivez-nous directement à bochicacafebistro@gmail.com',
+      notconfigured: '📧 Votre app courriel s\'ouvre — cliquez sur Envoyer pour finaliser l\'envoi à bochicacafebistro@gmail.com'
     },
     en: {
       sending: 'Sending…',
       success: '✅ Thank you! Your message has been sent. We reply within 24-48 h.',
-      error: 'Something went wrong. Please write us at info@bochicacafebistro.ca',
-      notconfigured: 'The form is not yet configured. Please write us at info@bochicacafebistro.ca'
+      error: 'Something went wrong. Please write us at bochicacafebistro@gmail.com',
+      notconfigured: '📧 Your email app is opening — click Send to finalize to bochicacafebistro@gmail.com'
     },
     es: {
       sending: 'Enviando…',
       success: '✅ ¡Gracias! Tu mensaje ha sido enviado. Respondemos en 24-48 h.',
-      error: 'Ocurrió un error. Escríbenos a info@bochicacafebistro.ca',
-      notconfigured: 'El formulario aún no está configurado. Escríbenos a info@bochicacafebistro.ca'
+      error: 'Ocurrió un error. Escríbenos a bochicacafebistro@gmail.com',
+      notconfigured: '📧 Se abre tu app de correo — haz clic en Enviar para finalizar a bochicacafebistro@gmail.com'
     }
   };
   form.addEventListener('submit', async (e) => {
@@ -451,7 +451,7 @@ function initContactForm() {
     if (form.action.includes('VOTRE_ID_FORMSPREE')) {
       const data = new FormData(form);
       const body = `Nom: ${data.get('nom')}%0D%0ACourriel: ${data.get('email')}%0D%0ATéléphone: ${data.get('telephone')||'—'}%0D%0ASujet: ${data.get('sujet')}%0D%0A%0D%0A${data.get('message')}`;
-      window.location.href = `mailto:info@bochicacafebistro.ca?subject=${encodeURIComponent(data.get('sujet')||'Message du site')}&body=${body}`;
+      window.location.href = `mailto:bochicacafebistro@gmail.com?subject=${encodeURIComponent(data.get('sujet')||'Message du site')}&body=${body}`;
       status.className = 'form-status success';
       status.textContent = t.notconfigured;
       return;
