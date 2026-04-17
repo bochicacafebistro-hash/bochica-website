@@ -279,35 +279,6 @@
           <div class="menu-card-price">24 $</div>
         </div>
 
-        <div class="menu-subsection-title b" data-fr="Extras" data-en="Extras" data-es="Extras">Extras</div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name" data-fr="Patacona (2)" data-en="Fried Plantain (2)" data-es="Patacona (2)">Patacona (2)</div>
-          <div class="menu-card-price">2 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name" data-fr="Arepa ou Riz" data-en="Arepa or Rice" data-es="Arepa / Arroz">Arepa ou Riz</div>
-          <div class="menu-card-price">2.5 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name" data-fr="Haricots ou Lentilles" data-en="Beans or Lentils" data-es="Frijoles o Lentejas">Haricots ou Lentilles</div>
-          <div class="menu-card-price">2.5 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name" data-fr="Guacamole" data-en="Guacamole" data-es="Guacamole">Guacamole</div>
-          <div class="menu-card-price">3 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name" data-fr="Chorizo" data-en="Chorizo" data-es="Chorizo">Chorizo</div>
-          <div class="menu-card-price">4 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name" data-fr="Chicharron (80g)" data-en="Chicharron (80g)" data-es="Chicharrón (80g)">Chicharron (80g)</div>
-          <div class="menu-card-price">4 $</div>
-        </div>
-        <div class="menu-card reveal">
-          <div class="menu-card-name" data-fr="Morcilla" data-en="Morcilla" data-es="Morcilla">Morcilla</div>
-          <div class="menu-card-price">4.25 $</div>
-        </div>
       </div>
     </div>
 
@@ -892,6 +863,42 @@
     <div class="footer-bar"><div></div><div></div><div></div></div>
   </div>
 </footer>
+
+<!-- DISH MODAL -->
+<div class="dish-modal" id="dish-modal" onclick="closeDish(event)" aria-hidden="true">
+  <div class="dish-modal-content" onclick="event.stopPropagation()">
+    <button class="dish-modal-close" onclick="closeDish()" aria-label="Fermer">&times;</button>
+    <div class="dish-modal-photo" id="dish-modal-photo">
+      <img id="dish-modal-img" src="" alt="" onerror="this.style.display='none'"/>
+      <div class="dish-modal-photo-ph">
+        <div class="dish-modal-photo-icon">📷</div>
+        <div class="dish-modal-photo-txt" data-fr="Photo à venir" data-en="Photo coming soon" data-es="Foto próximamente">Photo à venir</div>
+      </div>
+    </div>
+    <div class="dish-modal-body">
+      <div class="dish-modal-tag" data-fr="Notre cuisine" data-en="Our kitchen" data-es="Nuestra cocina">Notre cuisine</div>
+      <h3 class="dish-modal-name" id="dish-modal-name"></h3>
+      <div class="dish-modal-badges" id="dish-modal-badges"></div>
+      <p class="dish-modal-desc" id="dish-modal-desc"></p>
+      <div class="dish-modal-price" id="dish-modal-price"></div>
+
+      <div class="dish-modal-extras" id="dish-modal-extras">
+        <div class="dish-modal-extras-title" data-fr="Extras disponibles" data-en="Available extras" data-es="Extras disponibles">Extras disponibles</div>
+        <ul class="dish-modal-extras-list">
+          <li><span data-fr="Patacona (2)" data-en="Fried Plantain (2)" data-es="Patacona (2)">Patacona (2)</span><span class="extra-price">2 $</span></li>
+          <li><span data-fr="Arepa ou Riz" data-en="Arepa or Rice" data-es="Arepa / Arroz">Arepa ou Riz</span><span class="extra-price">2,50 $</span></li>
+          <li><span data-fr="Haricots ou Lentilles" data-en="Beans or Lentils" data-es="Frijoles o Lentejas">Haricots ou Lentilles</span><span class="extra-price">2,50 $</span></li>
+          <li><span data-fr="Guacamole" data-en="Guacamole" data-es="Guacamole">Guacamole</span><span class="extra-price">3 $</span></li>
+          <li><span data-fr="Chorizo" data-en="Chorizo" data-es="Chorizo">Chorizo</span><span class="extra-price">4 $</span></li>
+          <li><span data-fr="Chicharron (80g)" data-en="Chicharron (80g)" data-es="Chicharrón (80g)">Chicharron (80g)</span><span class="extra-price">4 $</span></li>
+          <li><span data-fr="Morcilla" data-en="Morcilla" data-es="Morcilla">Morcilla</span><span class="extra-price">4,25 $</span></li>
+        </ul>
+      </div>
+
+      <a href="https://bochica.order-online.ai/" target="_blank" rel="noopener" class="btn-primary dish-modal-cta" data-fr="Commander en ligne" data-en="Order online" data-es="Ordenar en línea">Commander en ligne</a>
+    </div>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>
