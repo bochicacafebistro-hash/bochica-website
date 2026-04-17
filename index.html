@@ -81,6 +81,7 @@
 </section>
 
 <!-- MENU PREVIEW -->
+<!-- MENU PREVIEW -->
 <section class="menu-preview" id="menu">
   <div style="max-width:1100px;margin:0 auto">
     <div class="section-center reveal">
@@ -88,26 +89,165 @@
       <h2 class="section-title" data-fr="Notre menu" data-en="Our menu" data-es="Nuestro menú">Notre menu</h2>
       <p class="section-sub" data-fr="Des saveurs authentiques de Colombie, préparées chaque jour avec amour." data-en="Authentic flavors from Colombia, prepared daily with love." data-es="Sabores auténticos de Colombia, preparados cada día con amor.">Des saveurs authentiques de Colombie, préparées chaque jour avec amour.</p>
     </div>
-    <div class="menu-grid">
-      <div class="menu-card reveal">
-        <div class="menu-card-cat y" data-fr="Entrées" data-en="Starters" data-es="Entradas">Entrées</div>
-        <div class="menu-card-name">Empanadas</div>
-        <div class="menu-card-desc" data-fr="Chaussons croustillants farcis à la viande ou aux légumes, dorés à la perfection." data-en="Crispy stuffed pastries with meat or vegetables, golden to perfection." data-es="Empanadas crujientes rellenas de carne o verduras, doradas a la perfección.">Chaussons croustillants farcis à la viande ou aux légumes, dorés à la perfection.</div>
-        <div class="menu-card-price">À partir de 8 $</div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-cat b" data-fr="Plat principal" data-en="Main course" data-es="Plato principal">Plat principal</div>
-        <div class="menu-card-name">Bandeja Paisa</div>
-        <div class="menu-card-desc" data-fr="Le plat emblématique colombien — haricots rouges, riz, chicharrón, chorizo, œuf et avocat." data-en="The iconic Colombian dish — red beans, rice, chicharrón, chorizo, egg and avocado." data-es="El plato emblemático colombiano — frijoles rojos, arroz, chicharrón, chorizo, huevo y aguacate.">Le plat emblématique colombien — haricots rouges, riz, chicharrón, chorizo, œuf et avocat.</div>
-        <div class="menu-card-price">28 $</div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-cat r" data-fr="Boissons" data-en="Drinks" data-es="Bebidas">Boissons</div>
-        <div class="menu-card-name">Limonada de Coco</div>
-        <div class="menu-card-desc" data-fr="Notre limonade signature — crémeuse, fraîche et désaltérante, à base de noix de coco." data-en="Our signature lemonade — creamy, fresh and refreshing, made with coconut." data-es="Nuestra limonada insignia — cremosa, fresca y refrescante, hecha con coco.">Notre limonade signature — crémeuse, fraîche et désaltérante, à base de noix de coco.</div>
-        <div class="menu-card-price">7 $</div>
+
+    <!-- Onglets -->
+    <div class="menu-tabs reveal">
+      <button class="menu-tab active" onclick="setMenuTab('entrees')" data-fr="Entrées" data-en="Starters" data-es="Entradas">Entrées</button>
+      <button class="menu-tab" onclick="setMenuTab('arepas')" data-fr="Arepas" data-en="Arepas" data-es="Arepas">Arepas</button>
+      <button class="menu-tab" onclick="setMenuTab('bols')" data-fr="Bols" data-en="Bowls" data-es="Boles">Bols</button>
+      <button class="menu-tab" onclick="setMenuTab('repas')" data-fr="Repas" data-en="Meals" data-es="Comidas">Repas</button>
+      <button class="menu-tab" onclick="setMenuTab('breuvages')" data-fr="Breuvages" data-en="Beverages" data-es="Bebidas">Breuvages</button>
+      <button class="menu-tab" onclick="setMenuTab('cocktails')" data-fr="Cocktails" data-en="Cocktails" data-es="Cócteles">Cocktails</button>
+      <button class="menu-tab" onclick="setMenuTab('bieres')" data-fr="Bières" data-en="Beers" data-es="Cervezas">Bières</button>
+    </div>
+
+    <!-- Entrées -->
+    <div class="menu-section" id="tab-entrees">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Empanadas (3)</div>
+          <div class="menu-card-desc" data-fr="Chaussons croustillants farcis à la viande ou aux légumes, dorés à la perfection." data-en="Crispy stuffed pastries with meat or vegetables, golden to perfection." data-es="Empanadas crujientes rellenas de carne o verduras.">Chaussons croustillants farcis à la viande ou aux légumes, dorés à la perfection.</div>
+          <div class="menu-card-price">8 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Patacones</div>
+          <div class="menu-card-desc" data-fr="Tranches de banane plantain frites deux fois, croustillantes et dorées." data-en="Twice-fried plantain slices, crispy and golden." data-es="Rodajas de plátano frito dos veces, crujientes y doradas.">Tranches de banane plantain frites deux fois, croustillantes et dorées.</div>
+          <div class="menu-card-price">9 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Chicharrón</div>
+          <div class="menu-card-desc" data-fr="Porc croustillant frit à la colombienne, servi avec ají maison." data-en="Colombian crispy fried pork, served with homemade ají." data-es="Cerdo crujiente frito al estilo colombiano, servido con ají casero.">Porc croustillant frit à la colombienne, servi avec ají maison.</div>
+          <div class="menu-card-price">12 $</div>
+        </div>
       </div>
     </div>
+
+    <!-- Arepas -->
+    <div class="menu-section" id="tab-arepas" style="display:none">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Arepa con Queso</div>
+          <div class="menu-card-desc" data-fr="Arepa grillée garnie de fromage colombien fondu." data-en="Grilled arepa topped with melted Colombian cheese." data-es="Arepa a la parrilla con queso colombiano derretido.">Arepa grillée garnie de fromage colombien fondu.</div>
+          <div class="menu-card-price">10 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Arepa con Hogao</div>
+          <div class="menu-card-desc" data-fr="Arepa garnie de hogao, sauce tomate et oignon caramélisé." data-en="Arepa topped with hogao, a caramelized tomato and onion sauce." data-es="Arepa con hogao, salsa de tomate y cebolla caramelizada.">Arepa garnie de hogao, sauce tomate et oignon caramélisé.</div>
+          <div class="menu-card-price">11 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Arepa de Choclo</div>
+          <div class="menu-card-desc" data-fr="Arepa sucrée au maïs frais, garnie de fromage et de crème." data-en="Sweet fresh corn arepa, topped with cheese and cream." data-es="Arepa dulce de maíz fresco con queso y crema.">Arepa sucrée au maïs frais, garnie de fromage et de crème.</div>
+          <div class="menu-card-price">11 $</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bols -->
+    <div class="menu-section" id="tab-bols" style="display:none">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Bol Colombien</div>
+          <div class="menu-card-desc" data-fr="Riz, haricots rouges, poulet grillé, avocat et plantain frit." data-en="Rice, red beans, grilled chicken, avocado and fried plantain." data-es="Arroz, frijoles rojos, pollo a la parrilla, aguacate y plátano frito.">Riz, haricots rouges, poulet grillé, avocat et plantain frit.</div>
+          <div class="menu-card-price">18 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Bol Végétarien</div>
+          <div class="menu-card-desc" data-fr="Riz, lentilles, légumes grillés, avocat, patacones et sauce ají." data-en="Rice, lentils, grilled vegetables, avocado, patacones and ají sauce." data-es="Arroz, lentejas, verduras a la parrilla, aguacate y ají.">Riz, lentilles, légumes grillés, avocat, patacones et sauce ají.</div>
+          <div class="menu-card-price">16 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Bol Bochica</div>
+          <div class="menu-card-desc" data-fr="Notre bol signature — riz, haricots noirs, bœuf effiloché, fromage et hogao." data-en="Our signature bowl — rice, black beans, shredded beef, cheese and hogao." data-es="Nuestro bol especial — arroz, frijoles negros, carne desmechada y hogao.">Notre bol signature — riz, haricots noirs, bœuf effiloché, fromage et hogao.</div>
+          <div class="menu-card-price">20 $</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repas -->
+    <div class="menu-section" id="tab-repas" style="display:none">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Bandeja Paisa</div>
+          <div class="menu-card-desc" data-fr="Le plat emblématique colombien — haricots rouges, riz, chicharrón, chorizo, œuf et avocat." data-en="The iconic Colombian dish — red beans, rice, chicharrón, chorizo, egg and avocado." data-es="El plato emblemático colombiano — frijoles rojos, arroz, chicharrón y chorizo.">Le plat emblématique colombien — haricots rouges, riz, chicharrón, chorizo, œuf et avocat.</div>
+          <div class="menu-card-price">28 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Sancocho</div>
+          <div class="menu-card-desc" data-fr="Soupe traditionnelle colombienne au poulet, manioc, maïs et plantain." data-en="Traditional Colombian chicken soup with cassava, corn and plantain." data-es="Sopa tradicional colombiana de pollo con yuca, maíz y plátano.">Soupe traditionnelle colombienne au poulet, manioc, maïs et plantain.</div>
+          <div class="menu-card-price">22 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Pabellón Criollo</div>
+          <div class="menu-card-desc" data-fr="Bœuf effiloché, haricots noirs, riz blanc, fromage et plantain doux." data-en="Shredded beef, black beans, white rice, cheese and sweet plantain." data-es="Carne desmechada, caraotas negras, arroz blanco y plátano maduro.">Bœuf effiloché, haricots noirs, riz blanc, fromage et plantain doux.</div>
+          <div class="menu-card-price">24 $</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breuvages -->
+    <div class="menu-section" id="tab-breuvages" style="display:none">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Limonada de Coco</div>
+          <div class="menu-card-desc" data-fr="Notre limonade signature crémeuse à la noix de coco." data-en="Our signature creamy coconut lemonade." data-es="Nuestra limonada cremosa de coco.">Notre limonade signature crémeuse à la noix de coco.</div>
+          <div class="menu-card-price">7 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Agua de Panela</div>
+          <div class="menu-card-desc" data-fr="Boisson traditionnelle colombienne à base de canne à sucre, chaude ou froide." data-en="Traditional Colombian sugar cane drink, hot or cold." data-es="Bebida tradicional colombiana de caña de azúcar, caliente o fría.">Boisson traditionnelle à base de canne à sucre, chaude ou froide.</div>
+          <div class="menu-card-price">5 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Jugo Natural</div>
+          <div class="menu-card-desc" data-fr="Jus de fruits frais au choix — maracuyá, mango, guanábana ou fraise." data-en="Fresh fruit juice — passion fruit, mango, soursop or strawberry." data-es="Jugo de frutas frescas — maracuyá, mango, guanábana o fresa.">Jus de fruits frais — maracuyá, mango, guanábana ou fraise.</div>
+          <div class="menu-card-price">6 $</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cocktails -->
+    <div class="menu-section" id="tab-cocktails" style="display:none">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Mojito Colombien</div>
+          <div class="menu-card-desc" data-fr="Rhum blanc, citron vert, menthe fraîche, sucre de canne et eau gazeuse." data-en="White rum, lime, fresh mint, cane sugar and sparkling water." data-es="Ron blanco, limón, menta fresca, azúcar de caña y agua con gas.">Rhum blanc, citron vert, menthe fraîche, sucre de canne et eau gazeuse.</div>
+          <div class="menu-card-price">13 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Cóctel de Maracuyá</div>
+          <div class="menu-card-desc" data-fr="Vodka, maracuyá frais, jus de citron et sirop de canne." data-en="Vodka, fresh passion fruit, lemon juice and cane syrup." data-es="Vodka, maracuyá fresco, jugo de limón y sirope de caña.">Vodka, maracuyá frais, jus de citron et sirop de canne.</div>
+          <div class="menu-card-price">14 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Aguardiente Sour</div>
+          <div class="menu-card-desc" data-fr="Aguardiente colombien, citron vert, blanc d'œuf et angostura." data-en="Colombian aguardiente, lime, egg white and angostura." data-es="Aguardiente colombiano, limón, clara de huevo y angostura.">Aguardiente colombien, citron vert, blanc d'œuf et angostura.</div>
+          <div class="menu-card-price">14 $</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bières -->
+    <div class="menu-section" id="tab-bieres" style="display:none">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Club Colombia</div>
+          <div class="menu-card-desc" data-fr="Bière blonde colombienne légère et rafraîchissante." data-en="Light and refreshing Colombian blonde beer." data-es="Cerveza rubia colombiana ligera y refrescante.">Bière blonde colombienne légère et rafraîchissante.</div>
+          <div class="menu-card-price">8 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Águila</div>
+          <div class="menu-card-desc" data-fr="La bière nationale de Colombie, légère et facile à boire." data-en="Colombia's national beer, light and easy-drinking." data-es="La cerveza nacional de Colombia, ligera y fácil de tomar.">La bière nationale de Colombie, légère et facile à boire.</div>
+          <div class="menu-card-price">8 $</div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-name">Bière locale du Québec</div>
+          <div class="menu-card-desc" data-fr="Sélection de bières locales québécoises en rotation." data-en="Rotating selection of local Quebec craft beers." data-es="Selección rotativa de cervezas artesanales locales de Quebec.">Sélection de bières locales québécoises en rotation.</div>
+          <div class="menu-card-price">9 $</div>
+        </div>
+      </div>
+    </div>
+
     <div style="text-align:center;margin-top:8px">
       <a href="https://bochica.order-online.ai/" target="_blank" class="btn-primary" data-fr="Commander en ligne" data-en="Order online" data-es="Ordenar en línea">Commander en ligne</a>
     </div>
