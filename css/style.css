@@ -39,7 +39,8 @@ nav.scrolled{padding:12px 48px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .hero-logo{margin:0 auto 20px;display:block;width:220px;height:auto}
 .hero-phrase{font-size:clamp(28px,5vw,64px);font-weight:800;line-height:1.1;letter-spacing:-1px;color:#1a1a1a;margin-bottom:32px}
 .hero-phrase em{font-style:italic;font-weight:300;color:#888888;display:block;margin-top:4px}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-btns{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.hero-btns a{min-width:220px;text-align:center;justify-content:center}
 
 /* ── BOUTONS ──────────────────────────────────────── */
 .btn-primary{background:#f5a623;color:#1a1a1a;border:none;padding:15px 34px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:.2s;text-decoration:none;display:inline-block}
@@ -171,8 +172,8 @@ footer{background:#111111;padding:40px 48px;border-top:1px solid rgba(255,255,25
   .hero{padding-top:60px}
   .hero-logo{width:140px;margin-bottom:16px}
   .hero-phrase{font-size:clamp(24px,7vw,40px);margin-bottom:24px}
-  .hero-btns{flex-direction:column;align-items:center;gap:10px;padding:0 16px}
-  .hero-btns a{width:100%;text-align:center}
+  .hero-btns{flex-direction:column;align-items:center;gap:14px;padding:0 16px}
+  .hero-btns a{width:100%;text-align:center;min-width:unset}
   .about-grid,.horaires-grid{grid-template-columns:1fr;gap:40px}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
   .gallery-item:first-child{grid-column:span 2}
