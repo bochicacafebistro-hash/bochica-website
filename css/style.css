@@ -133,10 +133,11 @@ section{padding:96px 48px}
 .menu-card.has-photo{display:flex;align-items:flex-start;gap:16px;padding:16px}
 .menu-card.has-photo.clickable{cursor:pointer}
 .menu-card.has-photo.clickable:hover{box-shadow:0 10px 28px rgba(26,16,16,.1)}
-.menu-card-photo{flex-shrink:0;width:92px;height:92px;border-radius:10px;background:var(--cream);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
-.menu-card-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
-.menu-card.has-photo.clickable:hover .menu-card-photo img{transform:scale(1.05)}
-.menu-card-photo.empty::before{content:"📷";font-size:26px;opacity:.35}
+.menu-card-photo{flex-shrink:0;width:112px;height:112px;border-radius:10px;background:var(--cream);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(14,14,14,.06)}
+.menu-card-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.menu-card.has-photo.clickable:hover .menu-card-photo img{transform:scale(1.06)}
+.menu-card-photo.empty{background:linear-gradient(135deg,#f6f0e4 0%,#ece0c9 100%)}
+.menu-card-photo.empty::before{content:"";position:absolute;inset:12px;background-image:url('../images/Logo%20Bochica%202026-3.png');background-size:contain;background-repeat:no-repeat;background-position:center;opacity:.62;font-size:0}
 .menu-card-body{flex:1;min-width:0;display:flex;flex-direction:column}
 .menu-card-cat{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
 .menu-card-cat.y{color:var(--accent)}
@@ -260,11 +261,10 @@ footer{background:var(--black);padding:44px 48px;border-top:1px solid rgba(250,2
 .dish-modal-content{background:var(--white);border-radius:16px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:dishSlideIn .3s ease}
 .dish-modal-close{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(250,246,240,.95);color:var(--text);font-size:24px;line-height:1;cursor:pointer;z-index:2;box-shadow:0 2px 10px rgba(14,14,14,.18);transition:background .2s,transform .2s}
 .dish-modal-close:hover{background:#ffffff;transform:scale(1.05)}
-.dish-modal-photo{width:100%;aspect-ratio:16/10;background:var(--cream);position:relative;overflow:hidden}
+.dish-modal-photo{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#f6f0e4 0%,#ece0c9 100%);position:relative;overflow:hidden}
 .dish-modal-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.dish-modal-photo-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text3);gap:10px}
-.dish-modal-photo-icon{font-size:48px;opacity:.4}
-.dish-modal-photo-txt{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600}
+.dish-modal-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:30px}
+.dish-modal-photo-logo{max-width:45%;max-height:70%;width:auto;height:auto;object-fit:contain;opacity:.68;display:block}
 .dish-modal-body{padding:26px 28px 28px}
 .dish-modal-tag{font-family:var(--font-body);font-size:10.5px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .dish-modal-name{font-family:var(--font-heading);font-size:26px;font-weight:700;color:var(--text);margin:0 0 12px;line-height:1.2;letter-spacing:-.4px}
@@ -434,7 +434,7 @@ footer{background:var(--black);padding:44px 48px;border-top:1px solid rgba(250,2
   .menu-card.has-photo{padding:12px}
   .menu-card.has-photo .menu-card-body{padding-right:12px;padding-bottom:28px}
   .menu-card.has-photo .menu-card-price{position:static;margin-top:8px;display:block}
-  .menu-card-photo{width:72px;height:72px}
+  .menu-card-photo{width:88px;height:88px}
   .dish-modal{padding:0;align-items:flex-end}
   .dish-modal-content{max-width:100%;max-height:95vh;border-radius:16px 16px 0 0}
   .dish-modal-name{font-size:20px}

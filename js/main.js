@@ -138,9 +138,23 @@ function initDishCards() {
         // Le prix se déplace hors du body pour être en position absolue
         const priceInBody = body.querySelector('.menu-card-price');
 
-        // Ajouter la photo placeholder
+        // Ajouter la photo — avec image si data-photo est présent, sinon placeholder
         const photo = document.createElement('div');
-        photo.className = 'menu-card-photo empty';
+        const photoSrc = card.getAttribute('data-photo');
+        if (photoSrc) {
+          photo.className = 'menu-card-photo';
+          const img = document.createElement('img');
+          img.src = photoSrc;
+          img.alt = (nameEl.getAttribute('data-fr') || nameEl.textContent || '').trim();
+          img.loading = 'lazy';
+          img.onerror = function() {
+            photo.classList.add('empty');
+            img.remove();
+          };
+          photo.appendChild(img);
+        } else {
+          photo.className = 'menu-card-photo empty';
+        }
         card.appendChild(photo);
         card.appendChild(body);
         if (priceInBody) card.appendChild(priceInBody);
