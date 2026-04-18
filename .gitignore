@@ -1,0 +1,61 @@
+# ============================================
+# .gitignore — Site Bochica Café Bistro
+# ============================================
+
+# macOS — fichiers système cachés
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows — fichiers système
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Éditeurs de code (VS Code, Sublime, JetBrains, etc.)
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Fichiers de sauvegarde et temporaires
+*.bak
+*.tmp
+*.temp
+*.log
+
+# Node / npm (si jamais on ajoute des outils de build)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Variables d'environnement (sensibles)
+.env
+.env.local
+.env.*.local
+
+# Fichiers de dev / preview à ne pas déployer
+preview-*.html
+
+# Fichiers orphelins identifiés dans l'audit
+paracones de la casa.png
+images/test

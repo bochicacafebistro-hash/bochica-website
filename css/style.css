@@ -3,7 +3,7 @@
   /* Fonds */
   --black:#0e0e0e;--black-2:#1a1615;--white:#faf6f0;--cream:#f3ede3;--beige:#e8dcc8;
   /* Texte */
-  --text:#1a1010;--text2:#5a4a45;--text3:#6f635f;
+  --text:#1a1010;--text2:#5a4a45;--text3:#5e524f;
   /* Accent principal : bordeaux (fonds clairs) */
   --accent:#6b1a1f;--accent-hover:#4a1015;--accent-soft:#8b2428;--accent-text:#faf6f0;
   /* Accent Colombie (fonds foncés) */
@@ -371,6 +371,18 @@ footer{background:var(--black);padding:44px 48px;border-top:1px solid rgba(250,2
 /* ── REVEAL ───────────────────────────────────────── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── ACCESSIBILITÉ — Respect des préférences de mouvement réduit ── */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important
+  }
+  .reveal{opacity:1;transform:none}
+  .status-item.open .status-dot{animation:none}
+}
 
 /* ── MOBILE ───────────────────────────────────────── */
 /* Afficher le FAB seulement sur mobile */

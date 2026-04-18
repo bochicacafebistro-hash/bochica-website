@@ -7,8 +7,12 @@ function setLang(lang) {
     el.innerHTML = el.getAttribute('data-' + lang);
   });
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    const isActive = btn.textContent.toLowerCase() === lang;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
   });
+  // Accessibilité : mettre à jour l'attribut lang pour les lecteurs d'écran
+  document.documentElement.lang = (lang === 'es') ? 'es' : (lang === 'en') ? 'en-CA' : 'fr-CA';
   localStorage.setItem('bochica-lang', lang);
   // Mettre à jour le badge de statut dans la bonne langue
   if (typeof renderStatus === 'function') renderStatus();
@@ -44,6 +48,15 @@ function toggleMenu() {
   const btn = document.getElementById('mobile-btn');
   const isOpen = links.classList.toggle('open');
   btn.classList.toggle('open', isOpen);
+  // Accessibilité : synchroniser aria-expanded et aria-label
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  const lang = currentLang || 'fr';
+  const labels = {
+    fr: { open: 'Fermer le menu', closed: 'Ouvrir le menu' },
+    en: { open: 'Close menu', closed: 'Open menu' },
+    es: { open: 'Cerrar menú', closed: 'Abrir menú' }
+  };
+  btn.setAttribute('aria-label', isOpen ? labels[lang].open : labels[lang].closed);
   document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
@@ -52,6 +65,10 @@ function closeMenu() {
   const btn = document.getElementById('mobile-btn');
   links.classList.remove('open');
   btn.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+  const lang = currentLang || 'fr';
+  const labels = { fr: 'Ouvrir le menu', en: 'Open menu', es: 'Abrir menú' };
+  btn.setAttribute('aria-label', labels[lang] || labels.fr);
   document.body.style.overflow = '';
 }
 
@@ -145,8 +162,10 @@ function initDishCards() {
           photo.className = 'menu-card-photo';
           const img = document.createElement('img');
           img.src = photoSrc;
-          img.alt = (nameEl.getAttribute('data-fr') || nameEl.textContent || '').trim();
+          const dishName = (nameEl.getAttribute('data-fr') || nameEl.textContent || '').trim();
+          img.alt = dishName ? `${dishName} — plat colombien chez Bochica` : 'Plat colombien Bochica';
           img.loading = 'lazy';
+          img.decoding = 'async';
           img.onerror = function() {
             photo.classList.add('empty');
             img.remove();
@@ -195,9 +214,19 @@ function initDishCards() {
         }
       }
 
-      // Clic → ouvrir la modale
+      // Clic → ouvrir la modale (avec support clavier complet)
       if (addModal) {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        const dishName = (nameEl.getAttribute('data-fr') || nameEl.textContent || '').trim();
+        if (dishName) card.setAttribute('aria-label', `Voir les détails : ${dishName}`);
         card.addEventListener('click', () => openDish(card));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openDish(card);
+          }
+        });
       }
     });
   });
@@ -244,9 +273,12 @@ function computeVegBadge(name) {
 }
 
 // ── Modale fiche de plat ──────────────────────────────
+let lastFocusedCard = null;
 function openDish(card) {
   const modal = document.getElementById('dish-modal');
   if (!modal) return;
+  // Mémoriser la carte d'origine pour y restaurer le focus à la fermeture
+  lastFocusedCard = card;
 
   const nameEl = card.querySelector('.menu-card-name');
   const descEl = card.querySelector('.menu-card-desc');
@@ -308,8 +340,16 @@ function openDish(card) {
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
+  // Propager l'alt de la vignette vers la modale (accessibilité)
+  const cardImg = card.querySelector('.menu-card-photo img');
+  if (cardImg && mImg && mImg.src) mImg.alt = cardImg.alt || '';
+
   // Réappliquer la traduction sur le contenu fraîchement injecté
   setLang(currentLang);
+
+  // Déplacer le focus dans la modale
+  const closeBtn = modal.querySelector('.dish-modal-close');
+  if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
 }
 
 function closeDish(e) {
@@ -320,6 +360,29 @@ function closeDish(e) {
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  // Restaurer le focus sur la carte d'origine
+  if (lastFocusedCard && typeof lastFocusedCard.focus === 'function') {
+    lastFocusedCard.focus();
+  }
+}
+
+// Focus trap à l'intérieur de la modale (accessibilité)
+function trapFocusInModal(e) {
+  const modal = document.getElementById('dish-modal');
+  if (!modal || !modal.classList.contains('open') || e.key !== 'Tab') return;
+  const focusables = modal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  if (focusables.length === 0) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }
 
 function copyLangAttrs(src, dst) {
@@ -510,7 +573,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(renderStatus, 60000);
 });
 
-// Fermer la modale avec Échap
+// Fermer la modale avec Échap + focus trap
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeDish();
+  trapFocusInModal(e);
 });
