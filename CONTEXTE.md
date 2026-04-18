@@ -189,7 +189,54 @@ Toutes sont englobées dans `<main id="main">` *(ajouté lors de l'audit)*.
 - Images toujours dans `images/` avec chemin `src="images/nom-fichier"`
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
 
+## 🎨 Design System (post-refactoring 17 avril 2026)
+
+Système complet de tokens dans `:root` de `style.css`. **Toujours préférer les tokens aux valeurs hardcodées.**
+
+### Couleurs
+- **Fonds** : `--black`, `--black-2`, `--white`, `--cream`, `--beige`
+- **Texte** : `--text`, `--text2`, `--text3`
+- **Accent bordeaux** : `--accent`, `--accent-hover`, `--accent-soft`, `--accent-text`
+- **Tricolore Colombie** : `--yellow` / `--yellow-hover` / `--yellow-soft` / `--yellow-text` (assombri pour contraste AA), `--blue` / `--blue-hover` / `--blue-text`, `--red` / `--red-hover`
+- **États** : `--success`, `--success-bg/text/border`, `--error`, `--error-bg/text/border`
+- **Classes utilitaires** : `.c-yellow/.c-blue/.c-red/.c-accent` (text), `.bg-yellow/...` (background), `.avatar--y/b/r/green`
+
+### Typographie
+- Familles : `--font-heading` (Fraunces), `--font-body` (Inter), `--font` (alias body)
+- Échelle : `--fs-xs` (11) → `--fs-sm` (13) → `--fs-base` (15) → `--fs-md` (17) → `--fs-lg` (20) → `--fs-xl` (26) → `--fs-2xl` (32) → `--fs-3xl` (48)
+- Spéciaux : `--fs-hero`, `--fs-section` (clamp responsive)
+
+### Espacement (échelle 4/8)
+- `--sp-1` (4) → `--sp-2` (8) → `--sp-3` (12) → `--sp-4` (16) → `--sp-5` (24) → `--sp-6` (32) → `--sp-7` (48) → `--sp-8` (64) → `--sp-9` (96) → `--sp-10` (120)
+
+### Border-radius
+- `--radius-xs` (2) → `--radius-sm` (4) → `--radius-md` (8) → `--radius-lg` (12) → `--radius-xl` (16) → `--radius-pill` (40) → `--radius-full` (50%)
+
+### Ombres
+- `--shadow-sm/md/lg/xl` (gris) + `--shadow-accent`, `--shadow-accent-lg` (bordeaux pour CTA)
+
+### Transitions
+- `--transition-fast` (.2s), `--transition-base` (.25s), `--transition-slow` (.35s cubic-bezier)
+
+### Système de boutons unifié
+Nouvelle convention : `.btn .btn--{variant} .btn--{size}`
+- **Variantes** : `.btn--primary` (bordeaux), `.btn--yellow` (jaune Colombie), `.btn--ghost-light` (contour clair sur fond foncé), `.btn--ghost-dark` (contour foncé sur fond clair), `.btn--phone` (CTA appel)
+- **Tailles** : `.btn--sm`, `.btn--md` (défaut), `.btn--lg`
+- **Anciennes classes conservées** comme alias pour compat : `.btn-primary`, `.btn-outline`, `.btn-blue` (= bordeaux malgré son nom historique), `.btn-nav-order`, `.btn-nav-reserve`, `.btn-outline-dark`, `.event-social-btn`, `.fab-reserve`
+
+### Tricolore restauré sur les sous-titres menu
+Les classes `.y/.b/.r` sur `.menu-subsection-title` et `.menu-card-cat` utilisent maintenant les vraies couleurs Colombie (jaune assombri / bleu assombri / rouge bordeaux). Un dot coloré apparaît à gauche du titre (`::before`).
+
 ## 📝 CHANGELOG
+
+### 17 avril 2026 — Refactoring design system (branche `refactor/design-system`)
+- Ajout du système complet de tokens dans `:root`
+- Système de boutons unifié (.btn + variantes + tailles)
+- Migration de 37 tailles de police, 24 border-radius et 18 gaps vers les tokens
+- Migration des couleurs hardcodées (#faf6f0, #ffffff, #c98600, #2c6fb8, etc.)
+- Classes `.y/.b/.r` rendues vraiment tricolores avec dots colorés
+- Suppression des styles inline du HTML (avatars, stats)
+- Classes utilitaires `.c-*`, `.bg-*`, `.avatar--*`
 
 ### 17 avril 2026 — Corrections audit top 10
 1. ✅ Retiré preload de `hero.jpg` (fichier inexistant)
