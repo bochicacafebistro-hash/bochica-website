@@ -1625,18 +1625,70 @@ main { padding-top: 0; }
 .menu-subsection-title.b { color: var(--blue); }
 .menu-subsection-title.r { color: var(--red); }
 
-.menu-card {
-  cursor: pointer;
+.menu-card { cursor: pointer; }
+
+/* ─── Layout avec photo (style brasserie) ─── */
+.menu-card.has-photo {
+  padding: 0;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+  gap: 0;
 }
-.menu-card[data-photo] {
+
+.menu-card-photo {
+  flex: 0 0 38%;
+  max-width: 170px;
+  aspect-ratio: 4/3;
+  background: var(--bg-3);
+  overflow: hidden;
   position: relative;
 }
-.menu-card[data-photo]::before {
-  content: "📷";
+.menu-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+.menu-card.has-photo:hover .menu-card-photo img { transform: scale(1.06); }
+
+.menu-card-photo.placeholder {
+  background: linear-gradient(135deg, #2e2013 0%, #1a120a 100%);
+}
+.menu-card-photo.placeholder img { opacity: .85; }
+
+.menu-card-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 14px 80px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.menu-card.has-photo .menu-card-name {
+  font-size: 17px;
+  line-height: 1.15;
+}
+.menu-card.has-photo .menu-card-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.menu-card.has-photo .menu-card-price {
   position: absolute;
-  top: 8px; right: 8px;
-  font-size: 11px;
-  opacity: 0.4;
+  bottom: 12px;
+  right: 18px;
+  font-size: 18px;
+}
+
+@media (max-width: 520px) {
+  .menu-card-photo { flex-basis: 42%; max-width: 130px; }
+  .menu-card-body { padding: 12px 70px 12px 14px; }
+  .menu-card.has-photo .menu-card-name { font-size: 15px; }
+  .menu-card.has-photo .menu-card-desc { font-size: 11.5px; }
 }
 
 /* ─── Signatures legacy (ancien template) ─── */

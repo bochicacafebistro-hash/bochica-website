@@ -155,25 +155,22 @@ function initDishCards() {
         // Le prix se déplace hors du body pour être en position absolue
         const priceInBody = body.querySelector('.menu-card-price');
 
-        // Ajouter la photo — avec image si data-photo est présent, sinon placeholder
+        // Ajouter la photo — image personnalisée si data-photo, sinon placeholder Bochica
         const photo = document.createElement('div');
-        const photoSrc = card.getAttribute('data-photo');
-        if (photoSrc) {
-          photo.className = 'menu-card-photo';
-          const img = document.createElement('img');
-          img.src = photoSrc;
-          const dishName = (nameEl.getAttribute('data-fr') || nameEl.textContent || '').trim();
-          img.alt = dishName ? `${dishName} — plat colombien chez Bochica` : 'Plat colombien Bochica';
-          img.loading = 'lazy';
-          img.decoding = 'async';
-          img.onerror = function() {
-            photo.classList.add('empty');
-            img.remove();
-          };
-          photo.appendChild(img);
-        } else {
-          photo.className = 'menu-card-photo empty';
-        }
+        const photoSrc = card.getAttribute('data-photo') || 'images/placeholder-dish.svg';
+        const isPlaceholder = !card.getAttribute('data-photo');
+        photo.className = isPlaceholder ? 'menu-card-photo placeholder' : 'menu-card-photo';
+        const img = document.createElement('img');
+        img.src = photoSrc;
+        const dishName = (nameEl.getAttribute('data-fr') || nameEl.textContent || '').trim();
+        img.alt = dishName ? `${dishName} — plat colombien chez Bochica` : 'Plat colombien Bochica';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.onerror = function() {
+          photo.classList.add('placeholder');
+          img.src = 'images/placeholder-dish.svg';
+        };
+        photo.appendChild(img);
         card.appendChild(photo);
         card.appendChild(body);
         if (priceInBody) card.appendChild(priceInBody);
