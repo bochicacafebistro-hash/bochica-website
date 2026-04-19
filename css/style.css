@@ -6,6 +6,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  color-scheme: dark;
   /* ── Palette Brasserie ───────────────────────────── */
   --bg: #0e0d0c;              /* noir chaud, fond principal */
   --bg-2: #1a1510;            /* surface secondaire (cartes, sections horaires) */
