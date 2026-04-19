@@ -1367,7 +1367,7 @@ footer {
   transform: translateY(16px);
   transition: opacity .6s ease, transform .6s ease;
 }
-.reveal.in-view { opacity: 1; transform: translateY(0); }
+.reveal.in-view, .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 
