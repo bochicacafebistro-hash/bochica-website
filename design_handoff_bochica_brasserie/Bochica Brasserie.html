@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bochica — Brasserie colombienne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --b-bg: #0e0d0c;
+    --b-ink: #f5f1e8;
+    --b-red: #f7c81e;      /* yellow accent */
+    --b-red-ink: #0e0d0c;  /* text on yellow */
+    --b-display: 'Bebas Neue', sans-serif;
+    --b-body: 'Inter', sans-serif;
+    --pad: 40px;
+    --gap: 28px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--b-bg);color:var(--b-ink);font-family:var(--b-body);font-size:15.5px;line-height:1.55}
+  img{display:block;max-width:100%}
+  button{font:inherit}
+  .page{min-height:100vh}
+  .mono{font-family:'JetBrains Mono',monospace}
+  @media (max-width:760px){
+    :root{--pad:20px}
+    .br-menu-grid{grid-template-columns:1fr !important}
+  }
+</style>
+</head>
+<body>
+<div id="root" class="page"></div>
+
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="#0e0d0c"/>
+  <text x="50" y="55" font-family="sans-serif" font-size="28" font-weight="900" fill="#f7c81e" text-anchor="middle" letter-spacing="2">B</text>
+  <rect x="30" y="72" width="40" height="3" fill="#f7c81e"/>
+</svg>
+</template>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+const BOCHICA = {
+  name: "Bochica",
+  address: "430 Rue Saint-Vallier Ouest",
+  neighborhood: "Saint-Roch, Québec",
+  phone: "367-330-8220",
+  email: "bochicacafebistro@gmail.com",
+  hours: [
+    ["Lundi","Fermé"],["Mardi","Fermé"],
+    ["Mercredi","17h — 21h"],["Jeudi","17h — 21h"],
+    ["Vendredi","12h — 22h"],["Samedi","13h — 23h"],["Dimanche","13h — 21h"],
+  ],
+  menu: {
+    "Entrées": [
+      { n: "Empanada", desc: "Poulet ou bœuf, sans gluten. 4 pour 12 $ · 10 pour 28 $", price: "3,25 $" },
+      { n: "Arepa au fromage", desc: "La classique, sans gluten.", price: "6 $" },
+      { n: "Sancochito", desc: "Vendredi à dimanche.", price: "7 $" },
+      { n: "Frites", desc: "Sans gluten.", price: "7 $" },
+      { n: "Yuca Frita", desc: "Frites de manioc. Sans gluten.", price: "7,5 $" },
+      { n: "Morcilla, Chicharron ou Chorizo", desc: "Servi avec arepa. Sans gluten.", price: "9 $" },
+    ],
+    "Arepas farcies": [
+      { n: "Arepa Reina Pepiada", desc: "Poulet, avocat, oignon, mayonnaise maison.", price: "14 $" },
+      { n: "Arepa Pabellón", desc: "Bœuf effiloché, fèves noires, plantain, fromage.", price: "15 $" },
+      { n: "Arepa Chicharrón", desc: "Porc croustillant, avocat, oignon rouge.", price: "15 $" },
+    ],
+    "Repas": [
+      { n: "Bandeja Paisa", desc: "Le plat national : bœuf, chorizo, chicharron, œuf, haricots, riz, plantain, avocat, arepa.", price: "26 $" },
+      { n: "Picada colombienne (2 pers.)", desc: "Mix de viandes grillées, arepas, chorizo, morcilla, frites, yuca.", price: "42 $" },
+      { n: "Sancocho de gallina", desc: "Soupe colombienne traditionnelle de poule, manioc, plantain.", price: "19 $" },
+      { n: "Pescado frito", desc: "Tilapia entier, patacones, riz coco, salade.", price: "24 $" },
+    ],
+    "Cocktails": [
+      { n: "Canelazo", desc: "Aguardiente, cannelle, panela, lime.", price: "12 $" },
+      { n: "Refajo", desc: "Colombiana + bière, classique de rue.", price: "9 $" },
+      { n: "Cuba Libre andin", desc: "Rhum, lime, cola artisanale.", price: "11 $" },
+    ],
+  },
+  events: [
+    { day: "SAM", date: "—", kicker: "Soirée Salsa", title: "Salsa & Cumbia en direct", desc: "Musique latine en direct, cocktails signature, ambiance festive jusqu'à la fermeture.", meta: "Dès 20h · Entrée libre" },
+    { day: "VEN", date: "—", kicker: "Match de soccer", title: "Colombie vs…", desc: "Venez encourager la sélection colombienne sur grand écran, avec Picada et bière en spécial.", meta: "Réservation recommandée" },
+    { day: "JUI", date: "20", kicker: "Fête nationale", title: "Independencia de Colombia", desc: "Menu spécial, musique traditionnelle, drapeaux tricolores pour célébrer la Colombie en famille.", meta: "Toute la journée" },
+    { day: "JEU", date: "—", kicker: "Atelier", title: "Empanadas maison", desc: "Apprenez à préparer l'empanada colombienne comme à Bogotá — avec Carla.", meta: "Dès 19h · 45 $" },
+  ],
+};
+
+// Placeholder food/ambient image — striped warm background
+const FoodPH = ({ label, ratio = "4/3", tone = "warm", rounded = 3 }) => {
+  const bg = tone === "dark" ? "#1a1410" : tone === "bright" ? "#fef2d4" : tone === "cream" ? "#efe5d0" : "#eadfc9";
+  const fg = tone === "dark" ? "#f7c81e" : "#8a6a2a";
+  return (
+    <div style={{
+      aspectRatio: ratio, width: "100%", borderRadius: rounded,
+      background: `repeating-linear-gradient(135deg, ${bg} 0 18px, ${bg}dd 18px 36px)`,
+      color: fg, position: "relative", overflow: "hidden",
+    }}>
+      <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", fontFamily: "'JetBrains Mono',monospace", fontSize: 10, letterSpacing: ".16em", textTransform: "uppercase", opacity: 0.7, padding: 10, textAlign: "center" }}>
+        [ photo · {label} ]
+      </div>
+    </div>
+  );
+};
+
+// Ambient photo placeholder — moody, with yellow+red glow
+const Ambient = ({ label, height = "100%" }) => (
+  <div style={{
+    position: "absolute", inset: 0, height,
+    background: `
+      linear-gradient(180deg, rgba(14,13,12,.25) 0%, rgba(14,13,12,.1) 40%, rgba(14,13,12,.85) 100%),
+      repeating-linear-gradient(175deg, #1a1510 0 6px, #221812 6px 12px, #2d1d15 12px 18px, #1a1510 18px 32px),
+      radial-gradient(ellipse at 50% 20%, rgba(247,200,30,.35) 0%, transparent 45%),
+      radial-gradient(ellipse at 30% 15%, rgba(247,200,30,.2) 0%, transparent 40%)
+    `,
+    overflow: "hidden",
+  }}>
+    <div style={{ position: "absolute", top: 16, right: 16, fontFamily: "'JetBrains Mono',monospace", fontSize: 9, letterSpacing: ".22em", textTransform: "uppercase", color: "rgba(245,241,232,.45)", background: "rgba(0,0,0,.3)", padding: "4px 8px", borderRadius: 3 }}>[ photo ambiance · {label} ]</div>
+  </div>
+);
+
+const Nav = ({ dark = false, onNav }) => {
+  const ink = dark ? "#f5f1e8" : "#0e0d0c";
+  const bg = dark ? "rgba(14,13,12,.35)" : "#fff";
+  const border = dark ? "1px solid rgba(245,241,232,.25)" : "1px solid rgba(14,13,12,.15)";
+  return (
+    <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, padding: "18px var(--pad)", background: bg, backdropFilter: dark ? "blur(6px)" : "none", color: ink, borderBottom: dark ? "none" : "1px solid rgba(14,13,12,.08)", position: "absolute", top: 0, left: 0, right: 0, zIndex: 10, flexWrap: "wrap" }}>
+      <a onClick={() => onNav("home")} style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
+        <div style={{ width: 38, height: 38, borderRadius: 100, border: `1.5px solid ${ink}`, display: "grid", placeItems: "center", fontFamily: "var(--b-display)", fontSize: 18, fontWeight: 700, letterSpacing: 0 }}>B</div>
+        <div style={{ fontFamily: "var(--b-display)", fontSize: 22, letterSpacing: ".08em" }}>BOCHICA</div>
+      </a>
+      <nav style={{ display: "flex", gap: 18, fontFamily: "var(--b-display)", fontSize: "clamp(11px, 1.1vw, 14px)", letterSpacing: ".14em", flexWrap: "wrap" }}>
+        <span onClick={() => onNav("menu")} style={{ cursor: "pointer" }}>MENU</span>
+        <span onClick={() => onNav("events")} style={{ cursor: "pointer" }}>ÉVÉNEMENTS</span>
+        <span style={{ opacity: .8 }}>RÉSERVATIONS</span>
+        <span style={{ opacity: .8 }}>CARTES-CADEAUX</span>
+        <span style={{ opacity: .8 }}>HORAIRES</span>
+      </nav>
+      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+        <button style={{ background: "transparent", color: ink, border, padding: "9px 18px", borderRadius: 100, fontFamily: "var(--b-display)", fontSize: 12, letterSpacing: ".14em", cursor: "pointer" }}>COMMANDER</button>
+        <button style={{ background: "var(--b-red)", color: "var(--b-red-ink)", border: 0, padding: "10px 18px", borderRadius: 100, fontFamily: "var(--b-display)", fontSize: 12, letterSpacing: ".14em", cursor: "pointer", fontWeight: 600 }}>RÉSERVER</button>
+        <span style={{ fontFamily: "var(--b-display)", fontSize: 12, letterSpacing: ".14em", opacity: .8, marginLeft: 4 }}>FR</span>
+      </div>
+    </header>
+  );
+};
+
+const Home = ({ onNav }) => (
+  <div>
+    {/* HERO */}
+    <section style={{ position: "relative", minHeight: "min(820px, 100vh)", overflow: "hidden" }}>
+      <Ambient label="intérieur · ambiance chaude" height="100%"/>
+      <Nav dark onNav={onNav}/>
+      <div style={{ position: "absolute", left: "var(--pad)", right: "var(--pad)", bottom: 70, zIndex: 2 }}>
+        <div style={{ fontFamily: "var(--b-display)", fontSize: 14, letterSpacing: ".28em", opacity: .85, marginBottom: 12 }}>BOCHICA · QUÉBEC</div>
+        <h1 style={{ fontFamily: "var(--b-display)", fontSize: "clamp(52px, 10vw, 180px)", lineHeight: .95, letterSpacing: ".005em", margin: 0, fontWeight: 400, color: "#fff", textShadow: "0 2px 16px rgba(0,0,0,.5)" }}>
+          QUÉBEC <span style={{ opacity: .5 }}>—</span> SAINT-ROCH
+        </h1>
+        <div style={{ fontFamily: "var(--b-display)", fontSize: "clamp(32px, 5.5vw, 88px)", letterSpacing: "-.005em", lineHeight: 1, color: "var(--b-red)", margin: "6px 0 0", textTransform: "uppercase", textShadow: "2px 2px 0 rgba(0,0,0,.4)" }}>
+          Brasserie colombienne
+        </div>
+        <div style={{ display: "flex", gap: 10, marginTop: 28, flexWrap: "wrap" }}>
+          <button onClick={() => onNav("menu")} style={{ background: "transparent", color: "#fff", border: "1.5px solid rgba(255,255,255,.85)", padding: "12px 22px", borderRadius: 100, fontFamily: "var(--b-display)", fontSize: 12.5, letterSpacing: ".18em", cursor: "pointer" }}>VOIR LE MENU</button>
+          <button style={{ background: "var(--b-red)", color: "var(--b-red-ink)", border: 0, padding: "13px 22px", borderRadius: 100, fontFamily: "var(--b-display)", fontSize: 12.5, letterSpacing: ".18em", cursor: "pointer", fontWeight: 600 }}>COMMANDER</button>
+          <button style={{ background: "var(--b-red)", color: "var(--b-red-ink)", border: 0, padding: "13px 22px", borderRadius: 100, fontFamily: "var(--b-display)", fontSize: 12.5, letterSpacing: ".18em", cursor: "pointer", fontWeight: 600 }}>RÉSERVER</button>
+        </div>
+      </div>
+    </section>
+
+    {/* Ticker */}
+    <div style={{ background: "var(--b-red)", padding: "12px 0", overflow: "hidden", color: "var(--b-red-ink)" }}>
+      <div style={{ display: "flex", gap: 40, fontFamily: "var(--b-display)", fontSize: 16, letterSpacing: ".2em", whiteSpace: "nowrap", fontWeight: 600 }}>
+        {"OUVERT JUSQU'À 23H ★ SALSA LE SAMEDI ★ MATCH EN DIRECT ★ HAPPY HOUR 17H-19H ★ OUVERT JUSQU'À 23H ★ SALSA LE SAMEDI ★".split(" ").map((w,i)=><span key={i} style={{paddingLeft:10}}>{w}</span>)}
+      </div>
+    </div>
+
+    {/* Signature */}
+    <section style={{ padding: "90px var(--pad)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 50, flexWrap: "wrap", gap: 20 }}>
+        <div>
+          <div style={{ fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".28em", color: "var(--b-red)", marginBottom: 10 }}>LA MAISON</div>
+          <h2 style={{ fontFamily: "var(--b-display)", fontSize: "clamp(40px, 6vw, 96px)", margin: 0, lineHeight: .95, fontWeight: 400, textTransform: "uppercase" }}>Saveurs<br/>de <span style={{ color: "var(--b-red)" }}>Colombie.</span></h2>
+        </div>
+        <div style={{ display: "flex", gap: 10 }}>
+          <button style={{ width: 48, height: 48, borderRadius: 100, border: "1.5px solid rgba(245,241,232,.3)", background: "transparent", color: "#fff", fontSize: 18, cursor: "pointer" }}>←</button>
+          <button style={{ width: 48, height: 48, borderRadius: 100, border: "1.5px solid rgba(245,241,232,.3)", background: "transparent", color: "#fff", fontSize: 18, cursor: "pointer" }}>→</button>
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 18 }}>
+        {[["Bandeja Paisa","Le plat national","dark"],["Arepa Reina","Poulet · avocat","bright"],["Empanadas","4 pour 12 $","warm"],["Picada","À partager","cream"]].map(([t,d,tone],i) => (
+          <article key={i} style={{ position: "relative", borderRadius: 4, overflow: "hidden", background: "#1a1510" }}>
+            <FoodPH label={t.toLowerCase()} ratio="4/5" tone={tone} rounded={0}/>
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 55%, rgba(14,13,12,.85) 100%)" }}/>
+            <div style={{ position: "absolute", left: 18, right: 18, bottom: 18 }}>
+              <div style={{ fontFamily: "var(--b-display)", fontSize: 11, letterSpacing: ".22em", color: "var(--b-red)", marginBottom: 6 }}>N° {String(i+1).padStart(2,"0")}</div>
+              <div style={{ fontFamily: "var(--b-display)", fontSize: 26, lineHeight: 1, textTransform: "uppercase", letterSpacing: ".01em" }}>{t}</div>
+              <div style={{ fontSize: 13, opacity: .8, marginTop: 6 }}>{d}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {/* Story + ambient */}
+    <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", minHeight: 480 }}>
+      <div style={{ position: "relative", minHeight: 380 }}><Ambient label="bar · éclairage chaud"/></div>
+      <div style={{ background: "var(--b-ink)", color: "#0e0d0c", padding: "80px var(--pad)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <div style={{ fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".28em", color: "#8a6a1a", marginBottom: 14 }}>NOTRE HISTOIRE</div>
+        <h2 style={{ fontFamily: "var(--b-display)", fontSize: "clamp(36px, 5vw, 72px)", margin: "0 0 20px", lineHeight: .95, fontWeight: 400, textTransform: "uppercase" }}>Une <span style={{ background: "var(--b-red)", padding: "0 8px" }}>brasserie</span> pas comme les autres.</h2>
+        <p style={{ fontSize: 16, opacity: .8, margin: "0 0 16px", maxWidth: 540 }}>
+          Arepas, empanadas, sancocho — mais aussi bières pression, cocktails latins, matchs sur écran et musique cumbia. Bochica, c'est une brasserie colombienne au cœur de Saint-Roch.
+        </p>
+        <p style={{ fontSize: 16, opacity: .8, margin: "0 0 28px", maxWidth: 540 }}>
+          Venez manger comme en Colombie, boire comme au Québec, et rester tard parce que la salsa commence à 21h.
+        </p>
+        <button style={{ alignSelf: "start", background: "var(--b-red)", color: "var(--b-red-ink)", border: 0, padding: "14px 24px", borderRadius: 100, fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".18em", cursor: "pointer", fontWeight: 600 }}>DÉCOUVRIR →</button>
+      </div>
+    </section>
+
+    {/* Events */}
+    <section style={{ padding: "90px var(--pad)" }}>
+      <div style={{ fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".28em", color: "var(--b-red)", marginBottom: 10 }}>CALENDRIER</div>
+      <h2 style={{ fontFamily: "var(--b-display)", fontSize: "clamp(40px, 6vw, 96px)", margin: "0 0 40px", lineHeight: .95, fontWeight: 400, textTransform: "uppercase" }}>À l'<span style={{ color: "var(--b-red)" }}>affiche</span> cette semaine</h2>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
+        {BOCHICA.events.map((e,i) => (
+          <article key={i} style={{ background: "#1a1510", border: "1px solid rgba(245,241,232,.08)", borderRadius: 6, overflow: "hidden" }}>
+            <div style={{ position: "relative", aspectRatio: "4/3" }}>
+              <Ambient label={e.kicker.toLowerCase()}/>
+              <div style={{ position: "absolute", top: 12, left: 12, background: "var(--b-red)", color: "var(--b-red-ink)", padding: "4px 10px", fontFamily: "var(--b-display)", fontSize: 12, letterSpacing: ".14em", borderRadius: 3, fontWeight: 600 }}>{e.day} · {e.date}</div>
+            </div>
+            <div style={{ padding: 20 }}>
+              <div style={{ fontFamily: "var(--b-display)", fontSize: 11, letterSpacing: ".22em", color: "var(--b-red)", marginBottom: 6 }}>{e.kicker.toUpperCase()}</div>
+              <h3 style={{ fontFamily: "var(--b-display)", fontSize: 24, margin: "0 0 10px", lineHeight: 1, textTransform: "uppercase", letterSpacing: ".01em", fontWeight: 400 }}>{e.title}</h3>
+              <p style={{ fontSize: 13, opacity: .75, margin: 0 }}>{e.desc}</p>
+              <div style={{ marginTop: 14, fontSize: 11, letterSpacing: ".16em", textTransform: "uppercase", opacity: .6 }}>● {e.meta}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {/* Hours + contact */}
+    <section style={{ padding: "90px var(--pad)", background: "#1a1510", borderTop: "1px solid rgba(245,241,232,.08)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 60 }}>
+        <div>
+          <div style={{ fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".28em", color: "var(--b-red)", marginBottom: 14 }}>NOUS TROUVER</div>
+          <h3 style={{ fontFamily: "var(--b-display)", fontSize: "clamp(28px, 3.5vw, 44px)", margin: "0 0 14px", lineHeight: 1, textTransform: "uppercase", fontWeight: 400 }}>{BOCHICA.address}</h3>
+          <div style={{ fontSize: 14, opacity: .75 }}>{BOCHICA.neighborhood}</div>
+          <div style={{ marginTop: 20, fontSize: 14 }}>{BOCHICA.phone} · <span style={{ opacity: .75 }}>{BOCHICA.email}</span></div>
+        </div>
+        <div>
+          <div style={{ fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".28em", color: "var(--b-red)", marginBottom: 14 }}>HORAIRES</div>
+          {BOCHICA.hours.map(([d,h],i) => (
+            <div key={d} style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: i===BOCHICA.hours.length-1?"none":"1px solid rgba(245,241,232,.08)", fontSize: 14 }}>
+              <span style={{ fontFamily: "var(--b-display)", fontSize: 15, letterSpacing: ".05em" }}>{d.toUpperCase()}</span>
+              <span style={{ opacity: h==="Fermé"?.4:.85, fontStyle: h==="Fermé"?"italic":"normal" }}>{h}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Bottom CTA */}
+    <section style={{ position: "relative", minHeight: 420, overflow: "hidden", display: "grid", placeItems: "center" }}>
+      <Ambient label="terrasse · soir"/>
+      <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "60px var(--pad)" }}>
+        <div style={{ fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".28em", color: "var(--b-red)", marginBottom: 14 }}>BIENVENUE CHEZ BOCHICA</div>
+        <h2 style={{ fontFamily: "var(--b-display)", fontSize: "clamp(48px, 7vw, 128px)", margin: 0, lineHeight: .95, fontWeight: 400, textTransform: "uppercase", color: "#fff", textShadow: "0 2px 16px rgba(0,0,0,.6)" }}>Venez <span style={{ color: "var(--b-red)" }}>manger</span>,<br/>rester,<br/>danser.</h2>
+        <button style={{ marginTop: 32, background: "var(--b-red)", color: "var(--b-red-ink)", border: 0, padding: "15px 28px", borderRadius: 100, fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".18em", cursor: "pointer", fontWeight: 600 }}>RÉSERVER MAINTENANT</button>
+      </div>
+    </section>
+  </div>
+);
+
+const Menu = ({ onNav }) => {
+  const cats = Object.keys(BOCHICA.menu);
+  const [active, setActive] = useState(cats[0]);
+  return (
+    <div style={{ background: "#f5f1e8", color: "#0e0d0c", minHeight: "100vh" }}>
+      <div style={{ position: "relative", minHeight: 120 }}><Nav onNav={onNav}/></div>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", padding: "30px var(--pad) 10px", borderBottom: "1px solid rgba(14,13,12,.08)" }}>
+        <span style={{ background: "var(--b-red)", color: "var(--b-red-ink)", padding: "5px 11px", borderRadius: 3, fontFamily: "var(--b-display)", fontSize: 11, letterSpacing: ".16em", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 6, fontWeight: 600 }}>☰ MENU</span>
+        <span style={{ fontFamily: "var(--b-display)", fontSize: 12, letterSpacing: ".22em", opacity: .55, marginLeft: 8, whiteSpace: "nowrap" }}>BOISSONS · COCKTAILS</span>
+      </div>
+
+      <div className="br-menu-grid" style={{ display: "grid", gridTemplateColumns: "minmax(180px, 220px) 1fr", gap: 40, padding: "40px var(--pad) 80px" }}>
+        <aside style={{ position: "sticky", top: 20, alignSelf: "start" }}>
+          {cats.map((c) => (
+            <div key={c} onClick={() => setActive(c)} style={{ padding: "10px 0", fontSize: 15, fontWeight: active===c?600:400, color: active===c?"#0e0d0c":"rgba(14,13,12,.65)", borderBottom: "1px solid rgba(14,13,12,.08)", cursor: "pointer", position: "relative", paddingLeft: active===c?14:0, transition: "padding-left .2s" }}>
+              {active===c && <span style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)", width: 6, height: 6, borderRadius: 100, background: "var(--b-red)" }}/>}
+              {c}
+            </div>
+          ))}
+        </aside>
+
+        <div>
+          <h2 style={{ fontFamily: "var(--b-display)", fontSize: 36, margin: "0 0 24px", letterSpacing: ".01em", textTransform: "uppercase", fontWeight: 400 }}>{active}</h2>
+          {BOCHICA.menu[active].map((d,i) => (
+            <article key={i} style={{ display: "grid", gridTemplateColumns: "minmax(140px, 200px) 1fr auto", gap: 20, padding: "20px 0", borderBottom: "1px solid rgba(14,13,12,.08)", alignItems: "center" }}>
+              <div style={{ position: "relative" }}>
+                <FoodPH label={d.n.toLowerCase()} ratio="4/3" tone="cream"/>
+                {i === 0 && (
+                  <div style={{ position: "absolute", top: 10, left: 10, background: "var(--b-red)", color: "var(--b-red-ink)", padding: "3px 9px", fontFamily: "var(--b-display)", fontSize: 10, letterSpacing: ".16em", borderRadius: 3, fontWeight: 600 }}>NOUVEAU</div>
+                )}
+              </div>
+              <div>
+                <h3 style={{ margin: "0 0 6px", fontSize: 17, fontWeight: 600 }}>{d.n}</h3>
+                <p style={{ margin: 0, fontSize: 13.5, opacity: .7, lineHeight: 1.5 }}>{d.desc}</p>
+                <div style={{ display: "flex", gap: 6, marginTop: 10 }}>
+                  {["N","V","GF"].slice(0, (i%3)+1).map((tag,j) => (
+                    <span key={j} style={{ width: 22, height: 22, borderRadius: 100, border: "1px solid rgba(14,13,12,.4)", display: "grid", placeItems: "center", fontSize: 9, fontWeight: 600, letterSpacing: ".02em" }}>{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <div style={{ fontSize: 17, fontWeight: 600, whiteSpace: "nowrap" }}>{d.price}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Events = ({ onNav }) => (
+  <div>
+    <div style={{ position: "relative", minHeight: 120 }}><Nav dark onNav={onNav}/></div>
+    <section style={{ padding: "80px var(--pad) 30px" }}>
+      <div style={{ fontFamily: "var(--b-display)", fontSize: 13, letterSpacing: ".28em", color: "var(--b-red)", marginBottom: 12 }}>À L'AFFICHE</div>
+      <h1 style={{ fontFamily: "var(--b-display)", fontSize: "clamp(56px, 9vw, 180px)", margin: 0, lineHeight: 1, fontWeight: 400, textTransform: "uppercase" }}>Les <span style={{ color: "var(--b-red)" }}>soirées</span><br/>de la semaine.</h1>
+    </section>
+    <section style={{ padding: "40px var(--pad) 100px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 18 }}>
+        {BOCHICA.events.map((e,i) => (
+          <article key={i} style={{ background: "#1a1510", border: "1px solid rgba(245,241,232,.08)", borderRadius: 8, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+            <div style={{ position: "relative", aspectRatio: "16/10" }}>
+              <Ambient label={e.kicker.toLowerCase()}/>
+              <div style={{ position: "absolute", top: 14, left: 14, background: "var(--b-red)", color: "var(--b-red-ink)", padding: "4px 11px", fontFamily: "var(--b-display)", fontSize: 12, letterSpacing: ".16em", borderRadius: 3, fontWeight: 600 }}>{e.day} · {e.date}</div>
+              <div style={{ position: "absolute", top: 14, right: 14, background: "rgba(14,13,12,.55)", color: "#fff", padding: "4px 11px", fontSize: 11, letterSpacing: ".14em", borderRadius: 3, textTransform: "uppercase" }}>{e.kicker}</div>
+            </div>
+            <div style={{ padding: 24, flex: 1 }}>
+              <h3 style={{ fontFamily: "var(--b-display)", fontSize: 28, margin: "0 0 12px", lineHeight: .95, textTransform: "uppercase", letterSpacing: ".01em", fontWeight: 400 }}>{e.title}</h3>
+              <p style={{ fontSize: 14, opacity: .8, margin: "0 0 18px", lineHeight: 1.55 }}>{e.desc}</p>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 14, borderTop: "1px solid rgba(245,241,232,.08)" }}>
+                <div style={{ fontSize: 11, letterSpacing: ".16em", textTransform: "uppercase", opacity: .6 }}>{e.meta}</div>
+                <button style={{ background: "var(--b-red)", color: "var(--b-red-ink)", border: 0, padding: "9px 16px", borderRadius: 100, fontFamily: "var(--b-display)", fontSize: 11.5, letterSpacing: ".16em", cursor: "pointer", fontWeight: 600 }}>RÉSERVER →</button>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+);
+
+function App() {
+  const [view, setView] = useState("home");
+  React.useEffect(() => {
+    try { const s = localStorage.getItem("bochica-br-view"); if (s) setView(s); } catch {}
+  }, []);
+  React.useEffect(() => {
+    try { localStorage.setItem("bochica-br-view", view); } catch {}
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [view]);
+
+  const onNav = (v) => setView(v);
+  const Cmp = { home: Home, menu: Menu, events: Events }[view];
+  return <Cmp onNav={onNav}/>;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

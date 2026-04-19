@@ -44,10 +44,11 @@
   <link rel="dns-prefetch" href="https://bochica.order-online.ai"/>
   <link rel="dns-prefetch" href="https://www.google.com"/>
 
-  <!-- Typographie : Fraunces (titres) + Inter (corps) -->
+  <!-- Typographie : Bebas Neue (titres impact) + Inter (corps) + JetBrains Mono (microcopy) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,300&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <!-- ============ Open Graph (Facebook, LinkedIn, WhatsApp) ============ -->
   <meta property="og:type" content="restaurant.restaurant"/>
@@ -415,20 +416,39 @@
   <img class="hero-img" src="images/hero.jpg" alt="Restaurant colombien Bochica à Québec — Ambiance chaleureuse et cuisine authentique" onerror="this.style.display='none'"/>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <img class="hero-logo" src="images/Logo Bochica 2026-3.png" alt="Logo Bochica Café Bistro — Restaurant colombien à Québec"/>    <h1 class="hero-phrase"
-      data-fr="Voyagez en Colombie…<br><em>sans quitter le Québec</em>"
-      data-en="Travel to Colombia…<br><em>without leaving Québec</em>"
-      data-es="Viaja a Colombia…<br><em>sin salir de Québec</em>">
-      Voyagez en Colombie…<br><em>sans quitter le Québec</em>
-    </h1>
+    <div class="hero-eyebrow" data-fr="Bochica · Québec" data-en="Bochica · Québec" data-es="Bochica · Québec">Bochica · Québec</div>
+    <h1 class="hero-h1">QUÉBEC <span class="dim">—</span> SAINT-ROCH</h1>
+    <div class="hero-tagline"
+      data-fr="Restaurant colombien"
+      data-en="Colombian restaurant"
+      data-es="Restaurante colombiano">Restaurant colombien</div>
     <div class="hero-btns">
+      <a href="#menu" class="btn-outline"
+        data-fr="Voir le menu" data-en="View menu" data-es="Ver el menú">Voir le menu</a>
       <a href="https://bochica.order-online.ai/" target="_blank" rel="noopener noreferrer" class="btn-primary"
-        data-fr="Commander en ligne" data-en="Order online" data-es="Ordenar en línea">Commander en ligne</a>
-      <a href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" target="_blank" rel="noopener noreferrer" class="btn-outline"
-        data-fr="Réserver une table" data-en="Book a table" data-es="Reservar una mesa">Réserver une table</a>
+        data-fr="Commander" data-en="Order" data-es="Ordenar">Commander</a>
+      <a href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" target="_blank" rel="noopener noreferrer" class="btn-primary"
+        data-fr="Réserver" data-en="Reserve" data-es="Reservar">Réserver</a>
     </div>
   </div>
 </section>
+
+<!-- TICKER JAUNE -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item" data-fr="Ouvert jusqu'à 23h" data-en="Open until 11pm" data-es="Abierto hasta las 23h">Ouvert jusqu'à 23h</span>
+    <span class="ticker-item" data-fr="Salsa le samedi" data-en="Salsa on Saturdays" data-es="Salsa los sábados">Salsa le samedi</span>
+    <span class="ticker-item" data-fr="Match en direct" data-en="Live matches" data-es="Partido en vivo">Match en direct</span>
+    <span class="ticker-item" data-fr="Happy hour 17h-19h" data-en="Happy hour 5pm-7pm" data-es="Happy hour 17h-19h">Happy hour 17h-19h</span>
+    <span class="ticker-item" data-fr="Cuisine colombienne" data-en="Colombian cuisine" data-es="Cocina colombiana">Cuisine colombienne</span>
+    <!-- duplication pour boucle infinie sans saut -->
+    <span class="ticker-item" data-fr="Ouvert jusqu'à 23h" data-en="Open until 11pm" data-es="Abierto hasta las 23h">Ouvert jusqu'à 23h</span>
+    <span class="ticker-item" data-fr="Salsa le samedi" data-en="Salsa on Saturdays" data-es="Salsa los sábados">Salsa le samedi</span>
+    <span class="ticker-item" data-fr="Match en direct" data-en="Live matches" data-es="Partido en vivo">Match en direct</span>
+    <span class="ticker-item" data-fr="Happy hour 17h-19h" data-en="Happy hour 5pm-7pm" data-es="Happy hour 17h-19h">Happy hour 17h-19h</span>
+    <span class="ticker-item" data-fr="Cuisine colombienne" data-en="Colombian cuisine" data-es="Cocina colombiana">Cuisine colombienne</span>
+  </div>
+</div>
 
 <!-- BAND -->
 <div class="band">
@@ -941,155 +961,162 @@
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid reveal">
-    <div class="about-img-wrap">
-      <img class="about-img" src="images/about.jpg" alt="Intérieur du restaurant Bochica à Québec — Bistro colombien authentique sur la Rue Saint-Vallier Ouest" onerror="this.outerHTML='<div class=about-img-ph>📷 Photo du restaurant</div>'"/>
-      <div class="about-deco"><div class="about-deco-inner"><div></div><div></div><div></div></div></div>
-    </div>
-    <div>
-      <span class="section-tag" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</span>
-      <h2 class="section-title" data-fr="Une cuisine qui vous<br>transporte en Colombie" data-en="A cuisine that takes<br>you to Colombia" data-es="Una cocina que te<br>lleva a Colombia">Une cuisine qui vous<br>transporte en Colombie</h2>
-      <p class="section-sub" data-fr="Chez Bochica, chaque assiette est une invitation au voyage. Notre cuisine colombienne authentique est préparée avec passion, des ingrédients frais et les recettes traditionnelles de nos familles." data-en="At Bochica, every plate is an invitation to travel. Our authentic Colombian cuisine is prepared with passion, fresh ingredients and traditional family recipes." data-es="En Bochica, cada plato es una invitación a viajar. Nuestra auténtica cocina colombiana se prepara con pasión, ingredientes frescos y recetas tradicionales de nuestras familias.">Chez Bochica, chaque assiette est une invitation au voyage. Notre cuisine colombienne authentique est préparée avec passion, des ingrédients frais et les recettes traditionnelles de nos familles.</p>
-      <div class="about-stats">
-        <div class="stat-item"><div class="stat-num c-yellow">100%</div><div class="stat-lbl" data-fr="Authentique" data-en="Authentic" data-es="Auténtico">Authentique</div></div>
-        <div class="stat-item"><div class="stat-num c-blue" aria-label="Colombie">🇨🇴</div><div class="stat-lbl" data-fr="Colombien" data-en="Colombian" data-es="Colombiano">Colombien</div></div>
-        <div class="stat-item"><div class="stat-num c-red" aria-label="Amour">❤️</div><div class="stat-lbl" data-fr="Fait avec amour" data-en="Made with love" data-es="Hecho con amor">Fait avec amour</div></div>
-      </div>
-    </div>
+<!-- STORY / NOTRE HISTOIRE — 2 colonnes avec highlight jaune -->
+<section class="story" id="about">
+  <div class="story-photo">
+    <div class="ph-ambient" data-label="intérieur"></div>
+  </div>
+  <div class="story-text">
+    <div class="story-eyebrow" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</div>
+    <h2 class="story-h2"
+      data-fr='Un <span class="highlight">restaurant</span> pas comme les autres.'
+      data-en='A <span class="highlight">restaurant</span> unlike any other.'
+      data-es='Un <span class="highlight">restaurante</span> único.'>Un <span class="highlight">restaurant</span> pas comme les autres.</h2>
+    <p data-fr="Arepas, empanadas, sancocho — mais aussi cocktails latins, matchs sur écran et musique cumbia. Bochica, c'est le restaurant colombien de Saint-Roch, chaleureux et festif."
+       data-en="Arepas, empanadas, sancocho — alongside Latin cocktails, live matches on screen and cumbia music. Bochica is the Colombian restaurant of Saint-Roch, warm and festive."
+       data-es="Arepas, empanadas, sancocho — también cócteles latinos, partidos en pantalla y música cumbia. Bochica es el restaurante colombiano de Saint-Roch, cálido y festivo.">Arepas, empanadas, sancocho — mais aussi cocktails latins, matchs sur écran et musique cumbia. Bochica, c'est le restaurant colombien de Saint-Roch, chaleureux et festif.</p>
+    <p data-fr="Venez manger comme en Colombie, boire comme au Québec, et rester tard parce que la salsa commence à 21h."
+       data-en="Come eat like in Colombia, drink like in Québec, and stay late because salsa starts at 9pm."
+       data-es="Ven a comer como en Colombia, beber como en Québec, y quédate tarde porque la salsa empieza a las 9.">Venez manger comme en Colombie, boire comme au Québec, et rester tard parce que la salsa commence à 21h.</p>
+    <a href="#menu" class="btn-primary" data-fr="Découvrir →" data-en="Discover →" data-es="Descubrir →">Découvrir →</a>
   </div>
 </section>
 
-<!-- SIGNATURES — Nos coups de cœur -->
+<!-- SIGNATURES — Cartes 4:5 avec overlay -->
 <section class="signatures" id="signatures">
-  <div class="signatures-wrap">
-    <div class="section-center reveal">
-      <div class="ornament"><div class="ornament-dots"><span></span><span></span><span></span></div></div>
-      <span class="section-tag" data-fr="Nos coups de cœur" data-en="Our favorites" data-es="Nuestros favoritos">Nos coups de cœur</span>
-      <h2 class="section-title" data-fr="Les saveurs emblématiques<br>de la Colombie" data-en="The iconic flavors<br>of Colombia" data-es="Los sabores emblemáticos<br>de Colombia">Les saveurs emblématiques<br>de la Colombie</h2>
-      <p class="section-sub" data-fr="Chaque plat raconte une région, une tradition, une histoire. Voici nos incontournables pour goûter la Colombie authentique." data-en="Every dish tells the story of a region, a tradition, a heritage. Here are our must-try favorites for an authentic taste of Colombia." data-es="Cada plato cuenta una región, una tradición, una historia. Aquí están nuestros imprescindibles para probar la Colombia auténtica.">Chaque plat raconte une région, une tradition, une histoire. Voici nos incontournables pour goûter la Colombie authentique.</p>
+  <div class="section-head">
+    <div>
+      <span class="section-eyebrow" data-fr="La maison" data-en="The house" data-es="La casa">La maison</span>
+      <h2 class="section-h2"
+        data-fr='Saveurs<br/>de <span class="accent">Colombie.</span>'
+        data-en='Flavors<br/>of <span class="accent">Colombia.</span>'
+        data-es='Sabores<br/>de <span class="accent">Colombia.</span>'>Saveurs<br/>de <span class="accent">Colombie.</span></h2>
     </div>
+    <div class="carousel-arrows">
+      <button class="carousel-arrow" aria-label="Précédent">←</button>
+      <button class="carousel-arrow" aria-label="Suivant">→</button>
+    </div>
+  </div>
 
-    <div class="sig-grid reveal">
-      <!-- 1. Bol Medellín -->
-      <div class="sig-card">
-        <div class="sig-photo" data-accent="y"><div class="sig-flag">🇨🇴</div></div>
-        <div class="sig-body">
-          <div class="sig-region" data-fr="Région · Antioquia" data-en="Region · Antioquia" data-es="Región · Antioquia">Région · Antioquia</div>
-          <h3 class="sig-name" data-fr="Bol Medellín" data-en="Medellín Bowl" data-es="Bol Medellín">Bol Medellín</h3>
-          <p class="sig-desc" data-fr="Notre hommage à la bandeja paisa : haricots rouges, riz, chicharron, chorizo, œuf, plantain et avocat. Le plat le plus généreux de Colombie." data-en="Our tribute to the iconic bandeja paisa: red beans, rice, chicharron, chorizo, egg, plantain and avocado. Colombia's most generous dish." data-es="Nuestro homenaje a la bandeja paisa: frijoles rojos, arroz, chicharrón, chorizo, huevo, plátano y aguacate. El plato más generoso de Colombia.">Notre hommage à la bandeja paisa : haricots rouges, riz, chicharron, chorizo, œuf, plantain et avocat. Le plat le plus généreux de Colombie.</p>
-          <div class="sig-price">21 $</div>
-        </div>
+  <div class="signatures-grid reveal">
+    <!-- 1. Bandeja Paisa / Bol Medellín -->
+    <article class="signature-card">
+      <div class="ph-food tone-dark" data-label="bandeja paisa"></div>
+      <div class="signature-card__overlay"></div>
+      <div class="signature-card__content">
+        <div class="signature-card__num">N° 01</div>
+        <h3 class="signature-card__title" data-fr="Bol Medellín" data-en="Medellín Bowl" data-es="Bol Medellín">Bol Medellín</h3>
+        <div class="signature-card__desc" data-fr="Le plat national" data-en="The national dish" data-es="El plato nacional">Le plat national</div>
       </div>
-      <!-- 2. Arepa Mixte -->
-      <div class="sig-card">
-        <div class="sig-photo" data-accent="b"><div class="sig-flag">🌽</div></div>
-        <div class="sig-body">
-          <div class="sig-region" data-fr="Tradition nationale" data-en="National tradition" data-es="Tradición nacional">Tradition nationale</div>
-          <h3 class="sig-name" data-fr="Arepa Mixte" data-en="Mixed Arepa" data-es="Arepa Mixta">Arepa Mixte</h3>
-          <p class="sig-desc" data-fr="L'arepa, c'est l'âme de la Colombie. Notre version mixte mêle bœuf et poulet dans une galette de maïs dorée. Naturellement sans gluten." data-en="The arepa is the soul of Colombia. Our mixed version combines beef and chicken inside a golden corn flatbread. Naturally gluten-free." data-es="La arepa es el alma de Colombia. Nuestra versión mixta combina carne y pollo en una tortilla de maíz dorada. Naturalmente sin gluten.">L'arepa, c'est l'âme de la Colombie. Notre version mixte mêle bœuf et poulet dans une galette de maïs dorée. Naturellement sans gluten.</p>
-          <div class="sig-price">17 $</div>
-        </div>
-      </div>
-      <!-- 3. Picada -->
-      <div class="sig-card">
-        <div class="sig-photo" data-accent="r"><div class="sig-flag">🔥</div></div>
-        <div class="sig-body">
-          <div class="sig-region" data-fr="Pour partager" data-en="To share" data-es="Para compartir">Pour partager</div>
-          <h3 class="sig-name" data-fr="Picada Bochica" data-en="Bochica Picada" data-es="Picada Bochica">Picada Bochica</h3>
-          <p class="sig-desc" data-fr="Le grand classique colombien à partager : chorizo, morcilla, chicharron, arepa, frites de manioc, patacones et notre sauce maison. Impossible à manquer." data-en="The great Colombian sharing classic: chorizo, morcilla, chicharron, arepa, cassava fries, patacones and our house sauce. A must-try." data-es="El gran clásico colombiano para compartir: chorizo, morcilla, chicharrón, arepa, yuca frita, patacones y nuestra salsa de la casa. Imperdible.">Le grand classique colombien à partager : chorizo, morcilla, chicharron, arepa, frites de manioc, patacones et notre sauce maison. Impossible à manquer.</p>
-          <div class="sig-price" data-fr="Prix variable" data-en="Variable price" data-es="Precio variable">Prix variable</div>
-        </div>
-      </div>
-      <!-- 4. Empanadas -->
-      <div class="sig-card">
-        <div class="sig-photo" data-accent="y"><div class="sig-flag">🥟</div></div>
-        <div class="sig-body">
-          <div class="sig-region" data-fr="L'incontournable" data-en="The essential" data-es="El imprescindible">L'incontournable</div>
-          <h3 class="sig-name" data-fr="Empanadas maison" data-en="Homemade Empanadas" data-es="Empanadas caseras">Empanadas maison</h3>
-          <p class="sig-desc" data-fr="Petits chaussons dorés de pâte de maïs, farcis au bœuf ou au poulet. Croustillants dehors, fondants dedans. À manger avec notre ají piquant." data-en="Golden corn dough pockets filled with beef or chicken. Crispy outside, tender inside. Best with our spicy ají sauce." data-es="Bolsitas doradas de masa de maíz, rellenas de carne o pollo. Crujientes por fuera, suaves por dentro. Perfectas con nuestro ají picante.">Petits chaussons dorés de pâte de maïs, farcis au bœuf ou au poulet. Croustillants dehors, fondants dedans. À manger avec notre ají piquant.</p>
-          <div class="sig-price" data-fr="Dès 3,25 $" data-en="From $3.25" data-es="Desde $3.25">Dès 3,25 $</div>
-        </div>
-      </div>
-    </div>
+    </article>
 
-    <div class="sig-cta reveal">
-      <a href="#menu" class="btn-primary" data-fr="Voir le menu complet" data-en="See full menu" data-es="Ver el menú completo">Voir le menu complet</a>
-    </div>
+    <!-- 2. Arepa Reina -->
+    <article class="signature-card">
+      <div class="ph-food tone-bright" data-label="arepa reina"></div>
+      <div class="signature-card__overlay"></div>
+      <div class="signature-card__content">
+        <div class="signature-card__num">N° 02</div>
+        <h3 class="signature-card__title" data-fr="Arepa Mixte" data-en="Mixed Arepa" data-es="Arepa Mixta">Arepa Mixte</h3>
+        <div class="signature-card__desc" data-fr="Poulet · bœuf" data-en="Chicken · beef" data-es="Pollo · carne">Poulet · bœuf</div>
+      </div>
+    </article>
+
+    <!-- 3. Empanadas -->
+    <article class="signature-card">
+      <div class="ph-food" data-label="empanadas"></div>
+      <div class="signature-card__overlay"></div>
+      <div class="signature-card__content">
+        <div class="signature-card__num">N° 03</div>
+        <h3 class="signature-card__title" data-fr="Empanadas" data-en="Empanadas" data-es="Empanadas">Empanadas</h3>
+        <div class="signature-card__desc" data-fr="4 pour 12 $" data-en="4 for $12" data-es="4 por $12">4 pour 12 $</div>
+      </div>
+    </article>
+
+    <!-- 4. Picada -->
+    <article class="signature-card">
+      <div class="ph-food tone-cream" data-label="picada"></div>
+      <div class="signature-card__overlay"></div>
+      <div class="signature-card__content">
+        <div class="signature-card__num">N° 04</div>
+        <h3 class="signature-card__title" data-fr="Picada" data-en="Picada" data-es="Picada">Picada</h3>
+        <div class="signature-card__desc" data-fr="À partager" data-en="To share" data-es="Para compartir">À partager</div>
+      </div>
+    </article>
   </div>
 </section>
 
 <!-- ÉVÉNEMENTS -->
 <section class="events" id="evenements">
-  <div class="events-wrap">
-    <div class="section-center reveal">
-      <div class="ornament ornament-dark"><div class="ornament-dots"><span></span><span></span><span></span></div></div>
-      <span class="section-tag" data-fr="À venir chez Bochica" data-en="Upcoming at Bochica" data-es="Próximamente en Bochica">À venir chez Bochica</span>
-      <h2 class="section-title" data-fr="Soirées & événements" data-en="Events & nights" data-es="Noches & eventos">Soirées & événements</h2>
-      <p class="section-sub" data-fr="Salsa, matchs de soccer, fêtes colombiennes : venez vivre la Colombie avec nous." data-en="Salsa, soccer matches, Colombian celebrations: come experience Colombia with us." data-es="Salsa, partidos de fútbol, fiestas colombianas: ven a vivir Colombia con nosotros.">Salsa, matchs de soccer, fêtes colombiennes : venez vivre la Colombie avec nous.</p>
+  <div class="section-head">
+    <div>
+      <span class="section-eyebrow" data-fr="Calendrier" data-en="Calendar" data-es="Calendario">Calendrier</span>
+      <h2 class="section-h2"
+        data-fr='À l&apos;<span class="accent">affiche</span> cette semaine'
+        data-en='<span class="accent">On stage</span> this week'
+        es-es='En <span class="accent">cartel</span> esta semana'>À l&apos;<span class="accent">affiche</span> cette semaine</h2>
     </div>
+  </div>
 
-    <div class="events-grid reveal">
-      <!-- Événement 1 — exemple, à personnaliser -->
-      <div class="event-card">
-        <div class="event-date">
-          <div class="event-day">SAM</div>
-          <div class="event-num">—</div>
-          <div class="event-month" data-fr="À venir" data-en="Coming" data-es="Próximo">À venir</div>
-        </div>
-        <div class="event-body">
-          <div class="event-tag" data-fr="Soirée Salsa" data-en="Salsa Night" data-es="Noche de Salsa">Soirée Salsa</div>
-          <h3 class="event-title" data-fr="Soirée Salsa & Cumbia" data-en="Salsa & Cumbia Night" data-es="Noche de Salsa y Cumbia">Soirée Salsa & Cumbia</h3>
-          <p class="event-desc" data-fr="Musique latine en direct, cocktails signature et ambiance festive jusqu'à la fermeture." data-en="Live Latin music, signature cocktails and festive vibes until closing." data-es="Música latina en vivo, cócteles de autor y ambiente festivo hasta el cierre.">Musique latine en direct, cocktails signature et ambiance festive jusqu'à la fermeture.</p>
-          <div class="event-meta" data-fr="🕒 Dès 20 h · Entrée libre" data-en="🕒 From 8 pm · Free entry" data-es="🕒 Desde 20 h · Entrada libre">🕒 Dès 20 h · Entrée libre</div>
-        </div>
+  <div class="events-grid reveal">
+    <!-- Événement 1 — Salsa -->
+    <article class="event-card">
+      <div class="event-card__photo">
+        <div class="ph-ambient" data-label="soirée salsa"></div>
+        <div class="event-card__day-badge" data-fr="SAM" data-en="SAT" data-es="SÁB">SAM</div>
+        <div class="event-card__kicker-badge" data-fr="Soirée Salsa" data-en="Salsa Night" data-es="Noche de Salsa">Soirée Salsa</div>
       </div>
+      <div class="event-card__body">
+        <div class="event-card__kicker" data-fr="Musique latine" data-en="Latin music" data-es="Música latina">Musique latine</div>
+        <h3 class="event-card__title" data-fr="Salsa & Cumbia en direct" data-en="Live Salsa & Cumbia" data-es="Salsa y Cumbia en vivo">Salsa & Cumbia en direct</h3>
+        <p class="event-card__desc" data-fr="Musique latine en direct, cocktails signature, ambiance festive jusqu'à la fermeture." data-en="Live Latin music, signature cocktails, festive vibes until closing." data-es="Música latina en vivo, cócteles de autor, ambiente festivo hasta el cierre.">Musique latine en direct, cocktails signature, ambiance festive jusqu'à la fermeture.</p>
+        <div class="event-card__meta" data-fr="● Dès 20h · Entrée libre" data-en="● From 8pm · Free entry" data-es="● Desde 20h · Entrada libre">● Dès 20h · Entrée libre</div>
+      </div>
+    </article>
 
-      <!-- Événement 2 -->
-      <div class="event-card">
-        <div class="event-date">
-          <div class="event-day" data-fr="VEN" data-en="FRI" data-es="VIE">VEN</div>
-          <div class="event-num">—</div>
-          <div class="event-month" data-fr="À venir" data-en="Coming" data-es="Próximo">À venir</div>
-        </div>
-        <div class="event-body">
-          <div class="event-tag" data-fr="Match de soccer" data-en="Soccer Match" data-es="Partido de fútbol">Match de soccer</div>
-          <h3 class="event-title" data-fr="Colombie vs..." data-en="Colombia vs..." data-es="Colombia vs...">Colombie vs...</h3>
-          <p class="event-desc" data-fr="Venez encourager la sélection colombienne en direct sur grand écran, avec Picada et bière en spécial." data-en="Cheer on the Colombian team on our big screen, with Picada and beer specials." data-es="Anima a la selección colombiana en nuestra pantalla grande, con Picada y cerveza en oferta.">Venez encourager la sélection colombienne en direct sur grand écran, avec Picada et bière en spécial.</p>
-          <div class="event-meta" data-fr="⚽ Réservation recommandée" data-en="⚽ Reservation recommended" data-es="⚽ Reserva recomendada">⚽ Réservation recommandée</div>
-        </div>
+    <!-- Événement 2 — Match -->
+    <article class="event-card">
+      <div class="event-card__photo">
+        <div class="ph-ambient" data-label="match soccer"></div>
+        <div class="event-card__day-badge" data-fr="VEN" data-en="FRI" data-es="VIE">VEN</div>
+        <div class="event-card__kicker-badge" data-fr="Match de soccer" data-en="Soccer match" data-es="Partido de fútbol">Match de soccer</div>
       </div>
+      <div class="event-card__body">
+        <div class="event-card__kicker" data-fr="Sport" data-en="Sports" data-es="Deporte">Sport</div>
+        <h3 class="event-card__title" data-fr="Colombie vs…" data-en="Colombia vs…" data-es="Colombia vs…">Colombie vs…</h3>
+        <p class="event-card__desc" data-fr="Venez encourager la sélection colombienne sur grand écran, avec Picada et bière en spécial." data-en="Cheer on the Colombian team on the big screen, with Picada and beer specials." data-es="Anima a la selección colombiana en pantalla grande, con Picada y cerveza en oferta.">Venez encourager la sélection colombienne sur grand écran, avec Picada et bière en spécial.</p>
+        <div class="event-card__meta" data-fr="● Réservation recommandée" data-en="● Reservation recommended" data-es="● Reserva recomendada">● Réservation recommandée</div>
+      </div>
+    </article>
 
-      <!-- Événement 3 -->
-      <div class="event-card">
-        <div class="event-date">
-          <div class="event-day" data-fr="JUI" data-en="JUL" data-es="JUL">JUI</div>
-          <div class="event-num">20</div>
-          <div class="event-month" data-fr="2026" data-en="2026" data-es="2026">2026</div>
-        </div>
-        <div class="event-body">
-          <div class="event-tag" data-fr="Fête nationale" data-en="National Day" data-es="Fiesta nacional">Fête nationale</div>
-          <h3 class="event-title" data-fr="Independencia de Colombia 🇨🇴" data-en="Colombian Independence Day 🇨🇴" data-es="Independencia de Colombia 🇨🇴">Independencia de Colombia 🇨🇴</h3>
-          <p class="event-desc" data-fr="Menu spécial, musique traditionnelle et drapeaux tricolores pour célébrer la Colombie en famille." data-en="Special menu, traditional music and tricolor flags to celebrate Colombia with family." data-es="Menú especial, música tradicional y banderas tricolores para celebrar Colombia en familia.">Menu spécial, musique traditionnelle et drapeaux tricolores pour célébrer la Colombie en famille.</p>
-          <div class="event-meta" data-fr="🎉 Toute la journée" data-en="🎉 All day long" data-es="🎉 Todo el día">🎉 Toute la journée</div>
-        </div>
+    <!-- Événement 3 — Indépendance -->
+    <article class="event-card">
+      <div class="event-card__photo">
+        <div class="ph-ambient" data-label="fête nationale"></div>
+        <div class="event-card__day-badge">20 JUI</div>
+        <div class="event-card__kicker-badge" data-fr="Fête nationale" data-en="National day" data-es="Fiesta nacional">Fête nationale</div>
       </div>
-    </div>
+      <div class="event-card__body">
+        <div class="event-card__kicker" data-fr="Tradition" data-en="Tradition" data-es="Tradición">Tradition</div>
+        <h3 class="event-card__title">Independencia de Colombia</h3>
+        <p class="event-card__desc" data-fr="Menu spécial, musique traditionnelle, drapeaux tricolores pour célébrer la Colombie en famille." data-en="Special menu, traditional music, tricolor flags to celebrate Colombia with family." data-es="Menú especial, música tradicional, banderas tricolores para celebrar Colombia en familia.">Menu spécial, musique traditionnelle, drapeaux tricolores pour célébrer la Colombie en famille.</p>
+        <div class="event-card__meta" data-fr="● Toute la journée" data-en="● All day long" data-es="● Todo el día">● Toute la journée</div>
+      </div>
+    </article>
 
-    <div class="events-cta reveal">
-      <p class="events-cta-txt" data-fr="Suivez-nous pour ne rien manquer" data-en="Follow us to stay updated" data-es="Síguenos para no perderte nada">Suivez-nous pour ne rien manquer</p>
-      <div class="events-social">
-        <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener" class="event-social-btn" aria-label="Instagram">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-          <span>Instagram</span>
-        </a>
-        <a href="https://www.facebook.com/61567223975718" target="_blank" rel="noopener" class="event-social-btn" aria-label="Facebook">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3.2H13V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2C16 4.1 15 4 13.9 4 11.6 4 10 5.4 10 7.9v2.9H7.3V14H10v8h3z"/></svg>
-          <span>Facebook</span>
-        </a>
+    <!-- Événement 4 — Atelier empanadas -->
+    <article class="event-card">
+      <div class="event-card__photo">
+        <div class="ph-ambient" data-label="atelier cuisine"></div>
+        <div class="event-card__day-badge" data-fr="JEU" data-en="THU" data-es="JUE">JEU</div>
+        <div class="event-card__kicker-badge" data-fr="Atelier" data-en="Workshop" data-es="Taller">Atelier</div>
       </div>
-    </div>
+      <div class="event-card__body">
+        <div class="event-card__kicker" data-fr="Cuisine" data-en="Cooking" data-es="Cocina">Cuisine</div>
+        <h3 class="event-card__title" data-fr="Empanadas maison" data-en="Homemade Empanadas" data-es="Empanadas caseras">Empanadas maison</h3>
+        <p class="event-card__desc" data-fr="Apprenez à préparer l'empanada colombienne comme à Bogotá — avec notre chef." data-en="Learn to make Colombian empanadas like in Bogotá — with our chef." data-es="Aprende a preparar la empanada colombiana como en Bogotá — con nuestro chef.">Apprenez à préparer l'empanada colombienne comme à Bogotá — avec notre chef.</p>
+        <div class="event-card__meta" data-fr="● Dès 19h · 45 $" data-en="● From 7pm · $45" data-es="● Desde 19h · 45 $">● Dès 19h · 45 $</div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -1184,11 +1211,15 @@
   </div>
 </section>
 
-<!-- HORAIRES -->
-<section id="horaires">
-  <div style="max-width:1100px;margin:0 auto">
-    <span class="section-tag" data-fr="Venez nous voir" data-en="Come see us" data-es="Visítanos">Venez nous voir</span>
-    <h2 class="section-title" data-fr="Horaires & Contact" data-en="Hours & Contact" data-es="Horarios & Contacto">Horaires & Contact</h2>
+<!-- HORAIRES + CONTACT -->
+<section class="hours-contact" id="horaires">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow" data-fr="Nous trouver" data-en="Find us" data-es="Visítanos">Nous trouver</span>
+        <h2 class="section-h2" data-fr="Horaires &amp; <span class='accent'>contact</span>" data-en="Hours &amp; <span class='accent'>contact</span>" data-es="Horarios &amp; <span class='accent'>contacto</span>">Horaires &amp; <span class='accent'>contact</span></h2>
+      </div>
+    </div>
     <div class="horaires-grid reveal">
       <div>
         <div class="hours-title" data-fr="Heures d'ouverture" data-en="Opening hours" data-es="Horario de apertura">Heures d'ouverture</div>
@@ -1359,15 +1390,16 @@
   </div>
 </section>
 
-<!-- RESERVATION -->
-<section class="reservation" id="reservation">
-  <span class="section-tag" data-fr="Réservez votre table" data-en="Book your table" data-es="Reserve su mesa">Réservez votre table</span>
-  <div class="res-bar"><div></div><div></div><div></div></div>
-  <h2 class="section-title" data-fr="Rejoignez-nous" data-en="Join us" data-es="Únase a nosotros">Rejoignez-nous</h2>
-  <p class="section-sub" data-fr="Pour une occasion spéciale ou simplement pour le plaisir de bien manger, réservez votre table en ligne ou appelez-nous." data-en="For a special occasion or simply for the pleasure of good food, book your table online or give us a call." data-es="Para una ocasión especial o simplemente por el placer de comer bien, reserve su mesa en línea o llámenos.">Pour une occasion spéciale ou simplement pour le plaisir de bien manger, réservez votre table en ligne ou appelez-nous.</p>
-  <div class="res-btns">
-    <a href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" target="_blank" rel="noopener noreferrer" class="btn-primary" data-fr="Réserver en ligne" data-en="Book online" data-es="Reservar en línea">Réserver en ligne</a>
-    <a href="tel:3673308220" class="btn-blue" data-fr="Appeler : 367-330-8220" data-en="Call : 367-330-8220" data-es="Llamar : 367-330-8220">Appeler : 367-330-8220</a>
+<!-- CTA FINAL — plein écran avec photo ambiance -->
+<section class="cta-final" id="reservation">
+  <div class="ph-ambient" data-label="terrasse · soir"></div>
+  <div class="cta-final__content">
+    <div class="cta-final__eyebrow" data-fr="Bienvenue chez Bochica" data-en="Welcome to Bochica" data-es="Bienvenidos a Bochica">Bienvenue chez Bochica</div>
+    <h2 class="cta-final__h2"
+      data-fr='Venez <span class="accent">manger</span>,<br/>rester,<br/>danser.'
+      data-en='Come <span class="accent">eat</span>,<br/>stay,<br/>dance.'
+      data-es='Ven a <span class="accent">comer</span>,<br/>quedarte,<br/>bailar.'>Venez <span class="accent">manger</span>,<br/>rester,<br/>danser.</h2>
+    <a href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" target="_blank" rel="noopener noreferrer" class="cta-final__btn" data-fr="Réserver maintenant" data-en="Book now" data-es="Reservar ahora">Réserver maintenant</a>
   </div>
 </section>
 
