@@ -1,7 +1,7 @@
 # 📋 CONTEXTE — Site Web Bochica
 
-> ⚠️ **Dernière mise à jour majeure : 17 avril 2026** — après l'audit design complet.
-> Voir `AUDIT_DESIGN.md` pour le rapport complet et `CHANGELOG` en fin de document.
+> ⚠️ **Dernière mise à jour majeure : 19 avril 2026** — refonte design "brasserie dark" + section promos + workflow simplifié.
+> Voir `AUDIT_DESIGN.md` pour l'ancien rapport d'audit et `CHANGELOG` en fin de document pour les changements récents.
 
 ## 🏠 Description
 Site vitrine trilingue (FR/EN/ES) pour le **restaurant colombien Bochica** à Québec.
@@ -35,39 +35,48 @@ Exportable vers **GoDaddy** (hébergement final) — fichiers statiques HTML/CSS
   - Facebook : https://www.facebook.com/61567223975718
   - Handle : @bochicaQC
 
-## 🎨 Design (palette réelle utilisée dans le code)
-- **Style** : Moderne, chaleureux — hero noir, sections crème/blanc cassé, accents bordeaux
+## 🎨 Design — Direction "Brasserie" (depuis 19 avril 2026)
+- **Style** : Brasserie sombre et chaleureuse — fond noir chaud sur toute la page, accents jaune impact, typographie condensée Bebas Neue
+- **`color-scheme: dark`** déclaré dans `<meta>` et `:root` pour empêcher le dark mode forcé des navigateurs d'inverser le design
 - **Palette CSS** (variables dans `:root` de `style.css`) :
-  - **Fonds** : `--black:#0e0e0e` · `--black-2:#1a1615` · `--white:#faf6f0` (blanc cassé crème) · `--cream:#f3ede3` · `--beige:#e8dcc8`
-  - **Texte** : `--text:#1a1010` · `--text2:#5a4a45` · `--text3:#5e524f` *(assombri depuis #6f635f pour contraste WCAG AA)*
-  - **Accent principal** : `--accent:#6b1a1f` (bordeaux) · `--accent-hover:#4a1015` · `--accent-soft:#8b2428`
-  - **Accents Colombie** (décoratif tricolore, fonds foncés) : `--yellow:#f5a623` · `--blue:#4a90e2` · `--red:#e74c3c`
-- **Tricolore** jaune/bleu/rouge utilisé en **ornements** seulement (dots, barres fines, bordures stat)
+  - **Fonds sombres** : `--bg:#0e0d0c` (noir chaud principal) · `--bg-2:#1a1510` (surfaces cartes) · `--bg-3:#221812` (surfaces tertiaires) · `--black:#0e0d0c`
+  - **Fonds clairs** : `--cream:#f5f1e8` (sections sur fond crème, ex. section histoire) · `--cream-2:#efe7d5`
+  - **Texte sur foncé** : `--ink:#f5f1e8` · `--text:#f5f1e8` · `--text2:rgba(245,241,232,.75)` · `--text3:rgba(245,241,232,.55)`
+  - **Texte sur crème** : `--text-on-cream:#0e0d0c` · `--text-on-cream-2:rgba(14,13,12,.7)`
+  - **Accent principal** : `--accent:#f7c81e` (jaune impact) · `--accent-hover:#ebbd0e` · `--accent-soft:#fef2d4` · `--accent-text:#0e0d0c` · `--accent-warm:#8a6a1a`
+  - **Tricolore Colombie** (conservé pour petits accents) : `--yellow:#f7c81e` · `--blue:#4a90e2` · `--red:#e74c3c`
+  - **États** : `--status-open:#7dbf66` · `--status-closed:#d9534f`
 - **Typographie** :
-  - `--font-heading` : **Fraunces** (serif élégant, pour H1/H2/H3/prix/noms de plats)
-  - `--font-body` : **Inter** (sans-serif moderne, pour corps de texte, UI)
-  - Fallback : Helvetica Neue, Arial, sans-serif
+  - `--font-display` / `--font-heading` : **Bebas Neue** (condensée, majuscules, pour H1/H2/titres cartes menu)
+  - `--font-body` : **Inter** (sans-serif moderne, pour corps de texte)
+  - `--font-mono` : **JetBrains Mono** (pour kickers/labels techniques)
+- **Échelle typographique** : `--fs-xs` (11) → `--fs-hero` (clamp 48→96px)
+- **Espacement** : `--pad` (40px desktop / 20px mobile), `--gap` (28px), tokens `--sp-1` à `--sp-10`
 
 ## 🖼️ Logos & Images
 Tous les fichiers sont dans le dossier `images/`.
 
-**Logos utilisés :**
-- `images/Logo Bochica 2026-3.png` — logo hero + placeholder menu (⚠️ 802 KB, **à optimiser en SVG ou WebP < 100 KB**)
-- `images/Logo Bochica 2026-7 (1).png` — référencé dans Schema.org uniquement
+**Logos & placeholders utilisés :**
+- `images/Logo Bochica 2026-8.png` (40 KB, RGBA transparent) — **placeholder par défaut des cartes menu** et image de la modale plat, sur fond crème
+- `images/Logo Bochica 2026-3.png` — autres usages (footer, schema.org)
+
+**Images de promos (section "Promos & activités")** — format carré 1080×1080 :
+- `images/bochica_mercredi_creme_1080x1080.png` — Mercredi des empanadas (2,25 $)
+- `images/bochica_jeudi_creme_1080x1080.png` — Jeudi du Bol Medellín (−20 %)
+- `images/bochica_vendredi_creme_1080x1080.png` — Vendredi bières 2×1 (17h-20h)
 
 **À uploader (encore manquants) :**
 - `images/hero.jpg` — photo fond hero *(preload retiré du HTML tant que le fichier n'existe pas)*
 - `images/about.jpg` — section Notre histoire
-- `images/gallery1.jpg` à `images/gallery5.jpg` — galerie
 - `images/bandeja-medellin.jpg` — image Open Graph (partages sociaux Facebook/LinkedIn)
-- Photos de plats référencées par `data-photo` dans les cartes menu : `yuca-frita.jpg`, `guacamole-chips.jpg`, `canastica.jpg`, `patacones-de-la-casa.jpg`, `picadita.jpg`, `hot-dog-colombien.jpg`, `patacon-montanero.jpg`, `salchipapas.jpg`, `bochica-burger.jpg`, `pollo-asado.jpg`, `churrasco.jpg`, `picada.jpg`, `suprema.jpg`, `arepa-classique.jpg`, `bol-cali.jpg`, `bol-bogota.jpg`
+- Photos de plats référencées par `data-photo` dans les cartes menu (optionnel — sans photo, le logo Bochica s'affiche automatiquement comme placeholder) : `yuca-frita.jpg`, `guacamole-chips.jpg`, `canastica.jpg`, `patacones-de-la-casa.jpg`, `picadita.jpg`, `hot-dog-colombien.jpg`, `patacon-montanero.jpg`, `salchipapas.jpg`, `bochica-burger.jpg`, `pollo-asado.jpg`, `churrasco.jpg`, `picada.jpg`, `suprema.jpg`, `arepa-classique.jpg`, `bol-cali.jpg`, `bol-bogota.jpg`
 
-**Fichiers orphelins à supprimer manuellement (voir audit) :**
+**Fichiers orphelins à supprimer manuellement :**
 - `paracones de la casa.png` (1.5 MB, faute de frappe "paracones"→"patacones", à la racine)
 - `.DS_Store` (racine + `images/`) — fichiers macOS
 - `images/test` (fichier résiduel 8 octets)
 - `preview-ambiances.html` (fichier de dev 21 KB)
-- `images/Logo Bochica 2026-6 (1).png`, `Logo Bochica 2026-7.png`, `Logo Bochica 2026-8.png` — non utilisés
+- `images/Logo Bochica 2026-6 (1).png`, `Logo Bochica 2026-7.png`, `Logo Bochica 2026-7 (1).png` — non utilisés actuellement
 
 ## 🗂️ Structure des fichiers
 ```
@@ -93,14 +102,18 @@ bochica-website/
 ```
 
 ## 📄 Sections du site (dans index.html, dans l'ordre)
-Toutes sont englobées dans `<main id="main">` *(ajouté lors de l'audit)*.
+Toutes sont englobées dans `<main id="main">`.
 
-1. **Nav** (`<nav>`) — logo BOCHICA + liens + FR/EN/ES + boutons Commander/Réserver + hamburger mobile
-2. **Hero** (`.hero`) — fond noir `#0e0e0e`, logo centré, phrase d'accroche, 2 boutons CTA
+1. **Nav** (`<nav>`) — logo texte **BOCHICA** (CA en jaune accent) + liens + FR/EN/ES + boutons Commander/Réserver + hamburger mobile
+2. **Hero** (`.hero`) — fond noir, H1 **BOCHICA**, tagline "Restaurant colombien", 2 CTA (menu + commander)
 3. **Band** (`.band`) — barre noire avec statut ouvert/fermé (dynamique) + horaires + adresse + téléphone
-4. **Menu** (`#menu`) — 8 onglets (Entrées, Arepas, Bols, Repas, Breuvages, Cocktails, Bières, Desserts) + cartes cliquables avec modale
+4. **Menu** (`#menu`) — 8 onglets (Entrées, Arepas, Bols, Repas, Breuvages, Cocktails, Bières, Desserts) + cartes avec photo placeholder (logo Bochica sur fond crème, carrées 140×140 / 110×110 mobile), cliquables → modale
 5. **Signatures** (`#signatures`) — Coups de cœur (3 cartes avec drapeau de région)
-6. **Événements** (`#evenements`) — sur fond noir, 3 cartes événement avec date
+6. **Promos & activités** (`#evenements`) — section renommée le 19 avril (était "À l'affiche cette semaine") — 3 cartes de promos hebdomadaires avec image carrée 1080×1080 :
+   - MER · Mercredi des empanadas · 2,25 $ toute la journée
+   - JEU · Jeudi du Bol Medellín · −20 % toute la journée
+   - VEN · Vendredi 2 × 1 sur les bières · 17 h-20 h
+   Prévue aussi pour héberger les événements ponctuels (fêtes, matchs, ateliers) plus tard.
 7. **Avis/Reviews** (`#avis`) — 4 cartes avis clients + note Google
 8. **About** (`#about`) — Notre histoire, photo + décoration tricolore + stats
 9. **Horaires & Contact** (`#horaires`) — tableau horaires + infos contact + formulaire de contact
@@ -108,7 +121,8 @@ Toutes sont englobées dans `<main id="main">` *(ajouté lors de l'audit)*.
 11. **Réservation** (`#reservation`) — CTA final fond noir (réserver + appeler)
 12. **Footer** (`<footer>`) — logo + liens + confidentialité + réseaux sociaux + copyright + barre tricolore
 13. **FAB Réserver** (`.fab-reserve`) — bouton flottant mobile uniquement
-14. **Dish Modal** (`#dish-modal`) — modale détails d'un plat (cliquée depuis carte menu)
+14. **Dish Modal** (`#dish-modal`) — modale détails d'un plat (carrée 1:1 avec logo Bochica crème en placeholder)
+15. ~~**Gallery** (`#gallery`)~~ — **commentée temporairement** dans le HTML (en attente de vraies photos). Pour la réactiver : décommenter le bloc `<!-- GALLERY -->` dans `index.html`.
 
 ## 🍽️ Menu — Structure des onglets
 - **Entrées** — Empanadas, Arepa, Sancochito, Frites, Yuca, Guacamole, Canastica, Patacones, Ailes, Picadita
@@ -176,11 +190,20 @@ Toutes sont englobées dans `<main id="main">` *(ajouté lors de l'audit)*.
 - Tant que non configuré : bascule automatique vers `mailto:` (fallback)
 - Honeypot anti-spam + labels + autocomplete + aria-live sur statut
 
-## 🚀 Workflow
-1. Modifier sur **GitHub.com**
-2. **Vercel** redéploie automatiquement
-3. Tester sur Vercel (https://bochica-website.vercel.app)
-4. Quand prêt → télécharger fichiers → uploader sur **GoDaddy File Manager**
+## 🚀 Workflow (depuis 19 avril 2026 — simplifié)
+**Tout va directement sur `main`. Pas de branche de test/preview.**
+
+1. Modifier les fichiers localement (via Claude Code ou directement)
+2. Ouvrir **GitHub Desktop**, vérifier la branche **`main`**
+3. Cocher les fichiers à inclure (ignorer `.claude/` qui est dans `.gitignore`)
+4. Écrire un message de commit → cliquer **Commit to main**
+5. Cliquer **Push origin** (bouton en haut à droite)
+6. **Vercel** redéploie automatiquement en prod (~1 min)
+7. Vérifier https://bochicacafebistro.ca/
+
+**⚠️ Note** : les credentials GitHub ne sont pas accessibles depuis le terminal de Claude Code — seul GitHub Desktop peut faire le push. Claude prépare les fichiers, l'utilisateur fait commit + push.
+
+**Ancienne branche `refactor/design-system`** : fusionnée dans `main` le 19 avril, plus utilisée. Peut être supprimée localement et sur GitHub si désirée.
 
 ## ⚠️ Règles importantes
 - Pour changements dans **NAV ou HERO** → donner la section CSS complète
@@ -229,6 +252,18 @@ Les classes `.y/.b/.r` sur `.menu-subsection-title` et `.menu-card-cat` utilisen
 
 ## 📝 CHANGELOG
 
+### 19 avril 2026 — Refonte brasserie dark + promos + workflow simplifié
+- **Migration `refactor/design-system` → `main`** : abandon du modèle branche-de-test, tout va direct en prod
+- **Nouveau design "brasserie"** : fond noir chaud `#0e0d0c` global, accents jaune `#f7c81e`, Bebas Neue en display
+- **Fix `color-scheme: dark`** : ajouté dans `<meta>` et `:root` pour empêcher les navigateurs (Chrome Auto Dark, etc.) de forcer un dark mode en inversant les couleurs
+- **Fix `.reveal.visible`** : le CSS cherchait `.in-view` mais la JS ajoute `.visible` → cartes menu restaient invisibles. Règle CSS alignée sur les deux classes
+- **Layout cartes menu avec photo** : carte carrée 140×140 (110×110 mobile), logo Bochica crème sur fond clair comme placeholder par défaut (JS)
+- **Placeholder modale plat** : aligné avec les cartes (même logo, même fond crème, ratio 1:1 au lieu du pattern rayé foncé)
+- **Section "Promos & activités"** : remplace "À l'affiche cette semaine". 3 cartes avec images carrées 1080×1080 (empanadas mercredi, bol Medellín jeudi, bières 2×1 vendredi)
+- **Gallery commentée** : section "Bienvenue chez Bochica" désactivée en attente de photos
+- **Hero H1** : "QUÉBEC — SAINT-ROCH" → **BOCHICA**
+- **`.gitignore`** : ajout de `.claude/` (dossier interne Claude Code)
+
 ### 17 avril 2026 — Refactoring design system (branche `refactor/design-system`)
 - Ajout du système complet de tokens dans `:root`
 - Système de boutons unifié (.btn + variantes + tailles)
@@ -250,13 +285,13 @@ Les classes `.y/.b/.r` sur `.menu-subsection-title` et `.menu-card-cat` utilisen
 9. ✅ Modale plat : focus trap + restauration du focus
 10. ✅ `privacy.html` créée (conforme Loi 25) + lien dans footer + formulaire
 
-### Reste à faire (post-audit)
-- [ ] Uploader `hero.jpg`, `about.jpg`, `gallery1-5.jpg`, `bandeja-medellin.jpg`, toutes photos plats
+### Reste à faire
+- [ ] Uploader `hero.jpg`, `about.jpg`, `bandeja-medellin.jpg`, photos de plats (optionnel — sans elles, le logo Bochica fait office de placeholder)
 - [ ] Optimiser `Logo Bochica 2026-3.png` (802 KB → SVG ou WebP < 100 KB)
 - [ ] Configurer Formspree (remplacer `VOTRE_ID_FORMSPREE`)
-- [ ] Supprimer fichiers orphelins : `paracones de la casa.png`, `.DS_Store`, `images/test`, `preview-ambiances.html`, logos 2026-6/7/8 non utilisés
-- [ ] Refactoriser `.btn-blue` (nom mensonger) et classes `.y/.b/.r` mensongères
-- [ ] Standardiser l'échelle de spacing (--sp-1 à --sp-8) et typographique (--fs-xs à --fs-3xl)
+- [ ] Supprimer fichiers orphelins : `paracones de la casa.png`, `.DS_Store`, `images/test`, `preview-ambiances.html`, logos 2026-6/7/7(1) non utilisés
 - [ ] Ajouter `role="tablist"/tab/tabpanel"` sur onglets menu + navigation flèches clavier
 - [ ] Remplacer les 4 avis placeholder par de vrais avis Google avec consentement
 - [ ] Ajouter glose FR pour termes espagnols (Morcilla, Sancochito, Patacones, Brazo de Reina, etc.)
+- [ ] Envisager un hero-video (remplacer `hero.jpg` par une vidéo boucle MP4/WebM) — demandé par Alvaro
+- [ ] Réactiver la gallery quand de vraies photos du restaurant seront disponibles
