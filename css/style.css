@@ -710,13 +710,18 @@ section { padding: 90px var(--pad); }
 }
 
 .event-card {
-  background: var(--bg-2);
-  border: 1px solid var(--border-dark);
+  background: #2a1f15;
+  border: 1px solid rgba(245,241,232,.12);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform var(--transition-base), border-color var(--transition-base);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
 }
-.event-card:hover { transform: translateY(-2px); border-color: var(--border-dark-strong); }
+.event-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px rgba(0,0,0,.5);
+}
 
 .event-card__photo { position: relative; aspect-ratio: 4/3; overflow: hidden; }
 
@@ -866,16 +871,21 @@ section { padding: 90px var(--pad); }
 }
 
 .dish-card {
-  background: var(--bg-2);
-  border: 1px solid var(--border-dark);
+  background: #2a1f15;
+  border: 1px solid rgba(245,241,232,.12);
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
   transition: all var(--transition-base);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
 }
-.dish-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.dish-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px rgba(0,0,0,.5), 0 0 0 1px rgba(247,200,30,.25);
+}
 
 .dish-card__photo {
   position: relative;
@@ -1001,10 +1011,11 @@ section { padding: 90px var(--pad); }
 }
 
 .review-card {
-  background: var(--bg);
-  border: 1px solid var(--border-dark);
+  background: #2a1f15;
+  border: 1px solid rgba(245,241,232,.12);
   border-radius: var(--radius-lg);
   padding: 26px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
 }
 
 .review-stars { color: var(--accent); font-size: 16px; letter-spacing: 0.05em; margin-bottom: 12px; }
@@ -1543,17 +1554,25 @@ main { padding-top: 0; }
 }
 
 .menu-card {
-  background: var(--bg-2);
-  border: 1px solid var(--border-dark);
+  background: #2a1f15;                    /* warm brown — bien distinct du noir */
+  border: 1px solid rgba(245,241,232,.12);
+  border-left: 3px solid var(--accent);
   border-radius: var(--radius-md);
-  padding: 18px 20px;
+  padding: 18px 22px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 14px;
-  transition: border-color var(--transition-fast);
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
 }
-.menu-card:hover { border-color: var(--accent); }
+.menu-card:hover {
+  background: #33281b;
+  border-color: rgba(245,241,232,.2);
+  border-left-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.4), 0 0 0 1px rgba(247,200,30,.2);
+}
 
 .menu-card-name {
   font-family: var(--font-display);
