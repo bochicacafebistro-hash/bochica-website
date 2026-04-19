@@ -157,7 +157,7 @@ function initDishCards() {
 
         // Ajouter la photo — image personnalisée si data-photo, sinon placeholder Bochica
         const photo = document.createElement('div');
-        const photoSrc = card.getAttribute('data-photo') || 'images/placeholder-dish.svg';
+        const photoSrc = card.getAttribute('data-photo') || 'images/Logo%20Bochica%202026-8.png';
         const isPlaceholder = !card.getAttribute('data-photo');
         photo.className = isPlaceholder ? 'menu-card-photo placeholder' : 'menu-card-photo';
         const img = document.createElement('img');
@@ -168,7 +168,7 @@ function initDishCards() {
         img.decoding = 'async';
         img.onerror = function() {
           photo.classList.add('placeholder');
-          img.src = 'images/placeholder-dish.svg';
+          img.src = 'images/Logo%20Bochica%202026-8.png';
         };
         photo.appendChild(img);
         card.appendChild(photo);
