@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Bochica — Photo à venir">
+  <!-- Fond crème -->
+  <rect width="400" height="400" fill="#f5f1e8"/>
+
+  <!-- Anneau décoratif jaune (arcs + encoches style "soleil colombien") -->
+  <g fill="#f5a623">
+    <!-- Arc supérieur gauche -->
+    <path d="M200,60
+             A140,140 0 0,0 60,200
+             L95,200
+             A105,105 0 0,1 200,95 Z"/>
+    <!-- Arc supérieur droit -->
+    <path d="M200,60
+             A140,140 0 0,1 340,200
+             L305,200
+             A105,105 0 0,0 200,95 Z"/>
+    <!-- Arc inférieur gauche -->
+    <path d="M60,200
+             A140,140 0 0,0 200,340
+             L200,305
+             A105,105 0 0,1 95,200 Z"/>
+    <!-- Arc inférieur droit -->
+    <path d="M340,200
+             A140,140 0 0,1 200,340
+             L200,305
+             A105,105 0 0,0 305,200 Z"/>
+
+    <!-- Encoches (notches) sur l'anneau pour l'effet soleil -->
+    <!-- Haut -->
+    <rect x="195" y="55" width="10" height="26"/>
+    <!-- Bas -->
+    <rect x="195" y="319" width="10" height="26"/>
+    <!-- Gauche -->
+    <rect x="55" y="195" width="26" height="10"/>
+    <!-- Droite -->
+    <rect x="319" y="195" width="26" height="10"/>
+    <!-- Diagonales -->
+    <rect x="195" y="55" width="10" height="26" transform="rotate(45 200 200)"/>
+    <rect x="195" y="55" width="10" height="26" transform="rotate(-45 200 200)"/>
+    <rect x="195" y="319" width="10" height="26" transform="rotate(45 200 200)"/>
+    <rect x="195" y="319" width="10" height="26" transform="rotate(-45 200 200)"/>
+
+    <!-- Petites encoches -->
+    <rect x="197" y="58" width="6" height="18" transform="rotate(22.5 200 200)"/>
+    <rect x="197" y="58" width="6" height="18" transform="rotate(-22.5 200 200)"/>
+    <rect x="197" y="58" width="6" height="18" transform="rotate(67.5 200 200)"/>
+    <rect x="197" y="58" width="6" height="18" transform="rotate(-67.5 200 200)"/>
+    <rect x="197" y="58" width="6" height="18" transform="rotate(112.5 200 200)"/>
+    <rect x="197" y="58" width="6" height="18" transform="rotate(-112.5 200 200)"/>
+    <rect x="197" y="58" width="6" height="18" transform="rotate(157.5 200 200)"/>
+    <rect x="197" y="58" width="6" height="18" transform="rotate(-157.5 200 200)"/>
+  </g>
+
+  <!-- Texte BOCHICA -->
+  <text x="200" y="210"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="52"
+    font-weight="700"
+    fill="#1a1010"
+    text-anchor="middle"
+    letter-spacing="4">BOCHICA</text>
+
+  <!-- Sous-titre Restaurant Colombien -->
+  <text x="200" y="240"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="18"
+    font-weight="400"
+    fill="#1a1010"
+    text-anchor="middle"
+    letter-spacing="1">Restaurant Colombien</text>
+
+  <!-- Barre tricolore -->
+  <rect x="140" y="252" width="40" height="3" fill="#f5a623"/>
+  <rect x="180" y="252" width="40" height="3" fill="#4a90e2"/>
+  <rect x="220" y="252" width="40" height="3" fill="#e74c3c"/>
+</svg>
