@@ -154,16 +154,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .nav-logo-txt span { color: var(--accent); }
 
-.nav-logo-img {
-  height: 44px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-}
-@media (max-width: 900px) {
-  .nav-logo-img { height: 36px; }
-}
-
 .nav-links {
   display: flex;
   gap: 22px;
