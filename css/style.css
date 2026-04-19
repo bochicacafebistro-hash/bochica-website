@@ -1585,6 +1585,40 @@ main { padding-top: 0; }
   gap: 12px;
 }
 
+.menu-section {
+  display: block;
+  margin-top: 20px;
+}
+
+.menu-subsection-title {
+  grid-column: 1 / -1;
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  padding: 24px 0 8px;
+  border-bottom: 1px solid var(--border-dark);
+  margin-bottom: 8px;
+}
+.menu-subsection-title.y { color: var(--accent); }
+.menu-subsection-title.b { color: var(--blue); }
+.menu-subsection-title.r { color: var(--red); }
+
+.menu-card {
+  cursor: pointer;
+}
+.menu-card[data-photo] {
+  position: relative;
+}
+.menu-card[data-photo]::before {
+  content: "📷";
+  position: absolute;
+  top: 8px; right: 8px;
+  font-size: 11px;
+  opacity: 0.4;
+}
+
 /* ─── Signatures legacy (ancien template) ─── */
 .sig-grid, .signatures-wrap { /* déjà override plus haut mais on cadre */ }
 .sig-card { background: var(--bg-2); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); overflow: hidden; }
