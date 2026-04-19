@@ -280,10 +280,8 @@ h1, h2, h3, h4, h5, h6 {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(14,13,12,.25) 0%, rgba(14,13,12,.1) 40%, rgba(14,13,12,.85) 100%),
-    repeating-linear-gradient(175deg, #1a1510 0 6px, #221812 6px 12px, #2d1d15 12px 18px, #1a1510 18px 32px),
-    radial-gradient(ellipse at 50% 20%, rgba(247,200,30,.35) 0%, transparent 45%),
-    radial-gradient(ellipse at 30% 15%, rgba(247,200,30,.2) 0%, transparent 40%);
+    linear-gradient(180deg, rgba(14,13,12,.35) 0%, rgba(14,13,12,.25) 40%, rgba(14,13,12,.9) 100%),
+    radial-gradient(ellipse at 50% 20%, rgba(247,200,30,.18) 0%, transparent 55%);
 }
 
 .hero-content {
