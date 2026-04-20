@@ -24,14 +24,14 @@
   --text-on-cream-2: rgba(14,13,12,.7);
 
   /* Accent jaune */
-  --accent: #f7c81e;
-  --accent-hover: #ebbd0e;
+  --accent: #F7B32C;
+  --accent-hover: #E09E1E;
   --accent-soft: #fef2d4;
   --accent-text: #0e0d0c;
   --accent-warm: #8a6a1a;     /* jaune brûlé pour eyebrows sur fond crème */
 
   /* Tricolore Colombie (conservé pour petits accents discrets) */
-  --yellow: #f7c81e;
+  --yellow: #F7B32C;
   --blue: #4a90e2;
   --red: #e74c3c;
 
@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   background:
     linear-gradient(180deg, rgba(14,13,12,.35) 0%, rgba(14,13,12,.25) 40%, rgba(14,13,12,.9) 100%),
-    radial-gradient(ellipse at 50% 20%, rgba(247,200,30,.18) 0%, transparent 55%);
+    radial-gradient(ellipse at 50% 20%, rgba(247,179,44,.18) 0%, transparent 55%);
 }
 
 .hero-content {
@@ -566,8 +566,8 @@ section { padding: 90px var(--pad); }
   background:
     linear-gradient(180deg, rgba(14,13,12,.25) 0%, rgba(14,13,12,.1) 40%, rgba(14,13,12,.85) 100%),
     repeating-linear-gradient(175deg, #1a1510 0 6px, #221812 6px 12px, #2d1d15 12px 18px, #1a1510 18px 32px),
-    radial-gradient(ellipse at 50% 20%, rgba(247,200,30,.35) 0%, transparent 45%),
-    radial-gradient(ellipse at 30% 15%, rgba(247,200,30,.2) 0%, transparent 40%);
+    radial-gradient(ellipse at 50% 20%, rgba(247,179,44,.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 30% 15%, rgba(247,179,44,.2) 0%, transparent 40%);
   overflow: hidden;
 }
 
@@ -885,7 +885,7 @@ section { padding: 90px var(--pad); }
 .dish-card:hover {
   transform: translateY(-3px);
   border-color: var(--accent);
-  box-shadow: 0 12px 28px rgba(0,0,0,.5), 0 0 0 1px rgba(247,200,30,.25);
+  box-shadow: 0 12px 28px rgba(0,0,0,.5), 0 0 0 1px rgba(247,179,44,.25);
 }
 
 .dish-card__photo {
@@ -1095,7 +1095,7 @@ section { padding: 90px var(--pad); }
 .hours-time { color: var(--text2); }
 .hours-time.closed { opacity: 0.4; font-style: italic; }
 .hours-row.today {
-  background: rgba(247,200,30,.08);
+  background: rgba(247,179,44,.08);
   margin: 0 -8px;
   padding: 12px 8px;
   border-radius: var(--radius-sm);
@@ -1441,7 +1441,7 @@ main { padding-top: 0; }
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background: rgba(247,200,30,.12);
+  background: rgba(247,179,44,.12);
   color: var(--accent);
   display: grid;
   place-items: center;
@@ -1450,7 +1450,7 @@ main { padding-top: 0; }
 .contact-icon svg { width: 18px; height: 18px; }
 .contact-icon.ci-b { background: rgba(74,144,226,.12); color: var(--blue); }
 .contact-icon.ci-r { background: rgba(231,76,60,.12); color: var(--red); }
-.contact-icon.ci-y { background: rgba(247,200,30,.12); color: var(--accent); }
+.contact-icon.ci-y { background: rgba(247,179,44,.12); color: var(--accent); }
 
 .contact-label {
   font-family: var(--font-display);
@@ -1572,7 +1572,7 @@ main { padding-top: 0; }
   border-color: rgba(245,241,232,.2);
   border-left-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,.4), 0 0 0 1px rgba(247,200,30,.2);
+  box-shadow: 0 8px 20px rgba(0,0,0,.4), 0 0 0 1px rgba(247,179,44,.2);
 }
 
 .menu-card-name {
