@@ -1714,6 +1714,8 @@ main { padding-top: 0; }
 .location-map { margin-top: 40px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-dark); }
 .location-map iframe { display: block; }
 .location-btns { display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+.location-btns .btn-outline-dark { color: var(--text); border-color: rgba(255,255,255,.35); }
+.location-btns .btn-outline-dark:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 
 /* ─── Footer legacy ─── */
 .footer-top {
