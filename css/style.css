@@ -6,20 +6,20 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  color-scheme: dark;
-  /* ── Palette Brasserie ───────────────────────────── */
-  --bg: #0e0d0c;              /* noir chaud, fond principal */
-  --bg-2: #1a1510;            /* surface secondaire (cartes, sections horaires) */
-  --bg-3: #221812;            /* surface tertiaire */
-  --ink: #f5f1e8;             /* crème sur fond sombre */
-  --cream: #f5f1e8;           /* crème (sections claires comme histoire) */
+  color-scheme: light;
+  /* ── Palette Crème Papier (inversée) ───────────────── */
+  --bg: #f5f1e8;              /* crème papier, fond principal */
+  --bg-2: #ede3d2;             /* surface secondaire (sections alternées) */
+  --bg-3: #e5d9c4;             /* surface tertiaire */
+  --ink: #0e0d0c;              /* noir chaud pour texte */
+  --cream: #f5f1e8;
   --cream-2: #efe7d5;
-  --black: #0e0d0c;           /* noir profond pour texte sur jaune ou crème */
+  --black: #0e0d0c;
 
   /* Texte */
-  --text: #f5f1e8;            /* crème principal */
-  --text2: rgba(245,241,232,.75);
-  --text3: rgba(245,241,232,.55);
+  --text: #0e0d0c;
+  --text2: rgba(14,13,12,.72);
+  --text3: rgba(14,13,12,.5);
   --text-on-cream: #0e0d0c;
   --text-on-cream-2: rgba(14,13,12,.7);
 
@@ -39,11 +39,11 @@
   --status-open: #7dbf66;
   --status-closed: #d9534f;
 
-  /* Bordures */
-  --border-dark: rgba(245,241,232,.08);
-  --border-dark-strong: rgba(245,241,232,.25);
-  --border-light: rgba(14,13,12,.08);
-  --border-light-strong: rgba(14,13,12,.15);
+  /* Bordures (--border-dark = border sur fond crème, subtile noire) */
+  --border-dark: rgba(14,13,12,.1);
+  --border-dark-strong: rgba(14,13,12,.25);
+  --border-light: rgba(245,241,232,.08);
+  --border-light-strong: rgba(245,241,232,.15);
 
   /* Typographie */
   --font-display: 'Bebas Neue', 'Helvetica Neue', sans-serif;
@@ -106,6 +106,14 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body {
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(0,0,0,.025) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(139,110,60,.04) 0%, transparent 50%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.15  0 0 0 0 0.08  0 0 0 0.05 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+  background-size: auto, auto, 220px 220px;
+  background-attachment: fixed, fixed, scroll;
+}
 
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -134,7 +142,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   gap: 24px;
   padding: 18px var(--pad);
-  background: rgba(14,13,12,.7);
+  background: rgba(245,241,232,.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-dark);
@@ -142,7 +150,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: background var(--transition-base), padding var(--transition-base);
 }
 
-#nav.scrolled { background: rgba(14,13,12,.92); padding: 12px var(--pad); }
+#nav.scrolled { background: rgba(245,241,232,.95); padding: 12px var(--pad); }
 
 .nav-logo { display: flex; align-items: center; gap: 12px; }
 
@@ -370,8 +378,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-outline-dark {
   background: transparent;
-  color: var(--bg);
-  border: 1.5px solid var(--border-light-strong);
+  color: var(--ink);
+  border: 1.5px solid var(--border-dark-strong);
   display: inline-flex;
   align-items: center;
   gap: 8px;
