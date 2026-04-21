@@ -880,20 +880,20 @@ section { padding: 90px var(--pad); }
 }
 
 .dish-card {
-  background: #2a1f15;
-  border: 1px solid rgba(245,241,232,.12);
+  background: #ede3d2;
+  border: 1px solid rgba(14,13,12,.1);
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
   transition: all var(--transition-base);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+  box-shadow: 0 4px 12px rgba(139,110,60,.08);
 }
 .dish-card:hover {
   transform: translateY(-3px);
   border-color: var(--accent);
-  box-shadow: 0 12px 28px rgba(0,0,0,.5), 0 0 0 1px rgba(247,179,44,.25);
+  box-shadow: 0 12px 28px rgba(139,110,60,.15), 0 0 0 1px rgba(247,179,44,.35);
 }
 
 .dish-card__photo {
@@ -1563,8 +1563,8 @@ main { padding-top: 0; }
 }
 
 .menu-card {
-  background: #2a1f15;                    /* warm brown — bien distinct du noir */
-  border: 1px solid rgba(245,241,232,.12);
+  background: #ede3d2;                    /* crème chaud — contraste doux sur le fond */
+  border: 1px solid rgba(14,13,12,.1);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius-md);
   padding: 18px 22px;
@@ -1573,14 +1573,14 @@ main { padding-top: 0; }
   align-items: baseline;
   gap: 14px;
   transition: all var(--transition-fast);
-  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+  box-shadow: 0 2px 8px rgba(139,110,60,.08);
 }
 .menu-card:hover {
-  background: #33281b;
-  border-color: rgba(245,241,232,.2);
+  background: #e5d9c4;
+  border-color: rgba(14,13,12,.18);
   border-left-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,.4), 0 0 0 1px rgba(247,179,44,.2);
+  box-shadow: 0 8px 20px rgba(139,110,60,.15), 0 0 0 1px rgba(247,179,44,.3);
 }
 
 .menu-card-name {
