@@ -210,7 +210,7 @@
         "@type": "MenuSection",
         "name": "Entrées",
         "hasMenuItem": [
-          {"@type":"MenuItem","name":"Empanada — Poulet ou bœuf","offers":{"@type":"Offer","price":"3.25","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Empanada — Poulet ou bœuf","image":"https://bochicacafebistro.ca/images/empanadas.webp","offers":{"@type":"Offer","price":"3.25","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Arepa au fromage","offers":{"@type":"Offer","price":"6.00","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Sancochito","description":"Vendredi à dimanche","offers":{"@type":"Offer","price":"7.00","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Frites","offers":{"@type":"Offer","price":"7.00","priceCurrency":"CAD"}},
@@ -219,7 +219,7 @@
           {"@type":"MenuItem","name":"Guacamole avec chips maison","image":"https://bochicacafebistro.ca/images/guacamole-chips.png","offers":{"@type":"Offer","price":"9.50","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Canastica (2x)","description":"Bœuf, poulet, porc ou végé","image":"https://bochicacafebistro.ca/images/canastica.png","offers":{"@type":"Offer","price":"9.50","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Patacones de la Casa (3x)","description":"Plantain frit, guacamole, chicharron","image":"https://bochicacafebistro.ca/images/patacones-de-la-casa.png","offers":{"@type":"Offer","price":"9.50","priceCurrency":"CAD"}},
-          {"@type":"MenuItem","name":"Ailes de poulet","offers":{"@type":"Offer","price":"10.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Ailes de poulet","image":"https://bochicacafebistro.ca/images/ailes-poulet.webp","offers":{"@type":"Offer","price":"10.00","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Picadita","description":"Chorizo, morcilla, chicharron, arepa, frites de manioc, patacones, sauce maison","image":"https://bochicacafebistro.ca/images/picadita.png","offers":{"@type":"Offer","price":"24.00","priceCurrency":"CAD"}}
         ]
       },
@@ -250,7 +250,7 @@
           {"@type":"MenuItem","name":"Hot-Dog Colombien","image":"https://bochicacafebistro.ca/images/hot-dog-colombien.png","offers":{"@type":"Offer","price":"15.00","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Patacon Montanero","image":"https://bochicacafebistro.ca/images/patacon-montanero.png","offers":{"@type":"Offer","price":"15.50","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Salchipapas","description":"Option sans gluten offerte","image":"https://bochicacafebistro.ca/images/salchipapas.png","offers":{"@type":"Offer","price":"16.00","priceCurrency":"CAD"}},
-          {"@type":"MenuItem","name":"Nachos","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"22.00","priceCurrency":"CAD"}},
+          {"@type":"MenuItem","name":"Nachos","image":"https://bochicacafebistro.ca/images/nachos.webp","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"22.00","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Bochica Burger","image":"https://bochicacafebistro.ca/images/bochica-burger.png","offers":{"@type":"Offer","price":"21.00","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Pollo Asado","image":"https://bochicacafebistro.ca/images/pollo-asado.png","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"21.00","priceCurrency":"CAD"}},
           {"@type":"MenuItem","name":"Le Chicharron","suitableForDiet":"https://schema.org/GlutenFreeDiet","offers":{"@type":"Offer","price":"27.00","priceCurrency":"CAD"}},
@@ -294,9 +294,9 @@
           {"@type":"MenuItem","name":"Brazo de Reina"},
           {"@type":"MenuItem","name":"Tres Leches"},
           {"@type":"MenuItem","name":"Cheesecake"},
-          {"@type":"MenuItem","name":"Pandebono"},
+          {"@type":"MenuItem","name":"Pandebono","image":"https://bochicacafebistro.ca/images/pandebono.webp"},
           {"@type":"MenuItem","name":"Buñuelo"},
-          {"@type":"MenuItem","name":"Pain fromage/goyave"}
+          {"@type":"MenuItem","name":"Pain fromage","image":"https://bochicacafebistro.ca/images/pain-fromage.webp"}
         ]
       }
     ]
@@ -508,7 +508,7 @@
     <div class="menu-section" id="tab-entrees">
       <div class="menu-grid">
         <div class="menu-subsection-title y" data-fr="Entrées" data-en="Appetizers" data-es="Entradas">Entrées</div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-photo="images/empanadas.webp">
           <div class="menu-card-name" data-fr="Empanada — Poulet ou bœuf" data-en="Empanada — Chicken or Beef" data-es="Empanada — Pollo o Carne">Empanada — Poulet ou bœuf</div>
           <div class="menu-card-desc" data-fr="4 pour 12 $ · 10 pour 28 $" data-en="4 for $12 · 10 for $28" data-es="4 x $12 · 10 x $28">4 pour 12 $ · 10 pour 28 $</div>
           <div class="menu-card-price">3.25 $</div>
@@ -548,7 +548,7 @@
           <div class="menu-card-desc" data-fr="Plantain frit, guacamole, chicharron" data-en="Fried plantain, guacamole, chicharron" data-es="Patacones, guacamole, chicharrón">Plantain frit, guacamole, chicharron</div>
           <div class="menu-card-price">9.5 $</div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-photo="images/ailes-poulet.webp">
           <div class="menu-card-name" data-fr="Ailes de poulet" data-en="Chicken Wings" data-es="Alitas de Pollo">Ailes de poulet</div>
           <div class="menu-card-desc" data-fr="6 pour 10 $ · 12 pour 18 $" data-en="6 for $10 · 12 for $18" data-es="6 x $10 · 12 x $18">6 pour 10 $ · 12 pour 18 $</div>
           <div class="menu-card-price">10 $</div>
@@ -635,7 +635,7 @@
           <div class="menu-card-desc" data-fr="Frites, saucisses, champignons, oignons caramélisés, maïs, fromage, sauces maison. Extra viande +4 $" data-en="Fries, sausages, mushrooms, caramelized onions, corn, cheese. Extra meat +$4" data-es="Papas, salchichas, champiñones, cebollas, maíz, queso. Extra carne +$4">Frites, saucisses, champignons, oignons caramélisés, maïs, fromage. Extra viande +4 $</div>
           <div class="menu-card-price">16 $</div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-photo="images/nachos.webp">
           <div class="menu-card-name" data-fr="Nachos" data-en="Nachos" data-es="Nachos">Nachos</div>
           <div class="menu-card-desc" data-fr="Chips maison, poulet, porc ou bœuf (+1), salsa maison, guacamole, jalapeños, fromage" data-en="House chips, chicken, pork or beef (+1), house sauce, guacamole, jalapeños, cheese" data-es="Chips caseros, pollo, cerdo o res +1, salsa, guacamole, jalapeños, queso">Chips maison, poulet, porc ou bœuf (+1), salsa maison, guacamole, jalapeños, fromage</div>
           <div class="menu-card-price">22 $</div>
@@ -677,7 +677,7 @@
     <div class="menu-section" id="tab-breuvages" style="display:none">
       <div class="menu-grid">
         <div class="menu-subsection-title y" data-fr="Boissons chaudes" data-en="Hot Drinks" data-es="Bebidas Calientes">Boissons chaudes</div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-photo="images/cafe-noir.webp">
           <div class="menu-card-name" data-fr="Café noir" data-en="Black Coffee" data-es="Café Negro">Café noir</div>
           <div class="menu-card-price">3.5 $</div>
         </div>
@@ -685,11 +685,11 @@
           <div class="menu-card-name" data-fr="Café latté" data-en="Café Latte" data-es="Café Latté">Café latté</div>
           <div class="menu-card-price">4.5 $</div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-photo="images/cappuccino.webp">
           <div class="menu-card-name" data-fr="Cappuccino" data-en="Cappuccino" data-es="Cappuccino">Cappuccino</div>
           <div class="menu-card-price">4.5 $</div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-photo="images/chocolat-chaud.webp">
           <div class="menu-card-name" data-fr="Chocolat chaud" data-en="Hot Chocolate" data-es="Chocolate Caliente">Chocolat chaud</div>
           <div class="menu-card-price">4.5 $</div>
         </div>
@@ -961,7 +961,7 @@
         </div>
 
         <div class="menu-subsection-title b" data-fr="Pains" data-en="Breads" data-es="Panes">Pains</div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-photo="images/pandebono.webp">
           <div class="menu-card-name">Pandebono</div>
           <div class="menu-card-price">3 $</div>
         </div>
@@ -969,7 +969,7 @@
           <div class="menu-card-name">Buñuelo</div>
           <div class="menu-card-price">3 $</div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-photo="images/pain-fromage.webp">
           <div class="menu-card-name" data-fr="Pain fromage" data-en="Cheese Bread" data-es="Pan de Queso">Pain fromage</div>
           <div class="menu-card-price">4.25 $</div>
         </div>

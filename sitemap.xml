@@ -90,6 +90,31 @@
       <image:title>Guacamole avec chips maison</image:title>
       <image:caption>Guacamole frais accompagné de chips tortillas maison</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/empanadas.webp</image:loc>
+      <image:title>Empanadas colombiennes — Poulet ou bœuf</image:title>
+      <image:caption>Empanadas dorées garnies de poulet ou bœuf, sans gluten</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/ailes-poulet.webp</image:loc>
+      <image:title>Ailes de poulet</image:title>
+      <image:caption>Ailes de poulet style Bochica, parfaites pour partager</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/nachos.webp</image:loc>
+      <image:title>Nachos colombiens</image:title>
+      <image:caption>Chips maison, viande au choix, salsa, guacamole, jalapeños et fromage</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/pandebono.webp</image:loc>
+      <image:title>Pandebono — Pain colombien au fromage</image:title>
+      <image:caption>Petit pain colombien traditionnel au fromage et fécule de manioc</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/pain-fromage.webp</image:loc>
+      <image:title>Pain au fromage colombien</image:title>
+      <image:caption>Pain colombien traditionnel au fromage</image:caption>
+    </image:image>
   </url>
 
   <url>

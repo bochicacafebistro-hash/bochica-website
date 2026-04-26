@@ -310,6 +310,17 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 26 avril 2026 (soir, après audit) — 8 nouvelles photos en WebP optimisé
+**Premier batch utilisant le workflow standardisé documenté ci-dessus :**
+- 8 photos uploadées : `ailes-poulet.png`, `cafe-noir.png`, `cappuccino.png`, `chocolat-chaud.png`, `empanadas.png`, `nachos.png`, `pain-fromage.png`, `pandebono.png`
+- Auto-recadrées (cadre crème intégré supprimé), redimensionnées à 1080×1080
+- **Converties en WebP qualité 82** : gain moyen **94%** (480 KB-1.2 MB → 21-124 KB)
+- 8 cartes du menu mises à jour avec `data-photo="images/<nom>.webp"` (Empanada, Ailes, Nachos, Café noir, Cappuccino, Chocolat chaud, Pandebono, Pain fromage)
+- Schema.org JSON-LD : 5 MenuItems enrichis avec `image` (Empanada, Ailes de poulet, Nachos, Pandebono, Pain fromage)
+- `sitemap.xml` : 5 nouvelles entrées `<image:image>` ajoutées
+- ⚠️ **PNG originaux laissés en place** dans `images/` (le sandbox empêche la suppression). Devront être supprimés manuellement après validation visuelle. Backups dans `_backup_avant_crop/`.
+- ⚠️ Photos manquantes : `cafe-latte`, `buñuelo`, autres desserts (Gelatina, Flan Maracuyá, Brazo de Reina, Tres Leches, Cheesecake, Pain goyave et fromage)
+
 ### 26 avril 2026 (soir) — Audit complet + corrections P0/P1 (design + a11y + SEO + sécurité)
 **Audit lancé via 3 agents spécialisés. Résultats : Design 7.5/10, A11y 6.5/10, SEO 6.5/10, Sécurité 7/10. Toutes les P0 corrigées :**
 
