@@ -310,6 +310,22 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 26 avril 2026 (très tard) — 7 photos finales : 2 plats + 5 boissons froides
+- **2 plats sur fond crème natif** (auto-recadrage du cadre crème intégré) :
+  - `picada-suprema.webp` (125 KB) — remplace `suprema.jpg` qui n'existait pas
+  - `frites-de-yuca.webp` (70 KB) — remplace `yuca-frita.jpg` qui n'existait pas
+- **5 boissons sur fond blanc à détourer** (sources catalogue petites, 225x225 → upscale 1080x1080) :
+  - `coca-cola.webp` (20 KB) — Coke/Diète/Sprite/Fanta
+  - `jarritos.webp` (28 KB) — bouteilles mexicaines colorées (paysage)
+  - `colombiana.webp` (30 KB) — Colombiana ou Manzana
+  - `pony-malta.webp` (17 KB) — bouteille étroite haute
+  - `red-bull.webp` (17 KB) — canette
+- HTML : 2 `data-photo` mis à jour (Yuca, Suprema) + 5 `data-photo` ajoutés (boissons)
+- Schema.org JSON-LD : section "Breuvages" complètement refaite (était 2 items génériques → maintenant 9 MenuItems individuels avec image+prix : Café noir, Cappuccino, Chocolat chaud, Coke, Jarritos, Colombiana, Pony Malta, Red Bull, + Jus naturels colombiens en générique)
+- Schema.org : "Suprema" renommé "Picada Suprema" + ajout `suitableForDiet: GlutenFreeDiet`
+- sitemap.xml : 7 nouvelles entrées `<image:image>`
+- ⚠️ Sources upload-blanc petites (225x225) → upscale à 1080x1080 = qualité un peu floue mais acceptable pour vignettes 140x140 dans les cartes menu
+
 ### 26 avril 2026 (tard, suite) — 11 vins, mousseux et spiritueux détourés et wirés
 - **6 vins/mousseux** : Hungaria (Hongrie), Porderi dal Nespoli (Italie blanc), Adega Panalva Dao (Portugal blanc), Roseline (France rosé), Altamente Jumilla (Espagne rouge), Cono Sur Pinot Noir (Chili rouge)
 - **5 spiritueux** : Aguardiente Antioqueño (Colombie), Brugal Rhum Añejo, Jose Cuervo Tequila Especial, Jimador Tequila Reposado, Jameson Black Barrel Whiskey

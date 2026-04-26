@@ -210,6 +210,41 @@
       <image:title>Jameson Black Barrel Whiskey</image:title>
       <image:caption>Whiskey irlandais Jameson Black Barrel — Reserve Series</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/picada-suprema.webp</image:loc>
+      <image:title>Picada Suprema — Plateau de partage XL</image:title>
+      <image:caption>Plateau colombien XL avec chorizo, morcilla, chicharron, frites, plantain, arepas — option sans gluten</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/frites-de-yuca.webp</image:loc>
+      <image:title>Frites de yuca (manioc)</image:title>
+      <image:caption>Frites de manioc colombiennes dorées et croustillantes</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/coca-cola.webp</image:loc>
+      <image:title>Boissons gazeuses — Coke, Sprite, Fanta</image:title>
+      <image:caption>Boissons gazeuses classiques</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/jarritos.webp</image:loc>
+      <image:title>Jarritos — Boissons mexicaines</image:title>
+      <image:caption>Sodas mexicains traditionnels Jarritos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/colombiana.webp</image:loc>
+      <image:title>Colombiana ou Manzana — Boissons colombiennes</image:title>
+      <image:caption>Boissons gazeuses colombiennes traditionnelles</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/pony-malta.webp</image:loc>
+      <image:title>Pony Malta — Boisson colombienne au malt</image:title>
+      <image:caption>Boisson maltée colombienne sans alcool</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/red-bull.webp</image:loc>
+      <image:title>Red Bull — Boisson énergisante</image:title>
+      <image:caption>Boisson énergisante Red Bull</image:caption>
+    </image:image>
   </url>
 
   <url>
