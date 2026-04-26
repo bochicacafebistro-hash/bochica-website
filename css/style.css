@@ -16,10 +16,10 @@
   --cream-2: #efe7d5;
   --black: #0e0d0c;
 
-  /* Texte */
+  /* Texte (contrastes WCAG AA respectés sur fond crème) */
   --text: #0e0d0c;
   --text2: rgba(14,13,12,.72);
-  --text3: rgba(14,13,12,.5);
+  --text3: rgba(14,13,12,.62);  /* remonté de .5 à .62 pour atteindre WCAG AA 4.5:1 sur texte normal */
   --text-on-cream: #0e0d0c;
   --text-on-cream-2: rgba(14,13,12,.7);
 
@@ -120,6 +120,48 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; }
 
 ::selection { background: var(--accent); color: var(--accent-text); }
+
+/* ─── Accessibilité : skip link + focus-visible global ─── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 1000;
+  padding: 12px 18px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 16px;
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+/* Sur boutons jaunes pleins, focus en sombre pour contraster */
+.btn-primary:focus-visible,
+.cta-final__btn:focus-visible,
+.ticker:focus-visible,
+.follow-btn:focus-visible {
+  outline-color: var(--ink);
+  outline-offset: 3px;
+}
+/* Respect explicite : si l'utilisateur préfère moins de mouvement, on désactive vidéos décoratives autoplay */
+@media (prefers-reduced-motion: reduce) {
+  .hero-img { display: none; }
+  .hero { background: var(--ink); }
+  .ticker-track { animation: none !important; }
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -516,21 +558,6 @@ section { padding: 90px var(--pad); }
   display: inline-block;
 }
 
-.carousel-arrows { display: flex; gap: 10px; }
-.carousel-arrow {
-  width: 48px; height: 48px;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid var(--border-dark-strong);
-  background: transparent;
-  color: var(--text);
-  font-size: 18px;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  transition: all var(--transition-fast);
-}
-.carousel-arrow:hover { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
-
 /* ═══════════════════════════════════════════════════════════════
    PLACEHOLDERS PHOTOS
    ═══════════════════════════════════════════════════════════════ */
@@ -577,77 +604,6 @@ section { padding: 90px var(--pad); }
     radial-gradient(ellipse at 50% 20%, rgba(247,179,44,.35) 0%, transparent 45%),
     radial-gradient(ellipse at 30% 15%, rgba(247,179,44,.2) 0%, transparent 40%);
   overflow: hidden;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   SIGNATURES (cartes 4:5 avec overlay)
-   ═══════════════════════════════════════════════════════════════ */
-
-.signatures-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-}
-
-.signature-card {
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--bg-2);
-  cursor: pointer;
-  transition: transform var(--transition-base);
-  aspect-ratio: 4/5;
-}
-.signature-card:hover { transform: translateY(-3px); }
-
-.signature-card .ph-food, .signature-card img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  border-radius: 0;
-  aspect-ratio: auto;
-}
-.signature-card .ph-food::after { font-size: 11px; }
-
-.signature-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(14,13,12,.85) 100%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.signature-card__content {
-  position: absolute;
-  left: 18px; right: 18px; bottom: 18px;
-  z-index: 2;
-}
-
-.signature-card__num {
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  color: var(--accent);
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-
-.signature-card__title {
-  font-family: var(--font-display);
-  font-size: 26px;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  color: #fff;
-  margin: 0;
-  font-weight: 400;
-}
-
-.signature-card__desc {
-  font-size: 13px;
-  opacity: 0.8;
-  margin-top: 6px;
-  color: #fff;
-  font-family: var(--font-body);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1255,7 +1211,8 @@ behold-widget {
 .hours-neighborhood { font-size: 14px; color: var(--text2); margin-bottom: 22px; }
 
 .hours-contact-line { font-size: 14px; color: var(--text); margin-top: 4px; }
-.hours-contact-line a { color: var(--accent); }
+.hours-contact-line a { color: var(--accent-warm); text-decoration: underline; text-underline-offset: 2px; }
+.hours-contact-line a:hover { color: var(--accent); }
 
 .hours-list { margin-top: 0; }
 .hours-row {
@@ -1346,6 +1303,8 @@ behold-widget {
   place-items: center;
   padding: 60px var(--pad);
   text-align: center;
+  background: #1a1410; /* fallback sombre garantit lisibilité du texte blanc même si .ph-ambient ne s'affiche pas */
+  color: var(--cream);
 }
 
 .cta-final__content { position: relative; z-index: 2; }
@@ -1698,7 +1657,8 @@ main { padding-top: 0; }
   max-width: 480px;
   line-height: 1.5;
 }
-.form-privacy a { color: var(--accent); border-bottom: 1px solid var(--accent); }
+.form-privacy a { color: var(--accent-warm); border-bottom: 1px solid var(--accent-warm); }
+.form-privacy a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .form-status { margin-top: 12px; text-align: center; font-size: 13px; }
 .form-status.success { color: var(--status-open); }
 .form-status.error { color: var(--status-closed); }
@@ -1837,7 +1797,7 @@ main { padding-top: 0; }
 }
 .menu-card.has-photo:hover .menu-card-photo img { transform: scale(1.06); }
 
-.menu-card-photo.placeholder { background: #f5f1e8; }
+.menu-card-photo.placeholder { background: var(--bg-3); }
 .menu-card-photo.placeholder img {
   width: 100%;
   height: 100%;
@@ -1941,18 +1901,6 @@ main { padding-top: 0; }
   width: 11px;
   height: 11px;
 }
-
-/* ─── Signatures legacy (ancien template) ─── */
-.sig-grid, .signatures-wrap { /* déjà override plus haut mais on cadre */ }
-.sig-card { background: var(--bg-2); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); overflow: hidden; }
-.sig-photo { aspect-ratio: 4/3; background: repeating-linear-gradient(135deg, #1a1410 0 18px, #14100c 18px 36px); display: grid; place-items: center; }
-.sig-flag { font-size: 48px; filter: drop-shadow(0 4px 12px rgba(0,0,0,.3)); }
-.sig-body { padding: 20px; }
-.sig-region { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
-.sig-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 10px; font-weight: 400; color: var(--text); }
-.sig-desc { font-size: 13.5px; color: var(--text2); margin-bottom: 12px; line-height: 1.5; }
-.sig-price { font-family: var(--font-display); font-size: 20px; color: var(--accent); letter-spacing: 0.02em; }
-.sig-cta { display: flex; justify-content: center; margin-top: 40px; }
 
 /* ─── Location legacy ─── */
 .location { background: var(--bg-2); border-top: 1px solid var(--border-dark); }

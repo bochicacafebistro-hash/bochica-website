@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="color-scheme" content="dark"/>
+  <meta name="color-scheme" content="light"/>
+  <meta name="theme-color" content="#f5f1e8"/>
   <title>Politique de confidentialité | Bochica Café Bistro</title>
   <meta name="description" content="Politique de confidentialité du site Bochica Café Bistro, conforme à la Loi 25 du Québec sur la protection des renseignements personnels."/>
   <meta name="robots" content="index, follow"/>
@@ -21,7 +22,8 @@
     .privacy-wrap p{margin-bottom:14px;color:var(--text2);font-size:15.5px;font-family:var(--font-body)}
     .privacy-wrap ul{margin:0 0 18px 22px;color:var(--text2);font-size:15.5px}
     .privacy-wrap li{margin-bottom:6px}
-    .privacy-wrap a{color:var(--accent);font-weight:500;border-bottom:1px solid var(--accent)}
+    .privacy-wrap a{color:var(--accent-warm);font-weight:500;border-bottom:1px solid var(--accent-warm)}
+    .privacy-wrap a:hover{color:var(--accent);border-bottom-color:var(--accent)}
     .privacy-back{display:inline-flex;align-items:center;gap:8px;margin-top:32px;color:var(--accent-text);background:var(--accent);padding:13px 22px;border-radius:var(--radius-pill);font-family:var(--font-display);font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;text-decoration:none;border:none}
     .privacy-back:hover{background:var(--accent-hover)}
   </style>
@@ -42,7 +44,7 @@
 <div class="privacy-wrap">
 
   <h1>Politique de confidentialité</h1>
-  <span class="privacy-date">Dernière mise à jour : 17 avril 2026</span>
+  <span class="privacy-date">Dernière mise à jour : 26 avril 2026</span>
 
   <p>Chez <strong>Bochica Café Bistro</strong> (ci-après « Bochica », « nous »), nous accordons une grande importance à la protection de vos renseignements personnels. La présente politique décrit comment nous collectons, utilisons, conservons et protégeons vos informations lorsque vous utilisez notre site web <a href="https://bochicacafebistro.ca">bochicacafebistro.ca</a>.</p>
 
@@ -73,20 +75,34 @@
   </ul>
 
   <h2>4. Témoins (cookies) et technologies similaires</h2>
-  <p>Notre site utilise uniquement le <strong>stockage local (localStorage)</strong> de votre navigateur pour mémoriser votre préférence de langue. Nous n'utilisons pas de témoins publicitaires ni de traceurs tiers. La carte Google Maps et les widgets de réservation/commande peuvent déposer leurs propres témoins soumis à leurs politiques respectives.</p>
+  <p>Notre site utilise uniquement le <strong>stockage local (localStorage)</strong> de votre navigateur pour mémoriser votre préférence de langue (clé <code>bochica-lang</code>). Nous n'utilisons aucun témoin publicitaire, aucun traceur d'analyse (ex. Google Analytics, Facebook Pixel) ni aucun outil de remarketing.</p>
+  <p>Certains services tiers intégrés à notre site (voir section 5) peuvent déposer leurs propres témoins ou collecter votre adresse IP, soumis à leurs politiques de confidentialité respectives.</p>
 
-  <h2>5. Partage de vos renseignements</h2>
+  <h2>5. Services tiers intégrés</h2>
+  <p>Notre site utilise les services tiers suivants pour offrir certaines fonctionnalités. Chacun applique sa propre politique de confidentialité :</p>
+  <ul>
+    <li><strong>Vercel</strong> (hébergement) — peut collecter des données techniques anonymisées (logs serveur). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Politique Vercel</a></li>
+    <li><strong>Formspree</strong> (réception du formulaire de contact) — traite les messages que vous nous envoyez via le formulaire. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Politique Formspree</a></li>
+    <li><strong>LibroReserve</strong> (système de réservations en ligne) — collecte vos informations de réservation lorsque vous réservez une table. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">Politique LibroReserve</a></li>
+    <li><strong>Order Online AI</strong> (commande en ligne) — collecte vos informations de commande et paiement. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Politique Order Online AI</a></li>
+    <li><strong>Google Maps</strong> (carte interactive et itinéraire) — peut collecter votre adresse IP et utiliser des témoins. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politique Google</a></li>
+    <li><strong>Google Fonts</strong> (typographies Bebas Neue, Inter, JetBrains Mono) — peut collecter votre adresse IP lors du chargement des polices. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politique Google</a></li>
+    <li><strong>Behold.so</strong> (carrousel Instagram dans la section « Suivez-nous ») — affiche nos publications Instagram récentes. Peut collecter votre adresse IP et utiliser des témoins Meta/Instagram. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Politique Behold</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Politique Instagram</a></li>
+    <li><strong>Pexels</strong> (vidéo d'ambiance dans l'en-tête, fallback temporaire) — peut collecter votre adresse IP lors du chargement de la vidéo. <a href="https://www.pexels.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Politique Pexels</a></li>
+  </ul>
+
+  <h2>6. Partage de vos renseignements</h2>
   <p>Nous ne vendons, ne louons ni n'échangeons vos renseignements personnels. Nous ne les partageons qu'avec :</p>
   <ul>
-    <li>Nos prestataires techniques essentiels (hébergement, formulaire de contact), liés par contrat à respecter la confidentialité;</li>
+    <li>Les prestataires techniques essentiels mentionnés à la section 5, liés par contrat ou par leur propre politique à respecter la confidentialité;</li>
     <li>Les autorités compétentes lorsque la loi l'exige.</li>
   </ul>
 
-  <h2>6. Conservation et sécurité</h2>
+  <h2>7. Conservation et sécurité</h2>
   <p>Vos renseignements sont conservés aussi longtemps que nécessaire à la finalité pour laquelle ils ont été collectés, et conformément à nos obligations légales. Les messages du formulaire de contact sont conservés au maximum <strong>24 mois</strong> après le dernier échange.</p>
-  <p>Nous prenons des mesures techniques et organisationnelles raisonnables pour protéger vos données (connexion HTTPS, accès restreint au courriel).</p>
+  <p>Nous prenons des mesures techniques et organisationnelles raisonnables pour protéger vos données : connexion <strong>HTTPS</strong> (chiffrement TLS), en-têtes de sécurité (HSTS, CSP, X-Frame-Options), accès restreint au courriel professionnel.</p>
 
-  <h2>7. Vos droits (Loi 25)</h2>
+  <h2>8. Vos droits (Loi 25)</h2>
   <p>Vous avez le droit :</p>
   <ul>
     <li>D'<strong>accéder</strong> aux renseignements personnels que nous détenons à votre sujet;</li>
@@ -97,10 +113,10 @@
   </ul>
   <p>Pour exercer ces droits, écrivez-nous à <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a>.</p>
 
-  <h2>8. Responsable de la protection des renseignements personnels</h2>
-  <p>Conformément à la Loi 25, le responsable désigné est la direction de Bochica Café Bistro, joignable par courriel à <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a>.</p>
+  <h2>9. Responsable de la protection des renseignements personnels</h2>
+  <p>Conformément à la Loi 25, le responsable désigné est la direction de Bochica Café Bistro, joignable par courriel à <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a> ou par téléphone au <a href="tel:+13673308220">367-330-8220</a>.</p>
 
-  <h2>9. Modifications</h2>
+  <h2>10. Modifications</h2>
   <p>Nous pouvons modifier la présente politique afin de refléter des changements légaux ou opérationnels. La date de dernière mise à jour apparaît en haut de cette page. Nous vous invitons à la consulter régulièrement.</p>
 
   <a href="/" class="privacy-back">← Retour à l'accueil</a>

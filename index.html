@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="color-scheme" content="dark"/>
+  <meta name="color-scheme" content="light"/>
 
   <!-- ============ SEO — Balises principales ============ -->
   <title>Bochica | Restaurant Colombien à Québec — Arepas, Empanadas & Bandeja Paisa</title>
@@ -30,20 +30,24 @@
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"/>
   <link rel="manifest" href="/site.webmanifest"/>
-  <meta name="theme-color" content="#0e0e0e"/>
+  <meta name="theme-color" content="#f5f1e8"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
   <meta name="apple-mobile-web-app-title" content="Bochica"/>
 
   <!-- Préchargement des ressources critiques pour Core Web Vitals -->
-  <!-- NOTE: le preload de hero.jpg a été retiré car le fichier n'existe pas encore.
-       À réactiver dès que images/hero.jpg sera ajouté. -->
-  <link rel="preload" as="image" href="images/Logo%20Bochica%202026-3.png" fetchpriority="high"/>
+  <!-- NOTE: pas de preload du logo (800 KB) — non-LCP, gaspille de la bande passante critique.
+       NOTE: le preload de hero.jpg a été retiré car le fichier n'existe pas encore.
+       À réactiver dès que images/hero.jpg (poster vidéo) sera ajouté. -->
 
   <!-- DNS prefetch pour optimiser les connexions externes -->
   <link rel="dns-prefetch" href="https://widgets.libroreserve.com"/>
   <link rel="dns-prefetch" href="https://bochica.order-online.ai"/>
   <link rel="dns-prefetch" href="https://www.google.com"/>
+  <link rel="dns-prefetch" href="https://w.behold.so"/>
+  <link rel="dns-prefetch" href="https://videos.pexels.com"/>
+  <link rel="preconnect" href="https://w.behold.so" crossorigin/>
 
   <!-- Typographie : Bebas Neue (titres impact) + Inter (corps) + JetBrains Mono (microcopy) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -374,10 +378,10 @@
   }
   </script>
 
-  <!-- ============ hreflang — Alternatives linguistiques ============ -->
+  <!-- ============ hreflang — site servi sur une seule URL (langue côté UI) ============ -->
+  <!-- NOTE: site trilingue côté UI mais servi sur une seule URL. On déclare juste fr-CA + x-default
+       pour éviter d'envoyer des signaux trompeurs à Google (les hreflang en-CA et es retirés). -->
   <link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
-  <link rel="alternate" hreflang="en-CA" href="https://bochicacafebistro.ca/"/>
-  <link rel="alternate" hreflang="es" href="https://bochicacafebistro.ca/"/>
   <link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
 
   <link rel="stylesheet" href="css/style.css"/>
@@ -393,6 +397,9 @@
   </script>
 </head>
 <body>
+
+<!-- Skip link (accessibilité clavier / lecteurs d'écran) -->
+<a class="skip-link" href="#main" data-fr="Aller au contenu principal" data-en="Skip to main content" data-es="Ir al contenido principal">Aller au contenu principal</a>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1374,6 +1381,7 @@
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
         title="Bochica — 430 Rue Saint-Vallier Ouest, Québec"></iframe>
     </div>
     <div class="location-btns">
@@ -1437,9 +1445,9 @@
 <a href="#reservation" class="fab-reserve" id="fab-reserve" data-fr="Réserver" data-en="Book" data-es="Reservar" aria-label="Réserver une table">Réserver</a>
 
 <!-- DISH MODAL -->
-<div class="dish-modal" id="dish-modal" onclick="closeDish(event)" aria-hidden="true">
-  <div class="dish-modal-content" onclick="event.stopPropagation()">
-    <button class="dish-modal-close" onclick="closeDish()" aria-label="Fermer">&times;</button>
+<div class="dish-modal" id="dish-modal" role="dialog" aria-modal="true" aria-labelledby="dish-modal-name" aria-hidden="true" onclick="closeDish(event)">
+  <div class="dish-modal-content" role="document" onclick="event.stopPropagation()">
+    <button class="dish-modal-close" type="button" onclick="closeDish()" aria-label="Fermer">&times;</button>
     <div class="dish-modal-photo" id="dish-modal-photo">
       <img id="dish-modal-img" src="" alt="" onerror="this.style.display='none'"/>
       <div class="dish-modal-photo-ph">

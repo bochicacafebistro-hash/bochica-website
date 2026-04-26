@@ -5,12 +5,10 @@
 
   <url>
     <loc>https://bochicacafebistro.ca/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://bochicacafebistro.ca/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://bochicacafebistro.ca/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
     <image:image>
       <image:loc>https://bochicacafebistro.ca/images/Logo%20Bochica%202026-3.png</image:loc>
@@ -18,87 +16,77 @@
       <image:caption>Logo Bochica Café Bistro</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/bandeja-medellin.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/bandeja-medellin.png</image:loc>
       <image:title>Bol Medellín — Bandeja Paisa traditionnelle</image:title>
       <image:caption>Plat colombien authentique avec riz, haricots, chicharron et plantain</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/bochica-burger.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/bochica-burger.png</image:loc>
       <image:title>Bochica Burger — Burger signature</image:title>
       <image:caption>Burger colombien avec bœuf, chorizo et sauces maison</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/arepa-classique.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/arepa-classique.png</image:loc>
       <image:title>Arepa colombienne farcie</image:title>
       <image:caption>Arepa traditionnelle sans gluten préparée maison</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/churrasco.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/churrasco.png</image:loc>
       <image:title>Churrasco — Bavette grillée colombienne</image:title>
       <image:caption>Bavette marinée et grillée, servie avec accompagnements traditionnels</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/pollo-asado.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/pollo-asado.png</image:loc>
       <image:title>Pollo Asado — Poulet rôti colombien</image:title>
       <image:caption>Poulet mariné à la colombienne, rôti à la perfection</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/picada.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/picada.png</image:loc>
       <image:title>Picada — Plateau de partage colombien</image:title>
       <image:caption>Assortiment de viandes grillées, chorizo, morcilla et accompagnements</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/suprema.jpg</image:loc>
-      <image:title>Suprema — Plat signature Bochica</image:title>
-      <image:caption>Plat gastronomique colombien pour occasions spéciales</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/patacones-de-la-casa.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/patacones-de-la-casa.png</image:loc>
       <image:title>Patacones de la Casa</image:title>
       <image:caption>Plantains frits garnis, guacamole et chicharron</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/bol-cali.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/bol-cali.png</image:loc>
       <image:title>Bol Cali — Bol colombien</image:title>
       <image:caption>Bol santé inspiré de la ville de Cali, sans gluten</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/bol-bogota.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/bol-bogota.png</image:loc>
       <image:title>Bol Bogotá — Bol colombien</image:title>
       <image:caption>Bol colombien inspiré de la capitale, sans gluten</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/hot-dog-colombien.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/hot-dog-colombien.png</image:loc>
       <image:title>Hot-Dog Colombien</image:title>
       <image:caption>Hot-dog à la colombienne avec sauces traditionnelles</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/patacon-montanero.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/patacon-montanero.png</image:loc>
       <image:title>Patacon Montanero</image:title>
       <image:caption>Patacon traditionnel garni à la montagnarde</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/salchipapas.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/salchipapas.png</image:loc>
       <image:title>Salchipapas</image:title>
       <image:caption>Frites et saucisses colombiennes, option sans gluten</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/picadita.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/picadita.png</image:loc>
       <image:title>Picadita — Plateau de partage</image:title>
       <image:caption>Version miniature de la Picada avec chorizo, morcilla et arepa</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/canastica.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/canastica.png</image:loc>
       <image:title>Canastica — Paniers croustillants</image:title>
       <image:caption>Paniers croustillants bœuf, poulet, porc ou végétarien</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/yuca-frita.jpg</image:loc>
-      <image:title>Yuca Frita — Frites de manioc</image:title>
-      <image:caption>Frites de manioc colombiennes dorées et croustillantes</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/guacamole-chips.jpg</image:loc>
+      <image:loc>https://bochicacafebistro.ca/images/guacamole-chips.png</image:loc>
       <image:title>Guacamole avec chips maison</image:title>
       <image:caption>Guacamole frais accompagné de chips tortillas maison</image:caption>
     </image:image>
@@ -106,44 +94,65 @@
 
   <url>
     <loc>https://bochicacafebistro.ca/#about</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#menu</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
+    <loc>https://bochicacafebistro.ca/#suivez-nous</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://bochicacafebistro.ca/#evenements</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://bochicacafebistro.ca/#avis</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#horaires</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#localisation</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#reservation</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bochicacafebistro.ca/privacy.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

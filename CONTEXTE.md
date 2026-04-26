@@ -1,6 +1,6 @@
 # 📋 CONTEXTE — Site Web Bochica
 
-> ⚠️ **Dernière mise à jour majeure : 26 avril 2026** — palette **inversée vers crème papier** (le fond n'est plus noir), ajout du **ticker jaune**, **vidéo hero**, réordonnancement des sections, nouveau bundle de design `design_handoff_bochica_brasserie/`.
+> ⚠️ **Dernière mise à jour majeure : 26 avril 2026 (soir)** — gros audit + fixes : `vercel.json` créé avec headers de sécurité, sitemap.xml corrigé (16 `.jpg`→`.png` + sections actuelles), color-scheme aligné, modale plat avec `role=dialog`, skip link, focus-visible global, contrastes WCAG, section "Suivez-nous" avec widget Behold, 15 photos de plats wirées + recadrées, badges régime en pills colorés sous le nom du plat.
 > Voir `AUDIT_DESIGN.md` pour l'ancien rapport d'audit et `CHANGELOG` en fin de document pour l'historique des changements.
 
 ## 🏠 Description
@@ -273,9 +273,94 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Pour changements majeurs → donner le fichier complet
 - Images toujours dans `images/` avec chemin `src="images/nom-fichier"`
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
+- **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#8a6a1a`, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
 
+## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
+
+**Quand l'utilisateur uploade une nouvelle photo de plat, voici la marche à suivre OBLIGATOIRE :**
+
+1. **Identifier le plat** depuis la photo (ingrédients visibles) et matcher avec un nom existant dans le menu (`index.html` cherche `data-photo`)
+2. **Renommer le fichier** pour matcher exactement le `data-photo` attendu (ex: `data-photo="images/bol-cali.png"` → fichier `bol-cali.png`, sans espaces, avec tirets)
+3. **Auto-recadrer** pour enlever le cadre crème intégré (les photos générées par AI ont souvent ~110-190px de marge crème uniforme `rgb(244,241,231)` autour du sujet) — utiliser le script Python avec PIL :
+   ```python
+   # Détecter bbox du contenu non-crème, recropper en carré centré, redimensionner à 1080×1080
+   ```
+   Backup l'original dans `images/_backup_avant_crop/`
+4. **Compresser en WebP qualité 82** (PIL ou cwebp) → cible **<200 KB par photo**. Garder l'extension PNG pour le fichier final SI le user n'a pas encore validé le workflow WebP, sinon convertir et adapter le HTML.
+5. **Mettre à jour le HTML** :
+   - Vérifier que `data-photo="images/<nom>.png"` (ou `.webp`) pointe au bon fichier
+   - Mettre à jour le bloc Schema.org JSON-LD `Menu` (`index.html` ligne ~210-260) avec la nouvelle URL
+   - Si c'est `bandeja-medellin` : mettre à jour aussi Open Graph + Twitter Card + `Restaurant.image` (lignes ~60, 81, 95)
+6. **Mettre à jour `sitemap.xml`** avec la nouvelle URL d'image et `<lastmod>` à jour
+7. **Documenter dans CONTEXTE.md CHANGELOG** quels plats ont été ajoutés/recadrés
+
+**Plats encore manquants (placeholder logo affiché en attendant)** : `yuca-frita`, `suprema`
+
+## 🔐 Headers de sécurité (vercel.json)
+Configurés dans `vercel.json` à la racine :
+- **HSTS** : `max-age=63072000; includeSubDomains; preload`
+- **X-Content-Type-Options** : `nosniff`
+- **X-Frame-Options** : `SAMEORIGIN`
+- **Referrer-Policy** : `strict-origin-when-cross-origin`
+- **Permissions-Policy** : géolocalisation/micro/caméra/paiement bloqués
+- **CSP** : whitelist explicite (Behold, Pexels, Google Fonts, Maps, Formspree, LibroReserve, Order Online)
+- **Cache-Control** sur `/images/*` et `/css/* /js/*` : `max-age=31536000, immutable`
+- ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
+
 ## 📝 CHANGELOG
+
+### 26 avril 2026 (soir) — Audit complet + corrections P0/P1 (design + a11y + SEO + sécurité)
+**Audit lancé via 3 agents spécialisés. Résultats : Design 7.5/10, A11y 6.5/10, SEO 6.5/10, Sécurité 7/10. Toutes les P0 corrigées :**
+
+- **Sécurité** :
+  - Création de `vercel.json` avec headers HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy + cache-control sur assets statiques
+  - Sandbox sur iframe Google Maps : `sandbox="allow-scripts allow-same-origin allow-popups allow-forms"`
+  - `privacy.html` : ajout section complète "Services tiers intégrés" (Vercel, Formspree, LibroReserve, Order Online, Google Maps, Google Fonts, Behold.so, Pexels) — conformité Loi 25
+  - `privacy.html` : color-scheme + theme-color alignés, liens en `--accent-warm` pour contraste
+
+- **SEO** :
+  - `sitemap.xml` réécrit : 16 références `.jpg` → `.png` (corrections après migration des photos), `lastmod` à 2026-04-26, ajout `#suivez-nous`/`#avis`/`privacy.html`, retrait des entrées pour `yuca-frita.jpg`/`suprema.jpg` (fichiers inexistants)
+  - `index.html` : retrait des hreflang `en-CA` et `es` (pointaient vers la même URL = signal trompeur à Google)
+  - DNS-prefetch ajouté pour `w.behold.so` et `videos.pexels.com` + preconnect Behold
+  - Retrait du preload du logo 800 KB (gaspillage LCP, le logo n'est pas le LCP)
+
+- **Accessibilité** :
+  - Modale plat : `role="dialog"`, `aria-modal="true"`, `aria-labelledby="dish-modal-name"`, `role="document"` sur le content
+  - Skip link `<a class="skip-link" href="#main">` au début du `<body>` (visible au focus, masqué autrement)
+  - `:focus-visible` global avec outline jaune brûlé (sombre sur boutons jaunes pleins)
+  - `prefers-reduced-motion` : vidéo hero cachée + ticker pausé
+  - Variable `--text3` ajustée `rgba(.5)` → `rgba(.62)` pour atteindre WCAG AA 4.5:1 sur fond crème
+
+- **Design** :
+  - `<meta name="color-scheme" content="dark">` → `light` (était incohérent avec le CSS, cassait inputs autofill Chrome + scrollbar mobile)
+  - `<meta name="theme-color" content="#0e0e0e">` → `#f5f1e8` (matche la palette crème)
+  - Ajout de `mobile-web-app-capable` à côté du `apple-mobile-web-app-capable` (déprécié mais conservé pour compat)
+  - `apple-mobile-web-app-status-bar-style` : `black-translucent` → `default`
+  - `.cta-final` : `background: #1a1410` ajouté en fallback (évite texte blanc sur crème si `.ph-ambient` ne couvre pas)
+  - `.menu-card-photo.placeholder` : background `#f5f1e8` → `var(--bg-3)` (visible sur fond crème quand image fail)
+  - Liens jaune `var(--accent)` → `var(--accent-warm)` aux endroits texte sur fond crème : `.hours-contact-line a`, `.form-privacy a` (avec hover qui passe à `--accent` vif)
+  - **Nettoyage CSS mort** : suppression de `.signatures-grid`, `.signature-card*`, `.carousel-arrow*`, `.sig-grid`, `.sig-card`, `.sig-photo`, `.sig-flag`, `.sig-body`, `.sig-region`, `.sig-name`, `.sig-desc`, `.sig-price`, `.sig-cta` (~120 lignes orphelines)
+
+### 26 avril 2026 (après-midi) — Section Suivez-nous + widget Behold Instagram
+- Section `.signatures` (Saveurs de la Colombie, 4 cartes plats) **supprimée** du HTML
+- Nouvelle section `.follow-us` (`#suivez-nous`) : header attractif + 2 gros boutons Instagram (gradient signature) et Facebook (bleu officiel) + grille pour le carrousel Instagram
+- Intégration **Behold.so** (compte gratuit `bochicacafebistro@gmail.com`, feed-id `LKSqSklqhPMQhbC4F1dQ`) : custom element `<behold-widget>` chargé async, mise à jour automatique du feed à chaque publication
+
+### 26 avril 2026 (après-midi) — Refonte cartes menu : badges régime en pills + titres élargis + descriptions cachées
+- Badges sans gluten / végé : passés du texte simple à des **pills inline avec icône SVG (Lucide) + texte trilingue**, placés sous le nom du plat dans le body de la carte
+- Couleurs des badges : doré jaune sur fond crème jaune pâle pour GF (`#fde9b3` + `#6b4d0a`), vert sur fond crème vert pâle pour végé (`#d4ebbd` + `#355a18`), bordure pointillée pour les variantes "option"
+- Dans la modale plat : badges en pills plus grands (font 12px, padding plus aéré) avec icône + texte
+- Titres cartes : `font-size 17px → 20px` (mobile 15→18), padding-right 80→60, border-radius gauche sur la photo, `word-break: break-word`
+- Grid `minmax(260, 1fr)` → `minmax(290, 1fr)` (cartes plus larges, moins de wraps)
+- `.menu-card .menu-card-desc { display: none }` — descriptions visibles uniquement à l'ouverture de la modale au clic
+- Padding-bottom du body augmenté à 36px (28 mobile) pour réserver l'espace du prix en bas-droite
+
+### 26 avril 2026 (après-midi) — Cartes avis et promos : fond foncé corrigé en crème
+- `.review-card` et `.event-card` : `background: #2a1f15` (brun foncé résidu du dark theme original) → `var(--cream)` (crème clair)
+- Bordures : `rgba(245,241,232,.12)` → `var(--border-dark)` (bordure foncée subtile)
+- Box-shadows : ombres noires lourdes → ombres dorées douces `rgba(139,110,60,.12)`
+- `.event-card__kicker` ("Tous les mercredis") + `.review-author` ("MARIE L.") : `var(--accent)` → `var(--accent-warm)` pour contraste WCAG AA sur fond crème
 
 ### 26 avril 2026 (après-midi) — 15 photos de plats uploadées + auto-recadrage
 - Photos PNG ajoutées pour : 3 bols (Cali, Bogotá, Medellín) + 12 plats (Arepa, Burger, Canastica, Churrasco, Guacamole-chips, Hot-Dog, Patacones de la Casa, Patacon Montanero, Picada, Picadita, Pollo Asado, Salchipapas)
@@ -327,27 +412,32 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 9. ✅ Modale plat : focus trap + restauration du focus
 10. ✅ `privacy.html` créée (conforme Loi 25) + lien dans footer + formulaire
 
-## ✅ Reste à faire (mis à jour 26 avril 2026)
+## ✅ Reste à faire (mis à jour 26 avril 2026 soir)
 
-**Bugs / cohérence**
-- [ ] Aligner `<meta name="color-scheme" content="dark">` (HTML ligne 6) avec `:root { color-scheme: light }` du CSS — choisir une direction
-- [ ] Décider : on garde la palette **crème papier** actuelle ou on retourne au **noir** prévu par `design_handoff_bochica_brasserie/` ?
+**Configuration prod (P0)**
+- [ ] Configurer Formspree (remplacer `VOTRE_ID_FORMSPREE` à la ligne 1310 d'`index.html`)
+- [ ] Vérifier après déploiement que les headers de sécurité de `vercel.json` s'appliquent (https://securityheaders.com/?q=bochicacafebistro.ca)
 
 **Assets à produire**
-- [ ] Uploader `videos/hero.mp4` (vidéo locale d'ambiance — actuellement fallback Pexels)
-- [ ] Uploader `about.jpg`, `bandeja-medellin.jpg` (Open Graph), photos de plats (optionnel)
+- [ ] Uploader `videos/hero.mp4` (vidéo locale d'ambiance — actuellement fallback Pexels qui fait fuiter l'IP visiteurs)
+- [ ] Uploader photos manquantes : `yuca-frita`, `suprema` (le placeholder logo s'affiche en attendant)
+- [ ] Uploader `about.jpg` (section Notre histoire — placeholder `.ph-ambient` actif)
+- [ ] **Compresser les 15 photos PNG existantes** (`.png` 500KB-1.9MB → `.webp` qualité 82, cible <200KB) pour LCP mobile correct
 - [ ] Optimiser `Logo Bochica 2026-3.png` (~800 KB → SVG ou WebP < 100 KB)
-
-**Configuration**
-- [ ] Configurer Formspree (remplacer `VOTRE_ID_FORMSPREE` à la ligne 1303 d'`index.html`)
 
 **Nettoyage**
 - [ ] Supprimer fichiers orphelins : `paracones de la casa.png`, `.DS_Store`, `images/test`, `preview-ambiances.html`, `preview-backgrounds.html`, logos 2026-6/7/7(1) non utilisés
-- [ ] Décider : on garde `design_handoff_bochica_brasserie/` dans le repo public ou on le déplace hors du repo (il n'est pas servi en prod mais reste accessible) ?
+- [ ] Décider : on garde `design_handoff_bochica_brasserie/` dans le repo public ou on le déplace hors du repo ?
+- [ ] Garde-t-on les références Schema.org à `yuca-frita.jpg` et `suprema.jpg` (lignes 213, 255) en attendant les photos, ou on les retire pour éviter les 404 si Google les crawl ?
 
-**Améliorations**
+**Améliorations futures**
+- [ ] Décider : on garde la palette **crème papier** actuelle ou on retourne au **noir** prévu par `design_handoff_bochica_brasserie/` ?
 - [ ] Ajouter `role="tablist"/tab/tabpanel"` sur onglets menu + navigation flèches clavier
 - [ ] Remplacer les 4 avis placeholder par de vrais avis Google avec consentement
 - [ ] Ajouter glose FR pour termes espagnols (Morcilla, Sancochito, Patacones, Brazo de Reina, etc.)
-- [ ] Vérifier que le ticker jaune respecte `prefers-reduced-motion` (animation à pauser si l'utilisateur le demande)
 - [ ] Réactiver la gallery quand de vraies photos du restaurant seront disponibles
+- [ ] Créer URLs distinctes pour /en/ et /es/ pour vraiment exploiter le multilingue côté SEO (actuellement même URL = pas de hreflang en-CA/es)
+- [ ] Créer `images/og-bochica-1200x630.jpg` dédiée Open Graph (le format actuel 1080×1080 est sous-optimal pour Facebook/LinkedIn)
+- [ ] Enrichir le H1 avec mots-clés locaux (visually-hidden span) ou modifier visuel pour intégrer "Restaurant colombien à Québec"
+- [ ] Ajouter case à cocher de consentement explicite sur le formulaire (Loi 25 préfère consentement explicite vs implicite)
+- [ ] Identifier nominativement la personne responsable de la protection des renseignements personnels dans `privacy.html` (Loi 25 demande une personne identifiable)
