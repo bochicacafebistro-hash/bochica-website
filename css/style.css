@@ -651,6 +651,169 @@ section { padding: 90px var(--pad); }
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   SUIVEZ-NOUS (réseaux sociaux + carrousel Instagram)
+   ═══════════════════════════════════════════════════════════════ */
+
+.follow-us {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.follow-us__sub {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--text2);
+  max-width: 540px;
+  line-height: 1.55;
+}
+
+/* Boutons sociaux principaux */
+.follow-us__buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+  margin-bottom: 56px;
+}
+
+.follow-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: #fff;
+  font-family: var(--font-body);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+.follow-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+}
+.follow-btn:active { transform: translateY(-1px); }
+
+.follow-btn--ig {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.follow-btn--fb {
+  background: #1877f2;
+}
+
+.follow-btn__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.18);
+  border-radius: 50%;
+}
+.follow-btn__txt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.follow-btn__handle {
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.follow-btn__cta {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+/* Carrousel / grille Instagram */
+.ig-feed {
+  border-top: 1px solid var(--border-dark);
+  padding-top: 36px;
+}
+.ig-feed__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.ig-feed__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--accent-warm);
+  font-weight: 600;
+}
+.ig-feed__view-all {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-dark);
+  padding-bottom: 2px;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.ig-feed__view-all:hover { color: var(--accent-warm); border-bottom-color: var(--accent-warm); }
+
+.ig-feed__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+@media (max-width: 760px) { .ig-feed__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 380px) { .ig-feed__grid { grid-template-columns: repeat(2, 1fr); } }
+
+.ig-feed__cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--bg-2);
+  display: block;
+  transition: transform var(--transition-base);
+}
+.ig-feed__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+.ig-feed__cell:hover { transform: scale(1.02); }
+.ig-feed__cell:hover img { transform: scale(1.06); }
+
+/* Placeholder en attendant le widget Instagram (gradient subtil + icône IG en filigrane) */
+.ig-feed__cell--placeholder {
+  background:
+    linear-gradient(135deg, rgba(220, 39, 67, 0.06), rgba(247, 179, 44, 0.08)),
+    var(--bg-2);
+  display: grid;
+  place-items: center;
+}
+.ig-feed__cell--placeholder::before {
+  content: '';
+  width: 30%;
+  height: 30%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238a6a1a' opacity='0.35'><path d='M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 5 .3 4.2.6 3.4 1 2.7 1.4 2 2.1 1.4 2.7 1 3.4.6 4.2.3 5 .1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.2 2.1.6 2.9.3.8.8 1.5 1.5 2.1.6.6 1.4 1.1 2.1 1.5.8.3 1.6.5 2.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.1-.2 2.9-.6.8-.3 1.5-.8 2.1-1.5.6-.6 1.1-1.4 1.5-2.1.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.2-2.1-.6-2.9-.3-.8-.8-1.5-1.5-2.1C21.3 1.4 20.6 1 19.8.6 19 .3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2S15.4 5.8 12 5.8zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm7.8-10.4c0 .8-.6 1.4-1.4 1.4-.8 0-1.4-.6-1.4-1.4 0-.8.6-1.4 1.4-1.4.8 0 1.4.6 1.4 1.4z'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    HISTOIRE (2 colonnes : photo gauche / texte crème droite)
    ═══════════════════════════════════════════════════════════════ */
 
