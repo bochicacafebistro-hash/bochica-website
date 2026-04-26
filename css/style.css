@@ -1609,7 +1609,7 @@ main { padding-top: 0; }
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 12px;
 }
 
@@ -1639,7 +1639,7 @@ main { padding-top: 0; }
 .menu-card.has-photo {
   padding: 0;
   align-items: stretch;
-  overflow: hidden;
+  overflow: visible; /* visible pour que les tooltips des badges puissent dépasser */
   position: relative;
   gap: 0;
   height: 140px;
@@ -1650,8 +1650,10 @@ main { padding-top: 0; }
   width: 140px;
   height: 140px;
   background: var(--bg-3);
-  overflow: hidden;
+  overflow: hidden; /* contient le scale au hover de l'image */
   position: relative;
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
 }
 .menu-card-photo img {
   width: 100%;
@@ -1674,35 +1676,102 @@ main { padding-top: 0; }
 .menu-card-body {
   flex: 1 1 auto;
   min-width: 0;
-  padding: 14px 80px 14px 18px;
+  padding: 14px 60px 14px 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 4px;
 }
 .menu-card.has-photo .menu-card-name {
-  font-size: 17px;
-  line-height: 1.15;
+  font-size: 20px;
+  line-height: 1.05;
+  letter-spacing: 0.015em;
+  word-break: break-word;
 }
-.menu-card.has-photo .menu-card-desc {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+/* Description masquée sur les cartes — visible uniquement dans la modale au clic */
+.menu-card .menu-card-desc { display: none; }
 .menu-card.has-photo .menu-card-price {
   position: absolute;
   bottom: 12px;
-  right: 18px;
-  font-size: 18px;
+  right: 16px;
+  font-size: 19px;
 }
 
 @media (max-width: 520px) {
   .menu-card.has-photo { height: 110px; }
   .menu-card-photo { flex-basis: 110px; width: 110px; height: 110px; }
-  .menu-card-body { padding: 12px 70px 12px 14px; }
-  .menu-card.has-photo .menu-card-name { font-size: 15px; }
-  .menu-card.has-photo .menu-card-desc { font-size: 11.5px; }
+  .menu-card-body { padding: 12px 60px 12px 14px; }
+  .menu-card.has-photo .menu-card-name { font-size: 18px; }
+}
+
+/* ─── Badges (icônes en overlay sur la photo, tooltip au hover) ─── */
+.menu-card-badges {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  gap: 5px;
+  z-index: 3;
+  pointer-events: none; /* le hover passe aux .badge enfants seulement */
+}
+.badge {
+  pointer-events: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(245, 241, 232, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: help;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition-fast);
+}
+.badge:hover { transform: scale(1.08); }
+.badge svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+/* Couleurs par type */
+.badge.badge-gf      { color: #8a6a1a; }   /* doré pour sans gluten */
+.badge.badge-gf-opt  { color: #8a6a1a; background: rgba(245, 241, 232, 0.95); border: 1px dashed currentColor; }
+.badge.badge-veg     { color: #4a7a2a; }   /* vert pour végé */
+.badge.badge-veg-opt { color: #4a7a2a; background: rgba(245, 241, 232, 0.95); border: 1px dashed currentColor; }
+
+/* Tooltip — apparaît au hover/focus, positionné à DROITE du badge (dans la zone du body) */
+.badge-label {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 8px);
+  transform: translateY(-50%) translateX(-4px);
+  background: rgba(14, 13, 12, 0.92);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 10;
+}
+.badge-label::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border: 4px solid transparent;
+  border-right-color: rgba(14, 13, 12, 0.92);
+}
+.badge:hover .badge-label,
+.badge:focus-visible .badge-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 
 /* ─── Signatures legacy (ancien template) ─── */
@@ -1849,7 +1918,33 @@ main { padding-top: 0; }
 .dish-modal-body { padding: 24px 28px 28px; }
 .dish-modal-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
 .dish-modal-name { font-family: var(--font-display); font-size: 26px; margin: 0 0 10px; letter-spacing: 0.01em; text-transform: uppercase; font-weight: 400; color: var(--text); }
-.dish-modal-badges { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.dish-modal-badges { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+/* Dans la modale : badges en pills (icône + texte visible) au lieu de cercles tooltip */
+.dish-modal-badges .badge {
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-pill);
+  padding: 5px 12px 5px 9px;
+  gap: 6px;
+  cursor: default;
+  box-shadow: none;
+}
+.dish-modal-badges .badge:hover { transform: none; }
+.dish-modal-badges .badge svg { width: 14px; height: 14px; flex-shrink: 0; }
+.dish-modal-badges .badge-label {
+  position: static;
+  opacity: 1;
+  transform: none;
+  background: transparent;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.dish-modal-badges .badge-label::before { display: none; }
 .dish-modal-desc { font-size: 14.5px; color: var(--text2); line-height: 1.55; margin-bottom: 14px; }
 .dish-modal-price { font-family: var(--font-display); font-size: 24px; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 18px; }
 .dish-modal-extras { border-top: 1px solid var(--border-dark); padding-top: 16px; }

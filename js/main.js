@@ -187,28 +187,31 @@ function initDishCards() {
         if (veg) badges.push(veg);
       }
 
-      // Ajouter les badges
+      // Ajouter les badges (icônes + tooltip au hover)
       if (badges.length > 0 && !card.querySelector('.menu-card-badges')) {
         const badgesEl = document.createElement('div');
         badgesEl.className = 'menu-card-badges';
         badges.forEach(badge => {
           const span = document.createElement('span');
           span.className = 'badge ' + badge.cls;
-          span.setAttribute('data-fr', badge.fr);
-          span.setAttribute('data-en', badge.en);
-          span.setAttribute('data-es', badge.es);
-          span.textContent = badge.fr;
+          span.setAttribute('aria-label', badge.fr);
+          span.setAttribute('role', 'img');
+          // Icône SVG
+          span.innerHTML = badge.iconSvg;
+          // Label visible au hover (tooltip CSS)
+          const label = document.createElement('span');
+          label.className = 'badge-label';
+          label.setAttribute('data-fr', badge.fr);
+          label.setAttribute('data-en', badge.en);
+          label.setAttribute('data-es', badge.es);
+          label.textContent = badge.fr;
+          span.appendChild(label);
           badgesEl.appendChild(span);
         });
 
-        // Insérer après le nom (dans body si has-photo, sinon directement)
-        const target = card.querySelector('.menu-card-body') || card;
-        const nameInTarget = target.querySelector('.menu-card-name');
-        if (nameInTarget && nameInTarget.nextSibling) {
-          target.insertBefore(badgesEl, nameInTarget.nextSibling);
-        } else {
-          target.appendChild(badgesEl);
-        }
+        // Badges en overlay sur le coin haut-gauche de la carte (sur la photo)
+        // — placés sur la carte directement pour que les tooltips ne soient pas coupés
+        card.appendChild(badgesEl);
       }
 
       // Clic → ouvrir la modale (avec support clavier complet)
@@ -229,6 +232,10 @@ function initDishCards() {
   });
 }
 
+// SVG icônes pour les badges (style Lucide, héritage couleur via currentColor)
+const ICON_GF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 22 22 2"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/></svg>';
+const ICON_VEG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96a1 1 0 0 1 1.8.84A14 14 0 0 1 21 12c0 5-4.5 8-8 8z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>';
+
 function computeGFBadge(name) {
   // Pas de mention pour les plats avec gluten
   if (NO_GF_KEYWORDS.some(k => name.includes(k))) return null;
@@ -236,6 +243,7 @@ function computeGFBadge(name) {
   if (OPTIONAL_GF_KEYWORDS.some(k => name.includes(k))) {
     return {
       cls: 'badge-gf-opt',
+      iconSvg: ICON_GF,
       fr: 'Option sans gluten',
       en: 'Gluten-free option',
       es: 'Opción sin gluten'
@@ -244,6 +252,7 @@ function computeGFBadge(name) {
   // Sans gluten par défaut
   return {
     cls: 'badge-gf',
+    iconSvg: ICON_GF,
     fr: 'Sans gluten',
     en: 'Gluten-free',
     es: 'Sin gluten'
@@ -255,6 +264,7 @@ function computeVegBadge(name) {
   if (FULL_VEG_KEYWORDS.some(k => name.includes(k))) {
     return {
       cls: 'badge-veg',
+      iconSvg: ICON_VEG,
       fr: 'Végé',
       en: 'Veggie',
       es: 'Vegetariano'
@@ -263,6 +273,7 @@ function computeVegBadge(name) {
   // Option végé disponible pour tous les autres bols et arepas
   return {
     cls: 'badge-veg-opt',
+    iconSvg: ICON_VEG,
     fr: 'Option végé',
     en: 'Veggie option',
     es: 'Opción vegetariana'
