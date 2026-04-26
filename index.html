@@ -381,6 +381,16 @@
   <link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
 
   <link rel="stylesheet" href="css/style.css"/>
+
+  <!-- Behold.so — widget Instagram (feed @bochica_restaurantcol). Charge le custom element <behold-widget>. -->
+  <script>
+    (() => {
+      const d = document, s = d.createElement("script");
+      s.type = "module";
+      s.src = "https://w.behold.so/widget.js";
+      d.head.append(s);
+    })();
+  </script>
 </head>
 <body>
 
@@ -1036,19 +1046,13 @@
       <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener noreferrer" class="ig-feed__view-all" data-fr="Voir tout sur Instagram →" data-en="View all on Instagram →" data-es="Ver todo en Instagram →">Voir tout sur Instagram →</a>
     </div>
     <!--
-      🔌 BRANCHEMENT FEED INSTAGRAM
-      Pour afficher en temps réel les dernières photos du compte @bochica_restaurantcol :
-      Option recommandée : créer un compte gratuit sur https://behold.so/ ou https://lightwidget.com/
-      → ils donnent un script <script src="..."> ou un <iframe> à coller dans la div #ig-feed-grid ci-dessous.
-      En attendant, on affiche un placeholder cohérent avec l'identité Bochica.
+      🔌 FEED INSTAGRAM EN TEMPS RÉEL — Behold.so
+      Compte : bochicacafebistro@gmail.com · Feed ID : LKSqSklqhPMQhbC4F1dQ
+      Le widget se met à jour automatiquement quand tu publies sur @bochica_restaurantcol.
+      Configuration / nombre de photos / style : https://behold.so/ → Feeds.
     -->
     <div class="ig-feed__grid" id="ig-feed-grid">
-      <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener noreferrer" class="ig-feed__cell ig-feed__cell--placeholder" aria-label="Voir Instagram"></a>
-      <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener noreferrer" class="ig-feed__cell ig-feed__cell--placeholder" aria-label="Voir Instagram"></a>
-      <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener noreferrer" class="ig-feed__cell ig-feed__cell--placeholder" aria-label="Voir Instagram"></a>
-      <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener noreferrer" class="ig-feed__cell ig-feed__cell--placeholder" aria-label="Voir Instagram"></a>
-      <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener noreferrer" class="ig-feed__cell ig-feed__cell--placeholder" aria-label="Voir Instagram"></a>
-      <a href="https://www.instagram.com/bochica_restaurantcol/" target="_blank" rel="noopener noreferrer" class="ig-feed__cell ig-feed__cell--placeholder" aria-label="Voir Instagram"></a>
+      <behold-widget feed-id="LKSqSklqhPMQhbC4F1dQ"></behold-widget>
     </div>
   </div>
 </section>

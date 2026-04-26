@@ -776,6 +776,16 @@ section { padding: 90px var(--pad); }
 @media (max-width: 760px) { .ig-feed__grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 380px) { .ig-feed__grid { grid-template-columns: repeat(2, 1fr); } }
 
+/* Quand le widget Behold est présent, il prend toute la largeur (le widget gère sa propre grille interne) */
+.ig-feed__grid:has(behold-widget) {
+  display: block;
+}
+behold-widget {
+  display: block;
+  width: 100%;
+  min-height: 200px; /* placeholder en attendant le chargement async */
+}
+
 .ig-feed__cell {
   position: relative;
   aspect-ratio: 1 / 1;
