@@ -1676,7 +1676,7 @@ main { padding-top: 0; }
 .menu-card-body {
   flex: 1 1 auto;
   min-width: 0;
-  padding: 14px 60px 14px 18px;
+  padding: 14px 60px 36px 18px; /* padding-bottom plus grand pour réserver l'espace du prix */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1700,78 +1700,73 @@ main { padding-top: 0; }
 @media (max-width: 520px) {
   .menu-card.has-photo { height: 110px; }
   .menu-card-photo { flex-basis: 110px; width: 110px; height: 110px; }
-  .menu-card-body { padding: 12px 60px 12px 14px; }
+  .menu-card-body { padding: 10px 56px 30px 14px; }
   .menu-card.has-photo .menu-card-name { font-size: 18px; }
 }
 
-/* ─── Badges (icônes en overlay sur la photo, tooltip au hover) ─── */
+/* ─── Badges régime (pills sous le nom du plat) ─── */
 .menu-card-badges {
-  position: absolute;
-  top: 8px;
-  left: 8px;
   display: flex;
   gap: 5px;
-  z-index: 3;
-  pointer-events: none; /* le hover passe aux .badge enfants seulement */
+  flex-wrap: wrap;
+  margin-top: 4px;
 }
 .badge {
-  pointer-events: auto;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: rgba(245, 241, 232, 0.95);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: help;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: transform var(--transition-fast);
-}
-.badge:hover { transform: scale(1.08); }
-.badge svg {
-  width: 15px;
-  height: 15px;
-  display: block;
-}
-/* Couleurs par type */
-.badge.badge-gf      { color: #8a6a1a; }   /* doré pour sans gluten */
-.badge.badge-gf-opt  { color: #8a6a1a; background: rgba(245, 241, 232, 0.95); border: 1px dashed currentColor; }
-.badge.badge-veg     { color: #4a7a2a; }   /* vert pour végé */
-.badge.badge-veg-opt { color: #4a7a2a; background: rgba(245, 241, 232, 0.95); border: 1px dashed currentColor; }
-
-/* Tooltip — apparaît au hover/focus, positionné à DROITE du badge (dans la zone du body) */
-.badge-label {
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 8px);
-  transform: translateY(-50%) translateX(-4px);
-  background: rgba(14, 13, 12, 0.92);
-  color: var(--cream);
+  gap: 4px;
+  padding: 2px 8px 2px 6px;
+  border-radius: var(--radius-pill);
   font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
   white-space: nowrap;
-  padding: 4px 8px;
-  border-radius: 4px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  z-index: 10;
+  cursor: default;
 }
-.badge-label::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  transform: translateY(-50%);
-  border: 4px solid transparent;
-  border-right-color: rgba(14, 13, 12, 0.92);
+.badge svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
-.badge:hover .badge-label,
-.badge:focus-visible .badge-label {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
+.badge-label {
+  display: inline;
+}
+/* Couleurs marquées — sans gluten = doré sur fond crème jaune */
+.badge.badge-gf {
+  background: #fde9b3;
+  color: #6b4d0a;
+  border: 1px solid #e8c869;
+}
+.badge.badge-gf-opt {
+  background: transparent;
+  color: #8a6a1a;
+  border: 1px dashed #c9a648;
+}
+/* Végé = vert vif */
+.badge.badge-veg {
+  background: #d4ebbd;
+  color: #355a18;
+  border: 1px solid #87b85f;
+}
+.badge.badge-veg-opt {
+  background: transparent;
+  color: #4a7a2a;
+  border: 1px dashed #87b85f;
+}
+
+/* Sur cartes avec photo : badges plus compacts pour entrer dans la zone body étroite */
+.menu-card.has-photo .menu-card-badges {
+  margin-top: 2px;
+}
+.menu-card.has-photo .badge {
+  font-size: 10px;
+  padding: 1px 7px 1px 5px;
+}
+.menu-card.has-photo .badge svg {
+  width: 11px;
+  height: 11px;
 }
 
 /* ─── Signatures legacy (ancien template) ─── */
@@ -1919,32 +1914,13 @@ main { padding-top: 0; }
 .dish-modal-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
 .dish-modal-name { font-family: var(--font-display); font-size: 26px; margin: 0 0 10px; letter-spacing: 0.01em; text-transform: uppercase; font-weight: 400; color: var(--text); }
 .dish-modal-badges { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-/* Dans la modale : badges en pills (icône + texte visible) au lieu de cercles tooltip */
+/* Dans la modale : badges plus grands (mieux lisibles) */
 .dish-modal-badges .badge {
-  width: auto;
-  height: auto;
-  border-radius: var(--radius-pill);
-  padding: 5px 12px 5px 9px;
-  gap: 6px;
-  cursor: default;
-  box-shadow: none;
-}
-.dish-modal-badges .badge:hover { transform: none; }
-.dish-modal-badges .badge svg { width: 14px; height: 14px; flex-shrink: 0; }
-.dish-modal-badges .badge-label {
-  position: static;
-  opacity: 1;
-  transform: none;
-  background: transparent;
-  color: inherit;
   font-size: 12px;
-  font-weight: 600;
-  padding: 0;
-  pointer-events: none;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
+  padding: 4px 12px 4px 9px;
+  gap: 6px;
 }
-.dish-modal-badges .badge-label::before { display: none; }
+.dish-modal-badges .badge svg { width: 14px; height: 14px; }
 .dish-modal-desc { font-size: 14.5px; color: var(--text2); line-height: 1.55; margin-bottom: 14px; }
 .dish-modal-price { font-family: var(--font-display); font-size: 24px; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 18px; }
 .dish-modal-extras { border-top: 1px solid var(--border-dark); padding-top: 16px; }

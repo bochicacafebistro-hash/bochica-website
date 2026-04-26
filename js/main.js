@@ -209,9 +209,16 @@ function initDishCards() {
           badgesEl.appendChild(span);
         });
 
-        // Badges en overlay sur le coin haut-gauche de la carte (sur la photo)
-        // — placés sur la carte directement pour que les tooltips ne soient pas coupés
-        card.appendChild(badgesEl);
+        // Badges placés dans le body, juste sous le nom du plat
+        const target = card.querySelector('.menu-card-body') || card;
+        const nameInTarget = target.querySelector('.menu-card-name');
+        if (nameInTarget && nameInTarget.nextSibling) {
+          target.insertBefore(badgesEl, nameInTarget.nextSibling);
+        } else if (nameInTarget) {
+          target.appendChild(badgesEl);
+        } else {
+          target.appendChild(badgesEl);
+        }
       }
 
       // Clic → ouvrir la modale (avec support clavier complet)
