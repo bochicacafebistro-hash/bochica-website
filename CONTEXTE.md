@@ -77,11 +77,28 @@ Tous les fichiers sont dans le dossier `images/`.
 - Source de secours : URL Pexels `https://videos.pexels.com/video-files/3940084/3940084-hd_1920_1080_30fps.mp4`
 - Poster fallback : `images/Logo Bochica 2026-3.png`
 
+**Photos de plats uploadées (26 avril 2026)** — toutes en PNG, auto-recadrées (cadre crème intégré supprimé), 1080×1080, format référencé par `data-photo` dans les cartes menu :
+- `bandeja-medellin.png` — Bol Medellín (sert aussi pour Open Graph + Twitter card + carte signature)
+- `bol-bogota.png` — Bol Bogotá
+- `bol-cali.png` — Bol Cali
+- `arepa-classique.png` — utilisée pour les 3 arepas (Végétarienne, Classique, Mixte)
+- `bochica-burger.png` — Bochica Burger
+- `canastica.png` — Canastica (2x)
+- `churrasco.png` — Churrasco
+- `guacamole-chips.png` — Guacamole avec chips maison
+- `hot-dog-colombien.png` — Hot-Dog Colombien
+- `patacones-de-la-casa.png` — Patacones de la Casa (3x)
+- `patacon-montanero.png` — Patacon Montanero
+- `picada.png` — Picada
+- `picadita.png` — Picadita
+- `pollo-asado.png` — Pollo Asado
+- `salchipapas.png` — Salchipapas
+- Backup des originaux (avec cadre crème) dans `images/_backup_avant_crop/`
+
 **À uploader (encore manquants) :**
 - `videos/hero.mp4` — vidéo locale d'ambiance Colombie/restaurant *(le fallback Pexels est actif en attendant)*
 - `images/about.jpg` — section Notre histoire (placeholder `.ph-ambient` actif)
-- `images/bandeja-medellin.jpg` — image Open Graph (partages sociaux)
-- Photos de plats référencées par `data-photo` dans les cartes menu (optionnel — sans photo, le logo Bochica s'affiche automatiquement comme placeholder) : `yuca-frita.jpg`, `guacamole-chips.jpg`, `canastica.jpg`, `patacones-de-la-casa.jpg`, `picadita.jpg`, `hot-dog-colombien.jpg`, `patacon-montanero.jpg`, `salchipapas.jpg`, `bochica-burger.jpg`, `pollo-asado.jpg`, `churrasco.jpg`, `picada.jpg`, `suprema.jpg`, `arepa-classique.jpg`, `bol-cali.jpg`, `bol-bogota.jpg`
+- Photos de plats encore manquantes (placeholder logo Bochica par défaut) : `yuca-frita`, `suprema`
 
 **Fichiers orphelins à supprimer manuellement :**
 - `paracones de la casa.png` (1.5 MB, faute de frappe "paracones"→"patacones", à la racine)
@@ -259,6 +276,13 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
 
 ## 📝 CHANGELOG
+
+### 26 avril 2026 (après-midi) — 15 photos de plats uploadées + auto-recadrage
+- Photos PNG ajoutées pour : 3 bols (Cali, Bogotá, Medellín) + 12 plats (Arepa, Burger, Canastica, Churrasco, Guacamole-chips, Hot-Dog, Patacones de la Casa, Patacon Montanero, Picada, Picadita, Pollo Asado, Salchipapas)
+- Toutes les images avaient un cadre crème intégré (~110-190 px de padding) — auto-recadrées avec PIL pour faire toucher le plat aux bords du carré 1080×1080
+- Backup des originaux dans `images/_backup_avant_crop/`
+- HTML mis à jour : 15 références `data-photo` `.jpg` → `.png` + bloc Schema.org JSON-LD (~12 références) + Open Graph + Twitter card (`bandeja-medellin.jpg` → `.png` + `og:image:type` `image/jpeg` → `image/png`)
+- Reste à uploader : `yuca-frita`, `suprema` (le placeholder logo Bochica s'affiche en attendant)
 
 ### 26 avril 2026 — Mise à jour CONTEXTE.md (audit fichiers réels)
 - **Documenté l'inversion de palette** : la "brasserie dark" du 19 avril a été inversée en "brasserie crème papier" — `--bg:#f5f1e8`, `--text:#0e0d0c`, accent `--accent:#F7B32C`
