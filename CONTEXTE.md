@@ -310,6 +310,18 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 26 avril 2026 (tard, suite) — 11 vins, mousseux et spiritueux détourés et wirés
+- **6 vins/mousseux** : Hungaria (Hongrie), Porderi dal Nespoli (Italie blanc), Adega Panalva Dao (Portugal blanc), Roseline (France rosé), Altamente Jumilla (Espagne rouge), Cono Sur Pinot Noir (Chili rouge)
+- **5 spiritueux** : Aguardiente Antioqueño (Colombie), Brugal Rhum Añejo, Jose Cuervo Tequila Especial, Jimador Tequila Reposado, Jameson Black Barrel Whiskey
+- Mix de sources : 7 déjà détourées (alpha transparent) + 3 sur fond blanc (Roseline, Jimador, Jameson) traitées avec détourage par seuillage couleur
+- Aguardiente : ajout tardif après que l'utilisateur ait initialement uploadé un fichier HTML par erreur (`aguardiente Antioqueño.html` + dossier `_files/` à supprimer)
+- Workflow standard : recadrage strict (alpha>200) → fond crème → ombre portée → WebP qualité 82
+- Tailles finales : 11-34 KB par bouteille (gain ~85-90% vs sources)
+- HTML : `data-photo` ajouté aux 11 cartes (Vins & Mousseux + Spiritueux — Bouteille)
+- Schema.org JSON-LD : items génériques "Vins et mousseux"/"Spiritueux en bouteille" remplacés par 11 MenuItems individuels avec image+description+prix
+- sitemap.xml : 11 nouvelles entrées `<image:image>`
+- ⚠️ Fichier orphelin à supprimer manuellement : `aguardiente Antioqueño.html` + dossier `aguardiente Antioqueño_files/` (page HTML téléchargée par erreur, ~100 fichiers parasites)
+
 ### 26 avril 2026 (tard) — 8 bières détourées et wirées (Heineken 0.0 + 6 ALPHA + Labrosse INOX)
 - Heineken 0.0 : photo source avec fond blanc → **détourage par seuillage couleur** (rembg/IA bloqué par le proxy du sandbox), placée sur fond crème avec ombre portée subtile, WebP 75 KB
 - 6 bières ALPHA (Blonde, Blanche, Rousse, Minuano, Briza, Kona) : photos sources déjà détourées (alpha transparent) **mais avec ombre photographique intégrée à droite** qui décentrait le résultat

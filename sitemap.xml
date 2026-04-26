@@ -155,6 +155,61 @@
       <image:title>Labrosse INOX — Lager 5%</image:title>
       <image:caption>Bière lager québécoise Labrosse</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/hungaria-mousseux.webp</image:loc>
+      <image:title>Hungaria Mousseux — Hongrie</image:title>
+      <image:caption>Mousseux hongrois</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/porderi-dal-nespoli.webp</image:loc>
+      <image:title>Porderi dal Nespoli — Vin blanc d'Italie</image:title>
+      <image:caption>Vin blanc italien</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/adega-panalva-dao.webp</image:loc>
+      <image:title>Adega Panalva Dao — Vin blanc du Portugal</image:title>
+      <image:caption>Vin blanc portugais de la région du Dão</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/roseline.webp</image:loc>
+      <image:title>Roseline — Vin rosé de France</image:title>
+      <image:caption>Vin rosé français</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/altamente-jumilla.webp</image:loc>
+      <image:title>Altamente Jumilla — Vin rouge d'Espagne</image:title>
+      <image:caption>Vin rouge espagnol de la région de Jumilla</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/cono-sur-pinot-noir.webp</image:loc>
+      <image:title>Cono Sur Pinot Noir — Vin rouge du Chili</image:title>
+      <image:caption>Vin rouge chilien Pinot Noir biologique</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/aguardiente-antioqueno.webp</image:loc>
+      <image:title>Aguardiente Antioqueño — Spiritueux colombien</image:title>
+      <image:caption>Aguardiente colombien traditionnel d'Antioquia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/brugal-rhum-anejo.webp</image:loc>
+      <image:title>Brugal Rhum Añejo</image:title>
+      <image:caption>Rhum dominicain Brugal Añejo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/jose-cuervo-tequila.webp</image:loc>
+      <image:title>Jose Cuervo Tequila Especial</image:title>
+      <image:caption>Tequila mexicaine Jose Cuervo Especial</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/jimador-tequila.webp</image:loc>
+      <image:title>Jimador Tequila Reposado</image:title>
+      <image:caption>Tequila mexicaine Jimador Reposado</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/jameson-black-barrel.webp</image:loc>
+      <image:title>Jameson Black Barrel Whiskey</image:title>
+      <image:caption>Whiskey irlandais Jameson Black Barrel — Reserve Series</image:caption>
+    </image:image>
   </url>
 
   <url>
