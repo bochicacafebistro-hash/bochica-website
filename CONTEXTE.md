@@ -310,6 +310,19 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 26 avril 2026 (tard) — 8 bières détourées et wirées (Heineken 0.0 + 6 ALPHA + Labrosse INOX)
+- Heineken 0.0 : photo source avec fond blanc → **détourage par seuillage couleur** (rembg/IA bloqué par le proxy du sandbox), placée sur fond crème avec ombre portée subtile, WebP 75 KB
+- 6 bières ALPHA (Blonde, Blanche, Rousse, Minuano, Briza, Kona) : photos sources déjà détourées (alpha transparent) **mais avec ombre photographique intégrée à droite** qui décentrait le résultat
+  - Solution : seuil alpha élevé (>250) pour cropper UNIQUEMENT la canette en ignorant l'ombre semi-transparente intégrée + nettoyage des pixels alpha<100 pour éliminer toute trace
+  - Largeur du sujet contrainte à max 55% du canvas (canettes verticales)
+  - Ombre portée propre ajoutée au sol (Gaussian blur radius 15)
+- Labrosse INOX (déjà au menu) : photo verticale (400×1046) traitée pareil
+- HTML : `data-photo` ajouté aux 7 cartes de la section Bières (en plus de Heineken 0.0 fait précédemment)
+- Schema.org JSON-LD : item générique "Bières ALPHA et Heineken" remplacé par 8 MenuItems individuels avec image + prix
+- sitemap.xml : 8 nouvelles entrées `<image:image>`
+- ⚠️ **Note technique** : `rembg` (modèle IA U²-Net) installé mais **inutilisable** dans ce sandbox car le proxy bloque le téléchargement du modèle (170 MB depuis GitHub releases → 403 Forbidden). Workaround : détourage par seuillage couleur (fond blanc) + utilisation de l'alpha pré-existant (photos déjà détourées).
+- Pour les futures photos avec **fond complexe** (table, étagère, bar) : passer par https://www.remove.bg/ ou https://www.photoroom.com/ avant de me les envoyer
+
 ### 26 avril 2026 (soir, après audit) — 8 nouvelles photos en WebP optimisé
 **Premier batch utilisant le workflow standardisé documenté ci-dessus :**
 - 8 photos uploadées : `ailes-poulet.png`, `cafe-noir.png`, `cappuccino.png`, `chocolat-chaud.png`, `empanadas.png`, `nachos.png`, `pain-fromage.png`, `pandebono.png`

@@ -115,6 +115,46 @@
       <image:title>Pain au fromage colombien</image:title>
       <image:caption>Pain colombien traditionnel au fromage</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/heineken-00.webp</image:loc>
+      <image:title>Heineken 0.0 — Bière sans alcool</image:title>
+      <image:caption>Bière premium sans alcool, brassée avec arômes naturels</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/alpha-blonde.webp</image:loc>
+      <image:title>Blonde ALPHA — Light Lager 4%</image:title>
+      <image:caption>Bière blonde légère de la microbrasserie ALPHA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/alpha-blanche.webp</image:loc>
+      <image:title>Blanche ALPHA — Blanche Belge 5%</image:title>
+      <image:caption>Bière blanche de style belge de la microbrasserie ALPHA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/alpha-rousse.webp</image:loc>
+      <image:title>Rousse ALPHA — Rousse Anglaise 5%</image:title>
+      <image:caption>Bière rousse de style anglais de la microbrasserie ALPHA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/alpha-minuano.webp</image:loc>
+      <image:title>Minuano ALPHA — Nano IPA 3.1%</image:title>
+      <image:caption>Nano IPA légère et houblonnée de la microbrasserie ALPHA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/alpha-briza.webp</image:loc>
+      <image:title>Briza ALPHA — Goyave & Tangerine 5.6%</image:title>
+      <image:caption>Bière fruitée à la goyave et tangerine de la microbrasserie ALPHA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/alpha-kona.webp</image:loc>
+      <image:title>Kona ALPHA — NEIPA DDH 6.5%</image:title>
+      <image:caption>NEIPA tropicale, fruitée et juteuse de la microbrasserie ALPHA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/labrosse-inox.webp</image:loc>
+      <image:title>Labrosse INOX — Lager 5%</image:title>
+      <image:caption>Bière lager québécoise Labrosse</image:caption>
+    </image:image>
   </url>
 
   <url>
