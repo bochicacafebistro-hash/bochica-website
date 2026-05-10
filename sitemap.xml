@@ -5,7 +5,7 @@
 
   <url>
     <loc>https://bochicacafebistro.ca/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
@@ -114,6 +114,46 @@
       <image:loc>https://bochicacafebistro.ca/images/pain-fromage.webp</image:loc>
       <image:title>Pain au fromage colombien</image:title>
       <image:caption>Pain colombien traditionnel au fromage</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/arepa-au-fromage.png</image:loc>
+      <image:title>Arepa au fromage</image:title>
+      <image:caption>Galette de maïs colombienne grillée au fromage fondu</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/sancochito.png</image:loc>
+      <image:title>Sancochito — Soupe colombienne</image:title>
+      <image:caption>Bouillon colombien traditionnel servi du vendredi au dimanche</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/frites.png</image:loc>
+      <image:title>Frites maison</image:title>
+      <image:caption>Frites maison croustillantes</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/arepa-avec-chicharron.png</image:loc>
+      <image:title>Arepa avec Chicharron</image:title>
+      <image:caption>Arepa de maïs colombienne accompagnée de chicharron croustillant</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/arepa-avec-chorizo.png</image:loc>
+      <image:title>Arepa avec Chorizo</image:title>
+      <image:caption>Arepa de maïs colombienne accompagnée de chorizo grillé</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/arepa-avec-morcilla.png</image:loc>
+      <image:title>Arepa avec Morcilla</image:title>
+      <image:caption>Arepa de maïs colombienne accompagnée de morcilla (boudin)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/repas-enfant.png</image:loc>
+      <image:title>Repas enfant</image:title>
+      <image:caption>Menu enfant Bochica : frites, croquettes, saucisse ou riz au poulet</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bochicacafebistro.ca/images/chicharron.png</image:loc>
+      <image:title>Le Chicharron</image:title>
+      <image:caption>Chicharron colombien servi avec patate, sauce et salade maison</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://bochicacafebistro.ca/images/heineken-00.webp</image:loc>
@@ -249,63 +289,63 @@
 
   <url>
     <loc>https://bochicacafebistro.ca/#about</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#menu</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#suivez-nous</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#evenements</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#avis</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#horaires</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#localisation</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/#reservation</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/privacy.html</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
