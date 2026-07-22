@@ -310,6 +310,18 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 22 juillet 2026 — Validation menu vs PDF officiel + corrections prix/plats
+**Comparaison du menu du site vs `Menu-Nourriture.pdf` (menu imprimé officiel). Résultat : prix des sections Entrées/Arepas/Bols majoritairement alignés, 2 écarts trouvés et corrigés.**
+
+- **Ajout** : Empanada renommée "Empanada — Poulet, bœuf ou lechona (porc)" (ajout de la lechona comme 3e protéine, prix inchangé 3,25 $) — carte menu + JSON-LD
+- **Renommage + prix** : "Sancochito" → "Soupe du jour", prix 7 $ → **5,50 $** (aligné sur le PDF). La mention "Vendredi à dimanche" a été retirée (absente du PDF officiel, à valider si toujours applicable)
+- **Suppression** : plat "Le Chicharron" (27 $) retiré du site — absent du PDF, carte menu + entrée JSON-LD supprimées
+- **Correction de prix (écarts détectés vs PDF)** :
+  - Pollo Asado : 21 $ → **22 $**
+  - Suprema : 69 $ → **72 $**
+- Tous les autres prix (Entrées, Arepas farcies, Bols, Repas) validés conformes au PDF, aucun autre écart trouvé
+- ⚠️ À faire : mettre à jour `sitemap.xml` `lastmod` si souhaité, et vérifier si le nom de fichier `images/sancochito.png` doit être renommé (non fait, purement cosmétique/technique)
+
 ### 26 avril 2026 (très tard) — 7 photos finales : 2 plats + 5 boissons froides
 - **2 plats sur fond crème natif** (auto-recadrage du cadre crème intégré) :
   - `picada-suprema.webp` (125 KB) — remplace `suprema.jpg` qui n'existait pas
