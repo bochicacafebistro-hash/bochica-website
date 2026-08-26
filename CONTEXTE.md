@@ -67,10 +67,11 @@ Tous les fichiers sont dans le dossier `images/`.
 - `images/Logo Bochica 2026-8.png` (40 KB, RGBA transparent) — **placeholder par défaut des cartes menu** et image de la modale plat
 - `images/Logo Bochica 2026-3.png` — **preload prioritaire** dans le HTML, footer texte, schema.org
 
-**Images de promos (section "Promos & activités")** — format carré 1080×1080, version "crème" :
-- `images/bochica_mercredi_creme_1080x1080.png` — Mercredi des empanadas (2,25 $)
-- `images/bochica_jeudi_creme_1080x1080.png` — Jeudi du Bol Medellín (−20 %)
-- `images/bochica_vendredi_creme_1080x1080.png` — Vendredi bières 2×1 (17h-20h)
+**Images de promos (section "Promos & activités")** — format carré ~1254×1254, fournies par l'utilisateur (design pro, pas générées par Claude) :
+- `images/promo-mercredi.png` — Les Mercredis empanadas (bœuf, poulet ou lechona), 2,25 $
+- `images/promo-jeudi.png` — Les Jeudis bières 2×1 sur toutes les bières (canettes ALPHA + Club Bochica)
+- `images/promo-vendredi.png` — Les Vendredis bière Club Bochica à 5 $ à l'achat de tout repas ou bol
+- ⚠️ Anciennes images `bochica_{mercredi,jeudi,vendredi}_creme_1080x1080.png` **orphelines** (plus référencées dans `index.html`) — à supprimer manuellement (le sandbox ne peut pas supprimer de fichiers)
 
 **Vidéo hero (NOUVEAU)** — le hero est maintenant une `<video autoplay muted loop playsinline>` :
 - Source primaire : `videos/hero.mp4` (à uploader)
@@ -150,10 +151,10 @@ Toutes sont englobées dans `<main id="main">`.
 5. **Menu** (`#menu`, ligne 470) — 8 onglets (Entrées, Arepas, Bols, Repas, Breuvages, Cocktails, Bières, Desserts) + cartes avec photo placeholder (logo Bochica 2026-8 sur fond crème, carrées 140×140 / 110×110 mobile), cliquables → modale
 6. **Story / Notre histoire** (`#about`, ligne 970) — 2 colonnes : image d'ambiance à gauche (placeholder `.ph-ambient`) + texte à droite avec H2 et highlight jaune sur le mot "restaurant"
 7. **Signatures** (`#signatures`, ligne 991) — Saveurs de Colombie : section avec carrousel + flèches, cartes 4:5 avec overlay
-8. **Promos & activités** (`#evenements`, ligne 1054) — H2 *"Promos & activités"* (mot "Promos" en jaune accent) — 3 cartes avec image carrée 1080×1080 :
-   - MER · Mercredi des empanadas · 2,25 $ toute la journée
-   - JEU · Jeudi du Bol Medellín · −20 % toute la journée
-   - VEN · Vendredi 2 × 1 sur les bières · 17 h-20 h
+8. **Promos & activités** (`#evenements`, ligne 1054) — H2 *"Promos & activités"* (mot "Promos" en jaune accent) — 3 cartes avec image carrée ~1254×1254 :
+   - MER · Mercredi des empanadas (bœuf, poulet ou lechona) · 2,25 $ toute la journée
+   - JEU · Jeudi bières 2 × 1 sur toutes les bières · toute la journée
+   - VEN · Vendredi bière Club Bochica à 5 $ à l'achat de tout repas ou bol
 9. ~~**Gallery** (`#gallery`)~~ — **commentée temporairement** (ligne 1107) en attente de vraies photos. Pour la réactiver : décommenter le bloc `<!-- GALLERY -->` dans `index.html`.
 10. **Avis/Reviews** (`#avis`, ligne 1127) — 4 cartes avis clients + note Google
 11. **Horaires & Contact** (`#horaires`, ligne 1201) — tableau horaires + infos contact + formulaire de contact
@@ -309,6 +310,16 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 26 août 2026 — Refonte des 3 promos hebdomadaires (mercredi/jeudi/vendredi)
+**Changement de contenu des promos de la section "Promos & activités", à la demande du client.**
+
+- **Mercredi** : inchangé — empanadas (bœuf, poulet ou lechona) à 2,25 $, toute la journée
+- **Jeudi** : ~~Bol Medellín −20 %~~ → **Bières 2 pour 1 sur toutes les bières, toute la journée**
+- **Vendredi** : ~~2×1 sur les bières (17h-20h)~~ → **Bière Club Bochica à 5 $ à l'achat de tout repas ou bol**
+- Descriptions FR/EN/ES des 3 cartes réécrites en conséquence (`index.html` ~ligne 1107-1140), incluant l'ajout de la lechona dans la description du mercredi (déjà présente comme 3e protéine au menu depuis le 22 juillet)
+- **Images** : le client a fourni ses propres visuels promo (design pro, format ~1254×1254) — `images/promo-mercredi.png`, `images/promo-jeudi.png`, `images/promo-vendredi.png` — qui remplacent les anciens `bochica_{mercredi,jeudi,vendredi}_creme_1080x1080.png` générés précédemment par Claude (rejetés par le client)
+- ⚠️ Fichiers orphelins à supprimer manuellement : `images/bochica_mercredi_creme_1080x1080.png`, `images/bochica_jeudi_creme_1080x1080.png`, `images/bochica_vendredi_creme_1080x1080.png` (plus référencés)
 
 ### 22 juillet 2026 — Validation menu vs PDF officiel + corrections prix/plats
 **Comparaison du menu du site vs `Menu-Nourriture.pdf` (menu imprimé officiel). Résultat : prix des sections Entrées/Arepas/Bols majoritairement alignés, 2 écarts trouvés et corrigés.**
