@@ -950,7 +950,7 @@ behold-widget {
   /* Reste visible pendant le scroll dans une longue catégorie (ex. Repas, Bières)
      pour pouvoir changer d'onglet sans remonter tout en haut du menu. */
   position: sticky;
-  top: 96px;
+  top: 65px;
   z-index: 40;
   background: var(--bg);
   padding: 12px var(--pad) 16px;
