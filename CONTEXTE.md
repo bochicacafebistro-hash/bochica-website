@@ -306,10 +306,21 @@ Configurés dans `vercel.json` à la racine :
 - **Referrer-Policy** : `strict-origin-when-cross-origin`
 - **Permissions-Policy** : géolocalisation/micro/caméra/paiement bloqués
 - **CSP** : whitelist explicite (Behold, Pexels, Google Fonts, Maps, Formspree, LibroReserve, Order Online)
-- **Cache-Control** sur `/images/*` et `/css/* /js/*` : `max-age=31536000, immutable`
+- **Cache-Control** sur `/images/*` : `max-age=31536000, immutable`. Sur `/css/* /js/*` : `max-age=300, must-revalidate` (voir changelog du 13 septembre — l'immutable 1 an empêchait les visiteurs récurrents de voir les mises à jour CSS/JS)
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 13 septembre 2026 — Bandeau ticker retiré, vrais avis Google, langue toujours visible, cache CSS/JS corrigé
+**Changements demandés par le client après revue du site en ligne, + un bug de cache découvert en cours de route.**
+
+- **Bandeau jaune défilant** (`.ticker`, entre le hero et la barre horaires) retiré du HTML et tout son CSS nettoyé (règles, keyframes, entrées reduced-motion/focus-visible)
+- **Avis clients** : les 4 avis placeholder (Marie L., Jean-François T., Sofia R., Alexandre M.) remplacés par 4 vrais avis Google (Julien B., Maxence P., Ann, Christie S. — trouvés via la fiche Google du resto, 4,7★/217 avis). Note affichée corrigée de 4.8 → **4.7**. Traductions EN/ES refaites pour chaque nouvel avis.
+- **Sélecteur de langue FR/EN/ES** : sorti du menu hamburger mobile, déplacé dans un groupe `.nav-left` toujours visible à côté du logo (desktop **et** mobile). Ajustement CSS `@media (max-width: 480px)` pour resserrer le pill sur très petits écrans.
+- **Onglets du menu (`.menu-tabs`) rendus sticky** (`position: sticky; top: 96px`) suite à une revue de l'UX mobile : sur les catégories longues (Repas — 11 items, Bières — 8 items), la barre d'onglets sortait de l'écran en scrollant et il fallait remonter tout en haut pour changer de catégorie. Elle reste maintenant collée sous le nav. Fond `var(--bg)` + `border-bottom` ajoutés pour qu'elle ait un vrai fond opaque pendant qu'on scrolle en dessous.
+- Sauvegardes locales des fichiers d'origine créées avant modification (`index.html.bak_*`, `style.css.bak_*`, hors du repo)
+- ⚠️ À faire : mettre à jour `sitemap.xml` `lastmod` si souhaité
+- **Bug de cache découvert et corrigé** : le client trouvait que le sélecteur de langue FR/EN/ES restait affiché sous le logo BOCHICA au lieu d'à côté, malgré le correctif `.nav-left` déployé plus tôt aujourd'hui. Diagnostic : `vercel.json` servait `css/` et `js/` avec `Cache-Control: max-age=31536000, immutable` (1 an, configuré depuis l'audit du 26 avril) — les navigateurs des visiteurs récurrents gardaient donc l'ancien `style.css` en cache et ne voyaient jamais les correctifs déployés. Confirmé en injectant le CSS fraîchement récupéré (`fetch(..., {cache:'no-store'})`) dans la page en direct : le layout `.nav-left` se corrige immédiatement une fois le bon CSS chargé. **Corrigé** : `/css/* /js/*` passent à `max-age=300, must-revalidate` (les images gardent le cache 1 an, elles changent rarement et sont renommées quand c'est le cas). Ce bug affectait TOUTES les mises à jour CSS/JS passées, pas seulement celle d'aujourd'hui — les visiteurs devaient vider leur cache ou visiter en navigation privée pour voir les changements récents.
 
 ### 26 août 2026 — Refonte des 3 promos hebdomadaires (mercredi/jeudi/vendredi)
 **Changement de contenu des promos de la section "Promos & activités", à la demande du client.**

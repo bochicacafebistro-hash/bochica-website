@@ -951,6 +951,16 @@ behold-widget {
   gap: 8px;
   justify-content: center;
   margin-bottom: 40px;
+  /* Reste visible pendant le scroll dans une longue catégorie (ex. Repas, Bières)
+     pour pouvoir changer d'onglet sans remonter tout en haut du menu. */
+  position: sticky;
+  top: 96px;
+  z-index: 40;
+  background: var(--bg);
+  padding: 12px var(--pad) 16px;
+  margin-left: calc(-1 * var(--pad));
+  margin-right: calc(-1 * var(--pad));
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .menu-tab {
