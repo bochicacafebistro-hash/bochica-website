@@ -276,6 +276,7 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
 - **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#8a6a1a`, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
+- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260913` et `js/main.js?v=20260913` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
 
 ## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
 
