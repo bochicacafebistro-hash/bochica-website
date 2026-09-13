@@ -427,19 +427,21 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="#">
-    <span class="nav-logo-txt">BOCHI<span>CA</span></span>
-  </a>
-  <div class="nav-links" id="nav-links">
-    <a href="#about" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</a>
-    <a href="#menu" class="nav-link-menu" data-fr="Menu" data-en="Menu" data-es="Menú">Menu</a>
-    <a href="#evenements" data-fr="Promos" data-en="Deals" data-es="Promos">Promos</a>
-    <a href="#horaires" data-fr="Horaires" data-en="Hours" data-es="Horarios">Horaires</a>
+  <div class="nav-left">
+    <a class="nav-logo" href="#">
+      <span class="nav-logo-txt">BOCHI<span>CA</span></span>
+    </a>
     <div class="nav-lang" role="group" aria-label="Choix de la langue">
       <button class="lang-btn active" onclick="setLang('fr')" aria-label="Français" aria-pressed="true">FR</button>
       <button class="lang-btn" onclick="setLang('en')" aria-label="English" aria-pressed="false">EN</button>
       <button class="lang-btn" onclick="setLang('es')" aria-label="Español" aria-pressed="false">ES</button>
     </div>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <a href="#about" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</a>
+    <a href="#menu" class="nav-link-menu" data-fr="Menu" data-en="Menu" data-es="Menú">Menu</a>
+    <a href="#evenements" data-fr="Promos" data-en="Deals" data-es="Promos">Promos</a>
+    <a href="#horaires" data-fr="Horaires" data-en="Hours" data-es="Horarios">Horaires</a>
     <div class="nav-btns">
       <a href="https://bochica.order-online.ai/" target="_blank" rel="noopener noreferrer" class="btn-nav-order" data-fr="Commander" data-en="Order" data-es="Ordenar">Commander</a>
       <a href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" target="_blank" rel="noopener noreferrer" class="btn-nav-reserve" data-fr="Réserver" data-en="Reserve" data-es="Reservar">Réserver</a>
@@ -478,23 +480,6 @@
     </div>
   </div>
 </section>
-
-<!-- TICKER JAUNE -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item" data-fr="Ouvert jusqu'à 23h" data-en="Open until 11pm" data-es="Abierto hasta las 23h">Ouvert jusqu'à 23h</span>
-    <span class="ticker-item" data-fr="Salsa le samedi" data-en="Salsa on Saturdays" data-es="Salsa los sábados">Salsa le samedi</span>
-    <span class="ticker-item" data-fr="Match en direct" data-en="Live matches" data-es="Partido en vivo">Match en direct</span>
-    <span class="ticker-item" data-fr="Happy hour 17h-19h" data-en="Happy hour 5pm-7pm" data-es="Happy hour 17h-19h">Happy hour 17h-19h</span>
-    <span class="ticker-item" data-fr="Cuisine colombienne" data-en="Colombian cuisine" data-es="Cocina colombiana">Cuisine colombienne</span>
-    <!-- duplication pour boucle infinie sans saut -->
-    <span class="ticker-item" data-fr="Ouvert jusqu'à 23h" data-en="Open until 11pm" data-es="Abierto hasta las 23h">Ouvert jusqu'à 23h</span>
-    <span class="ticker-item" data-fr="Salsa le samedi" data-en="Salsa on Saturdays" data-es="Salsa los sábados">Salsa le samedi</span>
-    <span class="ticker-item" data-fr="Match en direct" data-en="Live matches" data-es="Partido en vivo">Match en direct</span>
-    <span class="ticker-item" data-fr="Happy hour 17h-19h" data-en="Happy hour 5pm-7pm" data-es="Happy hour 17h-19h">Happy hour 17h-19h</span>
-    <span class="ticker-item" data-fr="Cuisine colombienne" data-en="Colombian cuisine" data-es="Cocina colombiana">Cuisine colombienne</span>
-  </div>
-</div>
 
 <!-- BAND -->
 <div class="band">
@@ -1173,59 +1158,59 @@
       <h2 class="section-title" data-fr="Avis de nos clients" data-en="Customer reviews" data-es="Opiniones de clientes">Avis de nos clients</h2>
       <div class="reviews-rating reveal">
         <div class="stars">★★★★★</div>
-        <div class="rating-num">4.8</div>
+        <div class="rating-num">4.7</div>
         <div class="rating-sub" data-fr="Basé sur les avis Google" data-en="Based on Google reviews" data-es="Basado en reseñas de Google">Basé sur les avis Google</div>
       </div>
     </div>
 
     <div class="reviews-grid reveal">
-      <!-- Avis 1 — À remplacer par un vrai avis Google -->
+      <!-- Avis 1 — vrai avis Google (Julien B., 5 étoiles) -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text" data-fr="« Cuisine colombienne authentique à Québec ! Les arepas sont incroyables et l'accueil chaleureux. Comme un voyage à Medellín. »" data-en="&quot;Authentic Colombian cuisine in Québec! The arepas are amazing and the welcome is warm. Like a trip to Medellín.&quot;" data-es="«¡Cocina colombiana auténtica en Quebec! Las arepas son increíbles y el recibimiento cálido. Como un viaje a Medellín.»">« Cuisine colombienne authentique à Québec ! Les arepas sont incroyables et l'accueil chaleureux. Comme un voyage à Medellín. »</p>
+        <p class="review-text" data-fr="« Très belle découverte dans Saint-Sauveur ! Les plats colombiens étaient excellents et authentiques, avec plusieurs saveurs qu'on ne connaissait pas. Le propriétaire est vraiment gentil et accueillant, l'ambiance chaleureuse… On va assurément y retourner, 5 étoiles sans hésiter ! »" data-en="&quot;What a great discovery in Saint-Sauveur! The Colombian dishes were excellent and authentic, with several flavors we didn't know. The owner is truly kind and welcoming, the atmosphere is warm… We'll definitely be back — 5 stars, no hesitation!&quot;" data-es="«¡Un gran descubrimiento en Saint-Sauveur! Los platos colombianos eran excelentes y auténticos, con varios sabores que no conocíamos. El dueño es muy amable y acogedor, el ambiente es cálido… Sin duda volveremos, 5 estrellas sin dudarlo.»">« Très belle découverte dans Saint-Sauveur ! Les plats colombiens étaient excellents et authentiques, avec plusieurs saveurs qu'on ne connaissait pas. Le propriétaire est vraiment gentil et accueillant, l'ambiance chaleureuse… On va assurément y retourner, 5 étoiles sans hésiter ! »</p>
         <div class="review-author">
-          <div class="review-avatar avatar--y">M</div>
+          <div class="review-avatar">J</div>
           <div>
-            <div class="review-name">Marie L.</div>
+            <div class="review-name">Julien B.</div>
             <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
           </div>
         </div>
       </div>
 
-      <!-- Avis 2 -->
+      <!-- Avis 2 — vrai avis Google (Maxence P., 5 étoiles) -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text" data-fr="« La Picada à partager est énorme et délicieuse. Parfait pour découvrir plusieurs plats colombiens d'un coup. Service aux petits oignons. »" data-en="&quot;The sharing Picada is huge and delicious. Perfect to discover many Colombian dishes at once. Excellent service.&quot;" data-es="«La Picada para compartir es enorme y deliciosa. Perfecta para descubrir varios platos colombianos de una vez. Servicio impecable.»">« La Picada à partager est énorme et délicieuse. Parfait pour découvrir plusieurs plats colombiens d'un coup. Service aux petits oignons. »</p>
+        <p class="review-text" data-fr="« Honnêtement un des meilleurs repas que j'ai mangés à Québec depuis longtemps. Je revenais d'un mois en Colombie et j'avais l'impression de ne pas avoir quitté le pays ! »" data-en="&quot;Honestly one of the best meals I've had in Québec City in a long time. I had just come back from a month in Colombia and felt like I hadn't left!&quot;" data-es="«Sinceramente, una de las mejores comidas que he probado en Quebec en mucho tiempo. Volvía de un mes en Colombia y sentí que no había salido del país.»">« Honnêtement un des meilleurs repas que j'ai mangés à Québec depuis longtemps. Je revenais d'un mois en Colombie et j'avais l'impression de ne pas avoir quitté le pays ! »</p>
         <div class="review-author">
-          <div class="review-avatar avatar--b">J</div>
+          <div class="review-avatar avatar--blue">M</div>
           <div>
-            <div class="review-name">Jean-François T.</div>
+            <div class="review-name">Maxence P.</div>
             <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
           </div>
         </div>
       </div>
 
-      <!-- Avis 3 -->
+      <!-- Avis 3 — vrai avis Google (Ann, 5 étoiles) -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text" data-fr="« Mon arepa mixte était parfaite. Ambiance chaleureuse, musique latine, on se sent en Colombie. Je reviens c'est sûr ! »" data-en="&quot;My mixed arepa was perfect. Warm atmosphere, Latin music — you feel like you're in Colombia. Coming back for sure!&quot;" data-es="«Mi arepa mixta estaba perfecta. Ambiente acogedor, música latina, te sientes en Colombia. ¡Volveré seguro!»">« Mon arepa mixte était parfaite. Ambiance chaleureuse, musique latine, on se sent en Colombie. Je reviens c'est sûr ! »</p>
-        <div class="review-author">
-          <div class="review-avatar avatar--r">S</div>
-          <div>
-            <div class="review-name">Sofia R.</div>
-            <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Avis 4 -->
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text" data-fr="« Les cocktails signature sont incroyables et les empanadas fondent en bouche. Un des meilleurs restos latinos à Québec, sans hésiter. »" data-en="&quot;The signature cocktails are amazing and the empanadas melt in your mouth. One of the best Latin restaurants in Québec, no doubt.&quot;" data-es="«Los cócteles de autor son increíbles y las empanadas se deshacen en la boca. Uno de los mejores restaurantes latinos de Quebec, sin duda.»">« Les cocktails signature sont incroyables et les empanadas fondent en bouche. Un des meilleurs restos latinos à Québec, sans hésiter. »</p>
+        <p class="review-text" data-fr="« Une superbe découverte ! La nourriture était absolument délicieuse et authentique. Aucun temps d'attente, un service agréable et impeccable du début à la fin… Une adresse colombienne que je recommande sans hésiter. »" data-en="&quot;A wonderful discovery! The food was absolutely delicious and authentic. No wait at all, and the service was pleasant and flawless from start to finish… A Colombian address I recommend without hesitation.&quot;" data-es="«¡Un descubrimiento maravilloso! La comida estaba absolutamente deliciosa y auténtica. Sin espera alguna, un servicio agradable e impecable de principio a fin… Una dirección colombiana que recomiendo sin dudarlo.»">« Une superbe découverte ! La nourriture était absolument délicieuse et authentique. Aucun temps d'attente, un service agréable et impeccable du début à la fin… Une adresse colombienne que je recommande sans hésiter. »</p>
         <div class="review-author">
           <div class="review-avatar avatar--green">A</div>
           <div>
-            <div class="review-name">Alexandre M.</div>
+            <div class="review-name">Ann</div>
+            <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avis 4 — vrai avis Google (Christie S., 5 étoiles) -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" data-fr="« J'ai eu une expérience incroyable à Bochica. La nourriture était tout simplement excellente et pleine de saveurs ! Le service à la clientèle est chaleureux et attentionné… Le décor est magnifique, coloré et très cozy, on s'y sent bien dès qu'on entre. »" data-en="&quot;I had an incredible experience at Bochica. The food was simply excellent and full of flavor! The staff were warm and attentive… The décor is beautiful, colorful and very cozy — you feel good the moment you walk in.&quot;" data-es="«Viví una experiencia increíble en Bochica. ¡La comida era simplemente excelente y llena de sabor! El personal fue cálido y atento… La decoración es hermosa, colorida y muy acogedora — uno se siente bien desde que entra.»">« J'ai eu une expérience incroyable à Bochica. La nourriture était tout simplement excellente et pleine de saveurs ! Le service à la clientèle est chaleureux et attentionné… Le décor est magnifique, coloré et très cozy, on s'y sent bien dès qu'on entre. »</p>
+        <div class="review-author">
+          <div class="review-avatar avatar--red">C</div>
+          <div>
+            <div class="review-name">Christie S.</div>
             <div class="review-date" data-fr="Avis Google" data-en="Google review" data-es="Reseña Google">Avis Google</div>
           </div>
         </div>

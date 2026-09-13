@@ -151,7 +151,6 @@ button { font: inherit; cursor: pointer; }
 /* Sur boutons jaunes pleins, focus en sombre pour contraster */
 .btn-primary:focus-visible,
 .cta-final__btn:focus-visible,
-.ticker:focus-visible,
 .follow-btn:focus-visible {
   outline-color: var(--ink);
   outline-offset: 3px;
@@ -160,7 +159,6 @@ button { font: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   .hero-img { display: none; }
   .hero { background: var(--ink); }
-  .ticker-track { animation: none !important; }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -223,10 +221,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--accent); }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .nav-lang {
   display: flex;
   gap: 4px;
-  margin-left: 8px;
   padding: 4px;
   border: 1px solid var(--border-dark-strong);
   border-radius: var(--radius-pill);
@@ -307,7 +310,15 @@ h1, h2, h3, h4, h5, h6 {
     align-items: flex-start;
   }
   .nav-links.open { transform: translateY(0); }
-  .nav-btns, .nav-lang { width: 100%; justify-content: flex-start; }
+  .nav-btns { width: 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 480px) {
+  /* Le sélecteur de langue reste toujours visible à côté du logo :
+     on le resserre sur très petits écrans pour laisser la place au hamburger. */
+  .nav-left { gap: 10px; }
+  .nav-lang { gap: 2px; padding: 3px; }
+  .lang-btn { padding: 4px 7px; font-size: 10px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -474,45 +485,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .status-dot { width: 8px; height: 8px; border-radius: 100%; background: var(--status-closed); }
 .status-item.is-open .status-dot { background: var(--status-open); }
-
-/* ═══════════════════════════════════════════════════════════════
-   TICKER JAUNE (défilant)
-   ═══════════════════════════════════════════════════════════════ */
-
-.ticker {
-  background: var(--accent);
-  color: var(--accent-text);
-  overflow: hidden;
-  padding: 14px 0;
-  border-top: 2px solid var(--accent);
-  border-bottom: 2px solid var(--accent);
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker-scroll 38s linear infinite;
-}
-
-.ticker-item {
-  font-family: var(--font-display);
-  font-size: 17px;
-  letter-spacing: 0.22em;
-  font-weight: 600;
-  white-space: nowrap;
-  padding: 0 28px;
-  display: inline-flex;
-  align-items: center;
-  text-transform: uppercase;
-}
-.ticker-item::after { content: "★"; margin-left: 28px; color: var(--accent-text); }
-
-@keyframes ticker-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
 
 /* ═══════════════════════════════════════════════════════════════
    SECTIONS — pattern général
