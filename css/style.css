@@ -946,10 +946,6 @@ behold-widget {
 .ornament-dots span:nth-child(3) { background: var(--blue); opacity: 0.7; }
 
 .menu-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
   margin-bottom: 40px;
   /* Reste visible pendant le scroll dans une longue catégorie (ex. Repas, Bières)
      pour pouvoir changer d'onglet sans remonter tout en haut du menu. */
@@ -961,6 +957,43 @@ behold-widget {
   margin-left: calc(-1 * var(--pad));
   margin-right: calc(-1 * var(--pad));
   border-bottom: 1px solid var(--border-dark);
+}
+
+.menu-tabs-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+@media (max-width: 760px) {
+  /* Mobile : une seule ligne d'onglets qui défile à l'horizontale au lieu
+     d'empiler les pastilles sur 3 rangées (bandeau catégories trop haut). */
+  .menu-tabs-scroll {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .menu-tabs-scroll::-webkit-scrollbar { display: none; }
+  .menu-tabs-scroll .menu-tab {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  /* Dégradé sur le bord droit : signale qu'il y a d'autres catégories à
+     découvrir en glissant, sans dépendre d'un texte à traduire. */
+  .menu-tabs::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--bg) 70%);
+    pointer-events: none;
+  }
 }
 
 .menu-tab {

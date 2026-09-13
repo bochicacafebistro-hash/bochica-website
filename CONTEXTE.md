@@ -311,7 +311,7 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
-### 13 septembre 2026 — Bandeau ticker retiré, vrais avis Google, langue toujours visible, cache CSS/JS corrigé
+### 13 septembre 2026 — Bandeau ticker retiré, vrais avis Google, langue toujours visible, cache CSS/JS corrigé, onglets menu en défilement horizontal (mobile)
 **Changements demandés par le client après revue du site en ligne, + un bug de cache découvert en cours de route.**
 
 - **Bandeau jaune défilant** (`.ticker`, entre le hero et la barre horaires) retiré du HTML et tout son CSS nettoyé (règles, keyframes, entrées reduced-motion/focus-visible)
@@ -321,6 +321,7 @@ Configurés dans `vercel.json` à la racine :
 - Sauvegardes locales des fichiers d'origine créées avant modification (`index.html.bak_*`, `style.css.bak_*`, hors du repo)
 - ⚠️ À faire : mettre à jour `sitemap.xml` `lastmod` si souhaité
 - **Bug de cache découvert et corrigé** : le client trouvait que le sélecteur de langue FR/EN/ES restait affiché sous le logo BOCHICA au lieu d'à côté, malgré le correctif `.nav-left` déployé plus tôt aujourd'hui. Diagnostic : `vercel.json` servait `css/` et `js/` avec `Cache-Control: max-age=31536000, immutable` (1 an, configuré depuis l'audit du 26 avril) — les navigateurs des visiteurs récurrents gardaient donc l'ancien `style.css` en cache et ne voyaient jamais les correctifs déployés. Confirmé en injectant le CSS fraîchement récupéré (`fetch(..., {cache:'no-store'})`) dans la page en direct : le layout `.nav-left` se corrige immédiatement une fois le bon CSS chargé. **Corrigé** : `/css/* /js/*` passent à `max-age=300, must-revalidate` (les images gardent le cache 1 an, elles changent rarement et sont renommées quand c'est le cas). Ce bug affectait TOUTES les mises à jour CSS/JS passées, pas seulement celle d'aujourd'hui — les visiteurs devaient vider leur cache ou visiter en navigation privée pour voir les changements récents.
+- **Bandeau catégories du menu (`.menu-tabs`) : passage en défilement horizontal sur mobile** (`@media max-width: 760px`). Avant : les 8 pastilles de catégories s'empilaient sur 3 rangées et prenaient trop de place en haut de la section Menu. Après : nouveau wrapper `.menu-tabs-scroll` (ajouté dans `index.html`, autour des 8 `<button class="menu-tab">`) qui devient `overflow-x: auto` sur mobile — une seule ligne, `scroll-snap` pour un défilement propre, scrollbar native cachée. Un dégradé (`.menu-tabs::after`) sur le bord droit indique visuellement au client qu'il peut glisser pour voir plus de catégories. Desktop/tablette inchangés (pastilles centrées, retour à la ligne).
 
 ### 26 août 2026 — Refonte des 3 promos hebdomadaires (mercredi/jeudi/vendredi)
 **Changement de contenu des promos de la section "Promos & activités", à la demande du client.**
