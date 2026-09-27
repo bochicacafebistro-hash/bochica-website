@@ -276,7 +276,7 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
 - **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#785a14` depuis sept. 2026, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
-- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260927g` et `js/main.js?v=20260927d` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
+- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260927i` et `js/main.js?v=20260927d` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
 
 ## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
 
@@ -311,6 +311,11 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 27 septembre 2026 (g) — Mobile : arrivée directe sur « Notre menu »
+- Sur mobile (≤ 760 px), la barre d'info `.band` (ouvert/fermé, adresse, commande, téléphone) est aussi masquée → sous la nav, on voit directement « Notre menu » (padding du haut de `#menu` réduit à 24 px)
+- Ces infos restent dans la section « Horaires & contact » et le menu hamburger. Sur ordinateur : rien ne change
+- Cache-busting : `style.css?v=20260927i`
 
 ### 27 septembre 2026 (f) — Corrections de l'audit complet (voir `AUDIT_2026-09.md`)
 **Sécurité / fichiers publics**

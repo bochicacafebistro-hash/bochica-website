@@ -2216,6 +2216,10 @@ html.lang-gate-on .lang-gate {
     overflow: visible;
   }
   .hero-img, .hero-overlay, .hero-eyebrow, .hero-tagline, .hero-btns { display: none; }
+  /* Barre d'info (ouvert/fermé, adresse, téléphone) masquée sur mobile : on arrive direct sur « Notre menu ».
+     Ces infos restent dans la section Horaires & contact plus bas. */
+  .band { display: none; }
+  #menu.menu-hero { padding-top: 24px; }
   .hero-content {
     position: absolute !important;
     width: 1px; height: 1px;
