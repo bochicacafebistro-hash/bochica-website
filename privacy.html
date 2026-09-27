@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css?v=20260913"/>
+  <link rel="stylesheet" href="css/style.css?v=20260927d"/>
   <style>
     .privacy-wrap{max-width:820px;margin:0 auto;padding:140px 24px 80px;line-height:1.7;color:var(--text)}
     .privacy-wrap h1{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);font-weight:400;letter-spacing:0.005em;text-transform:uppercase;margin:0 0 8px;line-height:0.95}
@@ -34,7 +34,10 @@
 <nav id="nav">
   <div class="nav-left">
     <a class="nav-logo" href="/">
-      <span class="nav-logo-txt">BOCHI<span>CA</span></span>
+      <picture>
+        <source srcset="images/logo-bochica.webp" type="image/webp"/>
+        <img class="nav-logo-img" src="images/logo-bochica.png" width="1200" height="280" alt="Bochica — Restaurant colombien" data-alt-fr="Bochica — Restaurant colombien" data-alt-en="Bochica — Colombian restaurant" data-alt-es="Bochica — Restaurante colombiano"/>
+      </picture>
     </a>
     <div class="nav-lang" role="group" aria-label="Choix de la langue" data-aria-fr="Choix de la langue" data-aria-en="Language selection" data-aria-es="Selección de idioma">
       <button class="lang-btn active" type="button" onclick="setLang('fr')" aria-label="Français" aria-pressed="true">FR</button>
@@ -324,6 +327,9 @@
     });
     document.querySelectorAll('[data-aria-' + lang + ']').forEach(function (el) {
       el.setAttribute('aria-label', el.getAttribute('data-aria-' + lang));
+    });
+    document.querySelectorAll('[data-alt-' + lang + ']').forEach(function (el) {
+      el.setAttribute('alt', el.getAttribute('data-alt-' + lang));
     });
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
       var on = btn.textContent.toLowerCase() === lang;

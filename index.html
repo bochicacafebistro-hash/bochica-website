@@ -408,7 +408,19 @@
   <link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
   <link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
 
-  <link rel="stylesheet" href="css/style.css?v=20260913"/>
+  <link rel="stylesheet" href="css/style.css?v=20260927d"/>
+
+  <!-- Écran de choix de langue : mobile, 1re visite seulement (aucune langue mémorisée), jamais pour les robots -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('bochica-lang')) return;
+        if (!window.matchMedia('(max-width: 760px)').matches) return;
+        if (/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent)) return;
+        document.documentElement.classList.add('lang-gate-on');
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Behold.so — widget Instagram (feed @bochica_restaurantcol). Charge le custom element <behold-widget>. -->
   <script>
@@ -422,6 +434,25 @@
 </head>
 <body>
 
+<!-- ÉCRAN DE CHOIX DE LANGUE (mobile, première visite) -->
+<div class="lang-gate" id="lang-gate" role="dialog" aria-modal="true" aria-labelledby="lang-gate-title">
+  <div class="lang-gate__inner">
+    <picture>
+      <source srcset="images/logo-bochica.webp" type="image/webp"/>
+      <img class="lang-gate__logo" src="images/logo-bochica.png" width="1200" height="280" alt="Bochica — Restaurant colombien"/>
+    </picture>
+    <h2 class="lang-gate__title" id="lang-gate-title">
+      <span lang="fr">Choisissez votre langue</span>
+      <span class="lang-gate__sub"><span lang="en">Choose your language</span> · <span lang="es">Elige tu idioma</span></span>
+    </h2>
+    <div class="lang-gate__btns">
+      <button type="button" class="lang-gate__btn" data-lang="fr" lang="fr"><span class="lang-gate__name">Français</span><span class="lang-gate__code" aria-hidden="true">FR</span></button>
+      <button type="button" class="lang-gate__btn" data-lang="en" lang="en"><span class="lang-gate__name">English</span><span class="lang-gate__code" aria-hidden="true">EN</span></button>
+      <button type="button" class="lang-gate__btn" data-lang="es" lang="es"><span class="lang-gate__name">Español</span><span class="lang-gate__code" aria-hidden="true">ES</span></button>
+    </div>
+  </div>
+</div>
+
 <!-- Skip link (accessibilité clavier / lecteurs d'écran) -->
 <a class="skip-link" href="#main" data-fr="Aller au contenu principal" data-en="Skip to main content" data-es="Ir al contenido principal">Aller au contenu principal</a>
 
@@ -429,7 +460,10 @@
 <nav id="nav">
   <div class="nav-left">
     <a class="nav-logo" href="#">
-      <span class="nav-logo-txt">BOCHI<span>CA</span></span>
+      <picture>
+        <source srcset="images/logo-bochica.webp" type="image/webp"/>
+        <img class="nav-logo-img" src="images/logo-bochica.png" width="1200" height="280" alt="Bochica — Restaurant colombien" data-alt-fr="Bochica — Restaurant colombien" data-alt-en="Bochica — Colombian restaurant" data-alt-es="Bochica — Restaurante colombiano"/>
+      </picture>
     </a>
     <div class="nav-lang" role="group" aria-label="Choix de la langue" data-aria-fr="Choix de la langue" data-aria-en="Language selection" data-aria-es="Selección de idioma">
       <button class="lang-btn active" onclick="setLang('fr')" aria-label="Français" aria-pressed="true">FR</button>
@@ -1493,6 +1527,6 @@
   </div>
 </div>
 
-<script src="js/main.js?v=20260927b"></script>
+<script src="js/main.js?v=20260927c"></script>
 </body>
 </html>

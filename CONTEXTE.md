@@ -276,7 +276,7 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
 - **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#8a6a1a`, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
-- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260913` et `js/main.js?v=20260927b` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
+- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260927d` et `js/main.js?v=20260927c` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
 
 ## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
 
@@ -311,6 +311,30 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 27 septembre 2026 (e) — Débordement horizontal corrigé sur petits écrans (320 px)
+- Cause : la section « Notre histoire » (`.story`) avait `minmax(360px, 1fr)` → 360 px de large même sur un écran de 320 px, la page glissait de côté
+- Correctif : les 11 grilles `repeat(auto-fit, minmax(Npx, 1fr))` de `style.css` passent à `minmax(min(Npx, 100%), 1fr)` — une colonne ne dépasse plus jamais l'écran. Aucun changement de mise en page à 375/768/1280 px (vérifié)
+- Règle à suivre : toujours écrire `minmax(min(Xpx, 100%), 1fr)` pour les nouvelles grilles
+- Cache-busting : `style.css?v=20260927d`
+
+### 27 septembre 2026 (d) — Logo officiel dans la nav (haut gauche)
+- Le logo texte `BOCHI<span>CA</span>` de la nav est remplacé par le **logo officiel** `images/logo-bochica.webp` (+ `.png`) dans `index.html` **et** `privacy.html` (classe `.nav-logo-img`)
+- Hauteur : 36 px desktop · 30 px ≤ 480 px · 24 px ≤ 360 px (gaps resserrés pour garder logo + FR/EN/ES + hamburger sur une ligne)
+- Hauteur de la nav inchangée (65-66 px scrollée) → le `top` des onglets sticky du menu reste bon
+- `alt` traduit via `data-alt-fr/en/es` (privacy.html : son `setLang` gère maintenant aussi `data-alt-*`)
+- Les anciennes règles `.nav-logo-txt` restent dans le CSS sans effet — à nettoyer plus tard
+- Cache-busting : `style.css?v=20260927c`
+
+### 27 septembre 2026 (c) — Écran de choix de langue (mobile, première visite)
+- Nouvel écran plein écran `#lang-gate` (début du `<body>`) : **logo officiel** (`images/logo-bochica.webp` + `.png` de secours — BOCHICA à empattements + « Restaurant Colombien » + ligne tricolore, fond blanc retiré, 1200×280), « Choisissez votre langue » (+ EN/ES), 3 gros boutons Français / English / Español
+- **Affiché seulement si** : écran ≤ 760 px **ET** aucune langue mémorisée (`localStorage bochica-lang`) **ET** pas un robot (Googlebot, Lighthouse, etc.) — décidé par un petit script inline dans `<head>` qui ajoute `html.lang-gate-on` (pas de flash du site)
+- Langue du téléphone suggérée (bouton jaune + focus) ; Échap = langue suggérée
+- Pendant l'affichage : reste de la page `inert` + scroll bloqué ; fermeture en fondu (désactivé si reduced-motion)
+- Après le choix : `setLang()` mémorise la langue → l'écran ne revient plus. On change ensuite avec FR/EN/ES dans la nav
+- `initLangGate()` dans `main.js` · CSS en fin de `style.css` (section « ÉCRAN DE CHOIX DE LANGUE »)
+- Pour revoir l'écran en test : navigation privée sur le téléphone
+- Cache-busting : `style.css?v=20260927` (index + privacy), `main.js?v=20260927c`
 
 ### 27 septembre 2026 (b) — Audit + traductions complètes FR/EN/ES
 - **Noms de menu traduits** (avaient du français en dur) : Heineken Sans alcool, Espresso Quindio (Froid), Amarula des Andes, Brugal Rhum Añejo, styles de bière ALPHA (Blanche Belge, Rousse Anglaise, Goyave & Tangerine)

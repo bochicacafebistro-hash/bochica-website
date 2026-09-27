@@ -56,6 +56,40 @@ function restoreLang() {
   if (saved) setLang(saved);
 }
 
+// ── Écran de choix de langue (mobile, première visite) ──
+function initLangGate() {
+  const root = document.documentElement;
+  const gate = document.getElementById('lang-gate');
+  if (!gate) return;
+  if (!root.classList.contains('lang-gate-on')) { gate.remove(); return; }
+
+  // Langue suggérée selon le téléphone (fr par défaut)
+  const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'fr'])
+    .map(l => String(l).slice(0, 2).toLowerCase());
+  const suggested = prefs.find(l => ['fr', 'en', 'es'].includes(l)) || 'fr';
+
+  // Rendre le reste de la page inactif pendant le choix (focus + lecteurs d'écran)
+  const others = [...document.body.children].filter(el => el !== gate && el.tagName !== 'SCRIPT');
+  others.forEach(el => el.setAttribute('inert', ''));
+
+  const close = (lang) => {
+    setLang(lang);
+    others.forEach(el => el.removeAttribute('inert'));
+    gate.classList.add('is-leaving');
+    const done = () => { root.classList.remove('lang-gate-on'); gate.remove(); };
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    reduce ? done() : setTimeout(done, 350);
+  };
+
+  gate.querySelectorAll('.lang-gate__btn').forEach(btn => {
+    if (btn.dataset.lang === suggested) btn.classList.add('is-suggested');
+    btn.addEventListener('click', () => close(btn.dataset.lang));
+  });
+  gate.addEventListener('keydown', e => { if (e.key === 'Escape') close(suggested); });
+  const first = gate.querySelector('.is-suggested');
+  if (first) first.focus({ preventScroll: true });
+}
+
 // ── Nav scroll ────────────────────────────────────────
 function initNav() {
   const fab = document.getElementById('fab-reserve');
@@ -612,6 +646,7 @@ function initContactForm() {
 document.addEventListener('DOMContentLoaded', () => {
   initDishCards();
   restoreLang();
+  initLangGate();
   initNav();
   initMobileMenu();
   initScrollReveal();
