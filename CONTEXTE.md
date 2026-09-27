@@ -240,13 +240,13 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Consentement implicite à l'envoi du formulaire
 
 ## 📨 Formulaire de contact
-- `index.html:1303` — formulaire Formspree
-- **⚠️ Placeholder `VOTRE_ID_FORMSPREE` toujours en place** — à configurer :
-  1. Créer compte sur https://formspree.io/register avec bochicacafebistro@gmail.com
-  2. Créer un form, récupérer l'ID (ex : `mvgokrab`)
-  3. Remplacer `VOTRE_ID_FORMSPREE` dans `action="https://formspree.io/f/VOTRE_ID_FORMSPREE"`
-- Tant que non configuré : bascule automatique vers `mailto:` (fallback)
-- Honeypot anti-spam + labels + autocomplete + aria-live sur statut
+- Formulaire **Formspree** branché le 27 septembre 2026 : `action="https://formspree.io/f/xwlpwygy"`
+- Compte Formspree : bochicacafebistro@gmail.com — formulaire « Site Bochica — Contact »
+- Les messages arrivent à bochicacafebistro@gmail.com ; « Répondre » dans Gmail répond directement au client (champ `email`)
+- Champs envoyés : `nom`, `email`, `telephone`, `sujet`, `message` + `_subject` (« Nouveau message du site Bochica »), `_language`, honeypot anti-spam `_gotcha`
+- Messages de confirmation/erreur trilingues dans `initContactForm()` (main.js). Le code de repli `mailto:` reste mais ne s'active plus (il ne se déclenche que si l'action contient `VOTRE_ID_FORMSPREE`)
+- ⚠️ Au premier message reçu, Formspree peut demander d'**activer** le formulaire par courriel. Vérifier les indésirables
+- Plan gratuit Formspree : nombre de messages par mois limité — suffisant pour un restaurant
 
 ## 🚀 Workflow (depuis 19 avril 2026 — simplifié)
 **Tout va directement sur `main`. Pas de branche de test/preview.**
@@ -311,6 +311,10 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 27 septembre 2026 (i) — Formulaire de contact branché (Formspree)
+- `VOTRE_ID_FORMSPREE` → **`xwlpwygy`** ; champ caché `_replyto` vide retiré (Formspree utilise le champ `email` comme adresse de réponse)
+- Testé (réponse Formspree simulée) : envoi POST direct, plus d'ouverture de l'app courriel, message de succès FR/EN, formulaire vidé
 
 ### 27 septembre 2026 (h) — Nouveau hero « mosaïque de plats » (option B), vidéo retirée
 - **Ordinateur/tablette (≥ 761 px)** : fond crème ; à gauche eyebrow « Restaurant colombien · Saint-Sauveur, Québec », H1 « Voyagez en **Colombie** sans quitter le Québec » (surlignage jaune), texte d'intro, boutons Voir le menu / Commander / Réserver, **badge Ouvert/Fermé** ; à droite mosaïque 2×2 décalée : Bol Medellín, Bol Bogotá, Empanadas, Picada. Tout traduit FR/EN/ES
