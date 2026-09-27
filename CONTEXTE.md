@@ -28,8 +28,8 @@ Exportable vers **GoDaddy** (hébergement final) — fichiers statiques HTML/CSS
   - Mercredi : 17h00 – 21h00
   - Jeudi : 17h00 – 21h00
   - Vendredi : 12h00 – 22h00
-  - Samedi : 13h00 – 23h00
-  - Dimanche : 13h00 – 21h00
+  - Samedi : 12h00 – 22h30
+  - Dimanche : 12h00 – 20h30
 - **Réseaux sociaux** :
   - Instagram : https://www.instagram.com/bochica_restaurantcol/
   - Facebook : https://www.facebook.com/61567223975718
@@ -276,7 +276,7 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
 - **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#8a6a1a`, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
-- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260913` et `js/main.js?v=20260913` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
+- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260913` et `js/main.js?v=20260927` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
 
 ## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
 
@@ -311,6 +311,14 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 27 septembre 2026 — Nouveaux horaires samedi et dimanche
+- **Samedi** : 13h00–23h00 → **12h00–22h30**
+- **Dimanche** : 13h00–21h00 → **12h00–20h30**
+- Mer/jeu (17h–21h) et ven (12h–22h) inchangés
+- Mis à jour : tableau horaires (`index.html`), Schema.org `openingHoursSpecification`, FAQ JSON-LD, `SCHEDULE` dans `main.js` (badge Ouvert/Fermé, heures décimales 22.5/20.5)
+- Cache-busting : `js/main.js?v=20260927`
+- ⚠️ Penser à mettre à jour les horaires sur la fiche Google, Facebook, Instagram et LibroReserve
 
 ### 13 septembre 2026 — Bandeau ticker retiré, vrais avis Google, langue toujours visible, cache CSS/JS corrigé, onglets menu en défilement horizontal (mobile), gap sticky corrigé
 **Changements demandés par le client après revue du site en ligne, + un bug de cache découvert en cours de route.**

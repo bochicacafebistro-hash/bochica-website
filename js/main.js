@@ -410,13 +410,13 @@ function copyLangAttrs(src, dst) {
 // Horaires : dimanche=0, lundi=1, ..., samedi=6
 // [heureOuverture, heureFermeture] en heures décimales (17.5 = 17h30). null = fermé.
 const SCHEDULE = {
-  0: [13, 21],   // dimanche
+  0: [12, 20.5], // dimanche
   1: null,       // lundi
   2: null,       // mardi
   3: [17, 21],   // mercredi
   4: [17, 21],   // jeudi
   5: [12, 22],   // vendredi
-  6: [13, 23]    // samedi
+  6: [12, 22.5]  // samedi
 };
 const DAY_NAMES = {
   fr: ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'],
