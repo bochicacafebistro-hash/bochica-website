@@ -274,9 +274,9 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Pour changements majeurs → donner le fichier complet
 - Images toujours dans `images/` avec chemin `src="images/nom-fichier"`
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
-- **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#8a6a1a`, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
+- **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#785a14` depuis sept. 2026, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
-- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260927d` et `js/main.js?v=20260927c` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
+- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260927g` et `js/main.js?v=20260927d` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
 
 ## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
 
@@ -311,6 +311,47 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 27 septembre 2026 (f) — Corrections de l'audit complet (voir `AUDIT_2026-09.md`)
+**Sécurité / fichiers publics**
+- Supprimés : `images/aguardiente Antioqueño.html` + dossier `_files/` (page de boutique téléchargée par erreur, en ligne depuis le 26 avril), `zi5Ybtie` (doublon du zip), `images/test`, aperçus `Claude outputs/`, anciennes promos `bochica_*_creme_1080x1080.png`, `heineken-00-preview.png`
+- Nouveau **`.vercelignore`** : `*.md`, `images/_backup_avant_crop/`, `images/_originaux/`, `branding/`, `design_handoff…/`, `*.zip`, `Claude outputs/` restent dans GitHub mais **ne sont plus mis en ligne**. ⚠️ Vérifier après déploiement que https://bochicacafebistro.ca/CONTEXTE.md donne 404
+- `.gitignore` : ajout de `Claude outputs/`
+
+**Photos**
+- 22 plats PNG → **WebP 800 px** (q80) et 3 promos → **WebP 1000 px** (q85) : **28,4 Mo → 1,4 Mo**. HTML, données Google (JSON-LD) et sitemap mis à jour
+- 64 fichiers non utilisés (originaux PNG, doublons avec espaces, anciens logos) **déplacés** dans `images/_originaux/` (pas supprimés, non déployés)
+- Dossier `images/` en ligne : ~45 Mo → **3,8 Mo**
+- Nouvelle image de partage **`images/og-bochica.jpg`** 1200×630 (logo + Bol Medellín, 81 Ko) pour Facebook/WhatsApp/iMessage
+- Guacamole : `data-photo` retiré (fichier inexistant) → logo par défaut, plus d'erreur 404
+- ⚠️ **Règle** : les images sont en cache 1 an (`immutable`). Pour remplacer une photo, **toujours lui donner un nouveau nom** (ex. `picada-v2.webp`)
+
+**Hero (bannière du haut)**
+- **Mobile (≤ 760 px)** : plus de vidéo, plus d'image, plus de boutons → la page commence directement par la barre d'info puis le menu. Le H1 reste lisible par Google/lecteurs d'écran (`.hero-content` visuellement masqué)
+- **Ordinateur** : la vidéo Pexels est ajoutée par `initHeroVideo()` (main.js) seulement si écran ≥ 761 px, pas de « reduced motion », pas de mode économie de données → **jamais téléchargée sur mobile**. Source dans `data-src` de la `<video>`
+- Retirés : `<source videos/hero.mp4>` (404) et le poster `Logo Bochica 2026-3.png` (783 Ko). Fond noir pendant le chargement
+- H1 : « BOCHICA » + `<span class="visually-hidden">— restaurant colombien à Québec</span>` (traduit)
+
+**Accessibilité / contrastes (axe-core : 0 violation WCAG AA)**
+- `--accent-warm` : `#8a6a1a` → **`#785a14`** (≥ 4,6:1 sur les 3 crèmes)
+- **Prix en noir** (`--ink`) : cartes, modale, extras
+- Bloc « CONTRASTES » en fin de `style.css` : tous les textes jaunes sur crème → `--accent-warm` (eyebrows, titres de sous-sections, labels contact, horaires, survols). Le jaune vif reste sur fond foncé (hero, `.cta-final`) et pour les fonds de boutons
+- Badges « Option végé » `#3d6622`, « Option sans gluten » `--accent-warm` ; « Fermé » des horaires lisible ; bouton Facebook `#1464cc`
+- Page confidentialité : bouton « Retour » en texte noir
+- Zones de toucher ≥ 44 px (FR/EN/ES, icônes réseaux) via `::after`, sans changer le visuel
+- Texte alternatif des photos = nom du plat, traduit (`data-alt-*`) ; bouton flottant Réserver déplacé dans `<main>`
+- Logo officiel aussi dans le **pied de page** (`.footer-logo-img`)
+- 🐛 **Bug corrigé** : le point du badge Ouvert/Fermé était toujours rouge (JS ajoute `.open`, CSS attendait `.is-open`)
+
+**SEO**
+- JSON-LD : logo → `logo-bochica.png`, image `suprema.jpg` (404) → `picada-suprema.webp`, `og-bochica.jpg` ajoutée
+- **Sitemap reconstruit** : `/` + `/privacy.html` seulement (plus d'URL `#…`), 60 images réelles, `lastmod` 2026-09-27
+- `<html lang="fr-CA">` ; retrait des meta obsolètes (keywords, revisit-after, rating, distribution, language)
+- Polices : Inter 400-700 seulement (300 et 800 retirés)
+- CSS mort `.nav-logo-txt` et `.footer-logo-txt` retiré
+- Cache-busting : `style.css?v=20260927g`, `main.js?v=20260927d`
+
+**Reste à faire (toi)** : créer le compte Formspree et me donner l'ID ; photos manquantes (guacamole, desserts, latté) ; vidéo d'accueil perso (optionnel, desktop seulement)
 
 ### 27 septembre 2026 (e) — Débordement horizontal corrigé sur petits écrans (320 px)
 - Cause : la section « Notre histoire » (`.story`) avait `minmax(360px, 1fr)` → 360 px de large même sur un écran de 320 px, la page glissait de côté

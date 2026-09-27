@@ -62,3 +62,6 @@ preview-*.html
 # Fichiers orphelins identifiés dans l'audit
 paracones de la casa.png
 images/test
+
+# Aperçus générés par Claude (ne pas versionner)
+Claude outputs/

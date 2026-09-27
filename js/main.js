@@ -90,6 +90,23 @@ function initLangGate() {
   if (first) first.focus({ preventScroll: true });
 }
 
+// ── Vidéo du hero : grand écran seulement (jamais téléchargée sur mobile) ──
+function initHeroVideo() {
+  const v = document.querySelector('.hero-img[data-src]');
+  if (!v) return;
+  const bigScreen = window.matchMedia('(min-width: 761px)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (!bigScreen || reduce || saveData) return;
+  const src = document.createElement('source');
+  src.src = v.getAttribute('data-src');
+  src.type = 'video/mp4';
+  v.appendChild(src);
+  v.load();
+  const p = v.play();
+  if (p && p.catch) p.catch(() => {});
+}
+
 // ── Nav scroll ────────────────────────────────────────
 function initNav() {
   const fab = document.getElementById('fab-reserve');
@@ -230,7 +247,12 @@ function initDishCards() {
         const img = document.createElement('img');
         img.src = photoSrc;
         const dishName = (nameEl.getAttribute('data-fr') || nameEl.textContent || '').trim();
-        img.alt = dishName ? `${dishName} — plat colombien chez Bochica` : 'Plat colombien Bochica';
+        // Texte alternatif = nom du plat/boisson, traduit par setLang() via data-alt-*
+        ['fr', 'en', 'es'].forEach(l => {
+          const n = (nameEl.getAttribute('data-' + l) || nameEl.textContent || '').trim();
+          if (n) img.setAttribute('data-alt-' + l, n);
+        });
+        img.alt = dishName || 'Bochica';
         img.loading = 'lazy';
         img.decoding = 'async';
         img.onerror = function() {
@@ -647,6 +669,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDishCards();
   restoreLang();
   initLangGate();
+  initHeroVideo();
   initNav();
   initMobileMenu();
   initScrollReveal();

@@ -5,349 +5,74 @@
 
   <url>
     <loc>https://bochicacafebistro.ca/</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-09-27</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/Logo%20Bochica%202026-3.png</image:loc>
-      <image:title>Bochica — Restaurant Colombien à Québec</image:title>
-      <image:caption>Logo Bochica Café Bistro</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/bandeja-medellin.png</image:loc>
-      <image:title>Bol Medellín — Bandeja Paisa traditionnelle</image:title>
-      <image:caption>Plat colombien authentique avec riz, haricots, chicharron et plantain</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/bochica-burger.png</image:loc>
-      <image:title>Bochica Burger — Burger signature</image:title>
-      <image:caption>Burger colombien avec bœuf, chorizo et sauces maison</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/arepa-classique.png</image:loc>
-      <image:title>Arepa colombienne farcie</image:title>
-      <image:caption>Arepa traditionnelle sans gluten préparée maison</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/churrasco.png</image:loc>
-      <image:title>Churrasco — Bavette grillée colombienne</image:title>
-      <image:caption>Bavette marinée et grillée, servie avec accompagnements traditionnels</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/pollo-asado.png</image:loc>
-      <image:title>Pollo Asado — Poulet rôti colombien</image:title>
-      <image:caption>Poulet mariné à la colombienne, rôti à la perfection</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/picada.png</image:loc>
-      <image:title>Picada — Plateau de partage colombien</image:title>
-      <image:caption>Assortiment de viandes grillées, chorizo, morcilla et accompagnements</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/patacones-de-la-casa.png</image:loc>
-      <image:title>Patacones de la Casa</image:title>
-      <image:caption>Plantains frits garnis, guacamole et chicharron</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/bol-cali.png</image:loc>
-      <image:title>Bol Cali — Bol colombien</image:title>
-      <image:caption>Bol santé inspiré de la ville de Cali, sans gluten</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/bol-bogota.png</image:loc>
-      <image:title>Bol Bogotá — Bol colombien</image:title>
-      <image:caption>Bol colombien inspiré de la capitale, sans gluten</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/hot-dog-colombien.png</image:loc>
-      <image:title>Hot-Dog Colombien</image:title>
-      <image:caption>Hot-dog à la colombienne avec sauces traditionnelles</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/patacon-montanero.png</image:loc>
-      <image:title>Patacon Montanero</image:title>
-      <image:caption>Patacon traditionnel garni à la montagnarde</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/salchipapas.png</image:loc>
-      <image:title>Salchipapas</image:title>
-      <image:caption>Frites et saucisses colombiennes, option sans gluten</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/picadita.png</image:loc>
-      <image:title>Picadita — Plateau de partage</image:title>
-      <image:caption>Version miniature de la Picada avec chorizo, morcilla et arepa</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/canastica.png</image:loc>
-      <image:title>Canastica — Paniers croustillants</image:title>
-      <image:caption>Paniers croustillants bœuf, poulet, porc ou végétarien</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/guacamole-chips.png</image:loc>
-      <image:title>Guacamole avec chips maison</image:title>
-      <image:caption>Guacamole frais accompagné de chips tortillas maison</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/empanadas.webp</image:loc>
-      <image:title>Empanadas colombiennes — Poulet ou bœuf</image:title>
-      <image:caption>Empanadas dorées garnies de poulet ou bœuf, sans gluten</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/ailes-poulet.webp</image:loc>
-      <image:title>Ailes de poulet</image:title>
-      <image:caption>Ailes de poulet style Bochica, parfaites pour partager</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/nachos.webp</image:loc>
-      <image:title>Nachos colombiens</image:title>
-      <image:caption>Chips maison, viande au choix, salsa, guacamole, jalapeños et fromage</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/pandebono.webp</image:loc>
-      <image:title>Pandebono — Pain colombien au fromage</image:title>
-      <image:caption>Petit pain colombien traditionnel au fromage et fécule de manioc</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/pain-fromage.webp</image:loc>
-      <image:title>Pain au fromage colombien</image:title>
-      <image:caption>Pain colombien traditionnel au fromage</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/arepa-au-fromage.png</image:loc>
-      <image:title>Arepa au fromage</image:title>
-      <image:caption>Galette de maïs colombienne grillée au fromage fondu</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/sancochito.png</image:loc>
-      <image:title>Sancochito — Soupe colombienne</image:title>
-      <image:caption>Bouillon colombien traditionnel servi du vendredi au dimanche</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/frites.png</image:loc>
-      <image:title>Frites maison</image:title>
-      <image:caption>Frites maison croustillantes</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/arepa-avec-chicharron.png</image:loc>
-      <image:title>Arepa avec Chicharron</image:title>
-      <image:caption>Arepa de maïs colombienne accompagnée de chicharron croustillant</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/arepa-avec-chorizo.png</image:loc>
-      <image:title>Arepa avec Chorizo</image:title>
-      <image:caption>Arepa de maïs colombienne accompagnée de chorizo grillé</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/arepa-avec-morcilla.png</image:loc>
-      <image:title>Arepa avec Morcilla</image:title>
-      <image:caption>Arepa de maïs colombienne accompagnée de morcilla (boudin)</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/repas-enfant.png</image:loc>
-      <image:title>Repas enfant</image:title>
-      <image:caption>Menu enfant Bochica : frites, croquettes, saucisse ou riz au poulet</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/chicharron.png</image:loc>
-      <image:title>Le Chicharron</image:title>
-      <image:caption>Chicharron colombien servi avec patate, sauce et salade maison</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/club-bochica.png</image:loc>
-      <image:title>Club Bochica — Lager 4%</image:title>
-      <image:caption>Bière maison Club Bochica, lager légère 4% brassée pour le restaurant</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/heineken-00.webp</image:loc>
-      <image:title>Heineken 0.0 — Bière sans alcool</image:title>
-      <image:caption>Bière premium sans alcool, brassée avec arômes naturels</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/alpha-blanche.webp</image:loc>
-      <image:title>Blanche ALPHA — Blanche Belge 5%</image:title>
-      <image:caption>Bière blanche de style belge de la microbrasserie ALPHA</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/alpha-rousse.webp</image:loc>
-      <image:title>Rousse ALPHA — Rousse Anglaise 5%</image:title>
-      <image:caption>Bière rousse de style anglais de la microbrasserie ALPHA</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/alpha-minuano.webp</image:loc>
-      <image:title>Minuano ALPHA — Nano IPA 3.1%</image:title>
-      <image:caption>Nano IPA légère et houblonnée de la microbrasserie ALPHA</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/alpha-briza.webp</image:loc>
-      <image:title>Briza ALPHA — Goyave & Tangerine 5.6%</image:title>
-      <image:caption>Bière fruitée à la goyave et tangerine de la microbrasserie ALPHA</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/alpha-kona.webp</image:loc>
-      <image:title>Kona ALPHA — NEIPA DDH 6.5%</image:title>
-      <image:caption>NEIPA tropicale, fruitée et juteuse de la microbrasserie ALPHA</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/labrosse-inox.webp</image:loc>
-      <image:title>Labrosse INOX — Lager 5%</image:title>
-      <image:caption>Bière lager québécoise Labrosse</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/hungaria-mousseux.webp</image:loc>
-      <image:title>Hungaria Mousseux — Hongrie</image:title>
-      <image:caption>Mousseux hongrois</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/porderi-dal-nespoli.webp</image:loc>
-      <image:title>Porderi dal Nespoli — Vin blanc d'Italie</image:title>
-      <image:caption>Vin blanc italien</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/adega-panalva-dao.webp</image:loc>
-      <image:title>Adega Panalva Dao — Vin blanc du Portugal</image:title>
-      <image:caption>Vin blanc portugais de la région du Dão</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/roseline.webp</image:loc>
-      <image:title>Roseline — Vin rosé de France</image:title>
-      <image:caption>Vin rosé français</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/altamente-jumilla.webp</image:loc>
-      <image:title>Altamente Jumilla — Vin rouge d'Espagne</image:title>
-      <image:caption>Vin rouge espagnol de la région de Jumilla</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/cono-sur-pinot-noir.webp</image:loc>
-      <image:title>Cono Sur Pinot Noir — Vin rouge du Chili</image:title>
-      <image:caption>Vin rouge chilien Pinot Noir biologique</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/aguardiente-antioqueno.webp</image:loc>
-      <image:title>Aguardiente Antioqueño — Spiritueux colombien</image:title>
-      <image:caption>Aguardiente colombien traditionnel d'Antioquia</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/brugal-rhum-anejo.webp</image:loc>
-      <image:title>Brugal Rhum Añejo</image:title>
-      <image:caption>Rhum dominicain Brugal Añejo</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/jose-cuervo-tequila.webp</image:loc>
-      <image:title>Jose Cuervo Tequila Especial</image:title>
-      <image:caption>Tequila mexicaine Jose Cuervo Especial</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/jimador-tequila.webp</image:loc>
-      <image:title>Jimador Tequila Reposado</image:title>
-      <image:caption>Tequila mexicaine Jimador Reposado</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/jameson-black-barrel.webp</image:loc>
-      <image:title>Jameson Black Barrel Whiskey</image:title>
-      <image:caption>Whiskey irlandais Jameson Black Barrel — Reserve Series</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/picada-suprema.webp</image:loc>
-      <image:title>Picada Suprema — Plateau de partage XL</image:title>
-      <image:caption>Plateau colombien XL avec chorizo, morcilla, chicharron, frites, plantain, arepas — option sans gluten</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/frites-de-yuca.webp</image:loc>
-      <image:title>Frites de yuca (manioc)</image:title>
-      <image:caption>Frites de manioc colombiennes dorées et croustillantes</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/coca-cola.webp</image:loc>
-      <image:title>Boissons gazeuses — Coke, Sprite, Fanta</image:title>
-      <image:caption>Boissons gazeuses classiques</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/jarritos.webp</image:loc>
-      <image:title>Jarritos — Boissons mexicaines</image:title>
-      <image:caption>Sodas mexicains traditionnels Jarritos</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/colombiana.webp</image:loc>
-      <image:title>Colombiana ou Manzana — Boissons colombiennes</image:title>
-      <image:caption>Boissons gazeuses colombiennes traditionnelles</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/pony-malta.webp</image:loc>
-      <image:title>Pony Malta — Boisson colombienne au malt</image:title>
-      <image:caption>Boisson maltée colombienne sans alcool</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bochicacafebistro.ca/images/red-bull.webp</image:loc>
-      <image:title>Red Bull — Boisson énergisante</image:title>
-      <image:caption>Boisson énergisante Red Bull</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://bochicacafebistro.ca/#about</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://bochicacafebistro.ca/#menu</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://bochicacafebistro.ca/#suivez-nous</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://bochicacafebistro.ca/#evenements</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://bochicacafebistro.ca/#avis</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://bochicacafebistro.ca/#horaires</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://bochicacafebistro.ca/#localisation</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://bochicacafebistro.ca/#reservation</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/og-bochica.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/logo-bochica.png</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/empanadas.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/arepa-au-fromage.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/sancochito.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/frites.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/frites-de-yuca.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/arepa-avec-chicharron.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/arepa-avec-chorizo.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/arepa-avec-morcilla.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/canastica.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/patacones-de-la-casa.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/ailes-poulet.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/picadita.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/arepa-classique.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/bol-cali.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/bol-bogota.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/bandeja-medellin.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/repas-enfant.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/hot-dog-colombien.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/patacon-montanero.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/salchipapas.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/nachos.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/bochica-burger.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/pollo-asado.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/churrasco.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/picada.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/picada-suprema.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/cafe-noir.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/cappuccino.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/chocolat-chaud.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/coca-cola.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/jarritos.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/colombiana.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/pony-malta.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/red-bull.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/club-bochica.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/heineken-00.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/labrosse-inox.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/alpha-blanche.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/alpha-rousse.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/alpha-minuano.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/alpha-briza.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/alpha-kona.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/hungaria-mousseux.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/porderi-dal-nespoli.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/adega-panalva-dao.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/roseline.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/altamente-jumilla.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/cono-sur-pinot-noir.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/aguardiente-antioqueno.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/brugal-rhum-anejo.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/jose-cuervo-tequila.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/jimador-tequila.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/jameson-black-barrel.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/pandebono.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/pain-fromage.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/promo-mercredi.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/promo-jeudi.webp</image:loc></image:image>
+    <image:image><image:loc>https://bochicacafebistro.ca/images/promo-vendredi.webp</image:loc></image:image>
   </url>
 
   <url>
     <loc>https://bochicacafebistro.ca/privacy.html</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-09-27</lastmod>
   </url>
 
 </urlset>

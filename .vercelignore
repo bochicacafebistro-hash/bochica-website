@@ -1,0 +1,23 @@
+# ============================================
+# .vercelignore — fichiers gardés dans GitHub
+# mais JAMAIS mis en ligne sur bochicacafebistro.ca
+# ============================================
+
+# Documents internes
+CONTEXTE.md
+AUDIT_*.md
+*.md
+
+# Sauvegardes et originaux des photos
+images/_backup_avant_crop/
+images/_originaux/
+
+# Pack logo, maquettes, zips
+branding/
+design_handoff_bochica_brasserie/
+*.zip
+
+# Fichiers générés par Claude / de travail
+Claude outputs/
+preview-*.html
+.claude/
