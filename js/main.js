@@ -90,23 +90,6 @@ function initLangGate() {
   if (first) first.focus({ preventScroll: true });
 }
 
-// ── Vidéo du hero : grand écran seulement (jamais téléchargée sur mobile) ──
-function initHeroVideo() {
-  const v = document.querySelector('.hero-img[data-src]');
-  if (!v) return;
-  const bigScreen = window.matchMedia('(min-width: 761px)').matches;
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const saveData = navigator.connection && navigator.connection.saveData;
-  if (!bigScreen || reduce || saveData) return;
-  const src = document.createElement('source');
-  src.src = v.getAttribute('data-src');
-  src.type = 'video/mp4';
-  v.appendChild(src);
-  v.load();
-  const p = v.play();
-  if (p && p.catch) p.catch(() => {});
-}
-
 // ── Nav scroll ────────────────────────────────────────
 function initNav() {
   const fab = document.getElementById('fab-reserve');
@@ -669,7 +652,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initDishCards();
   restoreLang();
   initLangGate();
-  initHeroVideo();
   initNav();
   initMobileMenu();
   initScrollReveal();

@@ -26,7 +26,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://w.behold.so; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://videos.pexels.com; frame-src https://www.google.com https://maps.google.com https://*.behold.so https://widgets.libroreserve.com https://bochica.order-online.ai; connect-src 'self' https://formspree.io https://*.behold.so; object-src 'none'; base-uri 'self'; form-action https://formspree.io 'self'"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://w.behold.so; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; frame-src https://www.google.com https://maps.google.com https://*.behold.so https://widgets.libroreserve.com https://bochica.order-online.ai; connect-src 'self' https://formspree.io https://*.behold.so; object-src 'none'; base-uri 'self'; form-action https://formspree.io 'self'"
         }
       ]
     },

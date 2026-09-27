@@ -41,7 +41,6 @@
   <link rel="dns-prefetch" href="https://bochica.order-online.ai"/>
   <link rel="dns-prefetch" href="https://www.google.com"/>
   <link rel="dns-prefetch" href="https://w.behold.so"/>
-  <link rel="dns-prefetch" href="https://videos.pexels.com"/>
   <link rel="preconnect" href="https://w.behold.so" crossorigin/>
 
   <!-- Typographie : Bebas Neue (titres impact) + Inter (corps) + JetBrains Mono (microcopy) -->
@@ -403,7 +402,7 @@
   <link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
   <link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
 
-  <link rel="stylesheet" href="css/style.css?v=20260927i"/>
+  <link rel="stylesheet" href="css/style.css?v=20260927j"/>
 
   <!-- Écran de choix de langue : mobile, 1re visite seulement (aucune langue mémorisée), jamais pour les robots -->
   <script>
@@ -484,41 +483,56 @@
 <!-- CONTENU PRINCIPAL (landmark <main> pour lecteurs d'écran) -->
 <main id="main">
 
-<!-- HERO -->
-<section class="hero">
-  <!-- Vidéo chargée par JS (initHeroVideo) seulement sur grand écran : jamais téléchargée sur mobile.
-       Pour utiliser ta propre vidéo : la mettre dans videos/ et changer data-src ci-dessous. -->
-  <video class="hero-img" muted loop playsinline preload="none" aria-hidden="true"
-    data-src="https://videos.pexels.com/video-files/3940084/3940084-hd_1920_1080_30fps.mp4"></video>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow" data-fr="Bochica · Québec" data-en="Bochica · Québec" data-es="Bochica · Québec">Bochica · Québec</div>
-    <h1 class="hero-h1">BOCHICA<span class="visually-hidden" data-fr=" — restaurant colombien à Québec" data-en=" — Colombian restaurant in Québec City" data-es=" — restaurante colombiano en Quebec"> — restaurant colombien à Québec</span></h1>
-    <div class="hero-tagline"
-      data-fr="Restaurant colombien"
-      data-en="Colombian restaurant"
-      data-es="Restaurante colombiano">Restaurant colombien</div>
-    <div class="hero-btns">
-      <a href="#menu" class="btn-outline"
-        data-fr="Voir le menu" data-en="View menu" data-es="Ver el menú">Voir le menu</a>
-      <a href="https://bochica.order-online.ai/" target="_blank" rel="noopener noreferrer" class="btn-primary"
-        data-fr="Commander" data-en="Order" data-es="Ordenar">Commander</a>
-      <a href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" target="_blank" rel="noopener noreferrer" class="btn-primary"
-        data-fr="Réserver" data-en="Reserve" data-es="Reservar">Réserver</a>
+<!-- HERO — option B « mosaïque » (sept. 2026). Sur mobile : masqué (le H1 reste pour Google),
+     et les photos ne sont PAS téléchargées (<source media="min-width: 761px"> + GIF transparent 1 px). -->
+<section class="hero hero--mosaic" aria-labelledby="hero-title">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow" data-fr="Restaurant colombien · Saint-Sauveur, Québec" data-en="Colombian restaurant · Saint-Sauveur, Québec City" data-es="Restaurante colombiano · Saint-Sauveur, Quebec">Restaurant colombien · Saint-Sauveur, Québec</div>
+      <h1 class="hero-h1" id="hero-title"><span class="visually-hidden" data-fr="Bochica, restaurant colombien à Québec — " data-en="Bochica, Colombian restaurant in Québec City — " data-es="Bochica, restaurante colombiano en Quebec — ">Bochica, restaurant colombien à Québec — </span><span class="hero-h1__main" data-fr="Voyagez en <span class='hl'>Colombie</span> sans quitter le Québec" data-en="Travel to <span class='hl'>Colombia</span> without leaving Québec" data-es="Viaja a <span class='hl'>Colombia</span> sin salir de Quebec">Voyagez en <span class="hl">Colombie</span> sans quitter le Québec</span></h1>
+      <p class="hero-lead" data-fr="Arepas, bols, empanadas et cocktails colombiens, préparés chaque jour avec amour au 430 Rue Saint-Vallier Ouest." data-en="Arepas, bowls, empanadas and Colombian cocktails, made fresh every day with love at 430 Saint-Vallier Ouest St." data-es="Arepas, bowls, empanadas y cócteles colombianos, preparados cada día con amor en el 430 Rue Saint-Vallier Ouest.">Arepas, bols, empanadas et cocktails colombiens, préparés chaque jour avec amour au 430 Rue Saint-Vallier Ouest.</p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-outline" data-fr="Voir le menu" data-en="View menu" data-es="Ver el menú">Voir le menu</a>
+        <a href="https://bochica.order-online.ai/" target="_blank" rel="noopener noreferrer" class="btn-primary" data-fr="Commander" data-en="Order" data-es="Ordenar">Commander</a>
+        <a href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" target="_blank" rel="noopener noreferrer" class="btn-primary" data-fr="Réserver" data-en="Reserve" data-es="Reservar">Réserver</a>
+      </div>
+      <div class="hero-status status-item" id="status-pill">
+        <span class="status-dot"></span>
+        <span class="status-text" id="status-text">—</span>
+      </div>
+    </div>
+    <div class="hero-mosaic">
+      <figure class="hero-mosaic__item">
+        <picture>
+          <source media="(min-width: 761px)" srcset="images/bandeja-medellin.webp" type="image/webp"/>
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800" height="800" alt="Bol Medellín" fetchpriority="high"/>
+        </picture>
+        <figcaption>Bol Medellín</figcaption>
+      </figure>
+      <figure class="hero-mosaic__item">
+        <picture>
+          <source media="(min-width: 761px)" srcset="images/bol-bogota.webp" type="image/webp"/>
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800" height="800" alt="Bol Bogotá"/>
+        </picture>
+        <figcaption>Bol Bogotá</figcaption>
+      </figure>
+      <figure class="hero-mosaic__item">
+        <picture>
+          <source media="(min-width: 761px)" srcset="images/empanadas.webp" type="image/webp"/>
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800" height="800" alt="Empanadas"/>
+        </picture>
+        <figcaption>Empanadas</figcaption>
+      </figure>
+      <figure class="hero-mosaic__item">
+        <picture>
+          <source media="(min-width: 761px)" srcset="images/picada.webp" type="image/webp"/>
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800" height="800" alt="Picada"/>
+        </picture>
+        <figcaption>Picada</figcaption>
+      </figure>
     </div>
   </div>
 </section>
-
-<!-- BAND -->
-<div class="band">
-  <div class="band-item status-item" id="status-pill">
-    <span class="status-dot"></span>
-    <span class="status-text" id="status-text">—</span>
-  </div>
-  <div class="band-item"><div class="band-dot-b"></div><span data-fr="430 Rue Saint-Vallier Ouest, Québec" data-en="430 Saint-Vallier Ouest St., Québec" data-es="430 Rue Saint-Vallier Ouest, Québec">430 Rue Saint-Vallier Ouest, Québec</span></div>
-  <div class="band-item"><div class="band-dot-r"></div><span data-fr="Commande en ligne disponible" data-en="Online ordering available" data-es="Pedido en línea disponible">Commande en ligne disponible</span></div>
-  <div class="band-item"><div class="band-dot-y"></div><a href="tel:+13673308220" style="color:inherit;text-decoration:none">367-330-8220</a></div>
-</div>
 
 <!-- MENU PREVIEW -->
 <section class="menu-preview menu-hero" id="menu">
@@ -1525,6 +1539,6 @@
   </div>
 </div>
 
-<script src="js/main.js?v=20260927d"></script>
+<script src="js/main.js?v=20260927e"></script>
 </body>
 </html>

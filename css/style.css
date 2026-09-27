@@ -155,11 +155,6 @@ button { font: inherit; cursor: pointer; }
   outline-color: var(--ink);
   outline-offset: 3px;
 }
-/* Respect explicite : si l'utilisateur préfère moins de mouvement, on désactive vidéos décoratives autoplay */
-@media (prefers-reduced-motion: reduce) {
-  .hero-img { display: none; }
-  .hero { background: var(--ink); }
-}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -2203,36 +2198,6 @@ html.lang-gate-on .lang-gate {
 
 
 /* ══════════════════════════════════════════════════════
-   HERO MOBILE — pas de vidéo, pas d'image : on passe direct à la barre d'info puis au menu.
-   Le H1 reste lisible par Google / lecteurs d'écran (visuellement masqué).
-   ══════════════════════════════════════════════════════ */
-@media (max-width: 760px) {
-  .hero {
-    display: block;
-    min-height: 0;
-    height: 78px;              /* espace sous la nav fixe */
-    padding: 0;                /* annule le padding générique des <section> sur mobile */
-    background: none;
-    overflow: visible;
-  }
-  .hero-img, .hero-overlay, .hero-eyebrow, .hero-tagline, .hero-btns { display: none; }
-  /* Barre d'info (ouvert/fermé, adresse, téléphone) masquée sur mobile : on arrive direct sur « Notre menu ».
-     Ces infos restent dans la section Horaires & contact plus bas. */
-  .band { display: none; }
-  #menu.menu-hero { padding-top: 24px; }
-  .hero-content {
-    position: absolute !important;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-}
-
-
-/* ══════════════════════════════════════════════════════
    CONTRASTES — audit septembre 2026 (WCAG AA ≥ 4,5:1)
    Règle : sur fond crème, JAMAIS de texte en var(--accent) (#F7B32C = 1,4:1).
    → texte « jaune » = var(--accent-warm) ; prix = var(--ink).
@@ -2290,4 +2255,136 @@ html.lang-gate-on .lang-gate {
   position: absolute;
   inset: -4px;          /* 36 px visibles → 44 px touchables */
   border-radius: 50%;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   HERO — option B « mosaïque de plats » (sept. 2026)
+   Remplace l'ancien hero vidéo. Fond crème, texte à gauche, 4 photos à droite.
+   ══════════════════════════════════════════════════════ */
+.hero.hero--mosaic {
+  display: block;
+  min-height: 0;
+  overflow: visible;
+  background: var(--bg);
+  padding: 96px var(--pad) 72px;          /* 96 = espace sous la nav fixe */
+}
+.hero--mosaic .hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero--mosaic .hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  margin: 0;
+}
+.hero--mosaic .hero-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(64px, 7vw, 100px);
+  line-height: 0.9;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  text-shadow: none;
+  text-transform: uppercase;
+  margin: 18px 0 0;
+  max-width: 11ch;
+}
+.hero--mosaic .hero-h1 .hl {
+  background: linear-gradient(transparent 58%, rgba(247,179,44,.55) 58%, rgba(247,179,44,.55) 92%, transparent 92%);
+  padding: 0 6px;
+  margin-left: -6px;
+}
+.hero--mosaic .hero-lead {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text2);
+  margin: 22px 0 0;
+  max-width: 34em;
+}
+.hero--mosaic .hero-btns { margin-top: 32px; }
+.hero--mosaic .btn-outline { color: var(--ink); border-color: var(--ink); }
+.hero--mosaic .btn-outline:hover { background: var(--ink); color: var(--bg); }
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+  padding: 7px 14px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--text2);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,.35);
+}
+
+/* Mosaïque 2 × 2 décalée */
+.hero-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding-bottom: 34px;               /* place pour le décalage de la 2e colonne */
+}
+.hero-mosaic__item {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f4f1e7;
+  box-shadow: 0 8px 24px rgba(14,13,12,.08);
+}
+.hero-mosaic__item:nth-child(2),
+.hero-mosaic__item:nth-child(4) { transform: translateY(34px); }
+.hero-mosaic__item picture { display: block; width: 100%; height: 100%; }
+.hero-mosaic__item img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-mosaic__item figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(245,241,232,.95);
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+/* Tablette : un peu plus serré */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .hero--mosaic .hero-inner { gap: 36px; }
+  .hero--mosaic .hero-h1 { font-size: clamp(56px, 7vw, 80px); }
+  .hero--mosaic .hero-lead { font-size: 16px; }
+  .hero-mosaic { gap: 12px; }
+  .hero-mosaic__item figcaption { font-size: 13px; left: 8px; bottom: 8px; }
+}
+
+/* Mobile : pas de bannière — on arrive direct sur « Notre menu ».
+   Le H1 reste lisible par Google / lecteurs d'écran ; les photos ne sont pas téléchargées. */
+@media (max-width: 760px) {
+  .hero.hero--mosaic { padding: 0; height: 78px; }   /* espace sous la nav fixe */
+  .hero--mosaic .hero-inner { display: block; }
+  .hero-mosaic, .hero--mosaic .hero-eyebrow, .hero--mosaic .hero-lead,
+  .hero--mosaic .hero-btns, .hero-status { display: none; }
+  .hero--mosaic .hero-text {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  #menu.menu-hero { padding-top: 24px; }
 }
