@@ -6,6 +6,30 @@ function setLang(lang) {
   document.querySelectorAll('[data-' + lang + ']').forEach(el => {
     el.innerHTML = el.getAttribute('data-' + lang);
   });
+  // Attributs traduits (lecteurs d'écran, images, cartes)
+  [['aria', 'aria-label'], ['alt', 'alt'], ['title', 'title']].forEach(([key, attr]) => {
+    document.querySelectorAll('[data-' + key + '-' + lang + ']').forEach(el => {
+      el.setAttribute(attr, el.getAttribute('data-' + key + '-' + lang));
+    });
+  });
+  // Prix : 12,50 $ (fr/es) · $12.50 (en)
+  document.querySelectorAll('[data-amount]').forEach(el => {
+    el.textContent = formatPrice(el.getAttribute('data-amount'), lang);
+  });
+  // Libellé accessible des cartes de plats
+  document.querySelectorAll('.menu-card[role="button"]').forEach(card => {
+    const nameEl = card.querySelector('.menu-card-name');
+    if (!nameEl) return;
+    const name = (nameEl.getAttribute('data-' + lang) || nameEl.textContent || '').trim();
+    card.setAttribute('aria-label', DETAILS_LABEL[lang] + name);
+  });
+  // Bouton hamburger
+  const mobileBtn = document.getElementById('mobile-btn');
+  if (mobileBtn) {
+    const open = mobileBtn.getAttribute('aria-expanded') === 'true';
+    const lbl = { fr: ['Ouvrir le menu', 'Fermer le menu'], en: ['Open menu', 'Close menu'], es: ['Abrir menú', 'Cerrar menú'] };
+    mobileBtn.setAttribute('aria-label', lbl[lang][open ? 1 : 0]);
+  }
   document.querySelectorAll('.lang-btn').forEach(btn => {
     const isActive = btn.textContent.toLowerCase() === lang;
     btn.classList.toggle('active', isActive);
@@ -16,6 +40,15 @@ function setLang(lang) {
   localStorage.setItem('bochica-lang', lang);
   // Mettre à jour le badge de statut dans la bonne langue
   if (typeof renderStatus === 'function') renderStatus();
+}
+
+const DETAILS_LABEL = { fr: 'Voir les détails : ', en: 'View details: ', es: 'Ver detalles: ' };
+
+function formatPrice(amount, lang) {
+  const n = parseFloat(amount);
+  if (isNaN(n)) return amount;
+  const txt = Number.isInteger(n) ? String(n) : n.toFixed(2);
+  return lang === 'en' ? '$' + txt : txt.replace('.', ',') + ' $';
 }
 
 function restoreLang() {
@@ -226,7 +259,7 @@ function initDishCards() {
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
         const dishName = (nameEl.getAttribute('data-fr') || nameEl.textContent || '').trim();
-        if (dishName) card.setAttribute('aria-label', `Voir les détails : ${dishName}`);
+        if (dishName) card.setAttribute('aria-label', DETAILS_LABEL.fr + dishName);
         card.addEventListener('click', () => openDish(card));
         card.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
@@ -429,8 +462,9 @@ function formatHour(h, lang) {
   if (lang === 'en') {
     const period = hh >= 12 ? 'pm' : 'am';
     const h12 = hh > 12 ? hh - 12 : (hh === 0 ? 12 : hh);
-    return mm ? `${h12}:${String(mm).padStart(2,'0')}${period}` : `${h12}${period}`;
+    return mm ? `${h12}:${String(mm).padStart(2,'0')} ${period}` : `${h12} ${period}`;
   }
+  if (lang === 'es') return `${hh}:${String(mm).padStart(2,'0')}`;
   return mm ? `${hh}h${String(mm).padStart(2,'0')}` : `${hh}h`;
 }
 function getQuebecDate() {

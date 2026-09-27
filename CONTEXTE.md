@@ -276,7 +276,7 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
 - **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#8a6a1a`, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
-- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260913` et `js/main.js?v=20260927` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
+- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260913` et `js/main.js?v=20260927b` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
 
 ## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
 
@@ -311,6 +311,16 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 27 septembre 2026 (b) — Audit + traductions complètes FR/EN/ES
+- **Noms de menu traduits** (avaient du français en dur) : Heineken Sans alcool, Espresso Quindio (Froid), Amarula des Andes, Brugal Rhum Añejo, styles de bière ALPHA (Blanche Belge, Rousse Anglaise, Goyave & Tangerine)
+- **Pied de page** : « Restaurant colombien » traduit (index + privacy)
+- **Attributs accessibles traduits** : nouveau système `data-aria-{fr,en,es}`, `data-alt-{…}`, `data-title-{…}` géré par `setLang()` (aria-label, alt des 3 images promo, title de la carte Google, bouton hamburger, libellé « Voir les détails » des cartes de plats)
+- **Prix localisés** : chaque prix a maintenant `data-amount="12.5"` ; `formatPrice()` affiche `12,50 $` (FR/ES) ou `$12.50` (EN). ⚠️ Pour modifier un prix : changer **`data-amount`** ET le texte FR
+- **Horaires localisés** : tableau avec `data-fr/en/es` (EN « 5 pm – 9 pm », ES « 17:00 – 21:00 ») ; badge statut ES en format 24 h, EN avec espace (« 8:30 pm »)
+- **privacy.html trilingue** : 3 blocs complets `data-lang-block="fr|en|es"` (un seul visible), sélecteur FR/EN/ES dans la nav, même clé `bochica-lang` que l'accueil, `<title>` traduit. Mention « la version française prévaut » en EN/ES. ⚠️ Toute modification de la politique doit être faite dans les 3 blocs
+- Non traduisible : le texte intégré dans les images promo (`promo-*.png`) — le texte sous chaque image est traduit
+- Testé dans Chromium mobile (390 px) en FR/EN/ES, aucune erreur JS
 
 ### 27 septembre 2026 — Nouveaux horaires samedi et dimanche
 - **Samedi** : 13h00–23h00 → **12h00–22h30**

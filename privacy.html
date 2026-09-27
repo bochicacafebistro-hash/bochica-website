@@ -32,16 +32,23 @@
 
 <!-- NAV minimaliste -->
 <nav id="nav">
-  <a class="nav-logo" href="/">
-    <span class="nav-logo-txt">BOCHI<span>CA</span></span>
-  </a>
+  <div class="nav-left">
+    <a class="nav-logo" href="/">
+      <span class="nav-logo-txt">BOCHI<span>CA</span></span>
+    </a>
+    <div class="nav-lang" role="group" aria-label="Choix de la langue" data-aria-fr="Choix de la langue" data-aria-en="Language selection" data-aria-es="Selección de idioma">
+      <button class="lang-btn active" type="button" onclick="setLang('fr')" aria-label="Français" aria-pressed="true">FR</button>
+      <button class="lang-btn" type="button" onclick="setLang('en')" aria-label="English" aria-pressed="false">EN</button>
+      <button class="lang-btn" type="button" onclick="setLang('es')" aria-label="Español" aria-pressed="false">ES</button>
+    </div>
+  </div>
   <div class="nav-links" id="nav-links">
     <a href="/" data-fr="Accueil" data-en="Home" data-es="Inicio">Accueil</a>
   </div>
 </nav>
 
 <main id="main">
-<div class="privacy-wrap">
+<div class="privacy-wrap" lang="fr-CA" data-lang-block="fr">
 
   <h1>Politique de confidentialité</h1>
   <span class="privacy-date">Dernière mise à jour : 26 avril 2026</span>
@@ -122,18 +129,216 @@
   <a href="/" class="privacy-back">← Retour à l'accueil</a>
 
 </div>
+
+<div class="privacy-wrap" lang="en-CA" data-lang-block="en" hidden>
+
+  <h1>Privacy Policy</h1>
+  <span class="privacy-date">Last updated: April 26, 2026</span>
+
+  <p>At <strong>Bochica Café Bistro</strong> (hereinafter "Bochica", "we"), we take the protection of your personal information very seriously. This policy describes how we collect, use, retain and protect your information when you use our website <a href="https://bochicacafebistro.ca">bochicacafebistro.ca</a>.</p>
+
+  <p>This policy complies with Quebec's <strong>Act respecting the protection of personal information in the private sector (Law 25)</strong> and with the <strong>Personal Information Protection and Electronic Documents Act (PIPEDA)</strong> of Canada.</p>
+
+  <h2>1. Organization responsible</h2>
+  <p>Bochica Café Bistro<br/>
+  430 Rue Saint-Vallier Ouest, Québec (Québec) G1K 1K7, Canada<br/>
+  Phone: <a href="tel:+13673308220">367-330-8220</a><br/>
+  Email: <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a></p>
+
+  <h2>2. Information we collect</h2>
+  <p>We only collect the information you voluntarily provide to us:</p>
+  <ul>
+    <li><strong>Contact form:</strong> your name, email address, phone number (optional), and the subject and content of your message.</li>
+    <li><strong>Online reservations:</strong> handled directly by our partner <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">LibroReserve</a>, subject to its own privacy policy.</li>
+    <li><strong>Online ordering:</strong> handled by our partner <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Order Online AI</a>, subject to its own policy.</li>
+    <li><strong>Browsing data:</strong> your language preference is stored locally in your browser (localStorage) to improve your experience.</li>
+  </ul>
+
+  <h2>3. Purposes of collection</h2>
+  <p>We use your information only to:</p>
+  <ul>
+    <li>Respond to your requests and questions;</li>
+    <li>Process your reservations and orders;</li>
+    <li>Keep you informed, with your consent, of events or special offers;</li>
+    <li>Ensure the proper operation and security of our website.</li>
+  </ul>
+
+  <h2>4. Cookies and similar technologies</h2>
+  <p>Our website only uses your browser's <strong>local storage (localStorage)</strong> to remember your language preference (key <code>bochica-lang</code>). We do not use any advertising cookies, analytics trackers (e.g. Google Analytics, Facebook Pixel) or remarketing tools.</p>
+  <p>Some third-party services embedded in our website (see section 5) may set their own cookies or collect your IP address, subject to their respective privacy policies.</p>
+
+  <h2>5. Embedded third-party services</h2>
+  <p>Our website uses the following third-party services to provide certain features. Each one applies its own privacy policy:</p>
+  <ul>
+    <li><strong>Vercel</strong> (hosting) — may collect anonymized technical data (server logs). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel policy</a></li>
+    <li><strong>Formspree</strong> (contact form delivery) — processes the messages you send us through the form. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Formspree policy</a></li>
+    <li><strong>LibroReserve</strong> (online reservation system) — collects your reservation details when you book a table. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">LibroReserve policy</a></li>
+    <li><strong>Order Online AI</strong> (online ordering) — collects your order and payment details. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Order Online AI policy</a></li>
+    <li><strong>Google Maps</strong> (interactive map and directions) — may collect your IP address and use cookies. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google policy</a></li>
+    <li><strong>Google Fonts</strong> (Bebas Neue, Inter, JetBrains Mono typefaces) — may collect your IP address when fonts are loaded. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google policy</a></li>
+    <li><strong>Behold.so</strong> (Instagram carousel in the "Follow us" section) — displays our recent Instagram posts. May collect your IP address and use Meta/Instagram cookies. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Behold policy</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Instagram policy</a></li>
+    <li><strong>Pexels</strong> (background video in the header, temporary fallback) — may collect your IP address when the video is loaded. <a href="https://www.pexels.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Pexels policy</a></li>
+  </ul>
+
+  <h2>6. Sharing your information</h2>
+  <p>We do not sell, rent or trade your personal information. We only share it with:</p>
+  <ul>
+    <li>The essential technical service providers listed in section 5, bound by contract or by their own policy to respect confidentiality;</li>
+    <li>The competent authorities when required by law.</li>
+  </ul>
+
+  <h2>7. Retention and security</h2>
+  <p>Your information is kept for as long as necessary for the purpose for which it was collected, and in accordance with our legal obligations. Contact form messages are kept for a maximum of <strong>24 months</strong> after the last exchange.</p>
+  <p>We take reasonable technical and organizational measures to protect your data: <strong>HTTPS</strong> connection (TLS encryption), security headers (HSTS, CSP, X-Frame-Options), and restricted access to the business email account.</p>
+
+  <h2>8. Your rights (Law 25)</h2>
+  <p>You have the right to:</p>
+  <ul>
+    <li><strong>Access</strong> the personal information we hold about you;</li>
+    <li>Request its <strong>correction</strong> or <strong>deletion</strong>;</li>
+    <li><strong>Withdraw your consent</strong> at any time;</li>
+    <li>Obtain its <strong>portability</strong> in a structured format;</li>
+    <li>File a complaint with the <a href="https://www.cai.gouv.qc.ca/" target="_blank" rel="noopener noreferrer">Commission d'accès à l'information du Québec</a>.</li>
+  </ul>
+  <p>To exercise these rights, write to us at <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a>.</p>
+
+  <h2>9. Person in charge of personal information protection</h2>
+  <p>In accordance with Law 25, the designated person in charge is the management of Bochica Café Bistro, reachable by email at <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a> or by phone at <a href="tel:+13673308220">367-330-8220</a>.</p>
+
+  <h2>10. Changes</h2>
+  <p>We may update this policy to reflect legal or operational changes. The date of the last update appears at the top of this page. We encourage you to review it regularly.</p>
+  <p><em>In case of discrepancy, the French version of this policy prevails.</em></p>
+
+  <a href="/" class="privacy-back">← Back to home</a>
+
+</div>
+
+<div class="privacy-wrap" lang="es" data-lang-block="es" hidden>
+
+  <h1>Política de privacidad</h1>
+  <span class="privacy-date">Última actualización: 26 de abril de 2026</span>
+
+  <p>En <strong>Bochica Café Bistro</strong> (en adelante «Bochica», «nosotros»), damos gran importancia a la protección de su información personal. Esta política describe cómo recopilamos, utilizamos, conservamos y protegemos su información cuando utiliza nuestro sitio web <a href="https://bochicacafebistro.ca">bochicacafebistro.ca</a>.</p>
+
+  <p>Esta política cumple con la <strong>Ley sobre la protección de la información personal en el sector privado de Quebec (Ley 25)</strong> y con la <strong>Ley canadiense de protección de la información personal y los documentos electrónicos (PIPEDA)</strong>.</p>
+
+  <h2>1. Responsable del tratamiento</h2>
+  <p>Bochica Café Bistro<br/>
+  430 Rue Saint-Vallier Ouest, Québec (Québec) G1K 1K7, Canadá<br/>
+  Teléfono: <a href="tel:+13673308220">367-330-8220</a><br/>
+  Correo electrónico: <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a></p>
+
+  <h2>2. Información que recopilamos</h2>
+  <p>Solo recopilamos la información que usted nos proporciona voluntariamente:</p>
+  <ul>
+    <li><strong>Formulario de contacto:</strong> su nombre, su correo electrónico, su número de teléfono (opcional), el asunto y el contenido de su mensaje.</li>
+    <li><strong>Reservas en línea:</strong> gestionadas directamente por nuestro socio <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">LibroReserve</a>, sujeto a su propia política de privacidad.</li>
+    <li><strong>Pedidos en línea:</strong> gestionados por nuestro socio <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Order Online AI</a>, sujeto a su propia política.</li>
+    <li><strong>Datos de navegación:</strong> su preferencia de idioma se guarda localmente en su navegador (localStorage) para mejorar su experiencia.</li>
+  </ul>
+
+  <h2>3. Finalidades de la recopilación</h2>
+  <p>Utilizamos su información únicamente para:</p>
+  <ul>
+    <li>Responder a sus solicitudes y preguntas;</li>
+    <li>Procesar sus reservas y pedidos;</li>
+    <li>Mantenerle informado, con su consentimiento, de eventos u ofertas especiales;</li>
+    <li>Garantizar el buen funcionamiento y la seguridad de nuestro sitio.</li>
+  </ul>
+
+  <h2>4. Cookies y tecnologías similares</h2>
+  <p>Nuestro sitio utiliza únicamente el <strong>almacenamiento local (localStorage)</strong> de su navegador para recordar su preferencia de idioma (clave <code>bochica-lang</code>). No utilizamos cookies publicitarias, rastreadores de análisis (p. ej. Google Analytics, Facebook Pixel) ni herramientas de remarketing.</p>
+  <p>Algunos servicios de terceros integrados en nuestro sitio (ver sección 5) pueden instalar sus propias cookies o recopilar su dirección IP, sujetos a sus respectivas políticas de privacidad.</p>
+
+  <h2>5. Servicios de terceros integrados</h2>
+  <p>Nuestro sitio utiliza los siguientes servicios de terceros para ofrecer ciertas funciones. Cada uno aplica su propia política de privacidad:</p>
+  <ul>
+    <li><strong>Vercel</strong> (alojamiento) — puede recopilar datos técnicos anonimizados (registros del servidor). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Política de Vercel</a></li>
+    <li><strong>Formspree</strong> (recepción del formulario de contacto) — procesa los mensajes que nos envía a través del formulario. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Política de Formspree</a></li>
+    <li><strong>LibroReserve</strong> (sistema de reservas en línea) — recopila los datos de su reserva cuando reserva una mesa. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">Política de LibroReserve</a></li>
+    <li><strong>Order Online AI</strong> (pedidos en línea) — recopila los datos de su pedido y pago. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Política de Order Online AI</a></li>
+    <li><strong>Google Maps</strong> (mapa interactivo e indicaciones) — puede recopilar su dirección IP y utilizar cookies. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Google</a></li>
+    <li><strong>Google Fonts</strong> (tipografías Bebas Neue, Inter, JetBrains Mono) — puede recopilar su dirección IP al cargar las fuentes. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Google</a></li>
+    <li><strong>Behold.so</strong> (carrusel de Instagram en la sección «Síguenos») — muestra nuestras publicaciones recientes de Instagram. Puede recopilar su dirección IP y utilizar cookies de Meta/Instagram. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Política de Behold</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Política de Instagram</a></li>
+    <li><strong>Pexels</strong> (video de ambiente en el encabezado, respaldo temporal) — puede recopilar su dirección IP al cargar el video. <a href="https://www.pexels.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Política de Pexels</a></li>
+  </ul>
+
+  <h2>6. Compartir su información</h2>
+  <p>No vendemos, alquilamos ni intercambiamos su información personal. Solo la compartimos con:</p>
+  <ul>
+    <li>Los proveedores técnicos esenciales mencionados en la sección 5, obligados por contrato o por su propia política a respetar la confidencialidad;</li>
+    <li>Las autoridades competentes cuando la ley lo exija.</li>
+  </ul>
+
+  <h2>7. Conservación y seguridad</h2>
+  <p>Su información se conserva durante el tiempo necesario para la finalidad para la que fue recopilada, y de acuerdo con nuestras obligaciones legales. Los mensajes del formulario de contacto se conservan un máximo de <strong>24 meses</strong> después del último intercambio.</p>
+  <p>Tomamos medidas técnicas y organizativas razonables para proteger sus datos: conexión <strong>HTTPS</strong> (cifrado TLS), encabezados de seguridad (HSTS, CSP, X-Frame-Options) y acceso restringido al correo profesional.</p>
+
+  <h2>8. Sus derechos (Ley 25)</h2>
+  <p>Usted tiene derecho a:</p>
+  <ul>
+    <li><strong>Acceder</strong> a la información personal que tenemos sobre usted;</li>
+    <li>Solicitar su <strong>rectificación</strong> o <strong>eliminación</strong>;</li>
+    <li><strong>Retirar su consentimiento</strong> en cualquier momento;</li>
+    <li>Obtener su <strong>portabilidad</strong> en un formato estructurado;</li>
+    <li>Presentar una queja ante la <a href="https://www.cai.gouv.qc.ca/" target="_blank" rel="noopener noreferrer">Commission d'accès à l'information du Québec</a>.</li>
+  </ul>
+  <p>Para ejercer estos derechos, escríbanos a <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a>.</p>
+
+  <h2>9. Responsable de la protección de la información personal</h2>
+  <p>De acuerdo con la Ley 25, el responsable designado es la dirección de Bochica Café Bistro, a quien puede contactar por correo electrónico en <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a> o por teléfono al <a href="tel:+13673308220">367-330-8220</a>.</p>
+
+  <h2>10. Modificaciones</h2>
+  <p>Podemos modificar esta política para reflejar cambios legales u operativos. La fecha de la última actualización aparece en la parte superior de esta página. Le invitamos a consultarla regularmente.</p>
+  <p><em>En caso de discrepancia, prevalece la versión en francés de esta política.</em></p>
+
+  <a href="/" class="privacy-back">← Volver al inicio</a>
+
+</div>
 </main>
 
 <!-- FOOTER minimaliste -->
 <footer>
   <div class="footer-bottom">
-    <div class="footer-copy">© <span id="copyright-year">2026</span> Bochica — Restaurant Colombien · 430 Rue Saint-Vallier Ouest, Québec</div>
+    <div class="footer-copy">© <span id="copyright-year">2026</span> Bochica — <span data-fr="Restaurant colombien" data-en="Colombian restaurant" data-es="Restaurante colombiano">Restaurant colombien</span> · 430 Rue Saint-Vallier Ouest, Québec</div>
     <div class="footer-bar"><div></div><div></div><div></div></div>
   </div>
 </footer>
 
 <script>
   document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+  // ── Langue (même clé que la page d'accueil : bochica-lang) ──
+  var PRIVACY_TITLES = {
+    fr: 'Politique de confidentialité | Bochica Café Bistro',
+    en: 'Privacy Policy | Bochica Café Bistro',
+    es: 'Política de privacidad | Bochica Café Bistro'
+  };
+  function setLang(lang) {
+    if (!PRIVACY_TITLES[lang]) lang = 'fr';
+    document.querySelectorAll('[data-lang-block]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-lang-block') !== lang;
+    });
+    document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    });
+    document.querySelectorAll('[data-aria-' + lang + ']').forEach(function (el) {
+      el.setAttribute('aria-label', el.getAttribute('data-aria-' + lang));
+    });
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      var on = btn.textContent.toLowerCase() === lang;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.documentElement.lang = lang === 'es' ? 'es' : lang === 'en' ? 'en-CA' : 'fr-CA';
+    document.title = PRIVACY_TITLES[lang];
+    try { localStorage.setItem('bochica-lang', lang); } catch (e) {}
+  }
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('bochica-lang'); } catch (e) {}
+    if (saved && saved !== 'fr') setLang(saved);
+  })();
 </script>
 
 </body>
