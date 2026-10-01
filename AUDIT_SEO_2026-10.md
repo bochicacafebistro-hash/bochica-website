@@ -13,6 +13,30 @@
 
 ---
 
+## ✅ Suivi des corrections — 1er octobre 2026 (même jour)
+
+Décisions du propriétaire : nom officiel **Bochica Restaurant Colombien** · code postal **G1K 1K8** · La Tiendita **n'existe plus** · les heures du site sont les bonnes · `bochica-v2` est un autre projet (seul `bochica-web` sert le site).
+
+| # | Tâche | État |
+|---|---|---|
+| 1 | Nom officiel, code postal, GPS (alignés sur la fiche Google), « Saint-Roch » → « Saint-Sauveur » | ✅ Fait (site) |
+| 2 | Titre, meta description, « latino », sous-titre visible sur mobile, Bol Medellín = bandeja paisa, « Notre histoire » | ✅ Fait |
+| 3 | FAQ visible (10 questions, FR/EN/ES) + JSON-LD régénéré | ✅ Fait |
+| 4 | Pages **/en/** et **/es/** + hreflang + sitemap | ✅ Fait (`tools/build_lang.py`) |
+| 5 | JSON-LD : `sameAs`, `hasMap`, `acceptsReservations`, `knowsLanguage` ; lien direct vers la fiche Google | ✅ Fait |
+| 6 | Redirection `bochica-web.vercel.app` → domaine principal | ✅ Fait (`vercel.json`) |
+| 7 | Sous-domaine **`www`** dans Vercel | ⏳ **Toi** : Vercel → bochica-web → Settings → Domains → Add `www.bochicacafebistro.ca` → redirection vers `bochicacafebistro.ca` (le DNS pointe déjà vers Vercel) |
+| 8 | Fiche Google : heures et nom | ✅ Déjà corrects (vérifié) |
+| 9 | Fiche Google : code postal G1N 1C1 → G1K 1K8 | ⏳ En cours (connexion requise) |
+| 10 | RestoQuébec : nom, code postal, heures | ✅ Demande envoyée (formulaire de contact) |
+| 11 | MonSaintSauveur : nom, heures | ✅ Demande envoyée (formulaire de contact) |
+| 12 | Guía Latina de Québec : inscription | ✅ Courriel envoyé à guia.latina@hotmail.com |
+| 13 | TripAdvisor : nom + heures | ⏳ En cours (connexion requise) |
+| 14 | Restoenligne : code postal + heures | ⏳ En cours (connexion requise, vérification anti-robot) |
+| 15 | Mise en ligne | ⏳ **Toi** : GitHub Desktop → cocher aussi `en/`, `es/`, `tools/` → Commit → Push |
+
+---
+
 ## 📊 Résumé
 
 **La base technique du site est solide.** La page est rapide, sécurisée, en HTTPS, avec un sitemap propre, des données structurées riches (restaurant, menu, FAQ) et un bon titre H1. Le site sort déjà sur « restaurant colombien Québec », mais **derrière des annuaires** (Restoenligne, RestoQuébec).
