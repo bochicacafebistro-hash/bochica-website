@@ -21,3 +21,6 @@ design_handoff_bochica_brasserie/
 Claude outputs/
 preview-*.html
 .claude/
+
+# Scripts de génération (EN/ES, FAQ) — restent dans GitHub, pas en ligne
+tools/

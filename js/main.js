@@ -1,5 +1,33 @@
 // ── Langue ────────────────────────────────────────────
-let currentLang = 'fr';
+// Chaque langue a sa propre adresse : / (fr), /en/, /es/ — pages générées par tools/build_lang.py.
+// La langue de la page vient de <html data-page-lang="…">. setLang() sert encore au contenu
+// ajouté par JS (badges, modale, statut ouvert/fermé).
+const PAGE_LANG = document.documentElement.getAttribute('data-page-lang') || 'fr';
+const LANG_PATHS = { fr: '/', en: '/en/', es: '/es/' };
+let currentLang = PAGE_LANG;
+
+function saveLang(lang) {
+  try { localStorage.setItem('bochica-lang', lang); } catch (e) {}
+}
+
+// Aller vers la version d'une autre langue (en gardant la section : #menu, #horaires…)
+function goLang(lang) {
+  saveLang(lang);
+  if (lang !== PAGE_LANG && LANG_PATHS[lang]) {
+    window.location.href = LANG_PATHS[lang] + window.location.hash;
+    return true;
+  }
+  return false;
+}
+
+function initLangLinks() {
+  document.querySelectorAll('a.lang-btn[data-lang]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      goLang(a.getAttribute('data-lang'));
+    });
+  });
+}
 
 function setLang(lang) {
   currentLang = lang;
@@ -30,14 +58,9 @@ function setLang(lang) {
     const lbl = { fr: ['Ouvrir le menu', 'Fermer le menu'], en: ['Open menu', 'Close menu'], es: ['Abrir menú', 'Cerrar menú'] };
     mobileBtn.setAttribute('aria-label', lbl[lang][open ? 1 : 0]);
   }
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    const isActive = btn.textContent.toLowerCase() === lang;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-  });
   // Accessibilité : mettre à jour l'attribut lang pour les lecteurs d'écran
   document.documentElement.lang = (lang === 'es') ? 'es' : (lang === 'en') ? 'en-CA' : 'fr-CA';
-  localStorage.setItem('bochica-lang', lang);
+  saveLang(lang);
   // Mettre à jour le badge de statut dans la bonne langue
   if (typeof renderStatus === 'function') renderStatus();
 }
@@ -51,9 +74,9 @@ function formatPrice(amount, lang) {
   return lang === 'en' ? '$' + txt : txt.replace('.', ',') + ' $';
 }
 
+// La page est déjà dans la bonne langue : on applique juste la langue au contenu ajouté par JS
 function restoreLang() {
-  const saved = localStorage.getItem('bochica-lang');
-  if (saved) setLang(saved);
+  setLang(PAGE_LANG);
 }
 
 // ── Écran de choix de langue (mobile, première visite) ──
@@ -73,7 +96,7 @@ function initLangGate() {
   others.forEach(el => el.setAttribute('inert', ''));
 
   const close = (lang) => {
-    setLang(lang);
+    if (goLang(lang)) return; // autre langue → on part vers /en/ ou /es/
     others.forEach(el => el.removeAttribute('inert'));
     gate.classList.add('is-leaving');
     const done = () => { root.classList.remove('lang-gate-on'); gate.remove(); };
@@ -224,7 +247,7 @@ function initDishCards() {
 
         // Ajouter la photo — image personnalisée si data-photo, sinon placeholder Bochica
         const photo = document.createElement('div');
-        const photoSrc = card.getAttribute('data-photo') || 'images/Logo%20Bochica%202026-8.png';
+        const photoSrc = card.getAttribute('data-photo') || '/images/Logo%20Bochica%202026-8.png';
         const isPlaceholder = !card.getAttribute('data-photo');
         photo.className = isPlaceholder ? 'menu-card-photo placeholder' : 'menu-card-photo';
         const img = document.createElement('img');
@@ -240,7 +263,7 @@ function initDishCards() {
         img.decoding = 'async';
         img.onerror = function() {
           photo.classList.add('placeholder');
-          img.src = 'images/Logo%20Bochica%202026-8.png';
+          img.src = '/images/Logo%20Bochica%202026-8.png';
         };
         photo.appendChild(img);
         card.appendChild(photo);
@@ -651,6 +674,7 @@ function initContactForm() {
 document.addEventListener('DOMContentLoaded', () => {
   initDishCards();
   restoreLang();
+  initLangLinks();
   initLangGate();
   initNav();
   initMobileMenu();

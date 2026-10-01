@@ -5,8 +5,10 @@
 
   <url>
     <loc>https://bochicacafebistro.ca/</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://bochicacafebistro.ca/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bochicacafebistro.ca/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
     <image:image><image:loc>https://bochicacafebistro.ca/images/og-bochica.jpg</image:loc></image:image>
     <image:image><image:loc>https://bochicacafebistro.ca/images/logo-bochica.png</image:loc></image:image>
@@ -71,8 +73,26 @@
   </url>
 
   <url>
+    <loc>https://bochicacafebistro.ca/en/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://bochicacafebistro.ca/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bochicacafebistro.ca/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
+  </url>
+
+  <url>
+    <loc>https://bochicacafebistro.ca/es/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://bochicacafebistro.ca/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://bochicacafebistro.ca/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bochicacafebistro.ca/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
+  </url>
+
+  <url>
     <loc>https://bochicacafebistro.ca/privacy.html</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
 
 </urlset>

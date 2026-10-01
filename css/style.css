@@ -2388,3 +2388,62 @@ html.lang-gate-on .lang-gate {
   }
   #menu.menu-hero { padding-top: 24px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   SÉLECTEUR DE LANGUE — liens (oct. 2026)
+   FR/EN/ES sont maintenant de vrais liens vers /, /en/, /es/ (pour Google).
+   ═══════════════════════════════════════════════════════════════ */
+a.lang-btn { display: inline-block; text-decoration: none; line-height: normal; }
+
+/* ═══════════════════════════════════════════════════════════════
+   FAQ — questions fréquentes (oct. 2026)
+   Contenu généré par tools/build_lang.py depuis tools/faq_data.py.
+   <details>/<summary> : accessible au clavier, aucun JavaScript, lu par Google.
+   ═══════════════════════════════════════════════════════════════ */
+.faq { background: var(--bg); }
+.faq-inner { max-width: 820px; margin: 0 auto; }
+.faq .section-title { margin-bottom: 40px; }
+.faq-list { border-top: 1px solid var(--border-dark-strong); }
+.faq-item { border-bottom: 1px solid var(--border-dark-strong); }
+.faq-q {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  padding: 18px 4px;
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ink);
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: "+";
+  flex: none;
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+.faq-item[open] > .faq-q::after { content: "–"; }
+.faq-q:hover { color: var(--accent-warm); }
+.faq-a {
+  margin: 0;
+  padding: 0 44px 22px 4px;
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  line-height: 1.65;
+  color: var(--text2);
+}
+@media (max-width: 760px) {
+  .faq-q { font-size: 15px; padding: 16px 2px; }
+  .faq-a { padding: 0 8px 18px 2px; font-size: 15px; }
+}

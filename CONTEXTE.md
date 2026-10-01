@@ -1,6 +1,8 @@
 # 📋 CONTEXTE — Site Web Bochica
 
-> ⚠️ **Dernière mise à jour majeure : 26 avril 2026 (soir)** — gros audit + fixes : `vercel.json` créé avec headers de sécurité, sitemap.xml corrigé (16 `.jpg`→`.png` + sections actuelles), color-scheme aligné, modale plat avec `role=dialog`, skip link, focus-visible global, contrastes WCAG, section "Suivez-nous" avec widget Behold, 15 photos de plats wirées + recadrées, badges régime en pills colorés sous le nom du plat.
+> 🆕 **1er octobre 2026 — SEO** : nom officiel « Bochica Restaurant Colombien », code postal **G1K 1K8**, pages **/en/** et **/es/** générées par `tools/build_lang.py`, FAQ visible. Voir `AUDIT_SEO_2026-10.md` et le CHANGELOG.
+>
+> ⚠️ **Mise à jour majeure précédente : 26 avril 2026 (soir)** — gros audit + fixes : `vercel.json` créé avec headers de sécurité, sitemap.xml corrigé (16 `.jpg`→`.png` + sections actuelles), color-scheme aligné, modale plat avec `role=dialog`, skip link, focus-visible global, contrastes WCAG, section "Suivez-nous" avec widget Behold, 15 photos de plats wirées + recadrées, badges régime en pills colorés sous le nom du plat.
 > Voir `AUDIT_DESIGN.md` pour l'ancien rapport d'audit et `CHANGELOG` en fin de document pour l'historique des changements.
 
 ## 🏠 Description
@@ -16,8 +18,12 @@ Exportable vers **GoDaddy** (hébergement final) — fichiers statiques HTML/CSS
 - Réservations : https://widgets.libroreserve.com/WEB/QC017664192446445AC/book
 
 ## 🍽️ Infos du restaurant
-- **Nom** : Bochica — Restaurant Colombien
-- **Adresse** : 430 Rue Saint-Vallier Ouest, Québec, QC, Canada (quartier Saint-Roch / Saint-Sauveur)
+- **Nom officiel** (confirmé par le propriétaire, 1er oct. 2026) : **Bochica Restaurant Colombien** — à utiliser PARTOUT (site, fiche Google, annuaires). « Bochica Café Bistro » = ancien nom / nom du domaine et de la page Facebook (gardé seulement en `alternateName` et dans la politique de confidentialité)
+- **Adresse** : 430 Rue Saint-Vallier Ouest, Québec (Québec) **G1K 1K8**, Canada — quartier **Saint-Sauveur** (pas Saint-Roch)
+- **Coordonnées GPS** (celles de la fiche Google) : 46.811622, -71.239785
+- **Fiche Google** : place_id `ChIJmYzJQnqXuEwRTWtbmpZ_2zA` → https://www.google.com/maps/place/?q=place_id:ChIJmYzJQnqXuEwRTWtbmpZ_2zA · lien pour laisser un avis : https://search.google.com/local/writereview?placeid=ChIJmYzJQnqXuEwRTWtbmpZ_2zA
+- **TripAdvisor** : https://www.tripadvisor.ca/Restaurant_Review-g155033-d33771823-Reviews-Bochica_cafe_bistro-Quebec_City_Quebec.html
+- **La Tiendita** (épicerie) : **n'existe plus** (ne pas la mentionner)
 - **Téléphone** : 367-330-8220
 - **Courriel** : bochicacafebistro@gmail.com (contact principal) / info@bochicacafebistro.ca
 - **Phrase d'accroche** : "Voyagez en Colombie… sans quitter le Québec!"
@@ -176,7 +182,16 @@ Toutes sont englobées dans `<main id="main">`.
 - **Bières** — ALPHA + Heineken · Vins & Mousseux · Spiritueux
 - **Desserts** — Gelatina, Flan Maracuyá, Brazo de Reina, Tres Leches, Cheesecake · Pains colombiens
 
-## 🌐 Multilingue
+## 🌐 Multilingue (depuis le 1er oct. 2026 : une adresse par langue)
+- **3 pages** : `/` (`index.html`, FR — LA SOURCE), `/en/` (`en/index.html`), `/es/` (`es/index.html`)
+- ⚠️ **`en/index.html` et `es/index.html` sont GÉNÉRÉS** par `python3 tools/build_lang.py` à partir des attributs `data-en` / `data-es` d'`index.html`. **Ne jamais les modifier à la main.** Après CHAQUE modification d'`index.html` ou de `tools/faq_data.py` → relancer le script (il met aussi à jour la FAQ et son JSON-LD dans `index.html`)
+- La **FAQ** (section visible + JSON-LD FAQPage des 3 pages) vient de `tools/faq_data.py` — source unique, ne pas modifier la FAQ directement dans le HTML
+- `<html data-page-lang="fr|en|es">` donne la langue de la page à `main.js` (`PAGE_LANG`)
+- Boutons FR/EN/ES = vrais liens `<a class="lang-btn" href="/en/">` (Google les suit) ; au clic, `goLang()` mémorise la langue et garde la section (`#menu`…)
+- Sur `/` seulement : un visiteur qui avait choisi EN/ES est renvoyé vers `/en/` ou `/es/` (script inline du `<head>`, jamais pour les robots). L'écran de choix de langue (mobile, 1re visite) n'existe que sur `/`
+- Tous les chemins (images, CSS, JS, privacy) sont **absolus** (`/images/…`) pour fonctionner depuis `/en/` et `/es/` — garder cette règle
+- `hreflang` fr-CA / en-CA / es / x-default dans les 3 pages + `sitemap.xml`
+- `tools/` est dans `.vercelignore` (pas mis en ligne)
 - Attributs HTML `data-fr`, `data-en`, `data-es` sur chaque élément à traduire
 - Fonction JS `setLang(lang)` dans `main.js` — met à jour `document.documentElement.lang` (accessibilité lecteurs d'écran)
 - Langue sauvegardée dans `localStorage` (clé `bochica-lang`)
@@ -276,7 +291,7 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
 - **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#785a14` depuis sept. 2026, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
-- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` et `privacy.html` chargent `css/style.css?v=20260927j` et `js/main.js?v=20260927e` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
+- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` (+ `en/`, `es/` générés) et `privacy.html` chargent `/css/style.css?v=20261001a` et `/js/main.js?v=20261001a` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
 
 ## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
 
@@ -311,6 +326,26 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 1er octobre 2026 — SEO : nom officiel, code postal, pages EN/ES, FAQ visible (voir `AUDIT_SEO_2026-10.md`)
+- **Nom officiel** « Bochica Restaurant Colombien » : `<title>`, `og:site_name`, `author`, JSON-LD `name` (anciens noms en `alternateName`), titres de `privacy.html`
+- **Code postal G1K 1K8** (était G1K 1K7) : JSON-LD, Open Graph, `privacy.html` ×3, adresse visible (contact + « Nous trouver »)
+- **Coordonnées GPS** alignées sur la fiche Google (46.811622, -71.239785 — l'ancienne position était ~800 m à l'est)
+- « Quartier **Saint-Roch** » → « **Saint-Sauveur** » (section Nous trouver, FR/EN/ES)
+- Titre : « Bochica Restaurant Colombien · Cuisine latino à Québec » (54 car.) ; meta description 152 car. avec « latino »
+- Sous-titre du menu (visible sur mobile) : « Cuisine colombienne et latino à Québec… La plupart de nos plats sont sans gluten. »
+- Carte « Medellín » → « Medellín · bandeja paisa » ; nouveau paragraphe « Notre histoire » (nom muisca, latino, sans gluten, service trilingue)
+- **FAQ visible** (10 questions, `<details>`) entre Avis et Horaires + lien FAQ dans le pied de page ; JSON-LD FAQPage régénéré (FR/EN/ES) depuis `tools/faq_data.py`
+- **Pages `/en/` et `/es/`** générées (`tools/build_lang.py`), `hreflang` ×4, sitemap avec 3 URL + alternates
+- JSON-LD : `acceptsReservations: true`, `knowsLanguage`, cuisines EN, `hasMap` + `sameAs` (fiche Google, TripAdvisor, RestoQuébec)
+- Bouton « Lire tous les avis sur Google » → lien direct vers la fiche (place_id)
+- Écran de langue : titre `<h2>` → `<p>` (n'arrive plus avant le H1)
+- `vercel.json` : redirections `/en`→`/en/`, `/es`→`/es/`, `/index.html`→`/`, et `bochica-web.vercel.app` → `bochicacafebistro.ca`
+- `main.js` : `PAGE_LANG`, `goLang()`, `initLangLinks()`, chemins d'images absolus
+- Cache-busting : `style.css?v=20261001a`, `main.js?v=20261001a`
+- Testé (Chromium) : FR/EN/ES ordinateur + mobile 390/320 px, écran de langue, redirection selon la langue mémorisée, modale, statut ouvert/fermé, aucun débordement, aucune erreur JS
+- ⚠️ **Sous-domaine `www`** : le DNS pointe vers Vercel mais `www.bochicacafebistro.ca` n'est pas ajouté au projet `bochica-web` → à ajouter dans Vercel → Settings → Domains (redirection 308 vers `bochicacafebistro.ca`). Le connecteur Vercel de Claude n'a pas le droit de modifier le projet
+- ⚠️ Le projet Vercel `bochica-v2` est un AUTRE projet (pas le site). Seul `bochica-web` sert bochicacafebistro.ca
 
 ### 27 septembre 2026 (i) — Formulaire de contact branché (Formspree)
 - `VOTRE_ID_FORMSPREE` → **`xwlpwygy`** ; champ caché `_replyto` vide retiré (Formspree utilise le champ `email` comme adresse de réponse)
