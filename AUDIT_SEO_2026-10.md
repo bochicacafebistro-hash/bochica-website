@@ -27,12 +27,12 @@ Décisions du propriétaire : nom officiel **Bochica Restaurant Colombien** · c
 | 6 | Redirection `bochica-web.vercel.app` → domaine principal | ✅ Fait (`vercel.json`) |
 | 7 | Sous-domaine **`www`** dans Vercel | ⏳ **Toi** : Vercel → bochica-web → Settings → Domains → Add `www.bochicacafebistro.ca` → redirection vers `bochicacafebistro.ca` (le DNS pointe déjà vers Vercel) |
 | 8 | Fiche Google : heures et nom | ✅ Déjà corrects (vérifié) |
-| 9 | Fiche Google : code postal G1N 1C1 → G1K 1K8 | ⏳ En cours (connexion requise) |
+| 9 | Fiche Google : code postal G1N 1C1 → G1K 1K8 | ✅ Fait (en attente d'approbation Google) — ⚠️ catégorie principale = « Restaurant » seulement : à changer pour « Restaurant colombien » (+ latino-américain, sud-américain) avec ton accord |
 | 10 | RestoQuébec : nom, code postal, heures | ✅ Demande envoyée (formulaire de contact) |
 | 11 | MonSaintSauveur : nom, heures | ✅ Demande envoyée (formulaire de contact) |
 | 12 | Guía Latina de Québec : inscription | ✅ Courriel envoyé à guia.latina@hotmail.com |
-| 13 | TripAdvisor : nom + heures | ⏳ En cours (connexion requise) |
-| 14 | Restoenligne : code postal + heures | ⏳ En cours (connexion requise, vérification anti-robot) |
+| 13 | TripAdvisor : nom + heures + téléphone | ✅ Suggestion envoyée (modération TripAdvisor). La fiche est « gérée » par un autre compte : à réclamer via le Management Centre pour la contrôler |
+| 14 | Restoenligne : code postal + heures | ⏳ Code de vérification demandé à bochicacafebistro@gmail.com, pas encore reçu |
 | 15 | Mise en ligne | ⏳ **Toi** : GitHub Desktop → cocher aussi `en/`, `es/`, `tools/` → Commit → Push |
 
 ---
