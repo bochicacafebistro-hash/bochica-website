@@ -345,6 +345,10 @@ Configurés dans `vercel.json` à la racine :
 - Cache-busting : `style.css?v=20261001a`, `main.js?v=20261001a`
 - Testé (Chromium) : FR/EN/ES ordinateur + mobile 390/320 px, écran de langue, redirection selon la langue mémorisée, modale, statut ouvert/fermé, aucun débordement, aucune erreur JS
 - ⚠️ **Sous-domaine `www`** : le DNS pointe vers Vercel mais `www.bochicacafebistro.ca` n'est pas ajouté au projet `bochica-web` → à ajouter dans Vercel → Settings → Domains (redirection 308 vers `bochicacafebistro.ca`). Le connecteur Vercel de Claude n'a pas le droit de modifier le projet
+- **Fiche Google** (1er oct., soir) : code postal → G1K 1K8 ; catégories → principale « Restaurant colombien » + « Restaurant latino-américain », « Restaurant sud-américain » (en examen chez Google)
+- **Vercel** : `www.bochicacafebistro.ca` ajouté au projet `bochica-web`, redirection 308 → `bochicacafebistro.ca` ✅
+- **Google Search Console** : propriété `https://bochicacafebistro.ca/` créée (compte Google de la fiche). Fichier de validation **`googlea4f124349b777744.html`** à la racine — ⚠️ NE JAMAIS LE SUPPRIMER (Google retire l'accès sinon)
+- **Bing Webmaster Tools** : site ajouté (compte Microsoft connecté via Google, bochicacafebistro@gmail.com). Fichier de validation **`BingSiteAuth.xml`** à la racine — ⚠️ NE PAS SUPPRIMER non plus
 - ⚠️ Le projet Vercel `bochica-v2` est un AUTRE projet (pas le site). Seul `bochica-web` sert bochicacafebistro.ca
 
 ### 27 septembre 2026 (i) — Formulaire de contact branché (Formspree)
