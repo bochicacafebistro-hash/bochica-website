@@ -20,7 +20,7 @@
     LABELS: {
       reserve: 'bX4oCKyvk5IdEK6M2bo-',  // « Clic Réserver (Libro) »
       order: '6QSpCK-vk5IdEK6M2bo-',    // « Clic Commander en ligne »
-      call: ''                // clic sur le numéro de téléphone
+      call: 'yxvHCLKvk5IdEK6M2bo-'      // « Clic telephone (site Web) »
     }
   };
 
