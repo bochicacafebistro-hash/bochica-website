@@ -337,6 +337,8 @@ Configurés dans `vercel.json` à la racine :
 - **`vercel.json`** : CSP — ajout de googletagmanager, googleadservices, doubleclick, pagead2, google.com/.ca.
 - **`css/style.css`** : styles `.consent-*` (bannière, panneau, espaces réservés).
 - EFVP (évaluation des facteurs relatifs à la vie privée) rédigée à part (document interne, non publié).
+- **Vercel Web Analytics** (activé le 5 oct., plan Hobby gratuit, 50 000 événements/mois) : `<script defer src="/_vercel/insights/script.js">` après `consent.js` dans `index.html` et `privacy.html` (EN/ES via `build_lang.py`). Sans témoins → pas dans la bannière ; mentionné dans `privacy.html` sections 4 et 5 (FR/EN/ES). Tableau de bord : Vercel → bochica-web → Analytics.
+- `consent.js` : étiquette de conversion `call` ajoutée ; version de cache `?v=20261005a`.
 - ⚠️ Après toute modification de `index.html` : relancer `python3 tools/build_lang.py` (EN/ES).
 
 ### 1er octobre 2026 — SEO : nom officiel, code postal, pages EN/ES, FAQ visible (voir `AUDIT_SEO_2026-10.md`)
