@@ -38,8 +38,6 @@
 <link href="https://widgets.libroreserve.com" rel="dns-prefetch"/>
 <link href="https://bochica.order-online.ai" rel="dns-prefetch"/>
 <link href="https://www.google.com" rel="dns-prefetch"/>
-<link href="https://w.behold.so" rel="dns-prefetch"/>
-<link crossorigin="" href="https://w.behold.so" rel="preconnect"/>
 <!-- Typographie : Bebas Neue (titres impact) + Inter (corps) + JetBrains Mono (microcopy) -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -435,7 +433,7 @@
 <link href="https://bochicacafebistro.ca/en/" hreflang="en-CA" rel="alternate"/>
 <link href="https://bochicacafebistro.ca/es/" hreflang="es" rel="alternate"/>
 <link href="https://bochicacafebistro.ca/" hreflang="x-default" rel="alternate"/>
-<link href="/css/style.css?v=20261001a" rel="stylesheet"/>
+<link href="/css/style.css?v=20261002a" rel="stylesheet"/>
 <!-- Langue : chaque langue a sa propre adresse (/, /en/, /es/).
        Sur la page FR seulement : 1) un visiteur qui avait choisi EN/ES est renvoyé vers sa version ;
        2) écran de choix de langue sur mobile à la 1re visite. Jamais pour les robots. -->
@@ -453,15 +451,7 @@
       } catch (e) {}
     })();
   </script>
-<!-- Behold.so — widget Instagram (feed @bochica_restaurantcol). Charge le custom element <behold-widget>. -->
-<script>
-    (() => {
-      const d = document, s = d.createElement("script");
-      s.type = "module";
-      s.src = "https://w.behold.so/widget.js";
-      d.head.append(s);
-    })();
-  </script>
+<!-- Behold.so (fil Instagram) et carte Google : chargés par /js/consent.js seulement après consentement (Loi 25). -->
 </head>
 <body>
 <!-- ÉCRAN DE CHOIX DE LANGUE (mobile, première visite) -->
@@ -1432,7 +1422,7 @@
 <p class="section-sub" data-en="430 Rue Saint-Vallier Ouest · Saint-Sauveur district, Québec City G1K 1K8" data-es="430 Rue Saint-Vallier Ouest · Barrio Saint-Sauveur, Quebec G1K 1K8" data-fr="430 Rue Saint-Vallier Ouest · Quartier Saint-Sauveur, Québec G1K 1K8">430 Rue Saint-Vallier Ouest · Barrio Saint-Sauveur, Quebec G1K 1K8</p>
 </div>
 <div class="location-map reveal">
-<iframe allowfullscreen="" data-title-en="Map: Bochica — 430 Rue Saint-Vallier Ouest, Québec" data-title-es="Mapa: Bochica — 430 Rue Saint-Vallier Ouest, Québec" data-title-fr="Carte : Bochica — 430 Rue Saint-Vallier Ouest, Québec" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" src="https://maps.google.com/maps?q=430+Rue+Saint-Vallier+Ouest,+Qu%C3%A9bec,+QC,+Canada&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed" style="border:0" title="Mapa: Bochica — 430 Rue Saint-Vallier Ouest, Québec" width="100%"></iframe>
+<iframe allowfullscreen="" data-consent-src="https://maps.google.com/maps?q=430+Rue+Saint-Vallier+Ouest,+Qu%C3%A9bec,+QC,+Canada&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed" data-title-en="Map: Bochica — 430 Rue Saint-Vallier Ouest, Québec" data-title-es="Mapa: Bochica — 430 Rue Saint-Vallier Ouest, Québec" data-title-fr="Carte : Bochica — 430 Rue Saint-Vallier Ouest, Québec" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" style="border:0" title="Mapa: Bochica — 430 Rue Saint-Vallier Ouest, Québec" width="100%"></iframe>
 </div>
 <div class="location-btns">
 <a class="btn-primary" data-en="Get directions" data-es="Cómo llegar" data-fr="Obtenir l'itinéraire" href="https://www.google.com/maps/dir/?api=1&amp;destination=430+Rue+Saint-Vallier+Ouest,+Qu%C3%A9bec,+QC,+Canada" rel="noopener" target="_blank">Cómo llegar</a>
@@ -1470,6 +1460,7 @@
 <a data-en="Reservation" data-es="Reservación" data-fr="Réservation" href="#reservation">Reservación</a>
 <a data-en="Order" data-es="Ordenar" data-fr="Commander" href="https://bochica.order-online.ai/" rel="noopener noreferrer" target="_blank">Ordenar</a>
 <a data-en="Privacy" data-es="Privacidad" data-fr="Confidentialité" href="/privacy.html">Privacidad</a>
+<a data-consent-open="" data-en="Manage cookies" data-es="Gestionar cookies" data-fr="Gérer les témoins" href="/privacy.html#temoins">Gestionar cookies</a>
 </div>
 <div class="footer-social">
 <span class="footer-social-label" data-en="Follow us" data-es="Síguenos" data-fr="Suivez-nous">Síguenos</span>
@@ -1523,5 +1514,6 @@
 </div>
 </div>
 <script src="/js/main.js?v=20261001a"></script>
+<script src="/js/consent.js?v=20261002a"></script>
 </body>
 </html>

@@ -40,8 +40,6 @@
   <link rel="dns-prefetch" href="https://widgets.libroreserve.com"/>
   <link rel="dns-prefetch" href="https://bochica.order-online.ai"/>
   <link rel="dns-prefetch" href="https://www.google.com"/>
-  <link rel="dns-prefetch" href="https://w.behold.so"/>
-  <link rel="preconnect" href="https://w.behold.so" crossorigin/>
 
   <!-- Typographie : Bebas Neue (titres impact) + Inter (corps) + JetBrains Mono (microcopy) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -424,7 +422,7 @@
   <link rel="alternate" hreflang="es" href="https://bochicacafebistro.ca/es/"/>
   <link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
 
-  <link rel="stylesheet" href="/css/style.css?v=20261001a"/>
+  <link rel="stylesheet" href="/css/style.css?v=20261002a"/>
 
   <!-- Langue : chaque langue a sa propre adresse (/, /en/, /es/).
        Sur la page FR seulement : 1) un visiteur qui avait choisi EN/ES est renvoyé vers sa version ;
@@ -444,15 +442,7 @@
     })();
   </script>
 
-  <!-- Behold.so — widget Instagram (feed @bochica_restaurantcol). Charge le custom element <behold-widget>. -->
-  <script>
-    (() => {
-      const d = document, s = d.createElement("script");
-      s.type = "module";
-      s.src = "https://w.behold.so/widget.js";
-      d.head.append(s);
-    })();
-  </script>
+  <!-- Behold.so (fil Instagram) et carte Google : chargés par /js/consent.js seulement après consentement (Loi 25). -->
 </head>
 <body>
 
@@ -1504,7 +1494,7 @@
     </div>
     <div class="location-map reveal">
       <iframe
-        src="https://maps.google.com/maps?q=430+Rue+Saint-Vallier+Ouest,+Qu%C3%A9bec,+QC,+Canada&t=&z=16&ie=UTF8&iwloc=&output=embed"
+        data-consent-src="https://maps.google.com/maps?q=430+Rue+Saint-Vallier+Ouest,+Qu%C3%A9bec,+QC,+Canada&t=&z=16&ie=UTF8&iwloc=&output=embed"
         width="100%"
         height="450"
         style="border:0"
@@ -1557,6 +1547,7 @@
       <a href="#reservation" data-fr="Réservation" data-en="Reservation" data-es="Reservación">Réservation</a>
       <a href="https://bochica.order-online.ai/" target="_blank" rel="noopener noreferrer" data-fr="Commander" data-en="Order" data-es="Ordenar">Commander</a>
       <a href="/privacy.html" data-fr="Confidentialité" data-en="Privacy" data-es="Privacidad">Confidentialité</a>
+      <a href="/privacy.html#temoins" data-consent-open data-fr="Gérer les témoins" data-en="Manage cookies" data-es="Gestionar cookies">Gérer les témoins</a>
     </div>
     <div class="footer-social">
       <span class="footer-social-label" data-fr="Suivez-nous" data-en="Follow us" data-es="Síguenos">Suivez-nous</span>
@@ -1615,5 +1606,6 @@
 </div>
 
 <script src="/js/main.js?v=20261001a"></script>
+<script src="/js/consent.js?v=20261002a"></script>
 </body>
 </html>

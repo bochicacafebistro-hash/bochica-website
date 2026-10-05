@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css?v=20261001a"/>
+  <link rel="stylesheet" href="css/style.css?v=20261002a"/>
   <style>
     .privacy-wrap{max-width:820px;margin:0 auto;padding:140px 24px 80px;line-height:1.7;color:var(--text)}
     .privacy-wrap h1{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);font-weight:400;letter-spacing:0.005em;text-transform:uppercase;margin:0 0 8px;line-height:0.95}
@@ -55,7 +55,7 @@
 <div class="privacy-wrap" lang="fr-CA" data-lang-block="fr">
 
   <h1>Politique de confidentialité</h1>
-  <span class="privacy-date">Dernière mise à jour : 27 septembre 2026</span>
+  <span class="privacy-date">Dernière mise à jour : 2 octobre 2026</span>
 
   <p>Chez <strong>Bochica Café Bistro</strong> (ci-après « Bochica », « nous »), nous accordons une grande importance à la protection de vos renseignements personnels. La présente politique décrit comment nous collectons, utilisons, conservons et protégeons vos informations lorsque vous utilisez notre site web <a href="https://bochicacafebistro.ca">bochicacafebistro.ca</a>.</p>
 
@@ -73,7 +73,8 @@
     <li><strong>Formulaire de contact :</strong> votre nom, votre adresse courriel, votre numéro de téléphone (facultatif), le sujet et le contenu de votre message.</li>
     <li><strong>Réservation en ligne :</strong> traitée directement par notre partenaire <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">LibroReserve</a>, soumis à sa propre politique de confidentialité.</li>
     <li><strong>Commande en ligne :</strong> traitée par notre partenaire <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Order Online AI</a>, soumis à sa propre politique.</li>
-    <li><strong>Données de navigation :</strong> votre préférence de langue est stockée localement dans votre navigateur (localStorage) pour améliorer votre expérience.</li>
+    <li><strong>Données de navigation :</strong> votre préférence de langue et votre choix de témoins sont stockés localement dans votre navigateur (localStorage).</li>
+    <li><strong>Mesure publicitaire (seulement avec votre consentement) :</strong> identifiants de témoins Google, la page d'où vous venez (ex. : une annonce Google), vos clics sur « Réserver », « Commander » ou sur notre numéro de téléphone, votre adresse IP et le type d'appareil et de navigateur.</li>
   </ul>
 
   <h2>3. Finalités de la collecte</h2>
@@ -82,37 +83,50 @@
     <li>Répondre à vos demandes et questions;</li>
     <li>Traiter vos réservations et commandes;</li>
     <li>Vous tenir informé, avec votre consentement, d'événements ou d'offres spéciales;</li>
-    <li>Assurer le bon fonctionnement et la sécurité de notre site.</li>
+    <li>Assurer le bon fonctionnement et la sécurité de notre site;</li>
+    <li>Seulement avec votre consentement : mesurer l'efficacité de nos publicités Google (savoir si elles mènent à des réservations, commandes ou appels) et vous présenter nos annonces sur les services de Google.</li>
   </ul>
 
-  <h2>4. Témoins (cookies) et technologies similaires</h2>
-  <p>Notre site utilise uniquement le <strong>stockage local (localStorage)</strong> de votre navigateur pour mémoriser votre préférence de langue (clé <code>bochica-lang</code>). Nous n'utilisons aucun témoin publicitaire, aucun traceur d'analyse (ex. Google Analytics, Facebook Pixel) ni aucun outil de remarketing.</p>
-  <p>Certains services tiers intégrés à notre site (voir section 5) peuvent déposer leurs propres témoins ou collecter votre adresse IP, soumis à leurs politiques de confidentialité respectives.</p>
+  <h2 id="temoins">4. Témoins (cookies) et votre consentement</h2>
+  <p>À votre première visite, une bannière vous demande votre choix. <strong>Rien de ce qui suit n'est activé par défaut</strong>, sauf les éléments essentiels. Refuser est aussi simple qu'accepter, et refuser ne vous empêche pas d'utiliser le site.</p>
+  <ul>
+    <li><strong>Essentiels (toujours actifs) :</strong> stockage local de votre navigateur pour mémoriser votre langue (<code>bochica-lang</code>) et votre choix de témoins (<code>bochica-consent</code>, conservé 12 mois, après quoi nous vous redemandons votre choix). Ces données ne quittent pas votre appareil.</li>
+    <li><strong>Mesure publicitaire — Google Ads (désactivé par défaut) :</strong> si vous l'acceptez, la balise Google Ads est chargée. Elle dépose des témoins (par exemple <code>_gcl_au</code> sur notre site, environ 90 jours, et des témoins de Google sur ses propres domaines, jusqu'à environ 13 mois) afin de mesurer si nos annonces mènent à une réservation, une commande ou un appel, et de vous présenter nos annonces sur les services de Google.</li>
+    <li><strong>Contenus externes — Google Maps et Instagram (désactivé par défaut) :</strong> la carte interactive et notre fil Instagram ne s'affichent qu'avec votre accord, ou si vous cliquez sur « Afficher ». Ces services peuvent alors déposer leurs propres témoins.</li>
+  </ul>
+  <p>Nous n'utilisons pas Google Analytics ni le pixel Facebook (Meta).</p>
+  <p>Vous pouvez <strong>modifier ou retirer votre consentement en tout temps</strong> avec le lien « Gérer les témoins » au bas de chaque page, ou ici :</p>
+  <p><button type="button" class="consent-btn" data-consent-open>Gérer les témoins</button></p>
 
   <h2>5. Services tiers intégrés</h2>
-  <p>Notre site utilise les services tiers suivants pour offrir certaines fonctionnalités. Chacun applique sa propre politique de confidentialité :</p>
+  <p>Notre site utilise les services tiers suivants. Chacun applique sa propre politique de confidentialité :</p>
   <ul>
-    <li><strong>Vercel</strong> (hébergement) — peut collecter des données techniques anonymisées (logs serveur). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Politique Vercel</a></li>
+    <li><strong>Vercel</strong> (hébergement) — peut collecter des données techniques (journaux du serveur, dont l'adresse IP). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Politique Vercel</a></li>
     <li><strong>Formspree</strong> (réception du formulaire de contact) — traite les messages que vous nous envoyez via le formulaire. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Politique Formspree</a></li>
-    <li><strong>LibroReserve</strong> (système de réservations en ligne) — collecte vos informations de réservation lorsque vous réservez une table. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">Politique LibroReserve</a></li>
-    <li><strong>Order Online AI</strong> (commande en ligne) — collecte vos informations de commande et paiement. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Politique Order Online AI</a></li>
-    <li><strong>Google Maps</strong> (carte interactive et itinéraire) — peut collecter votre adresse IP et utiliser des témoins. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politique Google</a></li>
-    <li><strong>Google Fonts</strong> (typographies Bebas Neue, Inter, JetBrains Mono) — peut collecter votre adresse IP lors du chargement des polices. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politique Google</a></li>
-    <li><strong>Behold.so</strong> (carrousel Instagram dans la section « Suivez-nous ») — affiche nos publications Instagram récentes. Peut collecter votre adresse IP et utiliser des témoins Meta/Instagram. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Politique Behold</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Politique Instagram</a></li>
+    <li><strong>LibroReserve</strong> (réservations en ligne, sur son propre site) — collecte vos informations de réservation. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">Politique LibroReserve</a></li>
+    <li><strong>Order Online AI</strong> (commande en ligne, sur son propre site) — collecte vos informations de commande et de paiement. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Politique Order Online AI</a></li>
+    <li><strong>Google Ads</strong> (mesure publicitaire) — <em>seulement avec votre consentement</em>. Voir la section 4. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politique Google</a> · <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Comment Google utilise les témoins publicitaires</a></li>
+    <li><strong>Google Maps</strong> (carte interactive) — <em>seulement avec votre consentement</em>; peut collecter votre adresse IP et utiliser des témoins. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politique Google</a></li>
+    <li><strong>Google Fonts</strong> (typographies) — peut recevoir votre adresse IP lors du chargement des polices; ne dépose pas de témoins. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politique Google</a></li>
+    <li><strong>Behold.so</strong> (fil Instagram de la section « Suivez-nous ») — <em>seulement avec votre consentement</em>; peut collecter votre adresse IP et utiliser des témoins. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Politique Behold</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Politique Instagram</a></li>
   </ul>
 
   <h2>6. Partage de vos renseignements</h2>
   <p>Nous ne vendons, ne louons ni n'échangeons vos renseignements personnels. Nous ne les partageons qu'avec :</p>
   <ul>
-    <li>Les prestataires techniques essentiels mentionnés à la section 5, liés par contrat ou par leur propre politique à respecter la confidentialité;</li>
+    <li>Les prestataires techniques mentionnés à la section 5, pour les fins décrites dans la présente politique;</li>
+    <li>Google, pour la mesure publicitaire, <strong>seulement si vous y avez consenti</strong>;</li>
     <li>Les autorités compétentes lorsque la loi l'exige.</li>
   </ul>
 
-  <h2>7. Conservation et sécurité</h2>
+  <h2>7. Communication à l'extérieur du Québec</h2>
+  <p>Certains de nos prestataires (notamment Google, Vercel et Formspree) traitent des renseignements à l'extérieur du Québec, principalement aux États-Unis. Avant de leur communiquer des renseignements, nous avons évalué que ceux-ci y bénéficient d'une protection adéquate, compte tenu de leur sensibilité, de la finalité, des mesures de protection prévues par ces entreprises et du cadre juridique applicable, comme l'exige la Loi 25.</p>
+
+  <h2>8. Conservation et sécurité</h2>
   <p>Vos renseignements sont conservés aussi longtemps que nécessaire à la finalité pour laquelle ils ont été collectés, et conformément à nos obligations légales. Les messages du formulaire de contact sont conservés au maximum <strong>24 mois</strong> après le dernier échange.</p>
   <p>Nous prenons des mesures techniques et organisationnelles raisonnables pour protéger vos données : connexion <strong>HTTPS</strong> (chiffrement TLS), en-têtes de sécurité (HSTS, CSP, X-Frame-Options), accès restreint au courriel professionnel.</p>
 
-  <h2>8. Vos droits (Loi 25)</h2>
+  <h2>9. Vos droits (Loi 25)</h2>
   <p>Vous avez le droit :</p>
   <ul>
     <li>D'<strong>accéder</strong> aux renseignements personnels que nous détenons à votre sujet;</li>
@@ -123,10 +137,10 @@
   </ul>
   <p>Pour exercer ces droits, écrivez-nous à <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a>.</p>
 
-  <h2>9. Responsable de la protection des renseignements personnels</h2>
+  <h2>10. Responsable de la protection des renseignements personnels</h2>
   <p>Conformément à la Loi 25, le responsable désigné est la direction de Bochica Café Bistro, joignable par courriel à <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a> ou par téléphone au <a href="tel:+13673308220">367-330-8220</a>.</p>
 
-  <h2>10. Modifications</h2>
+  <h2>11. Modifications</h2>
   <p>Nous pouvons modifier la présente politique afin de refléter des changements légaux ou opérationnels. La date de dernière mise à jour apparaît en haut de cette page. Nous vous invitons à la consulter régulièrement.</p>
 
   <a href="/" class="privacy-back">← Retour à l'accueil</a>
@@ -136,7 +150,7 @@
 <div class="privacy-wrap" lang="en-CA" data-lang-block="en" hidden>
 
   <h1>Privacy Policy</h1>
-  <span class="privacy-date">Last updated: September 27, 2026</span>
+  <span class="privacy-date">Last updated: October 2, 2026</span>
 
   <p>At <strong>Bochica Café Bistro</strong> (hereinafter "Bochica", "we"), we take the protection of your personal information very seriously. This policy describes how we collect, use, retain and protect your information when you use our website <a href="https://bochicacafebistro.ca">bochicacafebistro.ca</a>.</p>
 
@@ -154,7 +168,8 @@
     <li><strong>Contact form:</strong> your name, email address, phone number (optional), and the subject and content of your message.</li>
     <li><strong>Online reservations:</strong> handled directly by our partner <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">LibroReserve</a>, subject to its own privacy policy.</li>
     <li><strong>Online ordering:</strong> handled by our partner <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Order Online AI</a>, subject to its own policy.</li>
-    <li><strong>Browsing data:</strong> your language preference is stored locally in your browser (localStorage) to improve your experience.</li>
+    <li><strong>Browsing data:</strong> your language preference and your cookie choice are stored locally in your browser (localStorage).</li>
+    <li><strong>Ad measurement (only with your consent):</strong> Google cookie identifiers, the page you came from (e.g. a Google ad), your clicks on “Reserve”, “Order” or our phone number, your IP address and your device and browser type.</li>
   </ul>
 
   <h2>3. Purposes of collection</h2>
@@ -163,37 +178,50 @@
     <li>Respond to your requests and questions;</li>
     <li>Process your reservations and orders;</li>
     <li>Keep you informed, with your consent, of events or special offers;</li>
-    <li>Ensure the proper operation and security of our website.</li>
+    <li>Ensure the proper operation and security of our website;</li>
+    <li>Only with your consent: measure how well our Google ads work (whether they lead to reservations, orders or calls) and show you our ads on Google services.</li>
   </ul>
 
-  <h2>4. Cookies and similar technologies</h2>
-  <p>Our website only uses your browser's <strong>local storage (localStorage)</strong> to remember your language preference (key <code>bochica-lang</code>). We do not use any advertising cookies, analytics trackers (e.g. Google Analytics, Facebook Pixel) or remarketing tools.</p>
-  <p>Some third-party services embedded in our website (see section 5) may set their own cookies or collect your IP address, subject to their respective privacy policies.</p>
+  <h2 id="temoins-en">4. Cookies and your consent</h2>
+  <p>On your first visit, a banner asks for your choice. <strong>None of the following is turned on by default</strong>, except the essential items. Rejecting is as easy as accepting, and rejecting does not prevent you from using the site.</p>
+  <ul>
+    <li><strong>Essential (always on):</strong> your browser's local storage remembers your language (<code>bochica-lang</code>) and your cookie choice (<code>bochica-consent</code>, kept 12 months, after which we ask again). This data never leaves your device.</li>
+    <li><strong>Ad measurement — Google Ads (off by default):</strong> if you accept, the Google Ads tag is loaded. It sets cookies (for example <code>_gcl_au</code> on our site, about 90 days, and Google cookies on Google's own domains, up to about 13 months) to measure whether our ads lead to a reservation, an order or a call, and to show you our ads on Google services.</li>
+    <li><strong>External content — Google Maps and Instagram (off by default):</strong> the interactive map and our Instagram feed are only displayed with your consent, or if you click “Show”. These services may then set their own cookies.</li>
+  </ul>
+  <p>We do not use Google Analytics or the Facebook (Meta) pixel.</p>
+  <p>You can <strong>change or withdraw your consent at any time</strong> with the “Manage cookies” link at the bottom of every page, or here:</p>
+  <p><button type="button" class="consent-btn" data-consent-open>Manage cookies</button></p>
 
   <h2>5. Embedded third-party services</h2>
-  <p>Our website uses the following third-party services to provide certain features. Each one applies its own privacy policy:</p>
+  <p>Our website uses the following third-party services. Each one applies its own privacy policy:</p>
   <ul>
-    <li><strong>Vercel</strong> (hosting) — may collect anonymized technical data (server logs). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel policy</a></li>
+    <li><strong>Vercel</strong> (hosting) — may collect technical data (server logs, including IP address). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel policy</a></li>
     <li><strong>Formspree</strong> (contact form delivery) — processes the messages you send us through the form. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Formspree policy</a></li>
-    <li><strong>LibroReserve</strong> (online reservation system) — collects your reservation details when you book a table. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">LibroReserve policy</a></li>
-    <li><strong>Order Online AI</strong> (online ordering) — collects your order and payment details. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Order Online AI policy</a></li>
-    <li><strong>Google Maps</strong> (interactive map and directions) — may collect your IP address and use cookies. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google policy</a></li>
-    <li><strong>Google Fonts</strong> (Bebas Neue, Inter, JetBrains Mono typefaces) — may collect your IP address when fonts are loaded. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google policy</a></li>
-    <li><strong>Behold.so</strong> (Instagram carousel in the "Follow us" section) — displays our recent Instagram posts. May collect your IP address and use Meta/Instagram cookies. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Behold policy</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Instagram policy</a></li>
+    <li><strong>LibroReserve</strong> (online reservations, on its own site) — collects your reservation details. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">LibroReserve policy</a></li>
+    <li><strong>Order Online AI</strong> (online ordering, on its own site) — collects your order and payment details. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Order Online AI policy</a></li>
+    <li><strong>Google Ads</strong> (ad measurement) — <em>only with your consent</em>. See section 4. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google policy</a> · <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">How Google uses advertising cookies</a></li>
+    <li><strong>Google Maps</strong> (interactive map) — <em>only with your consent</em>; may collect your IP address and use cookies. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google policy</a></li>
+    <li><strong>Google Fonts</strong> (typefaces) — may receive your IP address when fonts are loaded; sets no cookies. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google policy</a></li>
+    <li><strong>Behold.so</strong> (Instagram feed in the “Follow us” section) — <em>only with your consent</em>; may collect your IP address and use cookies. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Behold policy</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Instagram policy</a></li>
   </ul>
 
   <h2>6. Sharing your information</h2>
   <p>We do not sell, rent or trade your personal information. We only share it with:</p>
   <ul>
-    <li>The essential technical service providers listed in section 5, bound by contract or by their own policy to respect confidentiality;</li>
+    <li>The technical service providers listed in section 5, for the purposes described in this policy;</li>
+    <li>Google, for ad measurement, <strong>only if you have consented</strong>;</li>
     <li>The competent authorities when required by law.</li>
   </ul>
 
-  <h2>7. Retention and security</h2>
+  <h2>7. Communication outside Québec</h2>
+  <p>Some of our service providers (including Google, Vercel and Formspree) process information outside Québec, mainly in the United States. Before communicating information to them, we assessed that it receives adequate protection there, considering its sensitivity, the purpose, the safeguards these companies provide and the applicable legal framework, as required by Law 25.</p>
+
+  <h2>8. Retention and security</h2>
   <p>Your information is kept for as long as necessary for the purpose for which it was collected, and in accordance with our legal obligations. Contact form messages are kept for a maximum of <strong>24 months</strong> after the last exchange.</p>
   <p>We take reasonable technical and organizational measures to protect your data: <strong>HTTPS</strong> connection (TLS encryption), security headers (HSTS, CSP, X-Frame-Options), and restricted access to the business email account.</p>
 
-  <h2>8. Your rights (Law 25)</h2>
+  <h2>9. Your rights (Law 25)</h2>
   <p>You have the right to:</p>
   <ul>
     <li><strong>Access</strong> the personal information we hold about you;</li>
@@ -204,10 +232,10 @@
   </ul>
   <p>To exercise these rights, write to us at <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a>.</p>
 
-  <h2>9. Person in charge of personal information protection</h2>
+  <h2>10. Person in charge of personal information protection</h2>
   <p>In accordance with Law 25, the designated person in charge is the management of Bochica Café Bistro, reachable by email at <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a> or by phone at <a href="tel:+13673308220">367-330-8220</a>.</p>
 
-  <h2>10. Changes</h2>
+  <h2>11. Changes</h2>
   <p>We may update this policy to reflect legal or operational changes. The date of the last update appears at the top of this page. We encourage you to review it regularly.</p>
   <p><em>In case of discrepancy, the French version of this policy prevails.</em></p>
 
@@ -218,7 +246,7 @@
 <div class="privacy-wrap" lang="es" data-lang-block="es" hidden>
 
   <h1>Política de privacidad</h1>
-  <span class="privacy-date">Última actualización: 27 de septiembre de 2026</span>
+  <span class="privacy-date">Última actualización: 2 de octubre de 2026</span>
 
   <p>En <strong>Bochica Café Bistro</strong> (en adelante «Bochica», «nosotros»), damos gran importancia a la protección de su información personal. Esta política describe cómo recopilamos, utilizamos, conservamos y protegemos su información cuando utiliza nuestro sitio web <a href="https://bochicacafebistro.ca">bochicacafebistro.ca</a>.</p>
 
@@ -236,7 +264,8 @@
     <li><strong>Formulario de contacto:</strong> su nombre, su correo electrónico, su número de teléfono (opcional), el asunto y el contenido de su mensaje.</li>
     <li><strong>Reservas en línea:</strong> gestionadas directamente por nuestro socio <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">LibroReserve</a>, sujeto a su propia política de privacidad.</li>
     <li><strong>Pedidos en línea:</strong> gestionados por nuestro socio <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Order Online AI</a>, sujeto a su propia política.</li>
-    <li><strong>Datos de navegación:</strong> su preferencia de idioma se guarda localmente en su navegador (localStorage) para mejorar su experiencia.</li>
+    <li><strong>Datos de navegación:</strong> su preferencia de idioma y su elección de cookies se guardan localmente en su navegador (localStorage).</li>
+    <li><strong>Medición publicitaria (solo con su consentimiento):</strong> identificadores de cookies de Google, la página de la que viene (p. ej.: un anuncio de Google), sus clics en «Reservar», «Ordenar» o en nuestro número de teléfono, su dirección IP y el tipo de dispositivo y navegador.</li>
   </ul>
 
   <h2>3. Finalidades de la recopilación</h2>
@@ -245,37 +274,50 @@
     <li>Responder a sus solicitudes y preguntas;</li>
     <li>Procesar sus reservas y pedidos;</li>
     <li>Mantenerle informado, con su consentimiento, de eventos u ofertas especiales;</li>
-    <li>Garantizar el buen funcionamiento y la seguridad de nuestro sitio.</li>
+    <li>Garantizar el buen funcionamiento y la seguridad de nuestro sitio;</li>
+    <li>Solo con su consentimiento: medir la eficacia de nuestros anuncios de Google (saber si generan reservas, pedidos o llamadas) y mostrarle nuestros anuncios en los servicios de Google.</li>
   </ul>
 
-  <h2>4. Cookies y tecnologías similares</h2>
-  <p>Nuestro sitio utiliza únicamente el <strong>almacenamiento local (localStorage)</strong> de su navegador para recordar su preferencia de idioma (clave <code>bochica-lang</code>). No utilizamos cookies publicitarias, rastreadores de análisis (p. ej. Google Analytics, Facebook Pixel) ni herramientas de remarketing.</p>
-  <p>Algunos servicios de terceros integrados en nuestro sitio (ver sección 5) pueden instalar sus propias cookies o recopilar su dirección IP, sujetos a sus respectivas políticas de privacidad.</p>
+  <h2 id="temoins-es">4. Cookies y su consentimiento</h2>
+  <p>En su primera visita, un aviso le pide su elección. <strong>Nada de lo siguiente está activado por defecto</strong>, salvo los elementos esenciales. Rechazar es tan fácil como aceptar, y rechazar no le impide usar el sitio.</p>
+  <ul>
+    <li><strong>Esenciales (siempre activas):</strong> el almacenamiento local de su navegador recuerda su idioma (<code>bochica-lang</code>) y su elección de cookies (<code>bochica-consent</code>, conservada 12 meses; después le volvemos a preguntar). Estos datos no salen de su dispositivo.</li>
+    <li><strong>Medición publicitaria — Google Ads (desactivada por defecto):</strong> si la acepta, se carga la etiqueta de Google Ads. Instala cookies (por ejemplo <code>_gcl_au</code> en nuestro sitio, unos 90 días, y cookies de Google en sus propios dominios, hasta unos 13 meses) para medir si nuestros anuncios generan una reserva, un pedido o una llamada, y para mostrarle nuestros anuncios en los servicios de Google.</li>
+    <li><strong>Contenido externo — Google Maps e Instagram (desactivado por defecto):</strong> el mapa interactivo y nuestro feed de Instagram solo se muestran con su consentimiento, o si hace clic en «Mostrar». Estos servicios pueden entonces instalar sus propias cookies.</li>
+  </ul>
+  <p>No usamos Google Analytics ni el píxel de Facebook (Meta).</p>
+  <p>Puede <strong>modificar o retirar su consentimiento en cualquier momento</strong> con el enlace «Gestionar cookies» al pie de cada página, o aquí:</p>
+  <p><button type="button" class="consent-btn" data-consent-open>Gestionar cookies</button></p>
 
   <h2>5. Servicios de terceros integrados</h2>
-  <p>Nuestro sitio utiliza los siguientes servicios de terceros para ofrecer ciertas funciones. Cada uno aplica su propia política de privacidad:</p>
+  <p>Nuestro sitio utiliza los siguientes servicios de terceros. Cada uno aplica su propia política de privacidad:</p>
   <ul>
-    <li><strong>Vercel</strong> (alojamiento) — puede recopilar datos técnicos anonimizados (registros del servidor). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Política de Vercel</a></li>
+    <li><strong>Vercel</strong> (alojamiento) — puede recopilar datos técnicos (registros del servidor, incluida la dirección IP). <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Política de Vercel</a></li>
     <li><strong>Formspree</strong> (recepción del formulario de contacto) — procesa los mensajes que nos envía a través del formulario. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Política de Formspree</a></li>
-    <li><strong>LibroReserve</strong> (sistema de reservas en línea) — recopila los datos de su reserva cuando reserva una mesa. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">Política de LibroReserve</a></li>
-    <li><strong>Order Online AI</strong> (pedidos en línea) — recopila los datos de su pedido y pago. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Política de Order Online AI</a></li>
-    <li><strong>Google Maps</strong> (mapa interactivo e indicaciones) — puede recopilar su dirección IP y utilizar cookies. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Google</a></li>
-    <li><strong>Google Fonts</strong> (tipografías Bebas Neue, Inter, JetBrains Mono) — puede recopilar su dirección IP al cargar las fuentes. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Google</a></li>
-    <li><strong>Behold.so</strong> (carrusel de Instagram en la sección «Síguenos») — muestra nuestras publicaciones recientes de Instagram. Puede recopilar su dirección IP y utilizar cookies de Meta/Instagram. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Política de Behold</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Política de Instagram</a></li>
+    <li><strong>LibroReserve</strong> (reservas en línea, en su propio sitio) — recopila los datos de su reserva. <a href="https://libroreserve.com" target="_blank" rel="noopener noreferrer">Política de LibroReserve</a></li>
+    <li><strong>Order Online AI</strong> (pedidos en línea, en su propio sitio) — recopila los datos de su pedido y pago. <a href="https://order-online.ai" target="_blank" rel="noopener noreferrer">Política de Order Online AI</a></li>
+    <li><strong>Google Ads</strong> (medición publicitaria) — <em>solo con su consentimiento</em>. Vea la sección 4. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Google</a> · <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Cómo usa Google las cookies publicitarias</a></li>
+    <li><strong>Google Maps</strong> (mapa interactivo) — <em>solo con su consentimiento</em>; puede recopilar su dirección IP y usar cookies. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Google</a></li>
+    <li><strong>Google Fonts</strong> (tipografías) — puede recibir su dirección IP al cargar las fuentes; no instala cookies. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Google</a></li>
+    <li><strong>Behold.so</strong> (feed de Instagram en la sección «Síguenos») — <em>solo con su consentimiento</em>; puede recopilar su dirección IP y usar cookies. <a href="https://behold.so/privacy" target="_blank" rel="noopener noreferrer">Política de Behold</a> · <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">Política de Instagram</a></li>
   </ul>
 
   <h2>6. Compartir su información</h2>
   <p>No vendemos, alquilamos ni intercambiamos su información personal. Solo la compartimos con:</p>
   <ul>
-    <li>Los proveedores técnicos esenciales mencionados en la sección 5, obligados por contrato o por su propia política a respetar la confidencialidad;</li>
+    <li>Los proveedores técnicos mencionados en la sección 5, para los fines descritos en esta política;</li>
+    <li>Google, para la medición publicitaria, <strong>solo si usted lo ha consentido</strong>;</li>
     <li>Las autoridades competentes cuando la ley lo exija.</li>
   </ul>
 
-  <h2>7. Conservación y seguridad</h2>
+  <h2>7. Comunicación fuera de Quebec</h2>
+  <p>Algunos de nuestros proveedores (en particular Google, Vercel y Formspree) tratan información fuera de Quebec, principalmente en los Estados Unidos. Antes de comunicarles información, evaluamos que allí recibe una protección adecuada, teniendo en cuenta su sensibilidad, la finalidad, las medidas de protección de estas empresas y el marco jurídico aplicable, como lo exige la Ley 25.</p>
+
+  <h2>8. Conservación y seguridad</h2>
   <p>Su información se conserva durante el tiempo necesario para la finalidad para la que fue recopilada, y de acuerdo con nuestras obligaciones legales. Los mensajes del formulario de contacto se conservan un máximo de <strong>24 meses</strong> después del último intercambio.</p>
   <p>Tomamos medidas técnicas y organizativas razonables para proteger sus datos: conexión <strong>HTTPS</strong> (cifrado TLS), encabezados de seguridad (HSTS, CSP, X-Frame-Options) y acceso restringido al correo profesional.</p>
 
-  <h2>8. Sus derechos (Ley 25)</h2>
+  <h2>9. Sus derechos (Ley 25)</h2>
   <p>Usted tiene derecho a:</p>
   <ul>
     <li><strong>Acceder</strong> a la información personal que tenemos sobre usted;</li>
@@ -286,10 +328,10 @@
   </ul>
   <p>Para ejercer estos derechos, escríbanos a <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a>.</p>
 
-  <h2>9. Responsable de la protección de la información personal</h2>
+  <h2>10. Responsable de la protección de la información personal</h2>
   <p>De acuerdo con la Ley 25, el responsable designado es la dirección de Bochica Café Bistro, a quien puede contactar por correo electrónico en <a href="mailto:bochicacafebistro@gmail.com">bochicacafebistro@gmail.com</a> o por teléfono al <a href="tel:+13673308220">367-330-8220</a>.</p>
 
-  <h2>10. Modificaciones</h2>
+  <h2>11. Modificaciones</h2>
   <p>Podemos modificar esta política para reflejar cambios legales u operativos. La fecha de la última actualización aparece en la parte superior de esta página. Le invitamos a consultarla regularmente.</p>
   <p><em>En caso de discrepancia, prevalece la versión en francés de esta política.</em></p>
 
@@ -302,6 +344,7 @@
 <footer>
   <div class="footer-bottom">
     <div class="footer-copy">© <span id="copyright-year">2026</span> Bochica — <span data-fr="Restaurant colombien" data-en="Colombian restaurant" data-es="Restaurante colombiano">Restaurant colombien</span> · 430 Rue Saint-Vallier Ouest, Québec</div>
+    <div class="footer-copy"><a href="#temoins" data-consent-open data-fr="Gérer les témoins" data-en="Manage cookies" data-es="Gestionar cookies">Gérer les témoins</a></div>
     <div class="footer-bar"><div></div><div></div><div></div></div>
   </div>
 </footer>
@@ -337,6 +380,7 @@
     document.documentElement.lang = lang === 'es' ? 'es' : lang === 'en' ? 'en-CA' : 'fr-CA';
     document.title = PRIVACY_TITLES[lang];
     try { localStorage.setItem('bochica-lang', lang); } catch (e) {}
+    if (window.BochicaConsent) window.BochicaConsent.relabel();
   }
   (function () {
     var saved = null;
@@ -344,6 +388,7 @@
     if (saved && saved !== 'fr') setLang(saved);
   })();
 </script>
+<script src="/js/consent.js?v=20261002a"></script>
 
 </body>
 </html>

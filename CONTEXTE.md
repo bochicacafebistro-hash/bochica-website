@@ -1,6 +1,8 @@
 # 📋 CONTEXTE — Site Web Bochica
 
-> 🆕 **1er octobre 2026 — SEO** : nom officiel « Bochica Restaurant Colombien », code postal **G1K 1K8**, pages **/en/** et **/es/** générées par `tools/build_lang.py`, FAQ visible. Voir `AUDIT_SEO_2026-10.md` et le CHANGELOG.
+> 🆕 **5 octobre 2026 — Loi 25 + Google Ads** : bannière de consentement (`js/consent.js`), Google Ads (AW-16766092846) chargé **seulement après consentement**, carte Google et Instagram bloqués jusqu'au consentement, politique de confidentialité FR/EN/ES mise à jour, CSP élargie. Voir le CHANGELOG.
+>
+> **1er octobre 2026 — SEO** : nom officiel « Bochica Restaurant Colombien », code postal **G1K 1K8**, pages **/en/** et **/es/** générées par `tools/build_lang.py`, FAQ visible. Voir `AUDIT_SEO_2026-10.md` et le CHANGELOG.
 >
 > ⚠️ **Mise à jour majeure précédente : 26 avril 2026 (soir)** — gros audit + fixes : `vercel.json` créé avec headers de sécurité, sitemap.xml corrigé (16 `.jpg`→`.png` + sections actuelles), color-scheme aligné, modale plat avec `role=dialog`, skip link, focus-visible global, contrastes WCAG, section "Suivez-nous" avec widget Behold, 15 photos de plats wirées + recadrées, badges régime en pills colorés sous le nom du plat.
 > Voir `AUDIT_DESIGN.md` pour l'ancien rapport d'audit et `CHANGELOG` en fin de document pour l'historique des changements.
@@ -326,6 +328,16 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 5 octobre 2026 — Loi 25 : témoins et consentement + mesure Google Ads
+- **`js/consent.js`** (nouveau) : bannière « Tout refuser / Personnaliser / Tout accepter » (FR/EN/ES), 3 catégories : Essentiels (toujours), Mesure publicitaire Google Ads, Contenus externes (Google Maps + Instagram/Behold). Choix gardé 12 mois (clé `bochica-consent`), lien « Gérer les témoins » (`data-consent-open`) dans le pied de page.
+- **Google Ads** : balise `gtag.js` chargée SEULEMENT après consentement, Consent Mode v2 (analytics toujours refusé). Conversions envoyées au clic : `reserve` (liens LibroReserve), `order` (liens order-online.ai), `call` (liens `tel:`). Réglages en haut de `consent.js` (`CONFIG`) : ID `AW-16766092846`, étiquettes « Clic Réserver (Libro) » et « Clic Commander en ligne » remplies ; **étiquette `call` encore vide** (action « Clic telephone (site Web) » créée dans Google Ads, ctId 7822694322 — copier son « Conversion label » depuis Objectifs → Conversions → l'action → Gérer → Utiliser Google Tag Manager).
+- **Carte Google** : `<iframe data-consent-src=…>` (plus de `src` direct) ; **Behold** : script retiré du `<head>`, chargé par `consent.js`. Espace réservé avec « Afficher (cette fois-ci) » / « Toujours afficher ».
+- **`privacy.html`** : sections 4 (témoins et consentement, `id="temoins"`), 5 (services tiers, avec mention « seulement avec votre consentement »), 6 (partage), 7 nouvelle (communication hors Québec) ; renumérotation 8-11 ; FR/EN/ES.
+- **`vercel.json`** : CSP — ajout de googletagmanager, googleadservices, doubleclick, pagead2, google.com/.ca.
+- **`css/style.css`** : styles `.consent-*` (bannière, panneau, espaces réservés).
+- EFVP (évaluation des facteurs relatifs à la vie privée) rédigée à part (document interne, non publié).
+- ⚠️ Après toute modification de `index.html` : relancer `python3 tools/build_lang.py` (EN/ES).
 
 ### 1er octobre 2026 — SEO : nom officiel, code postal, pages EN/ES, FAQ visible (voir `AUDIT_SEO_2026-10.md`)
 - **Nom officiel** « Bochica Restaurant Colombien » : `<title>`, `og:site_name`, `author`, JSON-LD `name` (anciens noms en `alternateName`), titres de `privacy.html`
