@@ -1,5 +1,7 @@
 # 📋 CONTEXTE — Site Web Bochica
 
+> 🆕 **12 octobre 2026 — Menu bouffe refait d'après le PDF officiel** (`Menu-Nourriture.pdf`, oct. 2026) : onglet **Bols supprimé**, Bol Medellín et Bol Cali 2.0 déplacés dans Repas, 3 nouveaux plats (Bandeja paisa, Mojarra frita, Chuleta valluna). Breuvages, cocktails, bières et desserts : pas encore faits. Voir le CHANGELOG.
+>
 > 🆕 **5 octobre 2026 — Loi 25 + Google Ads** : bannière de consentement (`js/consent.js`), Google Ads (AW-16766092846) chargé **seulement après consentement**, carte Google et Instagram bloqués jusqu'au consentement, politique de confidentialité FR/EN/ES mise à jour, CSP élargie. Voir le CHANGELOG.
 >
 > **1er octobre 2026 — SEO** : nom officiel « Bochica Restaurant Colombien », code postal **G1K 1K8**, pages **/en/** et **/es/** générées par `tools/build_lang.py`, FAQ visible. Voir `AUDIT_SEO_2026-10.md` et le CHANGELOG.
@@ -174,15 +176,13 @@ Toutes sont englobées dans `<main id="main">`.
 
 > 🔄 **Réordonnancement par rapport à la version précédente** : `Story/About` est maintenant **avant** `Signatures` et `Promos` (auparavant après les avis). L'ordre vise un récit : qui on est → ce qu'on fait → ce qui se passe cette semaine.
 
-## 🍽️ Menu — Structure des onglets
-- **Entrées** — Empanadas, Arepa, Sancochito, Frites, Yuca, Guacamole, Canastica, Patacones, Ailes, Picadita
+## 🍽️ Menu — Structure des onglets (bouffe à jour au 12 oct. 2026 selon le PDF officiel)
+- **Entrées** — Empanada, Soupe du jour, Arepa au fromage, Frites, Yuca frita, Arepa avec chicharrón / chorizo / morcilla (3 cartes), Guacamole (chips de plantain), Canastica, Patacones de la casa, Ailes, Picadita
 - **Arepas farcies** — Végétarienne (14$), Classique (15$), Mixte (17$)
-- **Bols** — Cali (20$), Bogotá (21$), Medellín (21$), Végétarien (19$)
-- **Repas** — Repas enfant, Hot-Dog, Patacon Montanero, Salchipapas, Nachos, Burger, Pollo Asado, Chicharron, Churrasco, Picada, Suprema
-- **Breuvages** — Boissons chaudes · Boissons froides · Jus naturels colombiens
-- **Cocktails** — Mocktails (8$) · Classics (10$) · Signature (12-12.5$) · Cafés alcoolisés
-- **Bières** — ALPHA + Heineken · Vins & Mousseux · Spiritueux
-- **Desserts** — Gelatina, Flan Maracuyá, Brazo de Reina, Tres Leches, Cheesecake · Pains colombiens
+- ~~**Bols**~~ — onglet supprimé le 12 oct. 2026
+- **Repas** — Repas enfant, Hot-dog, Nachos, Patacón montañero, Salchipapas, Burger, Bol Medellín (21$, végé 19$), Bol Cali 2.0 (21$), Pollo asado, Bandeja paisa, Mojarra frita (ven.–dim.), Chuleta valluna, Churrasco, Picada, Suprema
+- **Extras** (dans la modale des arepas et repas) — Patacona (2) 2 · Arepa/Riz 3 · Haricots 3 · Guacamole 3 · Yuca (3) 4 · Chorizo 4 · Chicharrón 4 · Morcilla 4,25
+- **Breuvages / Cocktails / Bières / Desserts** — à valider contre le PDF (prochaine étape)
 
 ## 🌐 Multilingue (depuis le 1er oct. 2026 : une adresse par langue)
 - **3 pages** : `/` (`index.html`, FR — LA SOURCE), `/en/` (`en/index.html`), `/es/` (`es/index.html`)
@@ -328,6 +328,20 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 12 octobre 2026 — Menu bouffe mis à jour d'après le PDF officiel
+- **Onglet Bols supprimé** (bouton + section). Bol Medellín (21 $, version végé 19 $) et **Bol Cali 2.0** (21 $, avec chorizo) sont maintenant dans **Repas**. Bol Bogotá et « Option végétarienne » retirés
+- **Nouveaux plats (Repas)** : Bandeja paisa 28 $, Mojarra frita 28 $ (ven.–dim.), Chuleta valluna 28 $ — sans photo pour l'instant (logo par défaut)
+- **Prix changés** : Nachos 22 → 21 $, Pollo asado 22 → 24 $, Cali 20 → 21 $
+- **Entrées** : les 3 cartes « Arepa avec chicharrón / chorizo / morcilla » restent séparées (9 $ chacune, choix du propriétaire) ; Guacamole « avec chips de plantain » ; Ailes « 6 morceaux · 12 pour 18 $ » ; ordre du PDF
+- **Descriptions** alignées sur le PDF partout (sauce coriandre maison ou guacamole +1 $, sauces du hot-dog/salchipapas/burger, churrasco chimichurri ou coriandre, etc.). Repas enfant : « jusqu'à 12 ans » + « Le dimanche : seulement 5 $ »
+- **Extras de la modale** : Arepa/Riz 2,50 → 3 $, Haricots (plus de lentilles) 2,50 → 3 $, ajout Yuca (3) 4 $
+- **main.js** : `tab-bols` retiré des listes ; `VEG_OPTION_DISHES = ['bol medellín']` (badge Option végé hors de l'onglet Arepas) ; `chuleta` (farinée) et `soupe` (soupe du jour) ajoutés à `NO_GF_KEYWORDS` → pas de mention sans gluten ; Mojarra frita confirmée **sans gluten** (pas farinée)
+- **Ailleurs** : hero — texte « Arepas, empanadas, bandeja paisa… » et mosaïque Bol Bogotá → Churrasco ; promo vendredi « à l'achat de tout repas » (plus « ou bol ») ; FAQ (`faq_data.py`) sans les bols ; JSON-LD Menu (Entrées, Arepas, Repas) refait ; sitemap (bol-bogota retiré, lastmod 2026-10-12)
+- Cache-busting : `main.js?v=20261012b`. EN/ES régénérés (`build_lang.py`)
+- Testé (Chromium) : FR ordinateur, EN/ES mobile 390 px, modale, aucune erreur JS, aucun débordement
+- ⚠️ `images/bol-bogota.webp` n'est plus utilisé (laisser en place ou déplacer dans `_originaux/`)
+- ⚠️ La promo du **dimanche** (repas enfant à 5 $) est au PDF mais pas encore dans la section Promos (il faudrait une 4e carte + image)
 
 ### 5 octobre 2026 — Loi 25 : témoins et consentement + mesure Google Ads
 - **`js/consent.js`** (nouveau) : bannière « Tout refuser / Personnaliser / Tout accepter » (FR/EN/ES), 3 catégories : Essentiels (toujours), Mesure publicitaire Google Ads, Contenus externes (Google Maps + Instagram/Behold). Choix gardé 12 mois (clé `bochica-consent`), lien « Gérer les témoins » (`data-consent-open`) dans le pied de page.

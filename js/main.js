@@ -205,19 +205,22 @@ function setMenuTab(tab, el) {
 // ── Fiches de plats : photos + badges + modale ────────
 // Sections qui ont photo + modale clickable (toutes sauf les extras, qui ne sont plus dans le menu)
 const DISH_SECTIONS_WITH_MODAL = [
-  'tab-entrees', 'tab-arepas', 'tab-bols', 'tab-repas',
+  'tab-entrees', 'tab-arepas', 'tab-repas',
   'tab-breuvages', 'tab-cocktails', 'tab-bieres', 'tab-desserts'
 ];
 // Sections dont la modale affiche la liste des extras disponibles
-const EXTRAS_SECTIONS = ['tab-arepas', 'tab-bols', 'tab-repas'];
+const EXTRAS_SECTIONS = ['tab-arepas', 'tab-repas'];
 // Sections qui reçoivent la mention Sans gluten
-const GF_SECTIONS = ['tab-entrees', 'tab-arepas', 'tab-bols', 'tab-repas'];
+const GF_SECTIONS = ['tab-entrees', 'tab-arepas', 'tab-repas'];
 // Plats qui contiennent du gluten (pas de mention)
-const NO_GF_KEYWORDS = ['hot-dog', 'hot dog', 'hotdog', 'burger'];
+// chuleta valluna = farinée ; soupe du jour = pas de mention (confirmé 12 oct. 2026)
+const NO_GF_KEYWORDS = ['hot-dog', 'hot dog', 'hotdog', 'burger', 'chuleta', 'soupe'];
 // Plats avec option sans gluten offerte
 const OPTIONAL_GF_KEYWORDS = ['picada suprema', 'salchipapas', 'suprema'];
 // Sections qui reçoivent la mention Option végé / Végé
-const VEG_SECTIONS = ['tab-arepas', 'tab-bols'];
+const VEG_SECTIONS = ['tab-arepas'];
+// Plats hors de ces sections qui ont une version végé (badge Option végé)
+const VEG_OPTION_DISHES = ['bol medellín'];
 // Plats déjà 100 % végétariens (mention Végé au lieu d'Option végé)
 const FULL_VEG_KEYWORDS = ['végétarien', 'vegetarien', 'vegetarian', 'vegetariano'];
 
@@ -277,7 +280,7 @@ function initDishCards() {
         const gf = computeGFBadge(rawName);
         if (gf) badges.push(gf);
       }
-      if (addVeg) {
+      if (addVeg || VEG_OPTION_DISHES.some(k => rawName.includes(k))) {
         const veg = computeVegBadge(rawName);
         if (veg) badges.push(veg);
       }
@@ -372,7 +375,7 @@ function computeVegBadge(name) {
       es: 'Vegetariano'
     };
   }
-  // Option végé disponible pour tous les autres bols et arepas
+  // Option végé disponible pour les autres arepas farcies et le Bol Medellín
   return {
     cls: 'badge-veg-opt',
     iconSvg: ICON_VEG,
@@ -403,7 +406,7 @@ function openDish(card) {
   const mPh = modal.querySelector('.dish-modal-photo-ph');
   const mExtras = document.getElementById('dish-modal-extras');
 
-  // Afficher la section Extras seulement pour les arepas, bols et repas
+  // Afficher la section Extras seulement pour les arepas et les repas
   if (mExtras) {
     const parentSection = card.closest('.menu-section');
     const showExtras = parentSection && EXTRAS_SECTIONS.includes(parentSection.id);

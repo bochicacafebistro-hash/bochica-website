@@ -36,9 +36,9 @@ FAQ = [
             "es": "¿Qué tipo de comida sirve Bochica?",
         },
         "a": {
-            "fr": "Une cuisine colombienne et latino authentique : arepas, empanadas, bandeja paisa (notre Bol Medellín), patacones, picadas à partager, churrasco, pollo asado, desserts colombiens, cocktails latinos, aguardiente et notre bière maison Club Bochica.",
-            "en": "Authentic Colombian and Latin American food: arepas, empanadas, bandeja paisa (our Medellín bowl), patacones, sharing platters (picadas), churrasco, pollo asado, Colombian desserts, Latin cocktails, aguardiente and our house beer, Club Bochica.",
-            "es": "Auténtica comida colombiana y latina: arepas, empanadas, bandeja paisa (nuestro bol Medellín), patacones, picadas para compartir, churrasco, pollo asado, postres colombianos, cócteles latinos, aguardiente y nuestra cerveza de la casa, Club Bochica.",
+            "fr": "Une cuisine colombienne et latino authentique : arepas, empanadas, bandeja paisa, patacones, picadas à partager, churrasco, pollo asado, mojarra frita (fin de semaine), desserts colombiens, cocktails latinos, aguardiente et notre bière maison Club Bochica.",
+            "en": "Authentic Colombian and Latin American food: arepas, empanadas, bandeja paisa, patacones, sharing platters (picadas), churrasco, pollo asado, mojarra frita (weekends), Colombian desserts, Latin cocktails, aguardiente and our house beer, Club Bochica.",
+            "es": "Auténtica comida colombiana y latina: arepas, empanadas, bandeja paisa, patacones, picadas para compartir, churrasco, pollo asado, mojarra frita (fines de semana), postres colombianos, cócteles latinos, aguardiente y nuestra cerveza de la casa, Club Bochica.",
         },
     },
     {
@@ -60,9 +60,9 @@ FAQ = [
             "es": "¿Tienen opciones vegetarianas y sin gluten?",
         },
         "a": {
-            "fr": "Oui. La plupart de nos plats sont sans gluten (arepas de maïs, bols, grillades) et sont identifiés dans le menu. Tous nos bols et nos arepas farcies existent en version végétarienne. Mentionnez vos allergies en commandant.",
-            "en": "Yes. Most of our dishes are gluten-free (corn arepas, bowls, grilled meats) and are marked on the menu. All our bowls and stuffed arepas come in a vegetarian version. Please tell us about any allergies when ordering.",
-            "es": "Sí. La mayoría de nuestros platos son sin gluten (arepas de maíz, boles, parrilla) y están indicados en el menú. Todos nuestros boles y arepas rellenas existen en versión vegetariana. Avísanos de tus alergias al pedir.",
+            "fr": "Oui. La plupart de nos plats sont sans gluten (arepas de maïs, bandeja paisa, grillades) et sont identifiés dans le menu. Nos arepas farcies et le Bol Medellín existent en version végétarienne. Mentionnez vos allergies en commandant.",
+            "en": "Yes. Most of our dishes are gluten-free (corn arepas, bandeja paisa, grilled meats) and are marked on the menu. Our stuffed arepas and the Medellín Bowl come in a vegetarian version. Please tell us about any allergies when ordering.",
+            "es": "Sí. La mayoría de nuestros platos son sin gluten (arepas de maíz, bandeja paisa, parrilla) y están indicados en el menú. Nuestras arepas rellenas y el Bol Medellín existen en versión vegetariana. Avísanos de tus alergias al pedir.",
         },
     },
     {

@@ -65,3 +65,5 @@ images/test
 
 # Aperçus générés par Claude (ne pas versionner)
 Claude outputs/
+
+__pycache__/
