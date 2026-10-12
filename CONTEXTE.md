@@ -314,7 +314,9 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 6. **Mettre à jour `sitemap.xml`** avec la nouvelle URL d'image et `<lastmod>` à jour
 7. **Documenter dans CONTEXTE.md CHANGELOG** quels plats ont été ajoutés/recadrés
 
-**Plats encore manquants (placeholder logo affiché en attendant)** : `yuca-frita`, `suprema`
+**Plats encore manquants (placeholder logo affiché en attendant)** : Mojarra frita, Guacamole
+
+**Rembg fonctionne maintenant** (modèle `isnet-general-use` téléchargeable depuis GitHub) : détourage IA possible même sur fond complexe. Attention aux assiettes blanches sur fond blanc (vérifier le résultat)
 
 ## 🔐 Headers de sécurité (vercel.json)
 Configurés dans `vercel.json` à la racine :
@@ -331,7 +333,7 @@ Configurés dans `vercel.json` à la racine :
 
 ### 12 octobre 2026 — Menu bouffe mis à jour d'après le PDF officiel
 - **Onglet Bols supprimé** (bouton + section). Bol Medellín (21 $, version végé 19 $) et **Bol Cali 2.0** (21 $, avec chorizo) sont maintenant dans **Repas**. Bol Bogotá et « Option végétarienne » retirés
-- **Nouveaux plats (Repas)** : Bandeja paisa 28 $, Mojarra frita 28 $ (ven.–dim.), Chuleta valluna 28 $ — sans photo pour l'instant (logo par défaut)
+- **Nouveaux plats (Repas)** : Bandeja paisa 28 $, Mojarra frita 28 $ (ven.–dim.), Chuleta valluna 28 $ — Mojarra encore sans photo (logo par défaut)
 - **Prix changés** : Nachos 22 → 21 $, Pollo asado 22 → 24 $, Cali 20 → 21 $
 - **Entrées** : les 3 cartes « Arepa avec chicharrón / chorizo / morcilla » restent séparées (9 $ chacune, choix du propriétaire) ; Guacamole « avec chips de plantain » ; Ailes « 6 morceaux · 12 pour 18 $ » ; ordre du PDF
 - **Descriptions** alignées sur le PDF partout (sauce coriandre maison ou guacamole +1 $, sauces du hot-dog/salchipapas/burger, churrasco chimichurri ou coriandre, etc.). Repas enfant : « jusqu'à 12 ans » + « Le dimanche : seulement 5 $ »
@@ -340,7 +342,8 @@ Configurés dans `vercel.json` à la racine :
 - **Ailleurs** : hero — texte « Arepas, empanadas, bandeja paisa… » et mosaïque Bol Bogotá → Churrasco ; promo vendredi « à l'achat de tout repas » (plus « ou bol ») ; FAQ (`faq_data.py`) sans les bols ; JSON-LD Menu (Entrées, Arepas, Repas) refait ; sitemap (bol-bogota retiré, lastmod 2026-10-12)
 - Cache-busting : `main.js?v=20261012b`. EN/ES régénérés (`build_lang.py`)
 - Testé (Chromium) : FR ordinateur, EN/ES mobile 390 px, modale, aucune erreur JS, aucun débordement
-- ⚠️ `images/bol-bogota.webp` n'est plus utilisé (laisser en place ou déplacer dans `_originaux/`)
+- **Photos ajoutées (12 oct.)** : `bandeja-paisa.webp`, `bol-cali-2.webp`, `chuleta-valluna.webp` (800×800, fond crème #F4F1E7, détourage IA rembg/isnet ; assiette de la bandeja reconstruite car blanc sur nappe blanche). Originaux dans `images/_originaux/`
+- ⚠️ `images/bol-bogota.webp` et `images/bol-cali.webp` ne sont plus utilisés (laisser en place ou déplacer dans `_originaux/`)
 - ⚠️ La promo du **dimanche** (repas enfant à 5 $) est au PDF mais pas encore dans la section Promos (il faudrait une 4e carte + image)
 
 ### 5 octobre 2026 — Loi 25 : témoins et consentement + mesure Google Ads
