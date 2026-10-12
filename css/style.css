@@ -768,43 +768,51 @@ behold-widget {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HISTOIRE (2 colonnes : photo gauche / texte crème droite)
+   HISTOIRE — bandeau foncé « manifeste » (12 oct. 2026)
+   Gauche : titre + phrase clé en jaune · Droite : texte + 3 chiffres + bouton
    ═══════════════════════════════════════════════════════════════ */
 
 .story {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
-  min-height: 480px;
-  padding: 0;
+  position: relative;
+  padding: 100px var(--pad);
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(247,179,44,.18), transparent 55%),
+    #1a1410;
+  color: var(--cream);
 }
-
-.story-photo { position: relative; min-height: 380px; }
-
-.story-text {
-  background: var(--cream);
-  color: var(--text-on-cream);
-  padding: 80px var(--pad);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Ligne tricolore en bas */
+.story::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent) 0 50%, #2f6db5 50% 75%, #d9472f 75%);
+}
+.story-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: 48px 64px;
+  align-items: start;
 }
 
 .story-eyebrow {
   font-family: var(--font-display);
   font-size: 13px;
   letter-spacing: 0.28em;
-  color: var(--accent-warm);
+  color: var(--accent);
   margin-bottom: 14px;
   text-transform: uppercase;
 }
 
 .story-h2 {
   font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 72px);
-  margin: 0 0 20px;
+  font-size: clamp(40px, 5vw, 72px);
+  margin: 0;
   line-height: 0.95;
   text-transform: uppercase;
-  color: var(--text-on-cream);
+  color: var(--cream);
   font-weight: 400;
 }
 .story-h2 .highlight {
@@ -813,15 +821,64 @@ behold-widget {
   padding: 0 8px;
 }
 
+.story-quote {
+  margin: 28px 0 0;
+  padding-left: 20px;
+  border-left: 4px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 30px);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .story-text p {
   font-size: 16px;
-  color: var(--text-on-cream-2);
+  line-height: 1.65;
+  color: rgba(245,241,232,.8);
   margin: 0 0 16px;
-  max-width: 540px;
   font-family: var(--font-body);
 }
 
-.story-text .btn-primary { margin-top: 12px; align-self: start; }
+.story-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 26px 0 30px;
+}
+.story-stat {
+  border: 1px solid rgba(245,241,232,.16);
+  border-radius: 12px;
+  padding: 16px;
+}
+.story-stat b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--accent);
+}
+.story-stat b small { font-size: 24px; margin-left: 2px; }
+.story-stat span {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,241,232,.7);
+}
+
+.story-text .btn-primary { display: inline-block; }
+
+@media (max-width: 760px) {
+  .story { padding: 64px var(--pad) 70px; }
+  .story-stat { padding: 12px 10px; }
+  .story-stat b { font-size: 34px; }
+  .story-stat b small { font-size: 18px; }
+  .story-stat span { font-size: 9px; letter-spacing: 0.08em; }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    ÉVÉNEMENTS

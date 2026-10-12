@@ -417,7 +417,7 @@
   <link rel="alternate" hreflang="es" href="https://bochicacafebistro.ca/es/"/>
   <link rel="alternate" hreflang="x-default" href="https://bochicacafebistro.ca/"/>
 
-  <link rel="stylesheet" href="/css/style.css?v=20261012d"/>
+  <link rel="stylesheet" href="/css/style.css?v=20261012e"/>
 
   <!-- Langue : chaque langue a sa propre adresse (/, /en/, /es/).
        Sur la page FR seulement : 1) un visiteur qui avait choisi EN/ES est renvoyé vers sa version ;
@@ -1051,25 +1051,32 @@
 
 <!-- STORY / NOTRE HISTOIRE — 2 colonnes avec highlight jaune -->
 <section class="story" id="about">
-  <div class="story-photo">
-    <div class="ph-ambient" data-label="intérieur"></div>
-  </div>
-  <div class="story-text">
-    <div class="story-eyebrow" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</div>
-    <h2 class="story-h2"
+  <!-- NOTRE HISTOIRE — bandeau foncé « manifeste » (12 oct. 2026, remplace l'ancienne colonne photo vide) -->
+  <div class="story-inner">
+    <div class="story-left">
+      <div class="story-eyebrow" data-fr="Notre histoire" data-en="Our story" data-es="Nuestra historia">Notre histoire</div>
+      <h2 class="story-h2"
       data-fr='Un <span class="highlight">restaurant</span> pas comme les autres.'
       data-en='A <span class="highlight">restaurant</span> unlike any other.'
       data-es='Un <span class="highlight">restaurante</span> único.'>Un <span class="highlight">restaurant</span> pas comme les autres.</h2>
-    <p data-fr="Bochica, c'est avant tout un lieu pour faire découvrir et partager notre culture colombienne — ses saveurs, sa musique, sa chaleur. On veut la vivre avec les gens du quartier Saint-Sauveur et toute la ville de Québec."
+      <blockquote class="story-quote" data-fr="Un petit morceau de Colombie au cœur de Québec. Un endroit où les Colombiens retrouvent leurs saveurs, et où les Québécois en découvrent de nouvelles."
+       data-en="A little piece of Colombia in the heart of Québec. A place where Colombians rediscover their flavors, and where Quebecers discover new ones."
+       data-es="Un pedacito de Colombia en el corazón de Québec. Un lugar donde los colombianos reencuentran sus sabores, y los quebequenses descubren otros nuevos.">Un petit morceau de Colombie au cœur de Québec. Un endroit où les Colombiens retrouvent leurs saveurs, et où les Québécois en découvrent de nouvelles.</blockquote>
+    </div>
+    <div class="story-text">
+      <p data-fr="Bochica, c'est avant tout un lieu pour faire découvrir et partager notre culture colombienne — ses saveurs, sa musique, sa chaleur. On veut la vivre avec les gens du quartier Saint-Sauveur et toute la ville de Québec."
        data-en="Bochica is above all a place to share and celebrate our Colombian culture — its flavors, its music, its warmth. We want to live it with the people of the Saint-Sauveur neighborhood and all of Québec City."
        data-es="Bochica es ante todo un lugar para compartir y celebrar nuestra cultura colombiana — sus sabores, su música, su calidez. Queremos vivirla con la gente del barrio Saint-Sauveur y toda la ciudad de Québec.">Bochica, c'est avant tout un lieu pour faire découvrir et partager notre culture colombienne — ses saveurs, sa musique, sa chaleur. On veut la vivre avec les gens du quartier Saint-Sauveur et toute la ville de Québec.</p>
-    <p data-fr="Un petit morceau de Colombie au cœur de Québec. Un endroit où les Colombiens retrouvent leurs saveurs, et où les Québécois en découvrent de nouvelles."
-       data-en="A little piece of Colombia in the heart of Québec. A place where Colombians rediscover their flavors, and where Quebecers discover new ones."
-       data-es="Un pedacito de Colombia en el corazón de Québec. Un lugar donde los colombianos reencuentran sus sabores, y los quebequenses descubren otros nuevos.">Un petit morceau de Colombie au cœur de Québec. Un endroit où les Colombiens retrouvent leurs saveurs, et où les Québécois en découvrent de nouvelles.</p>
-    <p data-fr="Notre nom vient de Bochica, figure légendaire du peuple muisca, dans les Andes colombiennes. Chez nous, ça se traduit par une cuisine colombienne et latino généreuse — arepas, empanadas, bandeja paisa, patacones — dont la plupart des plats sont naturellement sans gluten, servie en français, en anglais et en espagnol."
+      <p data-fr="Notre nom vient de Bochica, figure légendaire du peuple muisca, dans les Andes colombiennes. Chez nous, ça se traduit par une cuisine colombienne et latino généreuse — arepas, empanadas, bandeja paisa, patacones — dont la plupart des plats sont naturellement sans gluten, servie en français, en anglais et en espagnol."
        data-en="Our name comes from Bochica, a legendary figure of the Muisca people of the Colombian Andes. Here, that means generous Colombian and Latin food — arepas, empanadas, bandeja paisa, patacones — most of it naturally gluten-free, served in French, English and Spanish."
        data-es="Nuestro nombre viene de Bochica, figura legendaria del pueblo muisca, en los Andes colombianos. Aquí eso se traduce en una cocina colombiana y latina generosa — arepas, empanadas, bandeja paisa, patacones — en su mayoría naturalmente sin gluten, servida en francés, inglés y español.">Notre nom vient de Bochica, figure légendaire du peuple muisca, dans les Andes colombiennes. Chez nous, ça se traduit par une cuisine colombienne et latino généreuse — arepas, empanadas, bandeja paisa, patacones — dont la plupart des plats sont naturellement sans gluten, servie en français, en anglais et en espagnol.</p>
-    <a href="#menu" class="btn-primary" data-fr="Découvrir →" data-en="Discover →" data-es="Descubrir →">Découvrir →</a>
+      <div class="story-stats">
+        <div class="story-stat"><b data-fr="4,7&lt;small&gt;★&lt;/small&gt;" data-en="4.7&lt;small&gt;★&lt;/small&gt;" data-es="4,7&lt;small&gt;★&lt;/small&gt;">4,7<small>★</small></b><span data-fr="sur Google" data-en="on Google" data-es="en Google">sur Google</span></div>
+        <div class="story-stat"><b>3</b><span data-fr="langues de service" data-en="service languages" data-es="idiomas de atención">langues de service</span></div>
+        <div class="story-stat"><b>+30</b><span data-fr="plats colombiens" data-en="Colombian dishes" data-es="platos colombianos">plats colombiens</span></div>
+      </div>
+      <a href="#menu" class="btn-primary" data-fr="Découvrir le menu →" data-en="Discover the menu →" data-es="Descubrir el menú →">Découvrir le menu →</a>
+    </div>
   </div>
 </section>
 

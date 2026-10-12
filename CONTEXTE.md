@@ -331,6 +331,12 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 12 octobre 2026 (e) — « Notre histoire » refaite (option C choisie)
+- L'ancienne colonne photo (placeholder `.ph-ambient` noir, photo `about.jpg` jamais fournie) est supprimée
+- Nouveau bandeau **foncé** (#1a1410 + lueur dorée, ligne tricolore en bas) : à gauche titre + phrase « Un petit morceau de Colombie… » en citation jaune ; à droite 2 paragraphes, **3 chiffres** (4,7 ★ sur Google · 3 langues de service · +30 plats colombiens) et bouton « Découvrir le menu → »
+- ⚠️ La note **4,7** est écrite à la main ici (comme dans la section Avis) : la mettre à jour aux deux endroits
+- CSS : bloc HISTOIRE de `style.css` réécrit (`.story-inner`, `.story-quote`, `.story-stats`). Cache : `style.css?v=20261012e`
+
 ### 12 octobre 2026 (d) — Mosaïque de l'accueil : cases de couleur (option B choisie)
 - Grille 2 × 2 **alignée** (plus de décalage), cases **jaune / bleu #2f6db5 / rouge #d9472f / noir #1a1410**, ombre sous chaque plat, étiquette crème
 - Photos **détourées** (fond transparent) : `images/hero/{chuleta-valluna,bandeja-paisa,empanadas,picada}-detoure.webp` (détourage par remplissage du fond crème, assiettes conservées). Empanadas et picada en pleine case (photos d'origine coupées au bord)
