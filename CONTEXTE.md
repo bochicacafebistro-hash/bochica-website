@@ -331,6 +331,10 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 12 octobre 2026 (g) — Section finale « Venez manger, rester, danser » harmonisée
+- Ancien fond rayé `.ph-ambient` (placeholder « terrasse · soir ») retiré ; même fond que « Notre histoire » : noir chaud #1a1410 + lueur dorée (centrée en haut) + ligne tricolore en bas. Titre en crème (plus d'ombre portée)
+- `.ph-ambient` n'est plus utilisé nulle part (CSS laissé en place). Cache : `style.css?v=20261012f`
+
 ### 12 octobre 2026 (f) — Bloc « Dernières photos » (fil Instagram Behold) retiré
 - `index.html` : bloc `.ig-feed` + `<behold-widget>` supprimés de la section Suivez-nous (les 2 gros boutons Instagram / Facebook restent)
 - `consent.js` : la catégorie « Contenus externes » ne parle plus que de Google Maps (FR/EN/ES). Cache `consent.js?v=20261012a`

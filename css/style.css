@@ -1416,8 +1416,18 @@ behold-widget {
   place-items: center;
   padding: 60px var(--pad);
   text-align: center;
-  background: #1a1410; /* fallback sombre garantit lisibilité du texte blanc même si .ph-ambient ne s'affiche pas */
+  /* Même fond que « Notre histoire » : noir chaud + lueur dorée + ligne tricolore */
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(247,179,44,.20), transparent 60%),
+    #1a1410;
   color: var(--cream);
+}
+.cta-final::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent) 0 50%, #2f6db5 50% 75%, #d9472f 75%);
 }
 
 .cta-final__content { position: relative; z-index: 2; }
@@ -1437,8 +1447,7 @@ behold-widget {
   margin: 0;
   line-height: 0.95;
   text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0 2px 16px rgba(0,0,0,.6);
+  color: var(--cream);
   font-weight: 400;
 }
 .cta-final__h2 .accent { color: var(--accent); }
