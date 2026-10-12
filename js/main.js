@@ -538,6 +538,23 @@ function getQuebecDate() {
   const qStr = now.toLocaleString('en-US', { timeZone: 'America/Toronto' });
   return new Date(qStr);
 }
+// ── Promos : étiquette « Aujourd'hui » sur la promo du jour (heure de Québec) ──
+function initPromoToday() {
+  const day = getQuebecDate().getDay();
+  document.querySelectorAll('.promo-card[data-promo-day]').forEach(card => {
+    if (Number(card.getAttribute('data-promo-day')) !== day) return;
+    card.classList.add('is-today');
+    if (card.querySelector('.promo-card__today')) return;
+    const tag = document.createElement('span');
+    tag.className = 'promo-card__today';
+    tag.setAttribute('data-fr', "Aujourd'hui");
+    tag.setAttribute('data-en', 'Today');
+    tag.setAttribute('data-es', 'Hoy');
+    tag.textContent = "Aujourd'hui";
+    card.prepend(tag);
+  });
+}
+
 function computeStatus() {
   const now = getQuebecDate();
   const day = now.getDay();
@@ -676,6 +693,7 @@ function initContactForm() {
 // ── Init ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initDishCards();
+  initPromoToday();
   restoreLang();
   initLangLinks();
   initLangGate();

@@ -161,7 +161,7 @@ Toutes sont englobées dans `<main id="main">`.
 5. **Menu** (`#menu`, ligne 470) — 8 onglets (Entrées, Arepas, Bols, Repas, Breuvages, Cocktails, Bières, Desserts) + cartes avec photo placeholder (logo Bochica 2026-8 sur fond crème, carrées 140×140 / 110×110 mobile), cliquables → modale
 6. **Story / Notre histoire** (`#about`, ligne 970) — 2 colonnes : image d'ambiance à gauche (placeholder `.ph-ambient`) + texte à droite avec H2 et highlight jaune sur le mot "restaurant"
 7. **Signatures** (`#signatures`, ligne 991) — Saveurs de Colombie : section avec carrousel + flèches, cartes 4:5 avec overlay
-8. **Promos & activités** (`#evenements`, ligne 1054) — H2 *"Promos & activités"* (mot "Promos" en jaune accent) — 3 cartes avec image carrée ~1254×1254 :
+8. **Promos & activités** (`#evenements`) — depuis le 12 oct. 2026 : 4 coupons en texte (mer/jeu/ven/dim) + Spécial fin de semaine (voir CHANGELOG). Ancienne version — 3 cartes avec image carrée ~1254×1254 :
    - MER · Mercredi des empanadas (bœuf, poulet ou lechona) · 2,25 $ toute la journée
    - JEU · Jeudi bières 2 × 1 sur toutes les bières · toute la journée
    - VEN · Vendredi bière Club Bochica à 5 $ à l'achat de tout repas ou bol
@@ -331,6 +331,19 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 12 octobre 2026 (b) — Promos en cartes texte : option A (« le jour en grand ») + talon coupon (option B)
+- Section **Promos & activités** (`#evenements`) : les 3 images `promo-*.webp` sont remplacées par **4 cartes en texte** (FR/EN/ES) + bandeau pointillé « Spécial fin de semaine ». Choix final du propriétaire : design de l'option A, avec le rabais dans un **talon de coupon détachable** (ligne pointillée + encoches) en bas de chaque carte
+  - MER — empanadas **2,25 $** chacune (talon jaune)
+  - JEU — bières **2 pour 1** (talon noir)
+  - VEN — bière Club Bochica **5 $** avec un repas (talon noir)
+  - DIM — repas enfant **5 $** au lieu de 10 $ (talon jaune) — nouvelle promo du PDF
+- Structure : `.promo-card` > `.promo-card__top` (jour, « Tous les… », titre, description) + `.promo-card__coupon` (`--dark` pour le talon noir). Prix en `data-amount` (format auto 2,25 $ / $2.25). Pour changer une promo : modifier la carte dans `index.html` (data-fr/en/es) puis `build_lang.py`
+- `data-promo-day` (0 = dim … 6 = sam) + `initPromoToday()` dans `main.js` : contour jaune + étiquette « Aujourd'hui / Today / Hoy » sur la promo du jour (heure de Québec)
+- CSS : bloc `.promo-*` dans la section ÉVÉNEMENTS de `style.css` (ancien CSS `.event-card*` retiré)
+- Sitemap : 3 images promo retirées. Les fichiers `images/promo-*.webp` ne sont plus utilisés sur le site (gardés pour les réseaux sociaux)
+- Cache-busting : `style.css?v=20261012c` (index + privacy), `main.js?v=20261012d`
+- Testé : mercredi (FR ordinateur), dimanche (EN mobile), jeudi (ES mobile) — aucune erreur, aucun débordement
+
 ### 12 octobre 2026 — Menu bouffe mis à jour d'après le PDF officiel
 - **Onglet Bols supprimé** (bouton + section). Bol Medellín (21 $, version végé 19 $) et **Bol Cali 2.0** (21 $, avec chorizo) sont maintenant dans **Repas**. Bol Bogotá et « Option végétarienne » retirés
 - **Nouveaux plats (Repas)** : Bandeja paisa 28 $, Mojarra frita 28 $ (ven.–dim.), Chuleta valluna 28 $ — Mojarra encore sans photo (logo par défaut)
@@ -344,7 +357,7 @@ Configurés dans `vercel.json` à la racine :
 - Testé (Chromium) : FR ordinateur, EN/ES mobile 390 px, modale, aucune erreur JS, aucun débordement
 - **Photos ajoutées (12 oct.)** : `bandeja-paisa.webp`, `bol-cali-2.webp`, `chuleta-valluna.webp` (800×800, fond crème #F4F1E7, détourage IA rembg/isnet ; assiette de la bandeja reconstruite car blanc sur nappe blanche). Originaux dans `images/_originaux/`
 - ⚠️ `images/bol-bogota.webp` et `images/bol-cali.webp` ne sont plus utilisés (laisser en place ou déplacer dans `_originaux/`)
-- ⚠️ La promo du **dimanche** (repas enfant à 5 $) est au PDF mais pas encore dans la section Promos (il faudrait une 4e carte + image)
+- ✅ Promo du dimanche ajoutée (voir 12 oct. (b))
 
 ### 5 octobre 2026 — Loi 25 : témoins et consentement + mesure Google Ads
 - **`js/consent.js`** (nouveau) : bannière « Tout refuser / Personnaliser / Tout accepter » (FR/EN/ES), 3 catégories : Essentiels (toujours), Mesure publicitaire Google Ads, Contenus externes (Google Maps + Instagram/Behold). Choix gardé 12 mois (clé `bochica-consent`), lien « Gérer les témoins » (`data-consent-open`) dans le pied de page.
