@@ -446,7 +446,7 @@
       } catch (e) {}
     })();
   </script>
-<!-- Behold.so (fil Instagram) et carte Google : chargés par /js/consent.js seulement après consentement (Loi 25). -->
+<!-- Carte Google : chargée par /js/consent.js seulement après consentement (Loi 25). -->
 </head>
 <body>
 <!-- ÉCRAN DE CHOIX DE LANGUE (mobile, première visite) -->
@@ -1074,22 +1074,6 @@
 </span>
 </a>
 </div>
-<!-- Carrousel Instagram — placeholder en attendant intégration widget tiers -->
-<div class="ig-feed reveal">
-<div class="ig-feed__header">
-<span class="ig-feed__label" data-en="LATEST PHOTOS" data-es="ÚLTIMAS FOTOS" data-fr="DERNIÈRES PHOTOS">ÚLTIMAS FOTOS</span>
-<a class="ig-feed__view-all" data-en="View all on Instagram →" data-es="Ver todo en Instagram →" data-fr="Voir tout sur Instagram →" href="https://www.instagram.com/bochica_restaurantcol/" rel="noopener noreferrer" target="_blank">Ver todo en Instagram →</a>
-</div>
-<!--
-      🔌 FEED INSTAGRAM EN TEMPS RÉEL — Behold.so
-      Compte : bochicacafebistro@gmail.com · Feed ID : LKSqSklqhPMQhbC4F1dQ
-      Le widget se met à jour automatiquement quand tu publies sur @bochica_restaurantcol.
-      Configuration / nombre de photos / style : https://behold.so/ → Feeds.
-    -->
-<div class="ig-feed__grid" id="ig-feed-grid">
-<behold-widget feed-id="LKSqSklqhPMQhbC4F1dQ"></behold-widget>
-</div>
-</div>
 </section>
 <!-- PROMOS & ACTIVITÉS -->
 <section class="events" id="evenements">
@@ -1534,7 +1518,7 @@
 </div>
 </div>
 <script src="/js/main.js?v=20261012d"></script>
-<script src="/js/consent.js?v=20261005a"></script>
+<script src="/js/consent.js?v=20261012a"></script>
 <!-- Vercel Web Analytics : statistiques de visites sans témoins (Loi 25 : aucun consentement requis, mentionné dans la politique). -->
 <script defer="" src="/_vercel/insights/script.js"></script>
 </body>

@@ -3,7 +3,7 @@
    ───────────────────────────────────────────────────────────────
    Principe : RIEN de tiers qui dépose des témoins ne se charge avant un « oui ».
    - Mesure publicitaire (Google Ads) : la balise Google n'est chargée qu'après consentement.
-   - Contenus externes (carte Google, fil Instagram/Behold) : chargés après consentement,
+   - Contenus externes (carte Google) : chargés après consentement,
      ou au clic sur « Afficher » (pour cette visite seulement).
    - Le choix est gardé 12 mois dans le navigateur (clé bochica-consent), puis redemandé.
    - Lien « Gérer les témoins » (attribut data-consent-open) pour changer d'idée en tout temps.
@@ -32,7 +32,7 @@
     fr: {
       region: 'Témoins et vie privée',
       title: 'Témoins et vie privée',
-      body: 'Avec votre accord, nous utilisons des témoins pour mesurer l’efficacité de nos publicités Google (ex. : clics sur « Réserver ») et pour afficher la carte Google et nos publications Instagram. Vous pouvez changer d’idée en tout temps avec « Gérer les témoins », au bas de la page.',
+      body: 'Avec votre accord, nous utilisons des témoins pour mesurer l’efficacité de nos publicités Google (ex. : clics sur « Réserver ») et pour afficher la carte Google. Vous pouvez changer d’idée en tout temps avec « Gérer les témoins », au bas de la page.',
       policy: 'Politique de confidentialité',
       refuse: 'Tout refuser',
       custom: 'Personnaliser',
@@ -42,8 +42,8 @@
       essDesc: 'Toujours actifs. Mémorisent votre langue et votre choix de témoins, dans votre navigateur seulement.',
       adsTitle: 'Mesure publicitaire (Google Ads)',
       adsDesc: 'Nous indique si nos annonces Google mènent à des réservations, commandes ou appels, et permet de vous présenter nos annonces sur les services de Google. Données traitées par Google, possiblement à l’extérieur du Québec.',
-      extTitle: 'Contenus externes (Google Maps, Instagram)',
-      extDesc: 'Affiche la carte interactive et notre fil Instagram. Ces services peuvent déposer leurs propres témoins.',
+      extTitle: 'Contenus externes (Google Maps)',
+      extDesc: 'Affiche la carte interactive. Google peut déposer ses propres témoins.',
       mapMsg: 'La carte Google est masquée tant que vous n’avez pas accepté les contenus externes.',
       igMsg: 'Nos publications Instagram sont masquées tant que vous n’avez pas accepté les contenus externes.',
       show: 'Afficher (cette fois-ci)',
@@ -52,7 +52,7 @@
     en: {
       region: 'Cookies and privacy',
       title: 'Cookies and privacy',
-      body: 'With your consent, we use cookies to measure how well our Google ads work (e.g. clicks on “Reserve”) and to display the Google map and our Instagram posts. You can change your mind at any time with “Manage cookies” at the bottom of the page.',
+      body: 'With your consent, we use cookies to measure how well our Google ads work (e.g. clicks on “Reserve”) and to display the Google map. You can change your mind at any time with “Manage cookies” at the bottom of the page.',
       policy: 'Privacy policy',
       refuse: 'Reject all',
       custom: 'Customize',
@@ -62,8 +62,8 @@
       essDesc: 'Always on. They remember your language and your cookie choice, in your browser only.',
       adsTitle: 'Ad measurement (Google Ads)',
       adsDesc: 'Tells us whether our Google ads lead to reservations, orders or calls, and lets us show you our ads on Google services. Data processed by Google, possibly outside Québec.',
-      extTitle: 'External content (Google Maps, Instagram)',
-      extDesc: 'Displays the interactive map and our Instagram feed. These services may set their own cookies.',
+      extTitle: 'External content (Google Maps)',
+      extDesc: 'Displays the interactive map. Google may set its own cookies.',
       mapMsg: 'The Google map is hidden until you accept external content.',
       igMsg: 'Our Instagram posts are hidden until you accept external content.',
       show: 'Show (this time)',
@@ -72,7 +72,7 @@
     es: {
       region: 'Cookies y privacidad',
       title: 'Cookies y privacidad',
-      body: 'Con su consentimiento, usamos cookies para medir la eficacia de nuestros anuncios de Google (p. ej.: clics en «Reservar») y para mostrar el mapa de Google y nuestras publicaciones de Instagram. Puede cambiar de opinión en cualquier momento con «Gestionar cookies», al pie de la página.',
+      body: 'Con su consentimiento, usamos cookies para medir la eficacia de nuestros anuncios de Google (p. ej.: clics en «Reservar») y para mostrar el mapa de Google. Puede cambiar de opinión en cualquier momento con «Gestionar cookies», al pie de la página.',
       policy: 'Política de privacidad',
       refuse: 'Rechazar todo',
       custom: 'Personalizar',
@@ -82,8 +82,8 @@
       essDesc: 'Siempre activas. Recuerdan su idioma y su elección de cookies, solo en su navegador.',
       adsTitle: 'Medición publicitaria (Google Ads)',
       adsDesc: 'Nos indica si nuestros anuncios de Google generan reservas, pedidos o llamadas, y permite mostrarle nuestros anuncios en los servicios de Google. Datos tratados por Google, posiblemente fuera de Quebec.',
-      extTitle: 'Contenido externo (Google Maps, Instagram)',
-      extDesc: 'Muestra el mapa interactivo y nuestro feed de Instagram. Estos servicios pueden instalar sus propias cookies.',
+      extTitle: 'Contenido externo (Google Maps)',
+      extDesc: 'Muestra el mapa interactivo. Google puede instalar sus propias cookies.',
       mapMsg: 'El mapa de Google está oculto hasta que acepte el contenido externo.',
       igMsg: 'Nuestras publicaciones de Instagram están ocultas hasta que acepte el contenido externo.',
       show: 'Mostrar (esta vez)',

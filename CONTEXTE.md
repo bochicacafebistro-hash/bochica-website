@@ -331,6 +331,12 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 12 octobre 2026 (f) — Bloc « Dernières photos » (fil Instagram Behold) retiré
+- `index.html` : bloc `.ig-feed` + `<behold-widget>` supprimés de la section Suivez-nous (les 2 gros boutons Instagram / Facebook restent)
+- `consent.js` : la catégorie « Contenus externes » ne parle plus que de Google Maps (FR/EN/ES). Cache `consent.js?v=20261012a`
+- `privacy.html` : ligne Behold.so retirée (FR/EN/ES), section témoins = Google Maps seulement, date → 12 octobre 2026
+- Laissé en place (sans effet) : CSS `.ig-feed*`, domaines `behold.so` dans la CSP de `vercel.json`, code Behold de `consent.js` (ne s'active que si un `<behold-widget>` existe) — pour pouvoir le remettre facilement. Le compte Behold (feed `LKSqSklqhPMQhbC4F1dQ`) peut être fermé
+
 ### 12 octobre 2026 (e) — « Notre histoire » refaite (option C choisie)
 - L'ancienne colonne photo (placeholder `.ph-ambient` noir, photo `about.jpg` jamais fournie) est supprimée
 - Nouveau bandeau **foncé** (#1a1410 + lueur dorée, ligne tricolore en bas) : à gauche titre + phrase « Un petit morceau de Colombie… » en citation jaune ; à droite 2 paragraphes, **3 chiffres** (4,7 ★ sur Google · 3 langues de service · +30 plats colombiens) et bouton « Découvrir le menu → »
