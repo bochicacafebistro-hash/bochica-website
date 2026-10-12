@@ -331,6 +331,9 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 12 octobre 2026 (c) — Mosaïque de l'accueil
+- Hero (ordinateur) : Bol Medellín → **Chuleta valluna** (1re photo, `fetchpriority=high`), Churrasco → **Bandeja paisa**. Empanadas et Picada inchangées
+
 ### 12 octobre 2026 (b) — Promos en cartes texte : option A (« le jour en grand ») + talon coupon (option B)
 - Section **Promos & activités** (`#evenements`) : les 3 images `promo-*.webp` sont remplacées par **4 cartes en texte** (FR/EN/ES) + bandeau pointillé « Spécial fin de semaine ». Choix final du propriétaire : design de l'option A, avec le rabais dans un **talon de coupon détachable** (ligne pointillée + encoches) en bas de chaque carte
   - MER — empanadas **2,25 $** chacune (talon jaune)
