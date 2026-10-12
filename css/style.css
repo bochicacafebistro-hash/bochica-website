@@ -2353,12 +2353,13 @@ html.lang-gate-on .lang-gate {
   background: rgba(255,255,255,.35);
 }
 
-/* Mosaïque 2 × 2 décalée */
+/* Mosaïque 2 × 2 alignée — cases aux couleurs de la Colombie (12 oct. 2026).
+   Photos détourées (fond transparent) dans images/hero/*-detoure.webp.
+   Ordre : 1 jaune · 2 bleu · 3 rouge · 4 noir */
 .hero-mosaic {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding-bottom: 34px;               /* place pour le décalage de la 2e colonne */
 }
 .hero-mosaic__item {
   position: relative;
@@ -2366,20 +2367,34 @@ html.lang-gate-on .lang-gate {
   aspect-ratio: 1 / 1;
   border-radius: 18px;
   overflow: hidden;
-  background: #f4f1e7;
-  box-shadow: 0 8px 24px rgba(14,13,12,.08);
+  background: var(--ink);
+  box-shadow: 0 14px 30px rgba(14,13,12,.18);
 }
-.hero-mosaic__item:nth-child(2),
-.hero-mosaic__item:nth-child(4) { transform: translateY(34px); }
+.hero-mosaic__item:nth-child(1) { background: var(--accent); }
+.hero-mosaic__item:nth-child(2) { background: #2f6db5; }
+.hero-mosaic__item:nth-child(3) { background: #d9472f; }
+.hero-mosaic__item:nth-child(4) { background: #1a1410; }
 .hero-mosaic__item picture { display: block; width: 100%; height: 100%; }
-.hero-mosaic__item img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-mosaic__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 14px rgba(0,0,0,.35));
+}
+/* Assiettes (cases du haut) : un peu d'air sous le plat pour l'étiquette */
+.hero-mosaic__item:nth-child(1) img,
+.hero-mosaic__item:nth-child(2) img { padding: 0 2% 10%; transform: scale(1.04); }
+/* Empanadas et picada : photos coupées au bord → pleine case */
+.hero-mosaic__item:nth-child(3) img,
+.hero-mosaic__item:nth-child(4) img { object-fit: cover; }
 .hero-mosaic__item figcaption {
   position: absolute;
   left: 12px;
   bottom: 12px;
   padding: 6px 12px;
   border-radius: var(--radius-pill);
-  background: rgba(245,241,232,.95);
+  background: var(--cream);
   font-family: var(--font-display);
   font-size: 16px;
   letter-spacing: 0.08em;

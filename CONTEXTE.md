@@ -331,6 +331,12 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 12 octobre 2026 (d) — Mosaïque de l'accueil : cases de couleur (option B choisie)
+- Grille 2 × 2 **alignée** (plus de décalage), cases **jaune / bleu #2f6db5 / rouge #d9472f / noir #1a1410**, ombre sous chaque plat, étiquette crème
+- Photos **détourées** (fond transparent) : `images/hero/{chuleta-valluna,bandeja-paisa,empanadas,picada}-detoure.webp` (détourage par remplissage du fond crème, assiettes conservées). Empanadas et picada en pleine case (photos d'origine coupées au bord)
+- Pour changer une photo de la mosaïque : il faut une version **détourée** (fond transparent) dans `images/hero/`, avec un nouveau nom
+- CSS : bloc « Mosaïque 2 × 2 » dans la section HERO de `style.css`. Cache : `style.css?v=20261012d`
+
 ### 12 octobre 2026 (c) — Mosaïque de l'accueil
 - Hero (ordinateur) : Bol Medellín → **Chuleta valluna** (1re photo, `fetchpriority=high`), Churrasco → **Bandeja paisa**. Empanadas et Picada inchangées
 
