@@ -124,3 +124,27 @@ Un site statique se pirate surtout **via les comptes** qui le contrôlent. Véri
 | 5 | Formspree : restriction de domaine | Toi | 2 min |
 | 6 | Audit de `mes-finances` et `bochica-v2` | Moi | sur demande |
 | 7 | Passer la protection anti-bots de « journal » à « défi » | Moi | dans 2 semaines |
+
+---
+
+## 📌 Suivi — 15 octobre 2026
+
+| Action | État |
+|---|---|
+| Push du `vercel.json` (en-têtes renforcés) | ✅ En ligne (CSP `frame-ancestors`, `upgrade-insecure-requests`, COOP vérifiés) |
+| Double authentification (Vercel, GitHub, GoDaddy, Gmail) | ✅ Activée (confirmé par Alvaro) |
+| GoDaddy : abonnement « Sites Web + Marketing De base » (site godaddysites inutile) | ✅ Renouvellement automatique désactivé (expire 1er déc. 2026) |
+| GoDaddy : renouvellement auto de bochicacafebistro.ca | ✅ Vérifié |
+| Formspree : Restrict to Domain | ⚪ Non disponible sur le forfait gratuit — risque faible (spam seulement), pot de miel `_gotcha` en place. Ne PAS activer le reCAPTCHA Formspree (briserait l'envoi AJAX) |
+| Serveurs de noms → Vercel | ❌ Annulé — voir incident ci-dessous. Le DNS reste chez GoDaddy (ns37/ns38.domaincontrol.com) |
+| SPF / DMARC | ⏳ À ajouter directement chez GoDaddy (2 enregistrements TXT) |
+| Bot Protection : Log → Challenge | 📅 Vers le 22 octobre |
+
+**Autres domaines du portefeuille GoDaddy** (bochicacafebistro.com, bochicaquebec.com/.ca, cuizo.ca) : aucun SPF/DMARC → usurpables. À protéger de la même façon. Suggestion : rediriger bochicacafebistro.com vers le .ca.
+
+### ⚠️ Incident — 15 oct. 2026, ~16 h 30 à ~17 h 05 : site inaccessible
+
+- **Cause :** les serveurs de noms ont été changés vers `ns1/ns2.vercel-dns.com`, mais Vercel n'avait pas encore activé la zone DNS du domaine (`zone: false`). Les serveurs de Vercel ont refusé de répondre (« lame delegation ») → le domaine ne résolvait plus.
+- **Résolution :** retour aux serveurs par défaut de GoDaddy à 16 h 51 (nouveaux serveurs ns37/ns38 ; enregistrements A `@` 216.198.79.1 et CNAME `www` conservés). Site confirmé de retour à 17 h 10.
+- **Leçon :** ne jamais changer les serveurs de noms vers Vercel sans d'abord confirmer que la zone est active côté Vercel (enregistrements créables par l'API). Pour ce site, garder le DNS chez GoDaddy — aucun impact sur la sécurité.
+- **Note :** la Bot Protection a été remise en « Log » pendant l'incident (elle n'était pas la cause). À repasser en « Challenge » une fois le site stable.
