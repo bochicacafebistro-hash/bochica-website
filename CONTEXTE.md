@@ -1,5 +1,7 @@
 # 📋 CONTEXTE — Site Web Bochica
 
+> 🆕 **25 octobre 2026 — Nouveau menu en liste (inspiré de La Cage)** : catégories avec icônes (ordinateur) / bouton « ≡ Bouffe ▾ » + écran « Choisir une catégorie » (mobile), sous-onglets qui suivent le défilement, plats en lignes (photo à gauche, description visible, prix à droite), titres du menu en Bricolage Grotesque. Voir le CHANGELOG.
+>
 > 🆕 **12 octobre 2026 — Menu bouffe refait d'après le PDF officiel** (`Menu-Nourriture.pdf`, oct. 2026) : onglet **Bols supprimé**, Bol Medellín et Bol Cali 2.0 déplacés dans Repas, 3 nouveaux plats (Bandeja paisa, Mojarra frita, Chuleta valluna). Breuvages, cocktails, bières et desserts : pas encore faits. Voir le CHANGELOG.
 >
 > 🆕 **5 octobre 2026 — Loi 25 + Google Ads** : bannière de consentement (`js/consent.js`), Google Ads (AW-16766092846) chargé **seulement après consentement**, carte Google et Instagram bloqués jusqu'au consentement, politique de confidentialité FR/EN/ES mise à jour, CSP élargie. Voir le CHANGELOG.
@@ -176,6 +178,17 @@ Toutes sont englobées dans `<main id="main">`.
 
 > 🔄 **Réordonnancement par rapport à la version précédente** : `Story/About` est maintenant **avant** `Signatures` et `Promos` (auparavant après les avis). L'ordre vise un récit : qui on est → ce qu'on fait → ce qui se passe cette semaine.
 
+## 🍽️ Menu — Présentation (depuis le 25 oct. 2026)
+- **5 catégories** (boutons `.menu-cat[data-cat]` dans `#menu-nav`) → sections affichées (`MENU_CATS` dans `main.js`) :
+  - `bouffe` → `tab-entrees` + `tab-arepas` + `tab-repas` (affichées ensemble, l'une sous l'autre)
+  - `breuvages` → `tab-breuvages` · `cocktails` → `tab-cocktails` · `bieres` (« Bières & vins ») → `tab-bieres` · `desserts` (« Desserts & pains ») → `tab-desserts`
+- **Sous-onglets** (`#menu-subtabs`) : générés automatiquement à partir des `.menu-subsection-title` de la catégorie. Pour ajouter une sous-section : ajouter un `<div class="menu-subsection-title" data-fr data-en data-es>` dans la bonne `.menu-section`, rien d'autre
+- **Mobile (≤ 760 px)** : la rangée de catégories est remplacée par le bouton `#menu-cat-toggle` (« ≡ Bouffe ▾ ») qui ouvre `#menu-cat-sheet` (liste remplie par JS à partir des boutons de catégories)
+- **Étiquettes sur les photos** : attribut `data-flag` sur la `.menu-card` → `new` (Nouveau), `weekend` (Ven. – dim.), `share` (À partager), `sunday` (Dim. 5 $). Textes dans `DISH_FLAGS` (`main.js`)
+- **Icônes** : SVG au trait noir dans `index.html` (catégories) et `SUB_ICONS` dans `main.js` (Entrées, Arepas farcies, Repas)
+- Le clic sur un plat ouvre toujours la modale (grande photo + extras). Le bouton flottant « Réserver » est caché sur mobile pendant qu'on regarde le menu
+- Statut ouvert/fermé aussi sous l'intro du menu (`#menu-status`, même fonction `renderStatus()`)
+
 ## 🍽️ Menu — Structure des onglets (bouffe à jour au 12 oct. 2026 selon le PDF officiel)
 - **Entrées** — Empanada, Soupe du jour, Arepa au fromage, Frites, Yuca frita, Arepa avec chicharrón / chorizo / morcilla (3 cartes), Guacamole (chips de plantain), Canastica, Patacones de la casa, Ailes, Picadita
 - **Arepas farcies** — Végétarienne (14$), Classique (15$), Mixte (17$)
@@ -293,7 +306,7 @@ Constantes de configuration plat (lignes 117-132) : `DISH_SECTIONS_WITH_MODAL`, 
 - Toujours utiliser les variables CSS `var(--accent)` etc. plutôt que d'hardcoder les couleurs
 - **Pour le texte jaune sur fond crème** : toujours utiliser `var(--accent-warm)` (`#785a14` depuis sept. 2026, ratio WCAG AA OK), JAMAIS `var(--accent)` (`#F7B32C`, contraste insuffisant). `--accent` est réservé aux fonds remplis (boutons jaunes), aux dots/étoiles décoratives, ou au texte sur fond foncé.
 - **Ne pas faire confiance aux deux dossiers `.claude/worktrees/`** (kind-kapitsa, elegant-hopper) : ce sont des copies de travail Claude, ignorées par git, pas la source de vérité
-- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` (+ `en/`, `es/` générés) et `privacy.html` chargent `/css/style.css?v=20261001a` et `/js/main.js?v=20261001a` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
+- **Cache-busting CSS/JS OBLIGATOIRE** : `index.html` (+ `en/`, `es/` générés) et `privacy.html` chargent `/css/style.css?v=20261025a` et `/js/main.js?v=20261025a` (paramètre de version dans l'URL). À CHAQUE modification de `style.css` ou `main.js`, il faut incrémenter ce `?v=...` (ex. date du jour, ou un numéro qui monte) sur TOUTES les balises `<link>`/`<script>` qui les chargent — sinon les visiteurs qui ont déjà mis le site en cache ne verront jamais le changement, même après un déploiement réussi (`/css/* /js/*` ont un cache de 5 min mais ancré à l'URL exacte). Voir changelog du 13 septembre pour le détail du bug que ça corrige.
 
 ## 📸 WORKFLOW PHOTOS DE PLATS — procédure standard
 
@@ -330,6 +343,14 @@ Configurés dans `vercel.json` à la racine :
 - ⚠️ La CSP utilise `'unsafe-inline'` pour scripts/styles (nécessaire pour les onclick et les `<style>` inline du `privacy.html`). À durcir plus tard via nonces si besoin (Vercel-specific).
 
 ## 📝 CHANGELOG
+
+### 25 octobre 2026 — Menu en liste, inspiré de La Cage (cage.ca)
+- Maquette validée par le propriétaire (canevas « Menu mobile Bochica » : 3 écrans mobiles + version ordinateur), puis intégrée
+- `index.html` : anciens boutons `.menu-tabs` remplacés par `#menu-nav` (catégories `.menu-cat` + bouton mobile `#menu-cat-toggle` + `#menu-subtabs`) ; feuille `#menu-cat-sheet` ajoutée avant la modale ; `tab-arepas` et `tab-repas` visibles par défaut (catégorie Bouffe) ; `data-flag` sur Bandeja paisa, Chuleta valluna (new), Mojarra (weekend), Suprema (share), Repas enfant (sunday) ; ligne `#menu-status` ; police **Bricolage Grotesque** (700–800) ajoutée à la requête Google Fonts
+- `main.js` : `setMenuTab()` remplacé par `initMenuNav()` / `setMenuCat()` / `buildMenuSubtabs()` / `updateMenuSpy()` (onglet actif selon le défilement) / `openMenuSheet()` ; `setMenuTab()` gardé pour compatibilité ; `addDishFlags()` ; `renderStatus()` écrit dans les 2 statuts ; FAB caché sur mobile dans le menu ; hauteur de la nav suivie (`--menu-sticky-top`)
+- `style.css` : nouveau bloc « MENU — présentation en liste » en fin de fichier (règles `#menu …` qui écrasent l'ancien style des cartes). Descriptions maintenant **visibles** (3 lignes max sur mobile, complètes sur ordinateur). Plats sur 2 colonnes sur ordinateur, 1 sur mobile
+- Cache : `style.css?v=20261025a`, `main.js?v=20261025a` (index + privacy). EN/ES régénérés (`build_lang.py`)
+- Testé (Chromium) : FR mobile 390 px, FR/ES ordinateur 1366 px, EN mobile — aucune erreur JS, aucun débordement, sous-onglet actif correct, feuille de catégories, modale OK
 
 ### 12 octobre 2026 (g) — Section finale « Venez manger, rester, danser » harmonisée
 - Ancien fond rayé `.ph-ambient` (placeholder « terrasse · soir ») retiré ; même fond que « Notre histoire » : noir chaud #1a1410 + lueur dorée (centrée en haut) + ligne tricolore en bas. Titre en crème (plus d'ombre portée)

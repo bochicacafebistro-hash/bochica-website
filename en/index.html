@@ -41,8 +41,8 @@
 <!-- Typographie : Bebas Neue (titres impact) + Inter (corps) + JetBrains Mono (microcopy) -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="preload"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Bricolage+Grotesque:opsz,wght@12..96,700..800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Bricolage+Grotesque:opsz,wght@12..96,700..800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <!-- ============ Open Graph (Facebook, LinkedIn, WhatsApp) ============ -->
 <meta content="restaurant.restaurant" property="og:type"/>
 <meta content="Bochica Restaurant Colombien" property="og:site_name"/>
@@ -428,7 +428,7 @@
 <link href="https://bochicacafebistro.ca/en/" hreflang="en-CA" rel="alternate"/>
 <link href="https://bochicacafebistro.ca/es/" hreflang="es" rel="alternate"/>
 <link href="https://bochicacafebistro.ca/" hreflang="x-default" rel="alternate"/>
-<link href="/css/style.css?v=20261012f" rel="stylesheet"/>
+<link href="/css/style.css?v=20261025a" rel="stylesheet"/>
 <!-- Langue : chaque langue a sa propre adresse (/, /en/, /es/).
        Sur la page FR seulement : 1) un visiteur qui avait choisi EN/ES est renvoyé vers sa version ;
        2) écran de choix de langue sur mobile à la 1re visite. Jamais pour les robots. -->
@@ -542,17 +542,25 @@
 <span class="section-tag menu-hero-tag" data-en="What we offer" data-es="Lo que ofrecemos" data-fr="Ce que nous offrons">What we offer</span>
 <h2 class="section-title menu-hero-title" data-en="Our menu" data-es="Nuestro menú" data-fr="Notre menu">Our menu</h2>
 <p class="section-sub menu-hero-sub" data-en="Colombian and Latin food in Québec City, made fresh every day with love. Most of our dishes are gluten-free." data-es="Comida colombiana y latina en Quebec, preparada cada día con amor. La mayoría de nuestros platos son sin gluten." data-fr="Cuisine colombienne et latino à Québec, préparée chaque jour avec amour. La plupart de nos plats sont sans gluten.">Colombian and Latin food in Québec City, made fresh every day with love. Most of our dishes are gluten-free.</p>
+<p class="menu-status status-item" id="menu-status"><span class="status-dot"></span><span class="status-text" id="menu-status-text">—</span></p>
 </div>
-<div class="menu-tabs reveal">
-<div class="menu-tabs-scroll">
-<button class="menu-tab active" data-en="Appetizers" data-es="Entradas" data-fr="Entrées" onclick="setMenuTab('entrees', this)">Appetizers</button>
-<button class="menu-tab" data-en="Stuffed Arepas" data-es="Arepas Rellenas" data-fr="Arepas farcies" onclick="setMenuTab('arepas', this)">Stuffed Arepas</button>
-<button class="menu-tab" data-en="Mains" data-es="Comidas" data-fr="Repas" onclick="setMenuTab('repas', this)">Mains</button>
-<button class="menu-tab" data-en="Beverages" data-es="Bebidas" data-fr="Breuvages" onclick="setMenuTab('breuvages', this)">Beverages</button>
-<button class="menu-tab" data-en="Cocktails" data-es="Cócteles" data-fr="Cocktails" onclick="setMenuTab('cocktails', this)">Cocktails</button>
-<button class="menu-tab" data-en="Beers" data-es="Cervezas" data-fr="Bières" onclick="setMenuTab('bieres', this)">Beers</button>
-<button class="menu-tab" data-en="Desserts" data-es="Postres" data-fr="Desserts" onclick="setMenuTab('desserts', this)">Desserts</button>
-</div>
+<!-- Barre du menu : catégories (ordinateur) / bouton « ≡ Bouffe ▾ » (mobile) + sous-onglets.
+         Sous-onglets générés par main.js (initMenuNav) à partir des .menu-subsection-title -->
+<div class="menu-nav" id="menu-nav">
+<nav aria-label="Menu categories" class="menu-cats" data-aria-en="Menu categories" data-aria-es="Categorías del menú" data-aria-fr="Catégories du menu">
+<button aria-pressed="true" class="menu-cat active" data-cat="bouffe" type="button"><span class="menu-cat-icon"><svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24"><path d="M5 3v7a2 2 0 0 0 2 2v9M7 3v6M9 3v7a2 2 0 0 1-2 2M18 21V3c-2 1.5-3 4-3 7s1 4 3 4"></path></svg></span><span class="menu-cat-name" data-en="Food" data-es="Comida" data-fr="Bouffe">Food</span></button>
+<button aria-pressed="false" class="menu-cat" data-cat="breuvages" type="button"><span class="menu-cat-icon"><svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 11h2a2.5 2.5 0 0 1 0 5h-2M8 3v3M12 3v3"></path></svg></span><span class="menu-cat-name" data-en="Beverages" data-es="Bebidas" data-fr="Breuvages">Beverages</span></button>
+<button aria-pressed="false" class="menu-cat" data-cat="cocktails" type="button"><span class="menu-cat-icon"><svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24"><path d="M4 4h16l-8 9-8-9zM12 13v7M8 20h8M16 4l2-2"></path></svg></span><span class="menu-cat-name" data-en="Cocktails" data-es="Cócteles" data-fr="Cocktails">Cocktails</span></button>
+<button aria-pressed="false" class="menu-cat" data-cat="bieres" type="button"><span class="menu-cat-icon"><svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24"><path d="M5 7h10v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7zM15 10h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2M8 11v6M12 11v6"></path></svg></span><span class="menu-cat-name" data-en="Beer &amp; wine" data-es="Cervezas y vinos" data-fr="Bières &amp; vins">Beer &amp; wine</span></button>
+<button aria-pressed="false" class="menu-cat" data-cat="desserts" type="button"><span class="menu-cat-icon"><svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24"><path d="M3 20h18M4 20v-8l16-4v12M4 12h16"></path></svg></span><span class="menu-cat-name" data-en="Desserts &amp; breads" data-es="Postres y panes" data-fr="Desserts &amp; pains">Desserts &amp; breads</span></button>
+</nav>
+<button aria-controls="menu-cat-sheet" aria-expanded="false" aria-haspopup="dialog" class="menu-cat-toggle" id="menu-cat-toggle" type="button">
+<svg aria-hidden="true" class="menu-cat-toggle-lines" fill="none" focusable="false" stroke="currentColor" stroke-width="1.8" viewbox="0 0 20 14"><path d="M5 1h15M5 7h15M5 13h15M0 1h2M0 7h2M0 13h2"></path></svg>
+<span class="visually-hidden" data-en="Category:" data-es="Categoría:" data-fr="Catégorie :">Category:</span>
+<span class="menu-cat-toggle-name" data-en="Food" data-es="Comida" data-fr="Bouffe" id="menu-cat-current">Food</span>
+<svg aria-hidden="true" class="menu-cat-toggle-chev" fill="none" focusable="false" stroke="currentColor" stroke-width="1.8" viewbox="0 0 12 8"><path d="M1 1l5 5 5-5"></path></svg>
+</button>
+<div aria-label="Menu sections" class="menu-subtabs" data-aria-en="Menu sections" data-aria-es="Secciones del menú" data-aria-fr="Sections du menu" id="menu-subtabs"></div>
 </div>
 <!-- ENTRÉES -->
 <div class="menu-section" id="tab-entrees">
@@ -619,7 +627,7 @@
 </div>
 </div>
 <!-- AREPAS FARCIES -->
-<div class="menu-section" id="tab-arepas" style="display:none">
+<div class="menu-section" id="tab-arepas">
 <div class="menu-grid">
 <div class="menu-subsection-title b" data-en="Stuffed Arepas" data-es="Arepas Rellenas" data-fr="Arepas farcies">Stuffed Arepas</div>
 <div class="menu-card reveal" data-photo="/images/arepa-classique.webp">
@@ -640,10 +648,10 @@
 </div>
 </div>
 <!-- REPAS (les Bols ont été intégrés aux Repas le 12 oct. 2026) -->
-<div class="menu-section" id="tab-repas" style="display:none">
+<div class="menu-section" id="tab-repas">
 <div class="menu-grid">
 <div class="menu-subsection-title y" data-en="Mains" data-es="Comidas" data-fr="Repas">Mains</div>
-<div class="menu-card reveal" data-photo="/images/repas-enfant.webp">
+<div class="menu-card reveal" data-flag="sunday" data-photo="/images/repas-enfant.webp">
 <div class="menu-card-name" data-en="Kids' Meal (up to 12)" data-es="Menú Infantil (hasta 12 años)" data-fr="Repas enfant (jusqu'à 12 ans)">Kids' Meal (up to 12)</div>
 <div class="menu-card-desc" data-en="Option 1: fries, chicken nuggets, sausage, ketchup · Option 2: chicken and sausage rice with fries · Sundays: only $5" data-es="Opción 1: papas fritas, nuggets de pollo, salchicha, kétchup · Opción 2: arroz con pollo y salchichas, con papas fritas · Los domingos: solo $5" data-fr="Option 1 : frites, croquettes de poulet, saucisse, ketchup · Option 2 : riz au poulet et saucisses, accompagné de frites · Le dimanche : seulement 5 $">Option 1: fries, chicken nuggets, sausage, ketchup · Option 2: chicken and sausage rice with fries · Sundays: only $5</div>
 <div class="menu-card-price" data-amount="10">$10</div>
@@ -688,17 +696,17 @@
 <div class="menu-card-desc" data-en="Grilled chicken, rice, fries, fried plantain, house salad, homemade cilantro sauce" data-es="Pollo asado, arroz, papas fritas, patacón, ensalada de la casa, salsa de cilantro de la casa" data-fr="Poulet grillé, riz, frites, patacona, salade maison, sauce coriandre maison">Grilled chicken, rice, fries, fried plantain, house salad, homemade cilantro sauce</div>
 <div class="menu-card-price" data-amount="24">$24</div>
 </div>
-<div class="menu-card reveal" data-photo="/images/bandeja-paisa.webp">
+<div class="menu-card reveal" data-flag="new" data-photo="/images/bandeja-paisa.webp">
 <div class="menu-card-name" data-en="Bandeja Paisa" data-es="Bandeja Paisa" data-fr="Bandeja paisa">Bandeja Paisa</div>
 <div class="menu-card-desc" data-en="Rice, braised shredded beef, chicharrón, beans, tajada (sweet ripe plantain), fried egg, arepa, chorizo, homemade cilantro sauce or guacamole (+$1)" data-es="Arroz, carne desmechada, chicharrón, frijoles, tajada de plátano maduro, huevo frito, arepa, chorizo, salsa de cilantro de la casa o guacamole (+$1)" data-fr="Riz, bœuf braisé, chicharrón, haricots, tajada (plantain mûr), œuf frit, arepa, chorizo, sauce coriandre maison ou guacamole (+1 $)">Rice, braised shredded beef, chicharrón, beans, tajada (sweet ripe plantain), fried egg, arepa, chorizo, homemade cilantro sauce or guacamole (+$1)</div>
 <div class="menu-card-price" data-amount="28">$28</div>
 </div>
-<div class="menu-card reveal">
+<div class="menu-card reveal" data-flag="weekend">
 <div class="menu-card-name" data-en="Mojarra Frita" data-es="Mojarra Frita" data-fr="Mojarra frita">Mojarra Frita</div>
 <div class="menu-card-desc" data-en="Fried tilapia, rice, patacones (3x), house salad, lime, homemade cilantro sauce or guacamole (+$1). Friday to Sunday only" data-es="Mojarra (tilapia) frita, arroz, patacones (3x), ensalada de la casa, limón, salsa de cilantro de la casa o guacamole (+$1). Solo de viernes a domingo" data-fr="Tilapia frit, riz, patacones (3x), salade maison, lime, sauce coriandre maison ou guacamole (+1 $). Seulement du vendredi au dimanche">Fried tilapia, rice, patacones (3x), house salad, lime, homemade cilantro sauce or guacamole (+$1). Friday to Sunday only</div>
 <div class="menu-card-price" data-amount="28">$28</div>
 </div>
-<div class="menu-card reveal" data-photo="/images/chuleta-valluna.webp">
+<div class="menu-card reveal" data-flag="new" data-photo="/images/chuleta-valluna.webp">
 <div class="menu-card-name" data-en="Chuleta Valluna" data-es="Chuleta Valluna" data-fr="Chuleta valluna">Chuleta Valluna</div>
 <div class="menu-card-desc" data-en="Colombian-style breaded pork cutlet, rice, fries, house salad, lime, homemade cilantro sauce" data-es="Chuleta de cerdo apanada al estilo valluno, arroz, papas fritas, ensalada de la casa, limón, salsa de cilantro de la casa" data-fr="Escalope de porc panée à la colombienne, riz, frites, salade maison, lime, sauce coriandre maison">Colombian-style breaded pork cutlet, rice, fries, house salad, lime, homemade cilantro sauce</div>
 <div class="menu-card-price" data-amount="28">$28</div>
@@ -713,7 +721,7 @@
 <div class="menu-card-desc" data-en="Chorizo, morcilla, chicharrón, chicken wings, arepa, cassava fries, patacones, fries, homemade cilantro sauce or guacamole (+$1)" data-es="Chorizo, morcilla, chicharrón, alitas de pollo, arepa, yuca frita, patacones, papas fritas, salsa de cilantro de la casa o guacamole (+$1)" data-fr="Chorizo, morcilla, chicharrón, ailes de poulet, arepa, frites de manioc, patacones, frites, sauce coriandre maison ou guacamole (+1 $)">Chorizo, morcilla, chicharrón, chicken wings, arepa, cassava fries, patacones, fries, homemade cilantro sauce or guacamole (+$1)</div>
 <div class="menu-card-price" data-amount="36">$36</div>
 </div>
-<div class="menu-card reveal" data-photo="/images/picada-suprema.webp">
+<div class="menu-card reveal" data-flag="share" data-photo="/images/picada-suprema.webp">
 <div class="menu-card-name" data-en="Suprema" data-es="Suprema" data-fr="Suprema">Suprema</div>
 <div class="menu-card-desc" data-en="Chorizo, morcilla, chicharrón, chicken wings, beef strips, chicken nuggets, sausages, arepa, cassava, patacones, fries. Sauces: pink, homemade cilantro and tartar · guacamole +$1" data-es="Chorizo, morcilla, chicharrón, alitas de pollo, tiras de carne, nuggets de pollo, salchichas, arepa, yuca, patacones, papas fritas. Salsas: rosada, cilantro de la casa y tártara · guacamole +$1" data-fr="Chorizo, morcilla, chicharrón, ailes de poulet, lanières de bœuf, croquettes de poulet, saucisses, arepa, manioc, patacones, frites. Sauces : rosé, coriandre maison et tartare · guacamole +1 $">Chorizo, morcilla, chicharrón, chicken wings, beef strips, chicken nuggets, sausages, arepa, cassava, patacones, fries. Sauces: pink, homemade cilantro and tartar · guacamole +$1</div>
 <div class="menu-card-price" data-amount="72">$72</div>
@@ -1483,6 +1491,14 @@
 <div class="footer-bar"><div></div><div></div><div></div></div>
 </div>
 </footer>
+<!-- MENU : choix de catégorie (mobile) -->
+<div aria-labelledby="menu-sheet-title" aria-modal="true" class="menu-sheet" hidden="" id="menu-cat-sheet" role="dialog">
+<div class="menu-sheet-head">
+<h2 class="menu-sheet-title" data-en="Choose a category" data-es="Elige una categoría" data-fr="Choisir une catégorie" id="menu-sheet-title">Choose a category</h2>
+<button aria-label="Close" class="menu-sheet-close" data-aria-en="Close" data-aria-es="Cerrar" data-aria-fr="Fermer" id="menu-sheet-close" type="button"><svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-width="2" viewbox="0 0 20 20"><path d="M2 2l16 16M18 2L2 18"></path></svg></button>
+</div>
+<div class="menu-sheet-list" id="menu-sheet-list"></div>
+</div>
 <!-- DISH MODAL -->
 <div aria-hidden="true" aria-labelledby="dish-modal-name" aria-modal="true" class="dish-modal" id="dish-modal" onclick="closeDish(event)" role="dialog">
 <div class="dish-modal-content" onclick="event.stopPropagation()" role="document">
@@ -1516,7 +1532,7 @@
 </div>
 </div>
 </div>
-<script src="/js/main.js?v=20261012d"></script>
+<script src="/js/main.js?v=20261025a"></script>
 <script src="/js/consent.js?v=20261012a"></script>
 <!-- Vercel Web Analytics : statistiques de visites sans témoins (Loi 25 : aucun consentement requis, mentionné dans la politique). -->
 <script defer="" src="/_vercel/insights/script.js"></script>

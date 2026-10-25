@@ -127,6 +127,11 @@ function initNav() {
         const rect = reservationSec.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.9) show = false;
       }
+      const menuSec = document.getElementById('menu');
+      if (show && menuSec && window.innerWidth <= 760) {
+        const r = menuSec.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) show = false;
+      }
       fab.classList.toggle('visible', show);
     }
   });
@@ -194,12 +199,246 @@ function initYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
-// ── Onglets Menu ──────────────────────────────────────
-function setMenuTab(tab, el) {
-  document.querySelectorAll('.menu-section').forEach(s => s.style.display = 'none');
-  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + tab).style.display = 'block';
-  if (el) el.classList.add('active');
+// ── Menu : catégories + sous-onglets (oct. 2026, inspiré de La Cage) ──
+// Ordinateur : rangée de catégories (.menu-cats). Mobile : bouton « ≡ Bouffe ▾ » qui ouvre
+// la feuille #menu-cat-sheet. Dessous : sous-onglets générés à partir des .menu-subsection-title
+// de la catégorie affichée ; l'onglet actif suit le défilement.
+const MENU_CATS = {
+  bouffe: ['tab-entrees', 'tab-arepas', 'tab-repas'],
+  breuvages: ['tab-breuvages'],
+  cocktails: ['tab-cocktails'],
+  bieres: ['tab-bieres'],
+  desserts: ['tab-desserts']
+};
+// Icônes des sous-sections de la Bouffe (même style que les icônes de catégories)
+const SUB_ICONS = {
+  'tab-entrees': 'M3 16a9 9 0 0 1 18 0zM7 16l1-3M11 16l.5-4M15 16l-.5-4M18 16l-1-3',
+  'tab-arepas': 'M4 10c0-2.2 3.6-4 8-4s8 1.8 8 4-3.6 4-8 4-8-1.8-8-4zM4 10v3c0 2.2 3.6 4 8 4s8-1.8 8-4v-3',
+  'tab-repas': 'M3 11h18a9 9 0 0 1-18 0zM8 7c0-1 1-1.2 1-2.5M12 7c0-1 1-1.2 1-2.5M16 7c0-1 1-1.2 1-2.5'
+};
+const ARROW_SVG = '<svg viewBox="0 0 34 22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M0 11h32M22 1l10 10-10 10"/></svg>';
+let currentMenuCat = 'bouffe';
+let menuSpyLock = 0;
+
+function iconSvg(d) {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="' + d + '"/></svg>';
+}
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+// Hauteur de la nav fixe + de la barre du menu (pour viser sous les deux)
+function navHeight() {
+  const nav = document.getElementById('nav');
+  return nav ? nav.getBoundingClientRect().height : 64;
+}
+function syncMenuStickyTop() {
+  document.documentElement.style.setProperty('--menu-sticky-top', Math.round(navHeight()) + 'px');
+}
+function menuStickyBottom() {
+  const bar = document.getElementById('menu-nav');
+  return navHeight() + (bar ? bar.getBoundingClientRect().height : 0);
+}
+
+function initMenuNav() {
+  const bar = document.getElementById('menu-nav');
+  if (!bar) return;
+  syncMenuStickyTop();
+  const navEl = document.getElementById('nav');
+  // La nav rapetisse au défilement (padding 18 → 12 px) : suivre sa vraie hauteur (border-box)
+  if (navEl && window.ResizeObserver) new ResizeObserver(syncMenuStickyTop).observe(navEl, { box: 'border-box' });
+  if (navEl) navEl.addEventListener('transitionend', syncMenuStickyTop);
+  window.addEventListener('resize', syncMenuStickyTop);
+
+  // Titres de sous-sections : id pour les ancres + icône (texte déplacé dans un span pour setLang)
+  let n = 0;
+  document.querySelectorAll('#menu .menu-section').forEach(sec => {
+    sec.querySelectorAll('.menu-subsection-title').forEach((t, i) => {
+      t.id = t.id || 'menu-sub-' + (++n);
+      if (t.querySelector('.menu-sub-label')) return;
+      const label = document.createElement('span');
+      label.className = 'menu-sub-label';
+      ['fr', 'en', 'es'].forEach(l => {
+        const v = t.getAttribute('data-' + l);
+        if (v != null) { label.setAttribute('data-' + l, v); t.removeAttribute('data-' + l); }
+      });
+      label.innerHTML = t.innerHTML;
+      t.innerHTML = '';
+      if (i === 0 && SUB_ICONS[sec.id]) t.insertAdjacentHTML('beforeend', iconSvg(SUB_ICONS[sec.id]));
+      t.appendChild(label);
+    });
+  });
+
+  // Catégories (ordinateur)
+  document.querySelectorAll('.menu-cat').forEach(btn => {
+    btn.addEventListener('click', () => setMenuCat(btn.dataset.cat, true));
+  });
+
+  // Feuille de choix (mobile) : copie des boutons de catégories
+  const list = document.getElementById('menu-sheet-list');
+  const sheet = document.getElementById('menu-cat-sheet');
+  const toggle = document.getElementById('menu-cat-toggle');
+  if (list && sheet && toggle) {
+    document.querySelectorAll('.menu-cat').forEach(btn => {
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'menu-sheet-item';
+      item.dataset.cat = btn.dataset.cat;
+      item.innerHTML = btn.querySelector('.menu-cat-icon').outerHTML + btn.querySelector('.menu-cat-name').outerHTML + ARROW_SVG;
+      item.addEventListener('click', () => { closeMenuSheet(); setMenuCat(item.dataset.cat, true); });
+      list.appendChild(item);
+    });
+    toggle.addEventListener('click', openMenuSheet);
+    document.getElementById('menu-sheet-close').addEventListener('click', () => closeMenuSheet(true));
+    sheet.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { e.stopPropagation(); closeMenuSheet(true); }
+      if (e.key === 'Tab') {
+        const f = sheet.querySelectorAll('button');
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
+
+  setMenuCat('bouffe', false);
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; updateMenuSpy(); });
+  }, { passive: true });
+}
+
+function setMenuCat(cat, scroll) {
+  if (!MENU_CATS[cat]) return;
+  currentMenuCat = cat;
+  const ids = MENU_CATS[cat];
+  document.querySelectorAll('#menu .menu-section').forEach(s => {
+    s.style.display = ids.includes(s.id) ? '' : 'none';
+  });
+  document.querySelectorAll('.menu-cat').forEach(b => {
+    const on = b.dataset.cat === cat;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  document.querySelectorAll('.menu-sheet-item').forEach(b => {
+    b.classList.toggle('active', b.dataset.cat === cat);
+    if (b.dataset.cat === cat) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+  });
+  // Nom affiché sur le bouton mobile
+  const cur = document.getElementById('menu-cat-current');
+  const src = document.querySelector('.menu-cat[data-cat="' + cat + '"] .menu-cat-name');
+  if (cur && src) {
+    copyLangAttrs(src, cur);
+    cur.innerHTML = src.getAttribute('data-' + currentLang) || src.innerHTML;
+  }
+  buildMenuSubtabs();
+  // Les cartes « reveal » d'une catégorie cachée n'ont pas encore été animées : les montrer
+  ids.forEach(id => document.querySelectorAll('#' + id + ' .reveal').forEach(el => el.classList.add('visible')));
+
+  if (scroll) {
+    const first = document.getElementById(ids[0]);
+    const bar = document.getElementById('menu-nav');
+    if (first && bar) {
+      // Remonter au début de la catégorie seulement si on est déjà plus bas que la barre
+      const target = first.getBoundingClientRect().top + window.scrollY - menuStickyBottom() + 1;
+      if (window.scrollY > target) window.scrollTo({ top: target, behavior: 'auto' });
+    }
+  }
+  updateMenuSpy();
+}
+
+function buildMenuSubtabs() {
+  const wrap = document.getElementById('menu-subtabs');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  MENU_CATS[currentMenuCat].forEach(id => {
+    document.querySelectorAll('#' + id + ' .menu-subsection-title').forEach(t => {
+      const a = document.createElement('a');
+      a.className = 'menu-subtab';
+      a.href = '#' + t.id;
+      a.dataset.target = t.id;
+      const svg = t.querySelector('svg');
+      if (svg) a.appendChild(svg.cloneNode(true));
+      const lbl = t.querySelector('.menu-sub-label');
+      const span = document.createElement('span');
+      if (lbl) { copyLangAttrs(lbl, span); span.innerHTML = lbl.innerHTML; }
+      a.appendChild(span);
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        goToMenuSub(t);
+        setActiveSubtab(t.id);
+        menuSpyLock = Date.now() + 700; // le défilement doux ne doit pas faire clignoter l'onglet
+      });
+      wrap.appendChild(a);
+    });
+  });
+  wrap.hidden = wrap.children.length < 2;
+}
+
+function goToMenuSub(t) {
+  const top = t.getBoundingClientRect().top + window.scrollY - menuStickyBottom() - 4;
+  window.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+}
+
+function setActiveSubtab(id) {
+  const wrap = document.getElementById('menu-subtabs');
+  if (!wrap) return;
+  let activeEl = null;
+  wrap.querySelectorAll('.menu-subtab').forEach(a => {
+    const on = a.dataset.target === id;
+    a.classList.toggle('active', on);
+    if (on) { a.setAttribute('aria-current', 'true'); activeEl = a; } else a.removeAttribute('aria-current');
+  });
+  // Garder l'onglet actif visible dans la rangée (mobile)
+  if (activeEl && wrap.scrollWidth > wrap.clientWidth) {
+    const left = activeEl.offsetLeft - (wrap.clientWidth - activeEl.offsetWidth) / 2;
+    wrap.scrollTo({ left: Math.max(0, left), behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+  }
+}
+
+function updateMenuSpy() {
+  if (Date.now() < menuSpyLock) return;
+  const titles = [];
+  MENU_CATS[currentMenuCat].forEach(id => document.querySelectorAll('#' + id + ' .menu-subsection-title').forEach(t => titles.push(t)));
+  if (!titles.length) return;
+  const limit = menuStickyBottom() + 40;
+  let cur = titles[0].id;
+  titles.forEach(t => { if (t.getBoundingClientRect().top <= limit) cur = t.id; });
+  const wrap = document.getElementById('menu-subtabs');
+  const active = wrap && wrap.querySelector('.menu-subtab.active');
+  if (!active || active.dataset.target !== cur) setActiveSubtab(cur);
+}
+
+let menuSheetOpener = null;
+function openMenuSheet() {
+  const sheet = document.getElementById('menu-cat-sheet');
+  const toggle = document.getElementById('menu-cat-toggle');
+  if (!sheet) return;
+  menuSheetOpener = toggle;
+  sheet.hidden = false;
+  requestAnimationFrame(() => sheet.classList.add('open'));
+  if (toggle) toggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+  const cur = sheet.querySelector('.menu-sheet-item.active') || sheet.querySelector('button');
+  if (cur) setTimeout(() => cur.focus(), 30);
+}
+function closeMenuSheet(restoreFocus) {
+  const sheet = document.getElementById('menu-cat-sheet');
+  const toggle = document.getElementById('menu-cat-toggle');
+  if (!sheet || sheet.hidden) return;
+  sheet.classList.remove('open');
+  sheet.hidden = true;
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  if (restoreFocus && menuSheetOpener) menuSheetOpener.focus();
+}
+
+// Compatibilité : ancien nom de fonction (onglet → catégorie)
+function setMenuTab(tab) {
+  const cat = Object.keys(MENU_CATS).find(k => MENU_CATS[k].includes('tab-' + tab));
+  if (cat) setMenuCat(cat, true);
 }
 
 // ── Fiches de plats : photos + badges + modale ────────
@@ -334,6 +573,27 @@ function initDishCards() {
         });
       }
     });
+  });
+}
+
+
+// Étiquettes sur la photo d'un plat : <div class="menu-card" data-flag="new|weekend|share|sunday">
+const DISH_FLAGS = {
+  new: { cls: 'flag-new', fr: 'Nouveau', en: 'New', es: 'Nuevo' },
+  weekend: { cls: 'flag-dark', fr: 'Ven. – dim.', en: 'Fri – Sun', es: 'Vie. – dom.' },
+  share: { cls: 'flag-blue', fr: 'À partager', en: 'To share', es: 'Para compartir' },
+  sunday: { cls: 'flag-yellow', fr: 'Dim. 5 $', en: 'Sun. $5', es: 'Dom. 5 $' }
+};
+function addDishFlags() {
+  document.querySelectorAll('.menu-card[data-flag]').forEach(card => {
+    const f = DISH_FLAGS[card.getAttribute('data-flag')];
+    const photo = card.querySelector('.menu-card-photo');
+    if (!f || !photo || photo.querySelector('.menu-flag')) return;
+    const span = document.createElement('span');
+    span.className = 'menu-flag ' + f.cls;
+    ['fr', 'en', 'es'].forEach(l => span.setAttribute('data-' + l, f[l]));
+    span.textContent = f[currentLang] || f.fr;
+    photo.appendChild(span);
   });
 }
 
@@ -580,8 +840,10 @@ function computeStatus() {
   return { open: false };
 }
 function renderStatus() {
-  const pill = document.getElementById('status-pill');
-  const txt = document.getElementById('status-text');
+  renderStatusInto(document.getElementById('status-pill'), document.getElementById('status-text'));
+  renderStatusInto(document.getElementById('menu-status'), document.getElementById('menu-status-text'));
+}
+function renderStatusInto(pill, txt) {
   if (!pill || !txt) return;
   const lang = currentLang || 'fr';
   const s = computeStatus();
@@ -693,6 +955,8 @@ function initContactForm() {
 // ── Init ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initDishCards();
+  addDishFlags();
+  initMenuNav();
   initPromoToday();
   restoreLang();
   initLangLinks();
