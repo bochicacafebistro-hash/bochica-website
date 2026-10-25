@@ -344,11 +344,12 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
-### 25 octobre 2026 (b) — Thème « Bento » (BRANCHE `nouveau-design`, pas en ligne)
+### 25 octobre 2026 (b) — Thème « Bento » (mis EN LIGNE sur main le 25 oct., 18 h 26)
 - Choisi par le propriétaire parmi 3 directions (canevas « Bochica — nouveau design du site », direction B). Basé sur le guide de marque Bochica : fond blanc, encre bleu tablier `#1e2b47`, accents jaune maïs `#f4c430`, police Manrope, tuiles arrondies (32 px). **Logo inchangé** (règle du propriétaire)
 - `css/bento.css` (nouveau, chargé après `style.css` dans index + privacy) : remplace couleurs/polices/formes ; enlève les majuscules et lettres espacées ; nav en pilule flottante ; « Notre histoire » en tuile bleu pâle ; section finale en tuile jaune
-- `index.html` : accueil `.hero--bento` (grande tuile jaune + H1 « Le vrai goût de Medellín », tuile photo picada, tuile statut ouvert/fermé `#status-pill`, tuile 4,7 Google, tuile promo du jour `#hero-promo`) ; Manrope ajoutée à Google Fonts. Mobile : tuile jaune + statut seulement
+- `index.html` : accueil `.hero--bento` (grande tuile jaune + H1 « Le vrai goût de la Colombie » (changé le 25 oct. à la demande du propriétaire), tuile photo picada, tuile statut ouvert/fermé `#status-pill`, tuile 4,7 Google, tuile promo du jour `#hero-promo`) ; Manrope ajoutée à Google Fonts. Mobile : tuile jaune + statut seulement
 - `main.js` : `initHeroPromo()` (promo du jour ou la prochaine, copiée des cartes #evenements) ; `navHeight()` utilise le bas de la nav (nav flottante)
+- **Mobile** : l'en-tête (nav) n'est PAS fixe (il reste en haut de la page) ; la barre du menu colle tout en haut de l'écran ; flèche ronde « retour en haut » (`#to-top`, en bas à gauche, après 600 px de défilement, gérée dans `initNav()`)
 - Pour abandonner : rester sur `main`. Pour adopter : fusionner la branche dans `main` (GitHub Desktop → Branch → Merge into current branch)
 
 ### 25 octobre 2026 — Menu en liste, inspiré de La Cage (cage.ca)

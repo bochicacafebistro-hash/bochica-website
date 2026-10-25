@@ -115,11 +115,19 @@ function initLangGate() {
 
 // ── Nav scroll ────────────────────────────────────────
 function initNav() {
+  const toTopBtn = document.getElementById('to-top');
+  if (toTopBtn) toTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
   const fab = document.getElementById('fab-reserve');
   const reservationSec = document.getElementById('reservation');
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
-    document.getElementById('nav').classList.toggle('scrolled', y > 60);
+    const nav = document.getElementById('nav');
+    nav.classList.toggle('scrolled', y > 60);
+    // Mobile : flèche « retour en haut » (l'en-tête n'est pas fixe sur mobile)
+    const toTop = document.getElementById('to-top');
+    if (toTop) toTop.classList.toggle('visible', window.innerWidth <= 760 && y > 600);
     // Afficher le FAB après 400px et le cacher quand on approche de la section réservation
     if (fab) {
       let show = y > 400;
@@ -230,14 +238,19 @@ function prefersReducedMotion() {
 function navHeight() {
   const nav = document.getElementById('nav');
   // bas de la nav (la nav « pilule » du thème Bento flotte à 12 px du haut)
-  return nav ? nav.getBoundingClientRect().bottom : 64;
+  return nav ? Math.max(0, nav.getBoundingClientRect().bottom) : 64;
 }
 function syncMenuStickyTop() {
-  document.documentElement.style.setProperty('--menu-sticky-top', Math.round(navHeight()) + 'px');
+  document.documentElement.style.setProperty('--menu-sticky-top', (navIsFixed() ? Math.round(navHeight()) : 0) + 'px');
+}
+// Mobile : l'en-tête n'est pas fixe (il part avec le défilement) → la barre du menu colle en haut (0)
+function navIsFixed() {
+  const nav = document.getElementById('nav');
+  return !!nav && getComputedStyle(nav).position === 'fixed';
 }
 function menuStickyBottom() {
   const bar = document.getElementById('menu-nav');
-  return navHeight() + (bar ? bar.getBoundingClientRect().height : 0);
+  return (navIsFixed() ? navHeight() : 0) + (bar ? bar.getBoundingClientRect().height : 0);
 }
 
 function initMenuNav() {
