@@ -344,6 +344,13 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 25 octobre 2026 (b) — Thème « Bento » (BRANCHE `nouveau-design`, pas en ligne)
+- Choisi par le propriétaire parmi 3 directions (canevas « Bochica — nouveau design du site », direction B). Basé sur le guide de marque Bochica : fond blanc, encre bleu tablier `#1e2b47`, accents jaune maïs `#f4c430`, police Manrope, tuiles arrondies (32 px). **Logo inchangé** (règle du propriétaire)
+- `css/bento.css` (nouveau, chargé après `style.css` dans index + privacy) : remplace couleurs/polices/formes ; enlève les majuscules et lettres espacées ; nav en pilule flottante ; « Notre histoire » en tuile bleu pâle ; section finale en tuile jaune
+- `index.html` : accueil `.hero--bento` (grande tuile jaune + H1 « Le vrai goût de Medellín », tuile photo picada, tuile statut ouvert/fermé `#status-pill`, tuile 4,7 Google, tuile promo du jour `#hero-promo`) ; Manrope ajoutée à Google Fonts. Mobile : tuile jaune + statut seulement
+- `main.js` : `initHeroPromo()` (promo du jour ou la prochaine, copiée des cartes #evenements) ; `navHeight()` utilise le bas de la nav (nav flottante)
+- Pour abandonner : rester sur `main`. Pour adopter : fusionner la branche dans `main` (GitHub Desktop → Branch → Merge into current branch)
+
 ### 25 octobre 2026 — Menu en liste, inspiré de La Cage (cage.ca)
 - Maquette validée par le propriétaire (canevas « Menu mobile Bochica » : 3 écrans mobiles + version ordinateur), puis intégrée
 - `index.html` : anciens boutons `.menu-tabs` remplacés par `#menu-nav` (catégories `.menu-cat` + bouton mobile `#menu-cat-toggle` + `#menu-subtabs`) ; feuille `#menu-cat-sheet` ajoutée avant la modale ; `tab-arepas` et `tab-repas` visibles par défaut (catégorie Bouffe) ; `data-flag` sur Bandeja paisa, Chuleta valluna (new), Mojarra (weekend), Suprema (share), Repas enfant (sunday) ; ligne `#menu-status` ; police **Bricolage Grotesque** (700–800) ajoutée à la requête Google Fonts

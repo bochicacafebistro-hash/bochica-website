@@ -229,7 +229,8 @@ function prefersReducedMotion() {
 // Hauteur de la nav fixe + de la barre du menu (pour viser sous les deux)
 function navHeight() {
   const nav = document.getElementById('nav');
-  return nav ? nav.getBoundingClientRect().height : 64;
+  // bas de la nav (la nav « pilule » du thème Bento flotte à 12 px du haut)
+  return nav ? nav.getBoundingClientRect().bottom : 64;
 }
 function syncMenuStickyTop() {
   document.documentElement.style.setProperty('--menu-sticky-top', Math.round(navHeight()) + 'px');
@@ -764,6 +765,39 @@ function copyLangAttrs(src, dst) {
   });
 }
 
+// Accueil « Bento » : tuile de la promo du jour (ou de la prochaine), copiée des cartes #evenements
+function initHeroPromo() {
+  const tile = document.getElementById('hero-promo');
+  if (!tile) return;
+  const cards = [...document.querySelectorAll('.promo-card[data-promo-day]')];
+  if (!cards.length) { tile.hidden = true; return; }
+  const today = getQuebecDate().getDay();
+  let best = null, bestGap = 8;
+  cards.forEach(c => {
+    const gap = (Number(c.getAttribute('data-promo-day')) - today + 7) % 7;
+    if (gap < bestGap) { bestGap = gap; best = c; }
+  });
+  const put = (id, src, fallback) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (src) { copyLangAttrs(src, el); el.innerHTML = src.getAttribute('data-' + currentLang) || src.innerHTML; }
+    else if (fallback) { ['fr', 'en', 'es'].forEach(l => el.setAttribute('data-' + l, fallback[l])); el.textContent = fallback[currentLang] || fallback.fr; }
+  };
+  put('hero-promo-when', bestGap === 0 ? null : best.querySelector('.promo-card__every'),
+      bestGap === 0 ? { fr: "Aujourd'hui", en: 'Today', es: 'Hoy' } : null);
+  put('hero-promo-title', best.querySelector('.promo-card__title'));
+  const big = best.querySelector('.promo-card__big');
+  const unit = best.querySelector('.promo-card__unit');
+  const deal = document.getElementById('hero-promo-deal');
+  if (deal && big) {
+    deal.innerHTML = '';
+    const b = big.cloneNode(true); b.className = 'bento-promo__big';
+    deal.appendChild(b);
+    if (unit) { const u = unit.cloneNode(true); u.className = 'bento-promo__unit'; deal.appendChild(document.createTextNode(' ')); deal.appendChild(u); }
+  }
+  tile.classList.toggle('is-today', bestGap === 0);
+}
+
 // ── Statut Ouvert / Fermé ─────────────────────────────
 // Horaires : dimanche=0, lundi=1, ..., samedi=6
 // [heureOuverture, heureFermeture] en heures décimales (17.5 = 17h30). null = fermé.
@@ -958,6 +992,7 @@ document.addEventListener('DOMContentLoaded', () => {
   addDishFlags();
   initMenuNav();
   initPromoToday();
+  initHeroPromo();
   restoreLang();
   initLangLinks();
   initLangGate();

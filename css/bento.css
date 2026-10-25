@@ -1,0 +1,252 @@
+/* ═══════════════════════════════════════════════════════════════
+   BOCHICA — THÈME « BENTO » (branche nouveau-design, 25 oct. 2026)
+   Chargé APRÈS style.css : remplace les couleurs, polices et formes.
+   Fond blanc, encre bleu tablier #1e2b47, accents jaune maïs #f4c430
+   (guide de marque Bochica), Manrope partout, tuiles arrondies.
+   Le logo n'est jamais modifié.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg: #ffffff;
+  --bg-2: #f5f7fb;
+  --bg-3: #eef2f9;
+  --cream: #ffffff;
+  --cream-2: #f5f7fb;
+  --ink: #1e2b47;
+  --black: #1e2b47;
+  --text: #1e2b47;
+  --text2: #4a5671;
+  --text3: #5b667d;
+  --text-on-cream: #1e2b47;
+  --text-on-cream-2: #4a5671;
+
+  --accent: #f4c430;
+  --accent-hover: #e6b41c;
+  --accent-soft: #fff4d6;
+  --accent-text: #1e2b47;
+  --accent-warm: #8a5a00;      /* texte « doré » sur blanc : 5,9:1 */
+  --orange: #e08800;           /* or-bochica (étoiles, petites touches) */
+
+  --yellow: #f4c430;
+  --blue: #003893;
+  --red: #ce1126;
+  --status-open: #2e9e63;
+
+  --border-dark: rgba(30,43,71,.1);
+  --border-dark-strong: rgba(30,43,71,.22);
+
+  --font-display: 'Manrope', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Manrope', 'Inter', sans-serif;
+  --font-body: 'Manrope', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Manrope', 'Inter', sans-serif;
+  --menu-font: 'Manrope', 'Inter', sans-serif;
+
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --tile: 32px;                /* rayon des grandes tuiles */
+}
+
+html, body { background: #ffffff; font-size: 16px; }
+body { background-image: none; }
+
+/* Plus de majuscules ni de lettres espacées (style brasserie) : typographie moderne */
+body *:not(.visually-hidden) { text-transform: none !important; letter-spacing: normal !important; }
+h1, h2, h3, h4, h5, h6,
+.section-title, .section-h2, .story-h2, .cta-final__h2, .menu-hero-title {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.02 !important;
+}
+/* Grands titres de section */
+.section-title, .section-h2, .menu-hero-title, .story-h2 { font-size: clamp(38px, 4.6vw, 64px) !important; }
+/* Pas de mot mis en couleur dans les titres */
+.section-h2 .accent, .section-title .accent, .cta-final__h2 .accent, .hero-h1 .hl, .story-h2 .highlight,
+.section-h2 .highlight { color: inherit !important; background: none !important; padding: 0 !important; }
+/* Petites étiquettes au-dessus des titres : discrètes, en minuscules */
+.section-tag, .menu-hero-tag, .section-eyebrow, .story-eyebrow, .cta-final__eyebrow {
+  font-family: var(--font-body) !important; font-size: 15px !important; font-weight: 700 !important;
+  color: var(--accent-warm) !important;
+}
+.ornament { display: none !important; }
+/* Boutons et chiffres qui utilisaient la police d'affichage */
+.btn-primary, .btn-outline, .cta-final__btn, .fab-reserve, .btn-nav-order, .btn-nav-reserve, .follow-btn__cta {
+  font-family: var(--font-body) !important; font-weight: 700 !important; font-size: 15px !important;
+}
+.btn-primary, .btn-outline, .cta-final__btn { border-radius: 999px !important; }
+.promo-card__day, .promo-card__big, .story-stat b, .menu-card-price { font-weight: 800 !important; letter-spacing: -0.03em !important; }
+.promo-card__title { font-weight: 800 !important; letter-spacing: -0.02em !important; }
+.promo-card { border-radius: 24px !important; overflow: hidden; }
+.review-card, .contact-form-wrap, .faq-list { border-radius: 24px; }
+.hero--bento .hero-h1 { text-shadow: none !important; letter-spacing: -0.045em !important; line-height: .94 !important; }
+
+/* ─── Nav en pilule flottante ─── */
+#nav, #nav.scrolled {
+  top: 12px; left: 16px; right: 16px;
+  max-width: 1280px; margin: 0 auto;
+  padding: 8px 8px 8px 22px;
+  background: rgba(255,255,255,.9);
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+  box-shadow: 0 6px 24px rgba(30,43,71,.08);
+}
+#nav .nav-links a { font-weight: 600; font-size: 15px; }
+#nav .btn-nav-reserve { background: var(--ink); color: #fff; border-color: var(--ink); border-radius: 999px; font-weight: 700; }
+#nav .btn-nav-reserve:hover { background: #2c3d63; }
+#nav .btn-nav-order { border-radius: 999px; font-weight: 700; border-color: var(--border-dark-strong); }
+#nav .lang-btn.active { background: var(--accent); color: var(--ink); }
+
+/* ─── Accueil en tuiles ─── */
+.hero.hero--bento {
+  min-height: 0; height: auto;
+  background: #ffffff;
+  padding: 96px 16px 0;
+  display: block;
+}
+.bento {
+  max-width: 1280px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(210px, auto);
+  gap: 14px;
+}
+.bento-tile { border-radius: var(--tile); padding: 30px; margin: 0; min-width: 0; position: relative; }
+.bento-main {
+  grid-column: span 2; grid-row: span 2;
+  background: var(--accent); color: var(--ink);
+  padding: 48px 44px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
+}
+.hero--bento .hero-h1 {
+  margin: 0; color: var(--ink);
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(46px, 6vw, 92px); line-height: .94; letter-spacing: -0.045em;
+  max-width: 9ch;
+}
+.bento-main__bottom { display: flex; flex-direction: column; gap: 22px; }
+.hero--bento .hero-lead { margin: 0; max-width: 36ch; font-size: 19px; line-height: 1.5; font-weight: 500; color: var(--ink); }
+.hero--bento .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin: 0; }
+.bento-btn {
+  min-height: 52px; padding: 0 26px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none;
+  box-sizing: border-box; transition: background var(--transition-fast);
+}
+.bento-btn--dark { background: var(--ink); color: #fff; }
+.bento-btn--dark:hover { background: #2c3d63; color: #fff; }
+.bento-btn--light { background: #fff; color: var(--ink); }
+.bento-btn--light:hover { background: #f5f7fb; }
+.bento-btn--outline { border: 2px solid var(--ink); color: var(--ink); }
+.bento-btn--outline:hover { background: var(--ink); color: #fff; }
+
+.bento-dish {
+  grid-row: span 2;
+  background: var(--bg-3);
+  overflow: hidden; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 420px;
+}
+.bento-dish picture { display: block; width: 108%; }
+.bento-dish img { width: 100%; height: auto; filter: drop-shadow(0 30px 34px rgba(30,43,71,.3)); }
+.bento-dish__tag {
+  position: absolute; left: 18px; right: 18px; bottom: 18px;
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  background: #fff; border-radius: 999px; padding: 10px 10px 10px 20px;
+  font-weight: 700; font-size: 15px; color: var(--ink);
+}
+.bento-dish__price { background: var(--accent); border-radius: 999px; padding: 6px 14px; font-weight: 800; }
+
+.bento-status {
+  background: var(--ink); color: #fff;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
+}
+.bento-status .hero-status {
+  margin: 0; padding: 0; border: 0; background: none;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  font-family: var(--font-display); color: #fff;
+}
+.bento-status .status-dot { width: 12px; height: 12px; box-shadow: 0 0 0 6px rgba(255,255,255,.12); }
+.bento-status .status-item.open .status-dot { background: #5cd08f; box-shadow: 0 0 0 6px rgba(92,208,143,.22); }
+.bento-status .status-text { font-size: clamp(26px, 2.4vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+.bento-tile__link { color: #c9d2e4; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.bento-tile__link:hover { color: #fff; }
+
+.bento-rating {
+  border: 1px solid var(--border-dark);
+  display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
+}
+.bento-stars { display: flex; gap: 4px; color: var(--orange); }
+.bento-stars svg { width: 22px; height: 22px; fill: currentColor; }
+.bento-big { font-size: clamp(30px, 2.8vw, 42px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.bento-small { margin: 8px 0 0; color: var(--text2); font-size: 15px; }
+
+.bento-promo {
+  grid-column: 1 / -1;
+  background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  padding: 30px 34px;
+}
+.bento-promo__text { display: flex; flex-direction: column; gap: 6px; }
+.bento-promo__when { font-size: 15px; font-weight: 700; color: var(--accent-warm); }
+.bento-promo__title { font-size: clamp(26px, 2.4vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.bento-promo__deal { color: var(--text2); font-size: 16px; }
+.bento-promo__big { display: inline; font-weight: 800; color: var(--ink); }
+.bento-promo__unit { display: inline; }
+
+@media (max-width: 1100px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bento-dish { grid-row: span 1; min-height: 320px; }
+}
+/* Mobile : grande tuile jaune + statut seulement, puis le menu (arrivée rapide sur le menu) */
+@media (max-width: 760px) {
+  .hero.hero--bento { padding: 84px 12px 0; height: auto; }
+  .bento { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 10px; }
+  .bento-main { grid-column: auto; grid-row: auto; padding: 28px 24px; gap: 20px; border-radius: 26px; }
+  .hero--bento .hero-h1 { font-size: 44px; position: static !important; width: auto !important; height: auto !important; clip: auto !important; margin: 0 !important; overflow: visible !important; white-space: normal !important; }
+  .hero--bento .hero-lead { font-size: 16px; }
+  .hero--bento .hero-btns { display: flex !important; }
+  .bento-btn { flex: 1 1 auto; }
+  .bento-dish, .bento-rating, .bento-promo { display: none; }
+  .bento-status { padding: 18px 22px; border-radius: 22px; flex-direction: row; align-items: center; }
+  .bento-status .hero-status { display: flex !important; flex-direction: row; align-items: center; gap: 12px; }
+  .bento-status .status-text { font-size: 18px; }
+}
+
+/* ─── « Notre histoire » : grande tuile bleu pâle au lieu du fond noir ─── */
+.story {
+  background: var(--bg-3) !important; color: var(--ink) !important;
+  max-width: 1280px; margin: 96px auto 0; border-radius: var(--tile);
+  padding: 72px clamp(24px, 5vw, 64px) !important;
+}
+.story::after { display: none; }
+.story-h2, .story-text p { color: var(--ink) !important; }
+.story-text p { color: var(--text2) !important; font-size: 17px !important; }
+.story-quote { color: var(--ink) !important; border-left-color: var(--accent) !important; font-family: var(--font-body) !important; font-weight: 700; font-size: clamp(20px, 2vw, 24px) !important; line-height: 1.35 !important; }
+.story-stat { background: #fff; border: 0 !important; border-radius: 20px !important; }
+.story-stat b { color: var(--ink) !important; }
+.story-stat span { color: var(--text2) !important; font-size: 13px !important; font-family: var(--font-body) !important; font-weight: 600; }
+@media (max-width: 1312px) { .story { margin-left: 16px; margin-right: 16px; } }
+
+/* ─── Section finale : grande tuile jaune ─── */
+.cta-final {
+  background: var(--accent) !important; color: var(--ink) !important;
+  max-width: 1280px; margin: 0 auto 16px; border-radius: var(--tile);
+  min-height: 0 !important; padding: 80px 24px !important;
+}
+.cta-final::after { display: none; }
+.cta-final__h2 { color: var(--ink) !important; font-size: clamp(44px, 6vw, 88px) !important; }
+.cta-final__eyebrow { color: var(--ink) !important; }
+.cta-final__btn { background: var(--ink) !important; color: #fff !important; }
+@media (max-width: 1312px) { .cta-final { margin-left: 16px; margin-right: 16px; } }
+
+/* ─── Réseaux sociaux : boutons en pilule ─── */
+.follow-btn { border-radius: 999px !important; }
+
+/* ─── Menu : barre collante sous la nav flottante ─── */
+.menu-nav::before { background: rgba(255,255,255,.96) !important; }
+
+/* Retouches */
+.menu-status { display: none !important; }            /* déjà dans la tuile « Ouvert » de l'accueil */
+.bento-tile__link { white-space: nowrap; }
+.cta-final { margin-top: 16px !important; }

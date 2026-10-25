@@ -41,8 +41,8 @@
 <!-- Typographie : Bebas Neue (titres impact) + Inter (corps) + JetBrains Mono (microcopy) -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Bricolage+Grotesque:opsz,wght@12..96,700..800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="preload"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Bricolage+Grotesque:opsz,wght@12..96,700..800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Manrope:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Manrope:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <!-- ============ Open Graph (Facebook, LinkedIn, WhatsApp) ============ -->
 <meta content="restaurant.restaurant" property="og:type"/>
 <meta content="Bochica Restaurant Colombien" property="og:site_name"/>
@@ -429,6 +429,7 @@
 <link href="https://bochicacafebistro.ca/es/" hreflang="es" rel="alternate"/>
 <link href="https://bochicacafebistro.ca/" hreflang="x-default" rel="alternate"/>
 <link href="/css/style.css?v=20261025a" rel="stylesheet"/>
+<link href="/css/bento.css?v=20261025a" rel="stylesheet"/>
 <!-- Langue : chaque langue a sa propre adresse (/, /en/, /es/).
        Sur la page FR seulement : 1) un visiteur qui avait choisi EN/ES est renvoyé vers sa version ;
        2) écran de choix de langue sur mobile à la 1re visite. Jamais pour les robots. -->
@@ -484,53 +485,50 @@
 </nav>
 <!-- CONTENU PRINCIPAL (landmark <main> pour lecteurs d'écran) -->
 <main id="main">
-<!-- HERO — option B « mosaïque » (sept. 2026 ; cases de couleur + photos détourées depuis le 12 oct. 2026, images/hero/). Sur mobile : masqué (le H1 reste pour Google),
-     et les photos ne sont PAS téléchargées (<source media="min-width: 761px"> + GIF transparent 1 px). -->
-<section aria-labelledby="hero-title" class="hero hero--mosaic">
-<div class="hero-inner">
-<div class="hero-text">
-<div class="hero-eyebrow" data-en="Colombian restaurant · Saint-Sauveur, Québec City" data-es="Restaurante colombiano · Saint-Sauveur, Quebec" data-fr="Restaurant colombien · Saint-Sauveur, Québec">Restaurante colombiano · Saint-Sauveur, Quebec</div>
-<h1 class="hero-h1" id="hero-title"><span class="visually-hidden" data-en="Bochica, Colombian restaurant in Québec City — " data-es="Bochica, restaurante colombiano en Quebec — " data-fr="Bochica, restaurant colombien à Québec — ">Bochica, restaurante colombiano en Quebec — </span><span class="hero-h1__main" data-en="Travel to &lt;span class='hl'&gt;Colombia&lt;/span&gt; without leaving Québec" data-es="Viaja a &lt;span class='hl'&gt;Colombia&lt;/span&gt; sin salir de Quebec" data-fr="Voyagez en &lt;span class='hl'&gt;Colombie&lt;/span&gt; sans quitter le Québec">Viaja a <span class="hl">Colombia</span> sin salir de Quebec</span></h1>
-<p class="hero-lead" data-en="Arepas, empanadas, bandeja paisa and Colombian cocktails, made fresh every day with love at 430 Saint-Vallier Ouest St." data-es="Arepas, empanadas, bandeja paisa y cócteles colombianos, preparados cada día con amor en el 430 Rue Saint-Vallier Ouest." data-fr="Arepas, empanadas, bandeja paisa et cocktails colombiens, préparés chaque jour avec amour au 430 Rue Saint-Vallier Ouest.">Arepas, empanadas, bandeja paisa y cócteles colombianos, preparados cada día con amor en el 430 Rue Saint-Vallier Ouest.</p>
+<!-- HERO — thème « Bento » (branche nouveau-design, 25 oct. 2026) : tuiles de tailles différentes.
+     Mobile : seulement la grande tuile jaune + le statut (la photo n'est pas téléchargée). -->
+<section aria-labelledby="hero-title" class="hero hero--bento">
+<div class="bento">
+<div class="bento-tile bento-main">
+<h1 class="hero-h1" id="hero-title"><span class="visually-hidden" data-en="Bochica, Colombian restaurant in Québec City — " data-es="Bochica, restaurante colombiano en Quebec — " data-fr="Bochica, restaurant colombien à Québec — ">Bochica, restaurante colombiano en Quebec — </span><span class="hero-h1__main" data-en="A true taste of Medellín" data-es="El verdadero sabor de Medellín" data-fr="Le vrai goût de Medellín">El verdadero sabor de Medellín</span></h1>
+<div class="bento-main__bottom">
+<p class="hero-lead" data-en="Colombian food served with pride at 430 Saint-Vallier Ouest. No plane ticket needed." data-es="Comida colombiana servida con orgullo en el 430 Rue Saint-Vallier Ouest. Sin tomar el avión." data-fr="Cuisine colombienne servie avec fierté au 430, rue Saint-Vallier Ouest. Sans prendre l'avion.">Comida colombiana servida con orgullo en el 430 Rue Saint-Vallier Ouest. Sin tomar el avión.</p>
 <div class="hero-btns">
-<a class="btn-outline" data-en="View menu" data-es="Ver el menú" data-fr="Voir le menu" href="#menu">Ver el menú</a>
-<a class="btn-primary" data-en="Order" data-es="Ordenar" data-fr="Commander" href="https://bochica.order-online.ai/" rel="noopener noreferrer" target="_blank">Ordenar</a>
-<a class="btn-primary" data-en="Reserve" data-es="Reservar" data-fr="Réserver" href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" rel="noopener noreferrer" target="_blank">Reservar</a>
+<a class="bento-btn bento-btn--dark" data-en="Book a table" data-es="Reservar una mesa" data-fr="Réserver une table" href="https://widgets.libroreserve.com/WEB/QC017664192446445AC/book" rel="noopener noreferrer" target="_blank">Reservar una mesa</a>
+<a class="bento-btn bento-btn--light" data-en="Order online" data-es="Ordenar en línea" data-fr="Commander en ligne" href="https://bochica.order-online.ai/" rel="noopener noreferrer" target="_blank">Ordenar en línea</a>
 </div>
+</div>
+</div>
+<figure class="bento-tile bento-dish">
+<picture>
+<source media="(min-width: 761px)" srcset="/images/hero/picada-detoure.webp" type="image/webp"/>
+<img alt="Picada para compartir" data-alt-en="Picada platter to share" data-alt-es="Picada para compartir" data-alt-fr="Picada à partager" fetchpriority="high" height="800" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800"/>
+</picture>
+<figcaption class="bento-dish__tag"><span data-en="Picada to share" data-es="Picada para compartir" data-fr="Picada à partager">Picada para compartir</span><span class="bento-dish__price" data-amount="36">36 $</span></figcaption>
+</figure>
+<div class="bento-tile bento-status">
 <div class="hero-status status-item" id="status-pill">
 <span class="status-dot"></span>
 <span class="status-text" id="status-text">—</span>
 </div>
+<a class="bento-tile__link" data-en="See opening hours" data-es="Ver horarios" data-fr="Voir les horaires" href="#horaires">Ver horarios</a>
 </div>
-<div class="hero-mosaic">
-<figure class="hero-mosaic__item">
-<picture>
-<source media="(min-width: 761px)" srcset="/images/hero/chuleta-valluna-detoure.webp" type="image/webp"/>
-<img alt="Chuleta valluna" fetchpriority="high" height="800" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800"/>
-</picture>
-<figcaption>Chuleta valluna</figcaption>
-</figure>
-<figure class="hero-mosaic__item">
-<picture>
-<source media="(min-width: 761px)" srcset="/images/hero/bandeja-paisa-detoure.webp" type="image/webp"/>
-<img alt="Bandeja paisa" height="800" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800"/>
-</picture>
-<figcaption>Bandeja paisa</figcaption>
-</figure>
-<figure class="hero-mosaic__item">
-<picture>
-<source media="(min-width: 761px)" srcset="/images/hero/empanadas-detoure.webp" type="image/webp"/>
-<img alt="Empanadas" height="800" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800"/>
-</picture>
-<figcaption>Empanadas</figcaption>
-</figure>
-<figure class="hero-mosaic__item">
-<picture>
-<source media="(min-width: 761px)" srcset="/images/hero/picada-detoure.webp" type="image/webp"/>
-<img alt="Picada" height="800" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800"/>
-</picture>
-<figcaption>Picada</figcaption>
-</figure>
+<div class="bento-tile bento-rating">
+<div aria-label="4,7 de 5" class="bento-stars" data-aria-en="4.7 out of 5" data-aria-es="4,7 de 5" data-aria-fr="4,7 sur 5" role="img">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>
+</div>
+<div>
+<div class="bento-big" data-en="4.7 on Google" data-es="4,7 en Google" data-fr="4,7 sur Google">4,7 en Google</div>
+<p class="bento-small" data-en="Service in English, French and español" data-es="Atención en español, francés e inglés" data-fr="Service en français, en anglais et en español">Atención en español, francés e inglés</p>
+</div>
+</div>
+<div class="bento-tile bento-promo" id="hero-promo">
+<div class="bento-promo__text">
+<span class="bento-promo__when" id="hero-promo-when"></span>
+<span class="bento-promo__title" id="hero-promo-title"></span>
+<span class="bento-promo__deal" id="hero-promo-deal"></span>
+</div>
+<a class="bento-btn bento-btn--outline" data-en="All deals" data-es="Todas las promos" data-fr="Toutes les promos" href="#evenements">Todas las promos</a>
 </div>
 </div>
 </section>
@@ -1532,7 +1530,7 @@
 </div>
 </div>
 </div>
-<script src="/js/main.js?v=20261025a"></script>
+<script src="/js/main.js?v=20261025b"></script>
 <script src="/js/consent.js?v=20261012a"></script>
 <!-- Vercel Web Analytics : statistiques de visites sans témoins (Loi 25 : aucun consentement requis, mentionné dans la politique). -->
 <script defer="" src="/_vercel/insights/script.js"></script>
