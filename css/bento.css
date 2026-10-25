@@ -1,39 +1,39 @@
 /* ═══════════════════════════════════════════════════════════════
    BOCHICA — THÈME « BENTO » (branche nouveau-design, 25 oct. 2026)
    Chargé APRÈS style.css : remplace les couleurs, polices et formes.
-   Fond blanc, encre bleu tablier #1e2b47, accents jaune maïs #f4c430
-   (guide de marque Bochica), Manrope partout, tuiles arrondies.
+   Seulement BLANC + JAUNE maïs #f4c430 (choix du propriétaire, 25 oct. : pas de bleu).
+   Texte et boutons sombres en noir (comme les lettres du logo). Manrope, tuiles arrondies.
    Le logo n'est jamais modifié.
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
   --bg: #ffffff;
-  --bg-2: #f5f7fb;
-  --bg-3: #eef2f9;
+  --bg-2: #f4f4f4;
+  --bg-3: #f2f2f2;
   --cream: #ffffff;
-  --cream-2: #f5f7fb;
-  --ink: #1e2b47;
-  --black: #1e2b47;
-  --text: #1e2b47;
-  --text2: #4a5671;
-  --text3: #5b667d;
-  --text-on-cream: #1e2b47;
-  --text-on-cream-2: #4a5671;
+  --cream-2: #f4f4f4;
+  --ink: #161616;
+  --black: #161616;
+  --text: #161616;
+  --text2: #555555;
+  --text3: #626262;
+  --text-on-cream: #161616;
+  --text-on-cream-2: #555555;
 
   --accent: #f4c430;
   --accent-hover: #e6b41c;
   --accent-soft: #fff4d6;
-  --accent-text: #1e2b47;
+  --accent-text: #161616;
   --accent-warm: #8a5a00;      /* texte « doré » sur blanc : 5,9:1 */
   --orange: #e08800;           /* or-bochica (étoiles, petites touches) */
 
   --yellow: #f4c430;
-  --blue: #003893;
-  --red: #ce1126;
+  --blue: #161616;
+  --red: #161616;
   --status-open: #2e9e63;
 
-  --border-dark: rgba(30,43,71,.1);
-  --border-dark-strong: rgba(30,43,71,.22);
+  --border-dark: rgba(0,0,0,.1);
+  --border-dark-strong: rgba(0,0,0,.22);
 
   --font-display: 'Manrope', 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --font-heading: 'Manrope', 'Inter', sans-serif;
@@ -89,11 +89,11 @@ h1, h2, h3, h4, h5, h6,
   background: rgba(255,255,255,.9);
   border: 1px solid var(--border-dark);
   border-radius: 999px;
-  box-shadow: 0 6px 24px rgba(30,43,71,.08);
+  box-shadow: 0 6px 24px rgba(0,0,0,.08);
 }
 #nav .nav-links a { font-weight: 600; font-size: 15px; }
 #nav .btn-nav-reserve { background: var(--ink); color: #fff; border-color: var(--ink); border-radius: 999px; font-weight: 700; }
-#nav .btn-nav-reserve:hover { background: #2c3d63; }
+#nav .btn-nav-reserve:hover { background: #383838; }
 #nav .btn-nav-order { border-radius: 999px; font-weight: 700; border-color: var(--border-dark-strong); }
 #nav .lang-btn.active { background: var(--accent); color: var(--ink); }
 
@@ -134,9 +134,9 @@ h1, h2, h3, h4, h5, h6,
   box-sizing: border-box; transition: background var(--transition-fast);
 }
 .bento-btn--dark { background: var(--ink); color: #fff; }
-.bento-btn--dark:hover { background: #2c3d63; color: #fff; }
+.bento-btn--dark:hover { background: #383838; color: #fff; }
 .bento-btn--light { background: #fff; color: var(--ink); }
-.bento-btn--light:hover { background: #f5f7fb; }
+.bento-btn--light:hover { background: #f4f4f4; }
 .bento-btn--outline { border: 2px solid var(--ink); color: var(--ink); }
 .bento-btn--outline:hover { background: var(--ink); color: #fff; }
 
@@ -148,7 +148,7 @@ h1, h2, h3, h4, h5, h6,
   min-height: 420px;
 }
 .bento-dish picture { display: block; width: 108%; }
-.bento-dish img { width: 100%; height: auto; filter: drop-shadow(0 30px 34px rgba(30,43,71,.3)); }
+.bento-dish img { width: 100%; height: auto; filter: drop-shadow(0 30px 34px rgba(0,0,0,.3)); }
 .bento-dish__tag {
   position: absolute; left: 18px; right: 18px; bottom: 18px;
   display: flex; justify-content: space-between; align-items: center; gap: 10px;
@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6,
 .bento-status .status-dot { width: 12px; height: 12px; box-shadow: 0 0 0 6px rgba(255,255,255,.12); }
 .bento-status .status-item.open .status-dot { background: #5cd08f; box-shadow: 0 0 0 6px rgba(92,208,143,.22); }
 .bento-status .status-text { font-size: clamp(26px, 2.4vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
-.bento-tile__link { color: #c9d2e4; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.bento-tile__link { color: #d4d4d4; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
 .bento-tile__link:hover { color: #fff; }
 
 .bento-rating {
@@ -261,7 +261,7 @@ h1, h2, h3, h4, h5, h6,
     width: 48px; height: 48px; padding: 0;
     border-radius: 50%; border: 1.5px solid var(--ink);
     background: #fff; color: var(--ink);
-    box-shadow: 0 6px 18px rgba(30,43,71,.18);
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
     opacity: 0; transform: translateY(12px); pointer-events: none;
     transition: opacity .2s ease, transform .2s ease;
   }
@@ -270,3 +270,18 @@ h1, h2, h3, h4, h5, h6,
   html.consent-open .to-top { opacity: 0 !important; pointer-events: none !important; }
 }
 @media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
+
+/* ─── Blanc + jaune seulement : plus de bleu ni de rouge décoratif (le logo, lui, ne change pas) ─── */
+.story::after, .cta-final::after, .footer-bar, .ornament { display: none !important; }
+.promo-card::before, .promo-card__top::before { background: var(--accent) !important; }
+.menu-flag.flag-new, .menu-flag.flag-yellow { background: var(--accent) !important; color: var(--ink) !important; }
+.menu-flag.flag-blue, .menu-flag.flag-dark { background: var(--ink) !important; color: #fff !important; }
+.review-avatar, .review-avatar.avatar--blue, .review-avatar.avatar--red, .review-avatar.avatar--green { background: var(--accent) !important; color: var(--ink) !important; }
+.contact-icon, .contact-icon.ci-b, .contact-icon.ci-r, .contact-icon.ci-y { background: var(--accent-soft) !important; color: var(--ink) !important; }
+.follow-btn--ig, .follow-btn--fb { background: var(--ink) !important; }
+.follow-btn--ig *, .follow-btn--fb * { color: #fff !important; }
+.follow-btn__icon { background: var(--accent) !important; color: var(--ink) !important; }
+.follow-btn__icon * { color: var(--ink) !important; }
+.band-dot-b, .band-dot-r { background: var(--accent) !important; }
+.reviews .stars, .review-stars { color: var(--accent) !important; }
+.bento-stars { color: var(--accent); }

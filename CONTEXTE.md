@@ -345,7 +345,7 @@ Configurés dans `vercel.json` à la racine :
 ## 📝 CHANGELOG
 
 ### 25 octobre 2026 (b) — Thème « Bento » (mis EN LIGNE sur main le 25 oct., 18 h 26)
-- Choisi par le propriétaire parmi 3 directions (canevas « Bochica — nouveau design du site », direction B). Basé sur le guide de marque Bochica : fond blanc, encre bleu tablier `#1e2b47`, accents jaune maïs `#f4c430`, police Manrope, tuiles arrondies (32 px). **Logo inchangé** (règle du propriétaire)
+- Choisi par le propriétaire parmi 3 directions (canevas « Bochica — nouveau design du site », direction B). **Seulement blanc + jaune maïs `#f4c430`** (le propriétaire, 25 oct. : « le bleu ne fait pas partie de nos couleurs ») ; texte et boutons sombres en noir `#161616` (comme le logo), gris neutres pâles `#f2f2f2`/`#f4f4f4` ; police Manrope, tuiles arrondies (32 px). **Logo inchangé** (règle du propriétaire)
 - `css/bento.css` (nouveau, chargé après `style.css` dans index + privacy) : remplace couleurs/polices/formes ; enlève les majuscules et lettres espacées ; nav en pilule flottante ; « Notre histoire » en tuile bleu pâle ; section finale en tuile jaune
 - `index.html` : accueil `.hero--bento` (grande tuile jaune + H1 « Le vrai goût de la Colombie » (changé le 25 oct. à la demande du propriétaire), tuile photo picada, tuile statut ouvert/fermé `#status-pill`, tuile 4,7 Google, tuile promo du jour `#hero-promo`) ; Manrope ajoutée à Google Fonts. Mobile : tuile jaune + statut seulement
 - `main.js` : `initHeroPromo()` (promo du jour ou la prochaine, copiée des cartes #evenements) ; `navHeight()` utilise le bas de la nav (nav flottante)
