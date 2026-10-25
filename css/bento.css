@@ -285,3 +285,43 @@ h1, h2, h3, h4, h5, h6,
 .band-dot-b, .band-dot-r { background: var(--accent) !important; }
 .reviews .stars, .review-stars { color: var(--accent) !important; }
 .bento-stars { color: var(--accent); }
+
+/* ═══ Version D (25 oct., 18 h 48) : blanc + jaune + noir, et TOUCHES du drapeau (jaune, bleu, rouge) ═══ */
+:root { --flag-y: #f4c430; --flag-b: #003893; --flag-r: #ce1126; }
+/* Filet tricolore tout en haut de la page (2 : 1 : 1 comme le drapeau) */
+body::before {
+  content: ""; display: block; height: 5px;
+  background: linear-gradient(90deg, var(--flag-y) 0 50%, var(--flag-b) 50% 75%, var(--flag-r) 75%);
+}
+#nav, #nav.scrolled { top: 17px; }
+@media (max-width: 760px) { #nav, #nav.scrolled { top: 15px; } }
+
+/* Grand titre en blanc sur le jaune (ombre dorée pour la lisibilité, comme les titres des pubs) */
+.bento-main__top { display: flex; flex-direction: column; gap: 22px; }
+.hero--bento .hero-h1 { color: #ffffff !important; text-shadow: 0 2px 0 rgba(0,0,0,.18), 0 6px 18px rgba(120,80,0,.35) !important; }
+/* Trait aux couleurs du drapeau sous le titre, sur une pilule blanche pour que le jaune se voie */
+.flag-line { display: flex; width: 132px; height: 10px; padding: 3px; background: #fff; border-radius: 999px; box-sizing: border-box; }
+.flag-line span:nth-child(1) { flex: 2; background: var(--flag-y); border-radius: 999px 0 0 999px; }
+.flag-line span:nth-child(2) { flex: 1; background: var(--flag-b); }
+.flag-line span:nth-child(3) { flex: 1; background: var(--flag-r); border-radius: 0 999px 999px 0; }
+
+/* Tuile photo de l'accueil : bleu très pâle */
+.bento-dish { background: #eaf0fa; }
+/* Prix de la promo du jour dans une pastille rouge */
+.bento-promo__big { display: inline-block; background: var(--flag-r); color: #fff !important; border-radius: 10px; padding: 1px 10px; }
+
+/* Promos de la semaine : un petit point de couleur par jour */
+.promo-card__day { display: flex; align-items: center; gap: 12px; }
+.promo-card__day::after { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--flag-y); flex-shrink: 0; }
+.promo-card[data-promo-day="4"] .promo-card__day::after { background: var(--flag-b); }
+.promo-card[data-promo-day="5"] .promo-card__day::after { background: var(--flag-r); }
+.promo-card[data-promo-day="0"] .promo-card__day::after { background: var(--ink); }
+
+/* Section finale : titre bleu drapeau + bande tricolore en bas */
+.cta-final { position: relative; overflow: hidden; padding-bottom: 92px !important; }
+.cta-final__h2 { color: var(--flag-b) !important; }
+.cta-final::after {
+  display: block !important; content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12px;
+  border-top: 4px solid #fff;
+  background: linear-gradient(90deg, var(--flag-y) 0 50%, var(--flag-b) 50% 75%, var(--flag-r) 75%);
+}
