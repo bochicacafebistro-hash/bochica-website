@@ -358,3 +358,9 @@ body::before {
   .hero.hero--mosaic { padding: 0; height: 84px; }
   .menu-status { display: inline-flex !important; }
 }
+
+/* 26 oct. : sans le filet tricolore du haut ; titre final en noir */
+body::before { display: none !important; }
+#nav, #nav.scrolled { top: 12px; }
+@media (max-width: 760px) { #nav, #nav.scrolled { top: 10px; } }
+.cta-final__h2 { color: var(--ink) !important; }
