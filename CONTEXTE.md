@@ -344,6 +344,12 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 26 octobre 2026 — Retour de l'ancienne page d'accueil « mosaïque » (typo Manrope gardée)
+- Le propriétaire préfère l'ancien accueil : `.hero--mosaic` remis tel quel dans `index.html` (H1 « Voyagez en Colombie sans quitter le Québec », mosaïque 4 plats détourés, boutons Voir le menu / Commander / Réserver, statut). L'accueil en tuiles « Bento » (`.hero--bento`, `#hero-promo`) est retiré du HTML ; ses styles restent dans `bento.css` sans effet
+- Gardé du thème Bento : **typo Manrope** (plus lisible, demande du propriétaire), fond blanc, nav en pilule, touches du drapeau (filet tricolore en haut, points de couleur des promos, section finale)
+- `bento.css` (fin du fichier) : style de la mosaïque avec Manrope ; cases jaune / bleu drapeau / rouge drapeau / noir ; surlignage jaune sous « Colombie ». Mobile : accueil masqué comme avant (arrivée directe sur le menu) et statut ouvert/fermé du menu réaffiché
+- Cache : `bento.css?v=20261026a`. EN/ES régénérés
+
 ### 25 octobre 2026 (b) — Thème « Bento » (mis EN LIGNE sur main le 25 oct., 18 h 26)
 - Choisi par le propriétaire parmi 3 directions (canevas « Bochica — nouveau design du site », direction B). **Seulement blanc + jaune maïs `#f4c430`** (le propriétaire, 25 oct. : « le bleu ne fait pas partie de nos couleurs ») ; texte et boutons sombres en noir `#161616` (comme le logo), gris neutres pâles `#f2f2f2`/`#f4f4f4` ; police Manrope, tuiles arrondies (32 px). **Logo inchangé** (règle du propriétaire)
 - `css/bento.css` (nouveau, chargé après `style.css` dans index + privacy) : remplace couleurs/polices/formes ; enlève les majuscules et lettres espacées ; nav en pilule flottante ; « Notre histoire » en tuile bleu pâle ; section finale en tuile jaune

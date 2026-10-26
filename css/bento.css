@@ -325,3 +325,36 @@ body::before {
   border-top: 4px solid #fff;
   background: linear-gradient(90deg, var(--flag-y) 0 50%, var(--flag-b) 50% 75%, var(--flag-r) 75%);
 }
+
+/* ═══ 26 oct. 2026 : RETOUR de l'ancienne page d'accueil « mosaïque » (demande du propriétaire),
+   avec la typo actuelle (Manrope, plus lisible). Les styles .bento-* ci-dessus ne servent plus. ═══ */
+.hero.hero--mosaic { background: #ffffff; padding-top: 104px; }
+.hero--mosaic .hero-eyebrow { font-size: 15px !important; font-weight: 700 !important; color: var(--accent-warm); }
+.hero--mosaic .hero-h1 {
+  font-size: clamp(46px, 5.2vw, 82px) !important;
+  line-height: 1 !important;
+  letter-spacing: -0.04em !important;
+  font-weight: 800 !important;
+  color: var(--ink) !important;
+  max-width: 12ch;
+  text-shadow: none !important;
+}
+/* Surlignage jaune sous « Colombie » (comme avant) */
+.hero--mosaic .hero-h1 .hl {
+  background: linear-gradient(transparent 60%, rgba(244,196,48,.6) 60%, rgba(244,196,48,.6) 92%, transparent 92%) !important;
+  padding: 0 6px !important; margin-left: -6px;
+}
+.hero--mosaic .hero-lead { font-size: 18px; color: var(--text2); }
+.hero--mosaic .btn-primary, .hero--mosaic .btn-outline { min-height: 50px; padding: 0 24px; display: inline-flex; align-items: center; }
+.hero--mosaic .hero-status { font-family: var(--font-body); font-size: 14px; font-weight: 600; background: #fff; }
+/* Mosaïque : cases aux couleurs du drapeau (jaune, bleu, rouge) + noir, coins plus arrondis */
+.hero-mosaic__item { border-radius: 24px !important; }
+.hero-mosaic__item:nth-child(2) { background: var(--flag-b) !important; }
+.hero-mosaic__item:nth-child(3) { background: var(--flag-r) !important; }
+.hero-mosaic__item:nth-child(4) { background: var(--ink) !important; }
+.hero-mosaic__item figcaption { font-family: var(--font-body) !important; font-weight: 700 !important; font-size: 14px !important; }
+/* Mobile : on arrive directement sur le menu → le statut ouvert/fermé du menu redevient visible */
+@media (max-width: 760px) {
+  .hero.hero--mosaic { padding: 0; height: 84px; }
+  .menu-status { display: inline-flex !important; }
+}
