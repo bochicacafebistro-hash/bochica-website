@@ -364,3 +364,38 @@ body::before { display: none !important; }
 #nav, #nav.scrolled { top: 12px; }
 @media (max-width: 760px) { #nav, #nav.scrolled { top: 10px; } }
 .cta-final__h2 { color: var(--ink) !important; }
+
+/* 26 oct. : en-tête de la section Menu plus compact — « Notre menu » à gauche, statut à droite, une ligne sans gluten */
+.menu-preview.menu-hero { padding-top: 40px !important; }
+.menu-hero-header {
+  display: grid !important;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 16px; row-gap: 4px;
+  text-align: left !important;
+  margin: 0 0 16px !important;
+}
+.menu-hero-header .menu-hero-tag, .menu-hero-header .ornament { display: none !important; }
+.menu-hero-header .menu-hero-title {
+  grid-column: 1; grid-row: 1;
+  margin: 0 !important;
+  font-size: clamp(30px, 3.4vw, 44px) !important;
+}
+.menu-hero-header .menu-status {
+  display: inline-flex !important;
+  grid-column: 2; grid-row: 1;
+  margin: 0 !important; padding: 5px 12px !important;
+  font-size: 13px !important; white-space: nowrap;
+}
+.menu-hero-header .menu-hero-sub {
+  grid-column: 1 / -1; grid-row: 2;
+  margin: 0 !important; max-width: none !important;
+  font-size: 14px !important; color: var(--text2);
+}
+@media (max-width: 760px) {
+  .menu-preview.menu-hero, #menu.menu-hero { padding-top: 16px !important; }
+  .menu-hero-header { margin-bottom: 10px !important; }
+  .menu-hero-header .menu-hero-title { font-size: 26px !important; white-space: nowrap; }
+  .menu-hero-header .menu-status { font-size: 12px !important; padding: 4px 10px !important; }
+  .menu-hero-header .menu-hero-sub { font-size: 13px !important; }
+}
