@@ -470,3 +470,23 @@ body::before { display: none !important; }
 #menu-subtabs, .menu-subtabs { display: none !important; }
 .menu-cats { padding-bottom: 14px; }
 @media (max-width: 760px) { .menu-cat-toggle { border-bottom: 0 !important; } }
+
+/* 27 oct. (c) : mobile — rangée de catégories horizontale (comme sur ordinateur), toujours visible en haut
+   pendant qu'on parcourt les plats ; plus de bouton « ≡ Bouffe ▾ » ni d'écran de choix. */
+@media (max-width: 900px) {
+  .menu-cat-toggle, #menu-cat-sheet { display: none !important; }
+  .menu-cats {
+    display: flex !important;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 10px 0 !important;
+    margin: 0 calc(-1 * var(--pad));
+    padding-left: var(--pad) !important; padding-right: var(--pad) !important;
+    overflow-x: auto; scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .menu-cats::-webkit-scrollbar { display: none; }
+  .menu-cat { min-height: 44px; padding: 3px 14px 3px 3px; font-size: 15px; gap: 8px; scroll-snap-align: start; }
+  .menu-cat-icon { width: 34px; height: 34px; }
+  .menu-cat-icon svg { width: 18px; height: 18px; }
+}

@@ -335,6 +335,12 @@ function setMenuCat(cat, scroll) {
     const on = b.dataset.cat === cat;
     b.classList.toggle('active', on);
     b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    // Mobile : la rangée défile de côté → garder la catégorie choisie bien visible
+    const row = b.parentElement;
+    if (on && row && row.scrollWidth > row.clientWidth) {
+      const left = b.offsetLeft - (row.clientWidth - b.offsetWidth) / 2;
+      row.scrollTo({ left: Math.max(0, left), behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    }
   });
   document.querySelectorAll('.menu-sheet-item').forEach(b => {
     b.classList.toggle('active', b.dataset.cat === cat);

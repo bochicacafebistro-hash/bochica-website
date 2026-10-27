@@ -344,6 +344,9 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 27 octobre 2026 (c) — Mobile : rangée de catégories horizontale
+- Sur mobile (≤ 900 px), le bouton « ≡ Bouffe ▾ » et l'écran de choix sont masqués ; la rangée `.menu-cats` (5 catégories avec icônes) s'affiche comme sur ordinateur, défile de côté et reste collée en haut de l'écran. `setMenuCat()` recentre la catégorie choisie dans la rangée. Cache `bento.css?v=20261027d`, `main.js?v=20261027a`
+
 ### 27 octobre 2026 (b) — Menu : catégories seulement
 - Rangée de sous-catégories (`#menu-subtabs`) masquée en CSS (`bento.css`) à la demande du propriétaire ; il reste les 5 catégories (rangée sur ordinateur, bouton « ≡ Bouffe ▾ » + écran de choix sur mobile). Les titres de sous-sections restent dans la liste. Le JS des sous-onglets tourne encore sans effet (à retirer si on ne revient pas en arrière). Cache `bento.css?v=20261027c`
 
