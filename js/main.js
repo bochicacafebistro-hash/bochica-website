@@ -279,6 +279,19 @@ function initMenuNav() {
       t.innerHTML = '';
       if (i === 0 && SUB_ICONS[sec.id]) t.insertAdjacentHTML('beforeend', iconSvg(SUB_ICONS[sec.id]));
       t.appendChild(label);
+      // Nombre de plats de la sous-section, en gris à côté du titre (ex. « Entrées 13 plats »)
+      let count = 0, el = t.nextElementSibling;
+      while (el && !el.classList.contains('menu-subsection-title')) { if (el.classList.contains('menu-card')) count++; el = el.nextElementSibling; }
+      if (count) {
+        const food = MENU_CATS.bouffe.includes(sec.id);
+        const w = food ? { fr: 'plats', en: 'dishes', es: 'platos' } : { fr: 'choix', en: 'options', es: 'opciones' };
+        const one = food ? { fr: 'plat', en: 'dish', es: 'plato' } : { fr: 'choix', en: 'option', es: 'opción' };
+        const c = document.createElement('span');
+        c.className = 'menu-sub-count';
+        ['fr', 'en', 'es'].forEach(l => c.setAttribute('data-' + l, count + ' ' + (count > 1 ? w[l] : one[l])));
+        c.textContent = c.getAttribute('data-' + currentLang) || c.getAttribute('data-fr');
+        t.appendChild(c);
+      }
     });
   });
 
@@ -341,7 +354,9 @@ function setActiveCat(cat) {
     // La rangée défile de côté (mobile) → garder la catégorie active bien visible
     const row = b.parentElement;
     if (on && row && row.scrollWidth > row.clientWidth) {
-      const left = b.offsetLeft - (row.clientWidth - b.offsetWidth) / 2;
+      // position du bouton DANS la rangée (offsetLeft dépend du parent positionné : pas fiable ici)
+      const rel = b.getBoundingClientRect().left - row.getBoundingClientRect().left + row.scrollLeft;
+      const left = rel - (row.clientWidth - b.offsetWidth) / 2;
       row.scrollTo({ left: Math.max(0, left), behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
     }
   });

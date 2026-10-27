@@ -344,6 +344,11 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 27 octobre 2026 (g) — Catégories du menu : option 1 « boutons simples » (canevas « Catégories du menu »)
+- Boutons de catégories en texte seulement (icônes masquées), arrondis comme le reste du site : actif jaune, autres gris pâle `#f2f2f2`
+- Titres de sous-sections (Entrées, Repas, Mocktails…) sans les 2 lignes ni icône ; le nombre d'éléments s'affiche en gris à côté (`.menu-sub-count`, calculé dans `initMenuNav()` : « 13 plats » pour la bouffe, « 5 choix » pour les boissons/desserts ; EN « dishes/options », ES « platos/opciones »)
+- Mobile : la rangée garde 20 px de marge à gauche (`scroll-padding-inline`) ; recentrage de la catégorie active corrigé (position calculée dans la rangée). Cache `bento.css?v=20261027j`, `main.js?v=20261027e`
+
 ### 27 octobre 2026 (f) — Suivez-nous + Promos pleine largeur
 - « Suivez-nous » : nouveau texte (FR/EN/ES) « Suivez-nous pour ne rien manquer : nos prochaines promotions, nos nouveaux plats, nos nouveautés et nos événements. » ; boutons Instagram (dégradé) et Facebook (#1464cc) avec leurs vraies couleurs
 - « Promos & activités » : grille fixe 4 colonnes (2 sous 1000 px, 1 sous 540 px) au lieu de `auto-fit` qui laissait une 5e colonne vide à droite. Cache `bento.css?v=20261027f`
