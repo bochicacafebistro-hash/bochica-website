@@ -464,3 +464,9 @@ body::before { display: none !important; }
   #nav .nav-logo-img { height: 24px; }
   .nav-reserve-mobile { padding: 0 10px; font-size: 13px; }
 }
+
+/* 27 oct. : section Menu — catégories seulement, plus de rangée de sous-catégories
+   (les titres Entrées / Arepas farcies / Repas restent dans la liste) */
+#menu-subtabs, .menu-subtabs { display: none !important; }
+.menu-cats { padding-bottom: 14px; }
+@media (max-width: 760px) { .menu-cat-toggle { border-bottom: 0 !important; } }

@@ -344,6 +344,9 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 27 octobre 2026 (b) — Menu : catégories seulement
+- Rangée de sous-catégories (`#menu-subtabs`) masquée en CSS (`bento.css`) à la demande du propriétaire ; il reste les 5 catégories (rangée sur ordinateur, bouton « ≡ Bouffe ▾ » + écran de choix sur mobile). Les titres de sous-sections restent dans la liste. Le JS des sous-onglets tourne encore sans effet (à retirer si on ne revient pas en arrière). Cache `bento.css?v=20261027c`
+
 ### 27 octobre 2026 — En-tête classique (option 1 choisie parmi 3, canevas « En-têtes »)
 - Barre blanche pleine largeur collée en haut, simple trait gris en bas (plus de pilule flottante)
 - Ordinateur (> 900 px) : logo à gauche · Notre histoire / Menu / Promos / Horaires à droite (soulignés en jaune au survol) · FR EN ES en texte (langue active soulignée en jaune) · « Commander » en lien souligné · bouton jaune « Réserver » (coins 8 px). L'ordre est fait en CSS (`display: contents` sur `.nav-left`, `.nav-links`, `.nav-btns` + `order`) sans toucher la structure du menu mobile
