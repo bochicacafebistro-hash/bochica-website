@@ -320,22 +320,25 @@ function initMenuNav() {
   window.addEventListener('scroll', () => {
     if (ticking) return;
     ticking = true;
-    requestAnimationFrame(() => { ticking = false; updateMenuSpy(); });
+    requestAnimationFrame(() => { ticking = false; updateCatSpy(); updateMenuSpy(); });
   }, { passive: true });
 }
 
-function setMenuCat(cat, scroll) {
+// Tout le menu est affiché d'un seul bloc (27 oct. 2026) : on défile de la première entrée au dernier dessert.
+// La catégorie active (en jaune) suit le défilement ; toucher une catégorie amène à son début.
+function sectionCat(id) {
+  return Object.keys(MENU_CATS).find(k => MENU_CATS[k].includes(id));
+}
+let menuCatLock = 0;
+function setActiveCat(cat) {
   if (!MENU_CATS[cat]) return;
   currentMenuCat = cat;
-  const ids = MENU_CATS[cat];
-  document.querySelectorAll('#menu .menu-section').forEach(s => {
-    s.style.display = ids.includes(s.id) ? '' : 'none';
-  });
   document.querySelectorAll('.menu-cat').forEach(b => {
     const on = b.dataset.cat === cat;
+    if (b.classList.contains('active') === on) return;
     b.classList.toggle('active', on);
     b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    // Mobile : la rangée défile de côté → garder la catégorie choisie bien visible
+    // La rangée défile de côté (mobile) → garder la catégorie active bien visible
     const row = b.parentElement;
     if (on && row && row.scrollWidth > row.clientWidth) {
       const left = b.offsetLeft - (row.clientWidth - b.offsetWidth) / 2;
@@ -346,27 +349,38 @@ function setMenuCat(cat, scroll) {
     b.classList.toggle('active', b.dataset.cat === cat);
     if (b.dataset.cat === cat) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
   });
-  // Nom affiché sur le bouton mobile
   const cur = document.getElementById('menu-cat-current');
   const src = document.querySelector('.menu-cat[data-cat="' + cat + '"] .menu-cat-name');
-  if (cur && src) {
-    copyLangAttrs(src, cur);
-    cur.innerHTML = src.getAttribute('data-' + currentLang) || src.innerHTML;
-  }
+  if (cur && src) { copyLangAttrs(src, cur); cur.innerHTML = src.getAttribute('data-' + currentLang) || src.innerHTML; }
+}
+function setMenuCat(cat, scroll) {
+  if (!MENU_CATS[cat]) return;
+  document.querySelectorAll('#menu .menu-section').forEach(s => { s.style.display = ''; });
+  setActiveCat(cat);
   buildMenuSubtabs();
-  // Les cartes « reveal » d'une catégorie cachée n'ont pas encore été animées : les montrer
-  ids.forEach(id => document.querySelectorAll('#' + id + ' .reveal').forEach(el => el.classList.add('visible')));
-
   if (scroll) {
-    const first = document.getElementById(ids[0]);
-    const bar = document.getElementById('menu-nav');
-    if (first && bar) {
-      // Remonter au début de la catégorie seulement si on est déjà plus bas que la barre
+    const first = document.getElementById(MENU_CATS[cat][0]);
+    if (first) {
       const target = first.getBoundingClientRect().top + window.scrollY - menuStickyBottom() + 1;
-      if (window.scrollY > target) window.scrollTo({ top: target, behavior: 'auto' });
+      // Pendant le défilement doux, ne pas faire défiler la catégorie active en route : on attend la fin
+      menuCatLock = Infinity;
+      const unlock = () => { if (menuCatLock === Infinity) { menuCatLock = 0; updateCatSpy(); } };
+      if ('onscrollend' in window) window.addEventListener('scrollend', unlock, { once: true });
+      setTimeout(unlock, 2500);
+      window.scrollTo({ top: target, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
     }
   }
-  updateMenuSpy();
+}
+// Catégorie active selon la section visible sous la barre collante
+function updateCatSpy() {
+  if (Date.now() < menuCatLock) return;
+  const limit = menuStickyBottom() + 60;
+  let cur = null;
+  document.querySelectorAll('#menu .menu-section').forEach(s => {
+    if (s.getBoundingClientRect().top <= limit) cur = s.id;
+  });
+  const cat = cur ? sectionCat(cur) : 'bouffe';
+  if (cat && cat !== currentMenuCat) setActiveCat(cat);
 }
 
 function buildMenuSubtabs() {

@@ -344,6 +344,10 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 27 octobre 2026 (d) — Tout le menu d'un seul bloc
+- Les 7 sections (`tab-entrees` … `tab-desserts`) sont toutes affichées l'une après l'autre (plus de `style="display:none"`) : on défile de la première entrée au dernier dessert
+- La catégorie active (en jaune) suit le défilement (`updateCatSpy()`) ; toucher une catégorie fait défiler jusqu'à son début (`setMenuCat(cat, true)`, verrou jusqu'à la fin du défilement). Cache `main.js?v=20261027c`
+
 ### 27 octobre 2026 (c) — Mobile : rangée de catégories horizontale
 - Sur mobile (≤ 900 px), le bouton « ≡ Bouffe ▾ » et l'écran de choix sont masqués ; la rangée `.menu-cats` (5 catégories avec icônes) s'affiche comme sur ordinateur, défile de côté et reste collée en haut de l'écran. `setMenuCat()` recentre la catégorie choisie dans la rangée. Cache `bento.css?v=20261027d`, `main.js?v=20261027a`
 
