@@ -344,6 +344,12 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 27 octobre 2026 — En-tête classique (option 1 choisie parmi 3, canevas « En-têtes »)
+- Barre blanche pleine largeur collée en haut, simple trait gris en bas (plus de pilule flottante)
+- Ordinateur (> 900 px) : logo à gauche · Notre histoire / Menu / Promos / Horaires à droite (soulignés en jaune au survol) · FR EN ES en texte (langue active soulignée en jaune) · « Commander » en lien souligné · bouton jaune « Réserver » (coins 8 px). L'ordre est fait en CSS (`display: contents` sur `.nav-left`, `.nav-links`, `.nav-btns` + `order`) sans toucher la structure du menu mobile
+- Mobile (≤ 900 px) : logo + FR EN ES · nouveau bouton jaune « Réserver » toujours visible (`.nav-reserve-mobile`, lien LibroReserve → conversion « reserve » comptée par consent.js) · ☰ sans cadre
+- Cache : `bento.css?v=20261027a`. EN/ES régénérés
+
 ### 26 octobre 2026 — Retour de l'ancienne page d'accueil « mosaïque » (typo Manrope gardée)
 - Le propriétaire préfère l'ancien accueil : `.hero--mosaic` remis tel quel dans `index.html` (H1 « Voyagez en Colombie sans quitter le Québec », mosaïque 4 plats détourés, boutons Voir le menu / Commander / Réserver, statut). L'accueil en tuiles « Bento » (`.hero--bento`, `#hero-promo`) est retiré du HTML ; ses styles restent dans `bento.css` sans effet
 - Gardé du thème Bento : **typo Manrope** (plus lisible, demande du propriétaire), fond blanc, nav en pilule, touches du drapeau (filet tricolore en haut, points de couleur des promos, section finale)
