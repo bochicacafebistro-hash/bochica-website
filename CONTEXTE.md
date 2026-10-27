@@ -344,6 +344,9 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 27 octobre 2026 (e) — Statut ouvert/fermé à un seul endroit
+- Ordinateur : seulement dans l'accueil (`#status-pill`) ; le statut de l'en-tête du menu (`#menu-status`) est masqué au-dessus de 760 px. Mobile (accueil masqué) : seulement à côté de « Notre menu ». Cache `bento.css?v=20261027e`
+
 ### 27 octobre 2026 (d) — Tout le menu d'un seul bloc
 - Les 7 sections (`tab-entrees` … `tab-desserts`) sont toutes affichées l'une après l'autre (plus de `style="display:none"`) : on défile de la première entrée au dernier dessert
 - La catégorie active (en jaune) suit le défilement (`updateCatSpy()`) ; toucher une catégorie fait défiler jusqu'à son début (`setMenuCat(cat, true)`, verrou jusqu'à la fin du défilement). Cache `main.js?v=20261027c`

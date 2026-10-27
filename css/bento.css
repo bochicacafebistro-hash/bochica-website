@@ -490,3 +490,7 @@ body::before { display: none !important; }
   .menu-cat-icon { width: 34px; height: 34px; }
   .menu-cat-icon svg { width: 18px; height: 18px; }
 }
+
+/* 27 oct. (e) : statut ouvert/fermé à UN seul endroit par écran —
+   ordinateur : dans l'accueil (#status-pill) ; mobile (accueil masqué) : à côté de « Notre menu » (#menu-status) */
+@media (min-width: 761px) { .menu-hero-header .menu-status { display: none !important; } }
