@@ -494,3 +494,15 @@ body::before { display: none !important; }
 /* 27 oct. (e) : statut ouvert/fermé à UN seul endroit par écran —
    ordinateur : dans l'accueil (#status-pill) ; mobile (accueil masqué) : à côté de « Notre menu » (#menu-status) */
 @media (min-width: 761px) { .menu-hero-header .menu-status { display: none !important; } }
+
+/* 27 oct. (f) : « Suivez-nous » — les boutons reprennent les couleurs d'Instagram et de Facebook */
+.follow-btn--ig { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important; }
+.follow-btn--fb { background: #1464cc !important; }
+.follow-btn__icon { background: rgba(255,255,255,.2) !important; color: #fff !important; }
+.follow-btn__icon *, .follow-btn--ig *, .follow-btn--fb * { color: #fff !important; }
+.follow-us__sub { max-width: 60ch; font-size: 17px; }
+
+/* « Promos & activités » : les 4 cartes prennent toute la largeur (plus de vide à droite) */
+.promo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+@media (max-width: 1000px) { .promo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media (max-width: 540px) { .promo-grid { grid-template-columns: minmax(0, 1fr) !important; } }

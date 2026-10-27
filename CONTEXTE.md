@@ -344,6 +344,10 @@ Configurés dans `vercel.json` à la racine :
 
 ## 📝 CHANGELOG
 
+### 27 octobre 2026 (f) — Suivez-nous + Promos pleine largeur
+- « Suivez-nous » : nouveau texte (FR/EN/ES) « Suivez-nous pour ne rien manquer : nos prochaines promotions, nos nouveaux plats, nos nouveautés et nos événements. » ; boutons Instagram (dégradé) et Facebook (#1464cc) avec leurs vraies couleurs
+- « Promos & activités » : grille fixe 4 colonnes (2 sous 1000 px, 1 sous 540 px) au lieu de `auto-fit` qui laissait une 5e colonne vide à droite. Cache `bento.css?v=20261027f`
+
 ### 27 octobre 2026 (e) — Statut ouvert/fermé à un seul endroit
 - Ordinateur : seulement dans l'accueil (`#status-pill`) ; le statut de l'en-tête du menu (`#menu-status`) est masqué au-dessus de 760 px. Mobile (accueil masqué) : seulement à côté de « Notre menu ». Cache `bento.css?v=20261027e`
 
